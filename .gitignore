@@ -2,5 +2,10 @@
 ###############
 #    folder   #
 ###############
-/.idea/
-/ErrorPages/
+.idea/
+ErrorPages/
+
+.idea/mizhi-dev.iml
+
+.idea/workspace.xml
+
