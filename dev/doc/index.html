@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Project-Samoyed Docs</title>
+
+</head>
+<body>
+<h1>Project-Samoyed Docs</h1>
+
+<p><img src="http://25.io/mou/Mou_128.png" title="Samoyed" alt="Project icon" /></p>
+
+<h2>Overview</h2>
+
+<p>Developer document of project-<strong>Samoyed</strong></p>
+
+<h3>Document Update</h3>
+
+<hr />
+
+<table>
+<thead>
+<tr>
+<th>Version </th>
+<th> Date </th>
+<th> Update</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V 1.0  </td>
+<td> 2015-07-1  </td>
+<td> 第一代版本文档: API文档</td>
+</tr>
+<tr>
+<td>V 1.1  </td>
+<td> 2015-07-20 </td>
+<td> API文档 更新请求接口: 新增全局参数(协议),列表参数(城市编码)</td>
+</tr>
+<tr>
+<td>V 2.0  </td>
+<td> 2015-07-23 </td>
+<td> 项目文档更新,新增API文档,开发文档,拟增加 逻辑文档</td>
+</tr>
+<tr>
+<td>V 2.1  </td>
+<td> 2015-07-25 </td>
+<td> API文档更新: 启用新的API域名</td>
+</tr>
+<tr>
+<td>V 2.5  </td>
+<td> 2015-08-1 </td>
+<td> API文档更新: 更新了item接口中的价格/面积/图片获取(直接获取具体数值)</td>
+</tr>
+<tr>
+<td>V 3.0  </td>
+<td> 2015-08-7 </td>
+<td> API文档更新: 新增units接口获取户型,更新了所有接口的返回数据(下划线连接);  Dev文档更新: 数据库名更新: type_items->unit_items</td>
+</tr>
+<tr>
+<td>V 3.1  </td>
+<td> 2015-08-10 </td>
+<td> API文档更新: item接口更新: 新增返回参数: dog_add(返回地址),dog_desc(返回详细介绍);  Dev文档更新: 数据库building_items更新字段: building_unit_num,building_pic_num</td>
+</tr>
+<tr>
+<td>V 4.0  </td>
+<td> 2015-08-10 </td>
+<td> API文档更新: 新增item/images接口获取建筑图片，修改units接口为item/units;  Dev文档更新: 数据库更新: building_img</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Document Overview</h3>
+
+<hr />
+
+<p>此文档为笃善网络科技旗下 <strong>Samoyed</strong> 项目开发技术文档</p>
+
+<h3>Content</h3>
+
+<hr />
+
+<h4>1. <a href="api.html">API Document</a></h4>
+
+<h4>2. <a href="dev.html">Development Document</a></h4>
+
+<h4>3. <a href="logic.html">Business Logic</a></h4>
+</body>
+</html>

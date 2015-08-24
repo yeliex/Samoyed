@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08c542c6-3d4e-4ba6-9cd9-1c883f3d5410" name="Default" comment="init mizhi-dev&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/400.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/401.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/403.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/404.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/405.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/502.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/503.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ErrorPages/504.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/mizhi-dev.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="mizhi-dev.iws" />
     <ignored path=".idea/workspace.xml" />
