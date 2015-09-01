@@ -238,7 +238,7 @@ function SetDetail() {
     // 设置建筑名字
     this.setName = function (name) {
         $(".ye-detail .segament .intro-wrapper .intro.title h1 span.bname").text(name); // 设置详情页建筑名字
-        $(".ye-detail .appointment .form #building_name span").text(name);
+        $(".ye-detail .appointment .form#building_name span").text(name);
     };
     // 设置价格范围
     this.setPrice = function (price) {

@@ -4,8 +4,12 @@
             <!--                    <div class="appointment-wrapper">-->
             <div class="appointment-preview">
             </div>
-            <h1>登记看房</h1>
-
+            <h1>预约看房</h1>
+            <form class="ui form" id="building_name">
+                <div class="field">
+                    <label>想看的房子: <span></span></label>
+                </div>
+            </form>
             <form class="ui form" id="appoint_loading">
                 <div class="status loading">
                     <div class="ui active text loader">正在读取用户数据</div>
@@ -47,10 +51,11 @@
                 </div>
             </form>
 
+
             <form class="ui form" id="appoint_info">
-                <div class="field" id="building_name">
-                    <label>想看的房子: <span></span></label>
-                </div>
+<!--                <div class="field" id="building_name">-->
+<!--                    <label>想看的房子: <span></span></label>-->
+<!--                </div>-->
                 <div class="required field">
                     <div class="ui action input ">
                         <input type="text" id="user_name" maxlength="10" placeholder="联系人">
