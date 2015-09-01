@@ -3,7 +3,7 @@ $(function () {
     // 检测记录
     $("#appoint_loading").css("display", "block");
     $("#appoint_loading .status.loading").css("display", "block");
-    var req = $.ajax("http://api.dev.mzapp.info/appointment/ifuser", {
+    var req = $.ajax("http://api.dev.mzapp.info/appointment/logined", {
         method: "GET",
         data: {
             protocol: "json"
@@ -71,7 +71,7 @@ function onUserInput(value) {
                 $("#verify-code").show();
                 $("#appoint_id .button").removeClass("loading");
                 $("#appoint_id .button").removeClass("disabled");
-                $("#appoint_id .button").text("登录");
+                $("#appoint_id .button").text("重新获取");
                 user.varifyCode = data.overview.varifyCode;
                 $("#appoint_id input #phoneNum").removeAttr("readonly")
                 // 设置倒计时
@@ -112,45 +112,87 @@ function phoneNumCheck(num) {
 function SetCountDown(target) {
     var initTime = 90;
     var current = initTime;
-    var timeout;
+    var interval;
     this.currentTime = current;
-    this.start = function(){
-        timeout = setTimeout(function () {
+    this.start = function () {
+        // 开始倒计时
+        interval = setInterval(function () {
             current--;
-            if(current <= 0){
-                this.stop();
+            if (current <= 0) {
+                clearInterval(interval);
+                $("#appoint_id .button").removeClass("disabled");
             }
             $("#verify-code .label span").text(current);
         }, 1000);
+        // 设置按钮为重新获取验证码
+        $("#appoint_id .button").text("重新获取");
+        if (!$("#appoint_id .button").hasClass("disabled")) {
+            $("#appoint_id .button").addClass("disabled");
+        }
+        $("#appoint_id .button").removeClass("loading");
     };
-    this.stop = function () {
-        timeout.clearTimeout();
-        $("#verify-code .label span").text(initTime);
-    };
+    this.id =
+        this.stop = function () {
+            clearInterval(interval);
+            $("#appoint_id .button").removeClass("disabled");
+        };
 }
 
 function onVerifyCodeInput(value) {
     $("#appoint_id .button").removeClass("loading");
-    $("#appoint_id .button").text("登录");
+    //$("#appoint_id .button").text("登录");
     $(".ui.message").removeClass("visible");
     if (value.length === 6) {
         // 验证码位数达到6位,开始验证
         $("#appoint_id .button").addClass("loading");
         $("#appoint_id input").attr("readonly", "readonly");
-        if (value === user.varifyCode && $("#phoneNum").val()===user.varifyCode) {
-            // 验证码正确
+        if ($("#phoneNum").val() === user.phoneNum) {
+            // 手机号正确正确
+            if (value === user.varifyCode) {
+                // 开始登陆进程
+                onLogin(user.phoneNum);
+            }
         }
         else {
             // 显示一个错误
             $(".ui.message.varify").addClass("visible");
+            // 重新允许输入
+            $("#appoint_id input").removeAttr("readonly");
+            $("#appoint_id .button").removeClass("loading");
         }
     }
     else {
-
+        // 验证码小于6位->未输入完
     }
 }
 
-function onLogin() {
-    var code = $("#verify-code input").val();
-    onVerifyCodeInput(code);
+function onLogin(phoneNum) {
+    // 登陆进程
+    // UI相关设置
+    // 设置按钮为不可点击,输入框只读,按钮进度条
+    $("#appoint_id .button").addClass("disabled");
+    $("#appoint_id .button").addClass("loading");
+    $("#appoint_id input").attr("readonly", "readonly");
+
+    // 检查用户是否已存在
+    var req = $.ajax("http://api.dev.mzapp.info/appointuser/userexisted", {
+        method: "GET",
+        async: false,
+        data: {
+            protocol: "json",
+            phone: phoneNum
+        }
+    });
+    req.complete(function (returnData) {
+        var data = $.parseJSON(returnData.responseText).overview;
+        if (data.status === "success") {
+            // 用户已存在
+            userExisted(data.uid);
+        }
+        else {
+            // 用户不存在
+            userNotExisted(phoneNum);
+        }
+    });
 }
+

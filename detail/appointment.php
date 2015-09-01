@@ -43,8 +43,7 @@
                     <div class="header">验证码错误</div>
                 </div>
                 <div class="field">
-                    <button type="button" class="ui green button disabled"
-                    ">获取验证码</button>
+                    <button type="button" class="ui green button disabled" onclick="onUserInput(user.phoneNum)">获取验证码</button>
                 </div>
             </form>
 
@@ -142,5 +141,136 @@
 
     </div>
 </div>
+
+<div class="ui small modal" id="appointment-register">
+    <div class="header">欢迎<span><!-- 这里需要显示称谓信息--></span>,您是首次登陆,我们需要一些信息</div>
+    <div class="content">
+        <div class="ui form">
+            <div class="inline fields" id="register-phone">
+                <div class="field">
+                    <label>手机号: </label>
+                </div>
+                <div class="field">
+                    <input type="text" readonly>
+                </div>
+                <div class="field">
+                    <label class="disabled">此手机号将作为您的登陆账号以及主要联系方式</label>
+                </div>
+            </div>
+            <h4 class="ui header dividing">个人信息</h4>
+
+            <div class="inline fields" id="register-personal-info">
+                <div class="field">
+                    <label>称呼: </label>
+                </div>
+                <div class="field">
+                    <input type="text" oninput="nameChaned(this.value,1)">
+                </div>
+                <div class="field">
+                    <label>称谓: </label>
+                </div>
+                <div class="field">
+                    <select class="ui dropdown" id="register-male" onchange="nameChaned(this.value,2)">
+                        <option value="">选择一个称谓</option>
+                        <option value="先生">先生</option>
+                        <option value="女士">女士</option>
+                    </select>
+                </div>
+            </div>
+            <h4 class="ui dividing header">联系信息</h4>
+
+            <div class="inline fields" id="register-contacts">
+                <div class="field">
+                    <label>邮箱地址: </label>
+                    <input type="email" placeholder="必填,用于发送重要信息">
+                </div>
+                <div class="inline field">
+                    <label>附加号码: </label>
+                    <input type="text" placeholder="选填,用于备用联系">
+                </div>
+            </div>
+            <h4 class="ui header dividing">团队信息</h4>
+
+            <div class="inline field" id="register-team-type">
+                <label class="selected selection">个人创业者 &nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                <div class="ui slider checkbox">
+                    <input type="checkbox">
+                    <label>&nbsp;</label>
+                </div>
+                <label class="selection">团队创业</label>
+            </div>
+            <div class="ui field container">
+                <label class="disabled">请选择您是个人创业者/团队代表,个人创业者日后能升级为公司,公司则无法修改</label>
+            </div>
+            <!-- 个人创业者需要填写-->
+            <div class="inline personal field">
+
+            </div>
+            <!-- 团队需要填写-->
+            <div class="inline team field" id="register-team-size">
+                <label>团队规模</label>
+                <select class="ui dropdown" id="team-size">
+                    <option value="">选择当前规模</option>
+                    <option value="1">10人以内</option>
+                    <option value="2">10-20人</option>
+                    <option value="3">20-50人</option>
+                    <option value="4">50人以上</option>
+                </select>
+            </div>
+            <div class="ui dividing header">附加信息</div>
+            <div class="inline fields" id="register-extracts">
+                <div class="field">
+                    <label>地址: </label>
+                </div>
+                <div class="field">
+                    <select class="ui dropdown">
+                        <option value="">选择所在区</option>
+                        <option value="310002">上城区</option>
+                        <option value="310006">下城区</option>
+                        <option value="310016">江干区</option>
+                        <option value="310011">拱墅区</option>
+                        <option value="310013">西湖区</option>
+                        <option value="310051">滨江区</option>
+                        <option value="311201">萧山区</option>
+                        <option value="311100">余杭区</option>
+                    </select>
+                </div>
+                <div class="five wide field">
+                    <input type="text" placeholder="请填写详细地址">
+                </div>
+            </div>
+            <div class="ui field container">
+                <label class="disabled">默认地址. 是的,我们真的会专车接送</label>
+            </div>
+            <div class="ui inline field container" id="register-emailsupport">
+                <div class="ui checkbox">
+                    <input type="checkbox" checked>
+                    <label>我希望能获得后续的创业帮助.</label>
+                </div>
+                <label class="disabled">我们可能会向您发送一些重要的创业资讯,您可以随时取消.</label>
+            </div>
+            <div class="ui inline field container" id="register-agreement">
+                <div class="ui checkbox">
+                    <input type="checkbox" checked>
+                    <label>我同意 觅知空间 <a href="../about?target=agreement" target="_blank">
+                            <使用许可协议>
+                        </a>以及<a href="../about?target=silence" target="_blank">
+                            <隐私条款>
+                        </a></label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui cancel button">取消</div>
+        <div class="ui primary button">登录</div>
+    </div>
+
+</div>
+
+
 <script src="//static.dev.mzapp.info/client/js/appointment.js" type="text/javascript"></script>
+<script src="//static.dev.mzapp.info/client/js/appointuser.js" type="text/javascript"></script>
 <script src="//static.dev.mzapp.info/public/services/smsServices.js" type="text/javascript"></script>

@@ -316,7 +316,7 @@
 }
 
 /*.ye-detail .appointment-wrapper .right {*/
-    /*float: right;*/
+/*float: right;*/
 /*}*/
 
 .ye-detail .appointment-wrapper #data-time-select {
@@ -342,30 +342,67 @@
     width: 100% !important;
     font-style: normal;
 }
+
 .ye-detail .appointment-wrapper #appoint_loading .status i {
     font-size: 2em;
 }
+
 .ye-detail .appointment-wrapper #appoint_loading .status p {
     font-size: 1em;
     color: #FFFFFF;
 }
+
 .ye-detail .appointment-wrapper #appoint_loading .status.success {
     color: #21ba45;
 }
+
 .ye-detail .appointment-wrapper #appoint_loading .status.failed {
     color: #db2828;
 }
+
 .ye-detail .appointment-wrapper #appoint_id button {
     float: right;
 }
+
 .ye-detail .appointment-wrapper .form label.disabled {
     color: rgba(0, 0, 0, .6) !important;
     font-weight: normal;
 }
+
 /*验证码输入框默认不显示*/
 .ye-detail .appointment-wrapper .form #verify-code {
     display: none;
 }
+
+/*输入提示*/
+.form label.disabled {
+    color: rgba(0, 0, 0, .6) !important;
+}
+
+/*----------------------------------------------
+
+    UserInfo Wrapper Style
+
+------------------------------------------------*/
+#appointment-register .team {
+    display: none;
+}
+
+#appointment-register .personal {
+    display: block;
+}
+
+#appointment-register .selection {
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1rem;
+}
+
+#appointment-register .selection.selected {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
 /*----------------------------------------------
 
     Main Wrapper Style
@@ -389,7 +426,7 @@
 ------------------------------------------------*/
 
 .ye-detail .main-wrapper .detail-wrapper {
-    padding-top: 4rem;
+    /*padding-top: 4rem;*/
     margin-left: -30px;
     /*border: solid 1px #666666;*/
     padding-top: 60px;
@@ -526,7 +563,7 @@
     overflow: hidden;
 }
 
-.ui.modal {
+.ui.modal#image-modal {
     z-index: 1012;
     max-width: 50%;
     overflow: hidden;

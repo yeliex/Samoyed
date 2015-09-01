@@ -17,10 +17,11 @@ class Appointment extends Appoint {
     /**
     *   获取本地ID
     */
-    public function ifUser(){
+    public function logined(){
+        session_start();
         $result = array();
-        if(isset($_COOKIE['appointment'])){
-            $appointment = json_decode($_COOKIE['appointment']);
+        if(isset($_SESSION['appointment'])){
+            $appointment = json_decode($_SESSION['appointment']);
             $result['user_status'] = "success";
             $result['user_id'] = $appointment['user_id'];
         }

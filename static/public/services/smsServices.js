@@ -11,6 +11,7 @@ function verifySend(phone) {
     });
     req.complete(function(returnData){
         data = $.parseJSON(returnData.responseText);
+        user.varifyCode = data.overview.varifyCode;
     });
     return data;
 }
