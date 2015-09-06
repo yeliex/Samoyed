@@ -564,7 +564,15 @@
     overflow: hidden;
 }
 
-.ui.modal#image-modal {
+/*.ui.modal#image-modal {*/
+    /*z-index: 1012;*/
+    /*max-width: 50%;*/
+    /*overflow: hidden;*/
+    /*margin: 0 !important;*/
+    /*top: 10%;*/
+    /*left: 25%;*/
+/*}*/
+.ui.modal {
     z-index: 1012;
     max-width: 50%;
     overflow: hidden;
