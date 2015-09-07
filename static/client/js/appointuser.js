@@ -64,13 +64,10 @@ function userNotExisted(phone) {
     $("#appointment-register .actions .primary.button").click(function () {
         // 点击注册按钮
         // 获取输入数据
-        console.log(111);
         var data = registerData();
-        console.log(data);
         if (dataCheck(data)) {
             var result = dataSend(data);
             // result为注册结果集
-            console.log(result);
             if (result.status === "success") {
                 // 注册成功
                 // 关闭modal

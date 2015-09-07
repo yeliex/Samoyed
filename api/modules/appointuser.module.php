@@ -141,10 +141,10 @@ class AppointuserControl extends Samoyed
 
     protected function newUserID()
     {
-        $statement = $this->db->prepare("SELECT user_id AS user_id FROM users_info");
+        $statement = $this->db->prepare("SELECT user_id FROM users_info");
         $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $num = count($results) - 1;
+        $results = $statement->fetchAll(PDO::FETCH_NUM);
+        $num = count($results);
         if (count($results) == 0) {
             // 没有ID
             $uid = "190001";
