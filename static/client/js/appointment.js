@@ -121,6 +121,7 @@ function SetCountDown(target) {
             if (current <= 0) {
                 clearInterval(interval);
                 $("#appoint_id .button").removeClass("disabled");
+                $("#appoint_id .button").removeClass("loading");
             }
             $("#verify-code .label span").text(current);
         }, 1000);
@@ -135,6 +136,7 @@ function SetCountDown(target) {
         this.stop = function () {
             clearInterval(interval);
             $("#appoint_id .button").removeClass("disabled");
+            $("#appoint_id .button").removeClass("loading");
         };
 }
 

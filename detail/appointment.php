@@ -217,10 +217,10 @@
                 <label>团队规模</label>
                 <select class="ui dropdown" id="team-size">
                     <option value="">选择当前规模</option>
-                    <option value="1">10人以内</option>
-                    <option value="2">10-20人</option>
-                    <option value="3">20-50人</option>
-                    <option value="4">50人以上</option>
+                    <option value="10人以内">10人以内</option>
+                    <option value="10-20人">10-20人</option>
+                    <option value="20-50人">20-50人</option>
+                    <option value="50人以上">50人以上</option>
                 </select>
             </div>
             <div class="ui dividing header">附加信息</div>

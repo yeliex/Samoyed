@@ -100,11 +100,7 @@ class Appoint extends Samoyed {
         $url = $url."?sid=".$data['sid']."&appId=".$data['appId']."&sign=".$data['sign']."&time=".$data['time']."&templateId=".$data['templateId']."&to=".$data['to']."&param=".$data['param'];
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-//        curl_setopt($ch,CURLOPT_POST,1);
-//        curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
         $result = curl_exec($ch);
-//        print_r(curl_getinfo($ch));
-//        print_r($data);
         if(curl_error($ch)) {
             $result['request'] = "failed";
         }
