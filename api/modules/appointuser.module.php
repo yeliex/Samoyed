@@ -31,20 +31,30 @@ class Appointuser extends AppointuserControl
             $return['uid'] = "";
         } else {
             $return['status'] = "success";
-            $return['uid'] = $result['uid'];
+            $return['uid'] = $result[0]['uid'];
         }
         send_json(0, json_encode($return));
+    }
+
+    public function userLogout()
+    {
+        session_start();
+        unset($_SESSION['appointment']);
+        send_json(0);
     }
 
     public function userLogin()
     {
         $uid = $_POST['uid'];
+        // 判断uid是否存在
+
+
         // 用户登陆,写入session
         session_start();
         $appointment = array();
         $appointment['user_status'] = 'success';
         $appointment['user_id'] = $uid;
-        $_SESSION['appointment'] = $appointment;
+        $_SESSION['appointment'] = json_encode($appointment);
         send_json(0);
     }
 
@@ -71,13 +81,12 @@ class Appointuser extends AppointuserControl
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         // 还需要生成数据
-        send_json(0,json_encode($results));
+        send_json(0, json_encode($results));
     }
 
     public function userSave()
     {
         $data = $this->dataCompress($_POST);
-        print_r($data);
         $sql = "INSERT INTO users_info
                 (user_id, user_phone, user_name, user_title, contacts__email, contacts_phone, team_type, team_info, extract_district, extract_address, selection_ads)
                 VALUES
@@ -100,7 +109,21 @@ class Appointuser extends AppointuserControl
         $statement->execute();
         $result = array();
         $result['uid'] = $user_id;
-        send_json(0,json_encode($result));
+        if ($this->registerSuccess($data['personal']['name'], $data['personal']['title'], $data['phone'])) {
+            send_json(0, json_encode($result));
+        } else {
+            send_json(3004, json_encode($result));
+        }
+    }
+
+    public function registerFailed()
+    {
+        $id = $_POST['id'];
+        $sql = "DELETE FROM users_info WHERE user_id = :id";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(":id", $id);
+        $statement->execute();
+        send_json(0);
     }
 }
 
@@ -116,18 +139,79 @@ class AppointuserControl extends Samoyed
         $statement = $this->db->prepare("SELECT user_id AS user_id FROM users_info");
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+        $num = count($results) - 1;
         if (count($results) == 0) {
             // 没有ID
             $uid = "190001";
         } else {
-            $uid = $results[count($results) - 1] + 1;
+            for ($i = 0; $i < $num; $i++) {
+                $ids[$i] = $results[$i][0];
+            }
+            sort($ids);
+            $uid = $ids[$num - 1] + 1;
         }
         return $uid;
     }
 
-    protected function dataCompress($data){
+    protected function dataCompress($data)
+    {
         $data['team']['info'] = json_encode($data['team']['info']);
         return $data;
+    }
+
+    protected function registerSuccess($name, $title, $phone)
+    {
+        $token = $this->smsToken();
+        //发送短信
+        $data = array();
+        $data['sid'] = SMS_SID;
+        $data['appId'] = SMS_APPID;
+        $data['sign'] = $token['token'];
+        $data['time'] = $token['time'];
+        $data['templateId'] = ($title == "先生") ? SMS_TEMPLATE_REGISTER_SUCCESS_Mr : SMS_TEMPLATE_REGISTER_SUCCESS_Ms;
+        $data['to'] = $phone;
+        $data['param'] = $name . "," . substr($phone, 7);
+
+        $result = $this->sendSMS($data, SMS_URL);
+        if ($result['request'] == "failed") {
+            return false;
+        } else {
+            if ($result['respCode'] == "000000") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    // 获取短信token
+    protected function smsToken()
+    {
+        $time = date('YmdHis000');
+        $token = md5(SMS_SID . $time . SMS_ATOKEN);
+        $result = array();
+        $result['time'] = $time;
+        $result['token'] = $token;
+        return $result;
+    }
+
+    // 发送短信
+    protected function sendSMS($data, $url)
+    {
+        $ch = curl_init();
+
+        $url = $url . "?sid=" . $data['sid'] . "&appId=" . $data['appId'] . "&sign=" . $data['sign'] . "&time=" . $data['time'] . "&templateId=" . $data['templateId'] . "&to=" . $data['to'] . "&param=" . $data['param'];
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($ch);
+
+        if (curl_error($ch)) {
+            $result['request'] = "failed";
+        } else {
+            $result = json_decode($result, true)['resp'];
+            $result['request'] = "success";
+        }
+        curl_close($ch);
+        return $result;
     }
 }

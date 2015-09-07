@@ -1,7 +1,7 @@
 // 预约模块子模块: 用户信息处理
 function userExisted(uid) {
     // 用户已存在,直接登陆
-    var req = $.ajax("http://api.dev.mzapp.info/appointuser/userLogin?protocol=json", {
+    var req = $.ajax(location.origin+"/api/appointuser/userLogin?protocol=json", {
         method: "POST",
         async: false,
         data: {
@@ -70,18 +70,22 @@ function userNotExisted(phone) {
         if (dataCheck(data)) {
             var result = dataSend(data);
             // result为注册结果集
+            console.log(result);
             if (result.status === "success") {
                 // 注册成功
+                // 关闭modal
+                $("#appointment-register").modal("hide");
                 // 进入登录进程
-                userExisted(result.data.uid);
+                userExisted(result.overview.uid);
+            }
+            else {
+                // 返回注册失败
+                registerFailed(result.overview.uid);
+                alert("注册失败,"+result.error_info);
+                location.reload();
             }
         }
     });
-}
-
-function loginSuccess(uid) {
-    // 登陆成功,进入预约流程
-
 }
 
 function registerData() {
@@ -140,6 +144,7 @@ function dataSend(data) {
     req.complete(function (returnData) {
         result = $.parseJSON(returnData.responseText);
     });
+    return result;
 }
 var userName = {
     name: "",
@@ -164,6 +169,20 @@ function nameChaned(value, target) {
     if (userName.name !== "") {
         $("#appointment-register .header span").text(" " + userName.name + userName.title + " ");
     }
+}
+
+function registerFailed(id) {
+    var req = $.ajax("http://api.dev.mzapp.info/appointuser/registerFailed?protocol=json",{
+        method: "POST",
+        async: false,
+        data: {
+            id: id
+        }
+    });
+    req.complete(function(){
+
+    });
+    return true;
 }
 
 function getExistUserInfo() {

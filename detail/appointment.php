@@ -5,6 +5,7 @@
             <div class="appointment-preview">
             </div>
             <h1>预约看房</h1>
+
             <form class="ui form" id="building_name">
                 <div class="field">
                     <label>想看的房子: <span></span></label>
@@ -47,15 +48,13 @@
                     <div class="header">验证码错误</div>
                 </div>
                 <div class="field">
-                    <button type="button" class="ui green button disabled" onclick="onUserInput(user.phoneNum)">获取验证码</button>
+                    <button type="button" class="ui green button disabled" onclick="onUserInput(user.phoneNum)">获取验证码
+                    </button>
                 </div>
             </form>
 
 
             <form class="ui form" id="appoint_info">
-<!--                <div class="field" id="building_name">-->
-<!--                    <label>想看的房子: <span></span></label>-->
-<!--                </div>-->
                 <div class="required field">
                     <div class="ui action input ">
                         <input type="text" id="user_name" maxlength="10" placeholder="联系人">

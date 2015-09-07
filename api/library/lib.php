@@ -37,10 +37,13 @@
                 $status_text = "验证码发送失败:网络错误";
                 break;
             case 3002:
-                $status_text = "验证码发送失败";
+                $status_text = "手机号不能为空";
                 break;
             case 3003:
-                $status_text = "手机号不能为空";
+                $status_text = "验证码发送失败";
+                break;
+            case 3004:
+                $status_text = "注册成功通知发送失败";
                 break;
             case 7010:
                 $status_text = "类文件不存在";

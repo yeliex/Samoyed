@@ -3,7 +3,7 @@ $(function () {
     // 检测记录
     $("#appoint_loading").css("display", "block");
     $("#appoint_loading .status.loading").css("display", "block");
-    var req = $.ajax("http://api.dev.mzapp.info/appointment/logined", {
+    var req = $.ajax(location.origin+"/api/appointment/logined", {
         method: "GET",
         data: {
             protocol: "json"
@@ -77,7 +77,6 @@ function onUserInput(value) {
                 // 设置倒计时
                 var countDown = new SetCountDown();
                 countDown.start();
-
             }
             else {
                 // 发送失败
@@ -121,6 +120,7 @@ function SetCountDown(target) {
             if (current <= 0) {
                 clearInterval(interval);
                 $("#appoint_id .button").removeClass("disabled");
+                $("#appoint_id input").removeAttr("readonly");
                 $("#appoint_id .button").removeClass("loading");
             }
             $("#verify-code .label span").text(current);
@@ -136,6 +136,7 @@ function SetCountDown(target) {
         this.stop = function () {
             clearInterval(interval);
             $("#appoint_id .button").removeClass("disabled");
+            $("#appoint_id input").removeAttr("readonly");
             $("#appoint_id .button").removeClass("loading");
         };
 }
@@ -148,12 +149,9 @@ function onVerifyCodeInput(value) {
         // 验证码位数达到6位,开始验证
         $("#appoint_id .button").addClass("loading");
         $("#appoint_id input").attr("readonly", "readonly");
-        if ($("#phoneNum").val() === user.phoneNum) {
-            // 手机号正确正确
-            if (value === user.varifyCode) {
-                // 开始登陆进程
-                onLogin(user.phoneNum);
-            }
+        if ($("#phoneNum").val() == user.phoneNum && value == user.varifyCode) {
+            // 手机号与验证码正确正确
+            onLogin(user.phoneNum);
         }
         else {
             // 显示一个错误
@@ -198,3 +196,11 @@ function onLogin(phoneNum) {
     });
 }
 
+function loginSuccess(uid) {
+    // 登陆成功,进入预约流程
+    // 显示预约信息
+    $("#appoint_id").hide();
+    $("#appoint_info").show();
+
+
+}

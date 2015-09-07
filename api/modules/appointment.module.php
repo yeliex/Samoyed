@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yeliex
- * Date: 15/8/26
- * Time: 下午12:16
- */
-
-require './config/sms.config.php';
 
 class Appointment extends Appoint {
 
@@ -21,7 +13,7 @@ class Appointment extends Appoint {
         session_start();
         $result = array();
         if(isset($_SESSION['appointment'])){
-            $appointment = json_decode($_SESSION['appointment']);
+            $appointment = json_decode($_SESSION['appointment'],true);
             $result['user_status'] = "success";
             $result['user_id'] = $appointment['user_id'];
         }
