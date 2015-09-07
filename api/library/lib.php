@@ -45,6 +45,9 @@
             case 3004:
                 $status_text = "注册成功通知发送失败";
                 break;
+            case 3010:
+                $status_text = "用户不存在";
+                break;
             case 7010:
                 $status_text = "类文件不存在";
             break;

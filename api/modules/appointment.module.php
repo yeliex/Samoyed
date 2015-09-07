@@ -14,8 +14,15 @@ class Appointment extends Appoint {
         $result = array();
         if(isset($_SESSION['appointment'])){
             $appointment = json_decode($_SESSION['appointment'],true);
-            $result['user_status'] = "success";
-            $result['user_id'] = $appointment['user_id'];
+            if($this->uidExisted($appointment['user_id'])){
+                // UID存在
+                $result['user_status'] = "success";
+                $result['user_id'] = $appointment['user_id'];
+            }
+            else {
+                $result['user_status'] = "failed";
+                $result['user_id'] = "";
+            }
         }
         else {
             $result['user_status'] = "failed";
@@ -102,5 +109,20 @@ class Appoint extends Samoyed {
         }
         curl_close($ch);
         return $result;
+    }
+
+    // 判断用户是否存在
+    protected function uidExisted($uid)
+    {
+        $statement = $this->db->prepare("SELECT user_id AS uid FROM users_info WHERE user_id = :id");
+        $statement->bindParam(":id", $uid);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if (count($result) == 0) {
+            // uid不存在
+            return false;
+        } else {
+            return true;
+        }
     }
 }

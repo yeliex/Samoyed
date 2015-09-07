@@ -46,16 +46,21 @@ class Appointuser extends AppointuserControl
     public function userLogin()
     {
         $uid = $_POST['uid'];
-        // 判断uid是否存在
+        // 判断UID是否存在
 
-
-        // 用户登陆,写入session
-        session_start();
-        $appointment = array();
-        $appointment['user_status'] = 'success';
-        $appointment['user_id'] = $uid;
-        $_SESSION['appointment'] = json_encode($appointment);
-        send_json(0);
+        if ($this->uidExisted($uid)) {
+            // uid存在
+            // 用户登陆,写入session
+            session_start();
+            $appointment = array();
+            $appointment['user_status'] = 'success';
+            $appointment['user_id'] = $uid;
+            $_SESSION['appointment'] = json_encode($appointment);
+            send_json(0);
+        } else {
+            // uid不存在
+            send_json(3010);
+        }
     }
 
     public function userInfo()
@@ -213,5 +218,20 @@ class AppointuserControl extends Samoyed
         }
         curl_close($ch);
         return $result;
+    }
+
+    // 判断用户是否存在
+    protected function uidExisted($uid)
+    {
+        $statement = $this->db->prepare("SELECT * FROM users_info WHERE user_id = :id");
+        $statement->bindParam(":id", $uid);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC); //使用fetchAll这样可能返回0
+        if (count($result) == 0) {
+            // uid不存在
+            return false;
+        } else {
+            return true;
+        }
     }
 }
