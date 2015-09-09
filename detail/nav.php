@@ -82,16 +82,18 @@
                 </div>
             </div>
             <div class="right menu inverted">
-                <div class="ui item dropdown link ye-nav-qrCode" id="qrCode">
-                    <i class="qrcode icon"></i>
-                </div>
-                <div class="ui popup transition">
-                    <img src="http://qr.liantu.com/api.php?&w=120&m=10&text=http://mizhi.pub"/>
-
-                    <div class="header" style="text-align: center">扫码下载客户端</div>
-                </div>
+<!--                <div class="ui item dropdown link ye-nav-qrCode" id="qrCode">-->
+<!--                    <i class="qrcode icon"></i>-->
+<!--                </div>-->
+<!--                <div class="ui popup transition">-->
+<!--                    <img src="http://qr.liantu.com/api.php?&w=120&m=10&text=http://mizhi.pub"/>-->
+<!---->
+<!--                    <div class="header" style="text-align: center">扫码下载客户端</div>-->
+<!--                </div>-->
                 <a class="ui inverted button link item">发布信息</a>
                 <a class="ui inverted button link item">我要租房</a>
+                <a class="ui inverted button link item">房价计算器</a>
+                <a class="ui inverted button link item">联系我们</a>
             </div>
         </div>
     </div>

@@ -65,7 +65,7 @@ class Appointuser extends AppointuserControl
 
     public function userInfo()
     {
-        $uid = $_GET['uid'];
+        $uid = $_GET['id'];
         $sql = "SELECT user_id AS user_id,
                        user_name AS user_name,
                        user_phone AS user_phone,
@@ -86,7 +86,7 @@ class Appointuser extends AppointuserControl
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         // 还需要生成数据
-        send_json(0, json_encode($results));
+        send_json(0, json_encode($results[0]));
     }
 
     public function userSave()
@@ -203,20 +203,23 @@ class AppointuserControl extends Samoyed
     // 发送短信
     protected function sendSMS($data, $url)
     {
-        $ch = curl_init();
 
-        $url = $url . "?sid=" . $data['sid'] . "&appId=" . $data['appId'] . "&sign=" . $data['sign'] . "&time=" . $data['time'] . "&templateId=" . $data['templateId'] . "&to=" . $data['to'] . "&param=" . $data['param'];
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $result = curl_exec($ch);
+        $url = $url . "?sid=" . $data['sid'] . "&appId=" . $data['appId'] . "&sign=" . $data['sign'] . "&time=" . $data['time'] . "&templateId=" . $data['templateId'] . "&to=" . $data['to'] . "&param=" . urlencode($data['param']);
 
-        if (curl_error($ch)) {
+        // HTTPREQUEST
+        $http = new HTTPRequest($url);
+        $http->execute();
+        $result = $http->getResponseText();
+        $error = $http->getError();
+        $http->close();
+
+        if ($error) {
             $result['request'] = "failed";
         } else {
             $result = json_decode($result, true)['resp'];
             $result['request'] = "success";
         }
-        curl_close($ch);
+
         return $result;
     }
 

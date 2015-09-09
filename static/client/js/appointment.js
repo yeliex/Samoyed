@@ -3,7 +3,7 @@ $(function () {
     // 检测记录
     $("#appoint_loading").css("display", "block");
     $("#appoint_loading .status.loading").css("display", "block");
-    var req = $.ajax(location.origin+"/api/appointment/logined", {
+    var req = $.ajax(location.origin + "/api/appointment/logined", {
         method: "GET",
         data: {
             protocol: "json"
@@ -15,13 +15,13 @@ $(function () {
             // 无记录
             setTimeout(function () {
                 notLogined();
-            }, 0);
+            }, 500);
         }
         else {
             // 有记录
             setTimeout(function () {
                 logined(data.user_id);
-            }, 0);
+            }, 500);
         }
     });
 });
@@ -30,9 +30,8 @@ function logined(uid) {
     $("#appoint_loading .status.loading").hide();
     $("#appoint_loading .status.success").show();
     setTimeout(function () {
-        $("#appoint_loading").hide();
-        $("#appoint_info").show();
-    }, 0);
+        loginSuccess(uid);
+    }, 500);
 }
 
 function notLogined() {
@@ -41,7 +40,7 @@ function notLogined() {
     setTimeout(function () {
         $("#appoint_loading").hide();
         $("#appoint_id").show();
-    }, 0);
+    }, 500);
 }
 
 var user = {
@@ -199,8 +198,130 @@ function onLogin(phoneNum) {
 function loginSuccess(uid) {
     // 登陆成功,进入预约流程
     // 显示预约信息
+    $("#appoint_loading").hide();
     $("#appoint_id").hide();
     $("#appoint_info").show();
 
+    // 设置预约信息
+    setAppointmentUserInfo(uid);
+    $("#appoint_info .save.button").click(function (e) {
+        $(e.target).addClass('loading disabled');
+        //$(e.target).attr('disabled', 'disabled');
+        saveAppointment();
+        console.log($(e.target));
+        $(e.target).removeClass('loading');
+        $(e.target).removeClass('disabled');
+        $(e.target).removeAttr('disabled');
+    });
+}
 
+function saveAppointment() {
+    // 保存预约信息
+    var data = getAppointmentData();
+
+    var result = sendAppointment(data);
+    if (result.status === "success") {
+        alert("预约成功");
+        alreadyAppointed();
+    }
+    else {
+        appointmentFailed(result.overview.id);
+        alert("预约失败,请重试: " + result.error_info);
+        //location.reload();
+    }
+}
+
+function getAppointmentData() {
+    return {
+        bid: getBID(),
+        uid: $("#appoint_info .field.appoint.id label span").text(),
+        uphone: $($("#appoint_info .field.appoint.contacts label span")[0]).text(),
+        uaddress: $("#appoint_info .field.appoint.address label span").text(),
+        ucontacts: {
+            uemail: $($("#appoint_info .field.appoint.contacts label span")[1]).text(),
+            uphone: $($("#appoint_info .field.appoint.contacts label span")[2]).text()
+        },
+        time: {
+            date: getSelectedDate(),
+            time: $("#time-select").dropdown('get text')
+        }
+    }
+}
+
+function getSelectedDate() {
+    var dateSelected = $("#data-select").dropdown('get value');
+    dateSelected = dateSelected.substr(0, (dateSelected.length - 1));
+    var date = new Date();
+    var dateCurrent = date.getDate();
+    var monTmp;
+    var dateStr = date.getFullYear() + ".";
+
+    if (dateSelected < dateCurrent) {
+        // 选择了下一个月
+        monTmp = date.getMonth() + 2;
+    }
+    else {
+        monTmp = date.getMonth() + 1;
+    }
+
+    dateStr += (monTmp.length === 2) ? monTmp : "0" + monTmp;
+    dateStr += "." + ((dateSelected.length === 2) ? dateSelected : "0" + dateSelected);
+    return dateStr;
+}
+
+function sendAppointment(data) {
+    var result;
+    var req = $.ajax("http://api.dev.mzapp.info/appointment/saveAppointment?protocol=json", {
+        method: "POST",
+        async: false,
+        data: data
+    });
+    req.complete(function (returnData) {
+        result = $.parseJSON(returnData.responseText);
+    });
+    return result;
+}
+
+function appointmentFailed(id) {
+    var req = $.ajax("http://api.dev.mzapp.info/appointment/appointmentFailed", {
+        method: "GET",
+        async: false,
+        data: {
+            protocol: "json",
+            id: id
+        }
+    });
+    req.complete(function () {
+
+    });
+    return true;
+}
+
+function getAppointStatus(uid) {
+    var result;
+    var req = $.ajax("http://api.dev.mzapp.info/appointment/alreadyAppointed", {
+        method: "GET",
+        async: false,
+        data: {
+            protocol: "json",
+            uid: uid,
+            bid: getBID()
+        }
+    });
+    req.complete(function (returnData) {
+        result = $.parseJSON(returnData.responseText);
+    });
+    if (result.status === "success") {
+        result = (result.overview.apointed === "yes");
+    }
+    else result = false;
+    if (result) {
+        alreadyAppointed();
+    }
+    return result;
+}
+function alreadyAppointed() {
+    // 已预约
+    $("#appoint_info .field").hide();
+    $("#appoint_info .field.appoint.appointed").show();
 }

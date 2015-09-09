@@ -316,10 +316,6 @@
     display: block;
 }
 
-/*.ye-detail .appointment-wrapper .right {*/
-/*float: right;*/
-/*}*/
-
 .ye-detail .appointment-wrapper #data-time-select {
     padding-bottom: 10px;
 }
@@ -378,6 +374,43 @@
 /*输入提示*/
 .form label.disabled {
     color: rgba(0, 0, 0, .6) !important;
+}
+
+/*预约信息*/
+.ye-detail #appoint_info .field {
+    margin: 0 0 .25em;
+}
+
+.ye-detail #appoint_info .field label {
+    margin: 0;
+}
+
+.ye-detail #appoint_info .field label span {
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, .8) !important;
+    font-weight: normal;
+    padding-left: .5rem;
+}
+
+.ye-detail #appoint_info .field.appoint.loading h4,
+.ye-detail #appoint_info .field.appoint.appointed h4,
+.ye-detail #appoint_info .field.appoint.appointed h5{
+    text-align: center;
+    padding: 1rem 0;
+}
+.ye-detail #appoint_info .field.appoint.appointed h4 {
+    color: #21ba45;
+}
+.ye-detail #appoint_info .field label a {
+    float: right;
+}
+
+.ye-detail #appoint_info #data-time-select {
+    padding-left: .5rem;
+}
+
+.ye-detail #appoint_info .right {
+    float: right;
 }
 
 /*----------------------------------------------
@@ -565,12 +598,12 @@
 }
 
 /*.ui.modal#image-modal {*/
-    /*z-index: 1012;*/
-    /*max-width: 50%;*/
-    /*overflow: hidden;*/
-    /*margin: 0 !important;*/
-    /*top: 10%;*/
-    /*left: 25%;*/
+/*z-index: 1012;*/
+/*max-width: 50%;*/
+/*overflow: hidden;*/
+/*margin: 0 !important;*/
+/*top: 10%;*/
+/*left: 25%;*/
 /*}*/
 .ui.modal {
     z-index: 1012;

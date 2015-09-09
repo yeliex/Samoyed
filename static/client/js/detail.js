@@ -68,39 +68,4 @@ function appointmentPos() {
 
 }
 
-function getUserInfo(value) {
-    // 如果存在错误提示,输入前关闭
-    if ($('#user_phone_error').hasClass('visible')) {
-        $('#user_phone_error').closest('.message').transition('hide', 500);
-    }
-    console.log(length);
-}
-
 $('.ui.dropdown').dropdown();
-$('.message .close').on('click', function () {
-    $(this).closest('.message').transition('fade', 500);
-});
-$('#user_phone').on('click', function () {
-    // 如果存在错误提示,点击输入框清空内容,开始输入再关闭提示
-    if ($('#user_phone_error').hasClass('visible')) {
-        $('#user_phone input').val("");
-    }
-});
-
-(function () {
-    $('#data-select').dropdown({
-        onChange: function (text) {
-            dataSelected(text);
-        }
-    });
-})();
-function dataSelected(text) {
-    console.log(text);
-    if (text === "其他") {
-        $("#time-select-menu").html("<div class='item'>待定</div>");
-    }
-    else {
-        $("#time-select-menu").html("<div class='item'>上午</div><div class = 'item'>下午</div><div class ='item'>晚上</div><div class='ui divider'></div><div class ='item'>待定</div>");
-    }
-
-}

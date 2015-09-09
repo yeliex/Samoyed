@@ -55,34 +55,44 @@
 
 
             <form class="ui form" id="appoint_info">
-                <div class="required field">
-                    <div class="ui action input ">
-                        <input type="text" id="user_name" maxlength="10" placeholder="联系人">
-                        <select class="ui compact selection dropdown">
-                            <option value="">称谓</option>
-                            <option value="先生">先生</option>
-                            <option value="女士">女士</option>
-                            <option value="小姐">小姐</option>
-                        </select>
-                    </div>
+                <div class="appoint loading field">
+                    <h4 class="ui header">正在加载
+                        <div class="ui active inline loader"></div>
+                    </h4>
                 </div>
-                <div class="required field">
-                    <div class="ui icon input loading" id="user_phone">
-                        <input type="text" maxlength="11" placeholder="输入手机号获取记录" autofocus
-                               onkeyup="value=value.replace(/[^0-9]/ig, ''); " oninput="getUserInfo(this)">
-                        <i class="search icon"></i>
-                    </div>
+                <div class="appoint appointed field">
+                    <h4 class="ui header">
+                        <i class="checkmark icon"></i>已预约
+                    </h4>
+                    <h5 class="ui header">有任何疑问请与我们联系</h5>
                 </div>
-                <div class="required field">
-                    <div class="ui icon input loading" id="user_mail">
-                        <input type="email" placeholder="请输入正确邮箱" oninput="getUserInfo(this)">
-                        <!--                            <i class="lose icon"></i>-->
-                    </div>
+                <div class="appoint hidden id field">
+                    <label class="disabled">用户ID:
+                        <span></span>
+                    </label>
                 </div>
-                <div class="field">
-                    <label>预约看房时间: </label>
+                <div class="appoint user field">
+                    <label class="disabled">欢迎您,
+                        <span></span>
+                        <a>不是我/退出
+                            <i class="log out icon"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="appoint address field">
+                    <label class="disabled">接送地址: <a>修改 <i class="edit icon"></i></a></label>
+                    <label><span></span></label>
+                </div>
+                <div class="appoint contacts field">
+                    <label class="disabled">联系方式: <a>修改 <i class="edit icon"></i></a></label>
+                    <label><span></span></label>
+                    <label><span></span></label>
+                    <label><span></span></label>
+                </div>
+                <div class="appoint time field">
+                    <label class="disabled">预约看房时间: </label>
 
-                    <div class="ui icon buttons right" id="data-time-select">
+                    <div class="ui small icon buttons right" id="data-time-select">
                         <div class="ui top right floating dropdown labeled search icon button"
                              id="data-select">
                             <i class="calendar icon"></i>
@@ -112,10 +122,11 @@
                             </div>
                         </div>
                     </div>
+                    <!--                    <label class="disabled">我们的工作人员会在1小时内与您联系,届时您可以告知具体需求</label>-->
                 </div>
                 <div class="ui divider"></div>
                 <div class="field right">
-                    <button type="button" class="ui button blue">提交</button>
+                    <button type="button" class="ui save button blue">提交</button>
                 </div>
                 <div class="field right">
                     <div class="ui mini buttons">
@@ -123,20 +134,6 @@
                         <div class="or" data-text="或"></div>
                         <button type="button" class="ui button green">联系我们</button>
                     </div>
-                </div>
-                <div class="ui success message">
-                    <i class="close icon"></i>
-
-                    <p>已自动为您填入历史号码,请核对</p>
-                </div>
-                <div class="ui error message" id="user_phone_error">
-                    <!--                        <i class="close icon"></i>-->
-                    <p>手机号格式错误</p>
-                </div>
-                <div class="ui success message">
-                    <i class="close icon"></i>
-
-                    <p>已自动为您填入历史号码,请核对</p>
                 </div>
             </form>
             <!--                    </div>-->

@@ -1,7 +1,7 @@
 // 预约模块子模块: 用户信息处理
 function userExisted(uid) {
     // 用户已存在,直接登陆
-    var req = $.ajax(location.origin+"/api/appointuser/userLogin?protocol=json", {
+    var req = $.ajax(location.origin + "/api/appointuser/userLogin?protocol=json", {
         method: "POST",
         async: false,
         data: {
@@ -78,7 +78,7 @@ function userNotExisted(phone) {
             else {
                 // 返回注册失败
                 registerFailed(result.overview.uid);
-                alert("注册失败,"+result.error_info);
+                alert("注册失败," + result.error_info);
                 location.reload();
             }
         }
@@ -169,19 +169,123 @@ function nameChaned(value, target) {
 }
 
 function registerFailed(id) {
-    var req = $.ajax("http://api.dev.mzapp.info/appointuser/registerFailed?protocol=json",{
+    var req = $.ajax("http://api.dev.mzapp.info/appointuser/registerFailed?protocol=json", {
         method: "POST",
         async: false,
         data: {
             id: id
         }
     });
-    req.complete(function(){
+    req.complete(function () {
 
     });
     return true;
 }
 
-function getExistUserInfo() {
+function logout() {
+    var req = $.ajax("http://api.dev.mzapp.info/appointuser/userLogout", {
+        method: "GET",
+        async: false,
+        data: {
+            protocol: "json"
+        }
+    });
+    req.complete(function () {
+        location.reload();
+    });
+    return true;
+}
 
+function setAppointmentUserInfo(uid) {
+    // 先确认是否已预约
+    if (!getAppointStatus(uid)) {
+        // false 则未预约
+        // 只显示加载界面
+        $("#appoint_info .field").hide();
+        $("#appoint_info .field.appoint.loading").show();
+        var data = getUserInfo(uid);
+        console.log(data);
+
+        // 设置数据
+        $("#appoint_info .field.appoint.id label span").text(data.user_id);
+        $("#appoint_info .field.appoint.user label span").text(data.user_name);
+        $("#appoint_info .field.appoint.address label span").text(data.extract_district + " " + data.extract_address);
+        $($("#appoint_info .field.appoint.contacts label span")[0]).text(data.user_phone);
+        $($("#appoint_info .field.appoint.contacts label span")[1]).text(data.contacts__email);
+        (data.contacts_phone) ? ($($("#appoint_info .field.appoint.contacts label span")[2]).text(data.contacts_phone)) : ($($("#appoint_info .field.appoint.contacts label span")[2]).hide());
+
+        // 设置时间
+        var date = getDate();
+        console.log(date);
+        var dateStr = "";
+        for (var i = 0; i < 7; i++) {
+            dateStr += "<div class='item' value='" + date[i] + "'>" + date[i] + "号</div>"
+        }
+        dateStr += "<div class='item' value='0'>其他</div>";
+        $("#data-select .menu").html(dateStr);
+        $("#data-select").dropdown({
+            onChange: function (text) {
+                dataSelected(text);
+            },
+            direction: "upward"
+        }).dropdown('set selected', date[0] + "号");
+        $("#time-select").dropdown('set selected', "上午").dropdown({
+            direction: "upward"
+        });
+
+        // 数据设置完成,加载隐藏其他显示
+        $("#appoint_info .field").show();
+        $("#appoint_info .field.appoint.loading").hide();
+        $("#appoint_info .field.appoint.appointed").hide();
+    }
+}
+
+function getUserInfo(uid) {
+    var data;
+    var req = $.ajax("http://api.dev.mzapp.info/appointuser/userInfo", {
+        method: "GET",
+        async: false,
+        data: {
+            id: uid,
+            protocol: "json"
+        }
+    });
+    req.complete(function (returnData) {
+        data = $.parseJSON(returnData.responseText);
+        if (data.status === "success") {
+            data = data.overview;
+        }
+        else {
+            // 没有获取到用户数据,退出然后刷新页面
+            alert("用户信息获取失败,请重新登录");
+            logout();
+        }
+    });
+    return data;
+}
+
+function getDate() {
+    var date = new Date();
+    var dataArray = new Array();
+    for (var i = 0; i < 7; i++) {
+        var tmpDate = new Date();
+        tmpDate.setDate((date.getDate() + (i + 1)));
+        dataArray[i] = tmpDate.getDate();
+    }
+    return dataArray;
+}
+function dataSelected(text) {
+    console.log(text);
+    if (text === "其他") {
+        $("#time-select .menu").html("<div class='item' value='待定'>待定</div>");
+        $("#time-select").dropdown('set selected', "待定").dropdown({
+            direction: "upward"
+        });
+    }
+    else {
+        $("#time-select .menu").html("<div class='item' value='上午'>上午</div><div class = 'item'>下午</div><div class ='item'>晚上</div><div class='ui divider'></div><div class ='item'>待定</div>");
+        $("#time-select").dropdown('set selected', "上午").dropdown({
+            direction: "upward"
+        });
+    }
 }
