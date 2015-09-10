@@ -70,7 +70,7 @@ class Appointuser extends AppointuserControl
                        user_name AS user_name,
                        user_phone AS user_phone,
                        user_title AS user_title,
-                       contacts__email AS contacts__email,
+                       contacts_email AS contacts_email,
                        contacts_phone AS contacts_phone,
                        team_type AS team_type,
                        team_info AS team_info,
@@ -93,9 +93,9 @@ class Appointuser extends AppointuserControl
     {
         $data = $this->dataCompress($_POST);
         $sql = "INSERT INTO users_info
-                (user_id, user_phone, user_name, user_title, contacts__email, contacts_phone, team_type, team_info, extract_district, extract_address, selection_ads)
+                (user_id, user_phone, user_name, user_title, contacts_email, contacts_phone, team_type, team_info, extract_district, extract_address, selection_ads, reg_date)
                 VALUES
-                (:user_id , :user_phone , :user_name , :user_title , :contacts__email , :contacts_phone , :team_type , :team_info , :extract_district , :extract_address , :selection_ads)";
+                (:user_id , :user_phone , :user_name , :user_title , :contacts_email , :contacts_phone , :team_type , :team_info , :extract_district , :extract_address , :selection_ads , :reg_date)";
         $user_id = $this->newUserID();
         $statement = $this->db->prepare($sql);
 
@@ -103,13 +103,14 @@ class Appointuser extends AppointuserControl
         $statement->bindParam(":user_phone", $data['phone']);
         $statement->bindParam(":user_name", $data['personal']['name']);
         $statement->bindParam(":user_title", $data['personal']['title']);
-        $statement->bindParam(":contacts__email", $data['contacts']['email']);
+        $statement->bindParam(":contacts_email", $data['contacts']['email']);
         $statement->bindParam(":contacts_phone", $data['contacts']['phone']);
         $statement->bindParam(":team_type", $data['team']['team']);
         $statement->bindParam(":team_info", $data['team']['info']);
         $statement->bindParam(":extract_district", $data['extract']['district']);
         $statement->bindParam(":extract_address", $data['extract']['address']);
         $statement->bindParam(":selection_ads", $data['selection']['ads']);
+        $statement->bindParam(":reg_date", $data['reg_date']);
 
         $statement->execute();
         $result = array();
@@ -160,6 +161,7 @@ class AppointuserControl extends Samoyed
 
     protected function dataCompress($data)
     {
+        $data['reg_date'] = date('Y.m.d');
         $data['team']['info'] = json_encode($data['team']['info']);
         return $data;
     }

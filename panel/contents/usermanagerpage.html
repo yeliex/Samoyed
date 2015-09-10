@@ -1,0 +1,107 @@
+<link href="//static.dev.mzapp.info/panel/css/userManager.css" type="text/css" rel="stylesheet">
+<style type="text/css">
+    #user_manager #list_num span {
+        font-style: italic;
+        padding: 0 1rem;
+    }
+</style>
+<div class="ui container ye-page" id="user_manager">
+    <h2 class="ui center aligned icon header">
+        <i class="drupal icon"></i>
+        用户管理
+    </h2>
+
+    <!-- 选择区域 -->
+    <div class="ui form" id="user_search">
+        <div class="inline fields">
+            <div class="field">
+                <label>搜索用户</label>
+            </div>
+            <div class="field">
+                <input type="text" placeholder="关键字">
+            </div>
+            <div class="field">
+                <select class="ui search dropdown" id="search-select">
+                    <option value="0">条件</option>
+                    <option value="1">手机号</option>
+                    <option value="2">用户名</option>
+                    <option value="3">用户ID</option>
+                    <option value="4">邮箱</option>
+                </select>
+            </div>
+            <div class="field">
+                <button class="ui green button" onclick="getList()">搜索</button>
+            </div>
+            <div class="field">
+                <button class="ui blue button" onclick="clearConditions()">所有用户</button>
+            </div>
+            <div class="field">
+                <select class="ui search dropdown" id="primer-select">
+                    <option value="0">其他条件</option>
+                    <option value="1">新用户</option>
+                    <option value="2">有预约</option>
+                    <option value="3">无预约</option>
+                    <option value="4">性别: 男</option>
+                    <option value="5">性别: 女</option>
+                </select>
+            </div>
+            <div class="field">
+                <div class="ui checkbox" id="select-star">
+                    <label>团队创业</label>
+                    <input type="checkbox">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inline field" id="list_num">
+        <h2 class="ui header">用户数: <span>111</span> / <span>111</span> 新用户: <span>11</span></h2>
+    </div>
+    <h4 class="ui header dividing">用户列表</h4>
+    <table class="ui striped table" id="user_list">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>手机号</th>
+            <th>名字/称谓</th>
+            <th>邮箱</th>
+            <th>类型</th>
+            <th>信息</th>
+            <th>备用联系</th>
+            <th>注册日期</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <!-- 列表模型 -->
+        <!--<tr id="190001">-->
+            <!--<td>190001</td>-->
+            <!--<td>15988545765</td>-->
+            <!--<td>yeliex 先生</td>-->
+            <!--<td>yeliex@yeliex.com</td>-->
+            <!--<td>个人</td>-->
+            <!--<td>100人以上</td>-->
+            <!--<td>15988545765</td>-->
+            <!--<td>2015.09.09</td>-->
+            <!--<td>-->
+                <!--<div class="ui red small buttons edit">-->
+                    <!--<div class="ui button primary">修改</div>-->
+                    <!--<div class="ui floating dropdown icon button">-->
+                        <!--<i class="dropdown icon"></i>-->
+
+                        <!--<div class="menu">-->
+                            <!--<div class="item basic" data-value="edit-basic">修改信息</div>-->
+                            <!--<div class="divider"></div>-->
+                            <!--<div class="item remove" data-value="edit-remove">删除</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!-- 列表模型结束 -->
+        </tbody>
+
+    </table>
+</div>
+
+<script src="//static.dev.mzapp.info/panel/js/contents/usermanager.js" type="text/javascript"></script>

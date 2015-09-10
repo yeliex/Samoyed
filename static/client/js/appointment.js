@@ -325,3 +325,20 @@ function alreadyAppointed() {
     $("#appoint_info .field").hide();
     $("#appoint_info .field.appoint.appointed").show();
 }
+
+function appoineEdit() {
+    // 修改预约信息
+
+    $($("#appointment-edit input")[1]).val($($("#appoint_info .field.appoint.contacts label span")[2]).text());
+    $($("#appointment-edit input")[0]).val($("#appoint_info .field.appoint.address label span").text());
+    $("#appointment-edit").modal('setting', 'closable', false).modal('show');
+    $("#appointment-edit .actions .primary.button").click(function () {
+        $($("#appoint_info .field.appoint.contacts label span")[2]).text($($("#appointment-edit input")[1]).val());
+        $("#appoint_info .field.appoint.address label span").text($($("#appointment-edit input")[0]).val());
+        $("#appointment-edit").modal('hide');
+    });
+    $("#appointment-edit .actions .cancel.button").click(function () {
+        $("#appointment-edit").modal('hide');
+    })
+
+}

@@ -204,9 +204,9 @@ class Appoint extends Samoyed
     // 生成预约ID
     protected function getAppointID()
     {
-        $time = date("ymdH");
+        $time = date("ymdH%");
 
-        $sql = "SELECT appoint_id FROM user_appointment WHERE user_appointment.appoint_id LIKE :time";
+        $sql = "SELECT user_appointment.appoint_id FROM user_appointment WHERE user_appointment.appoint_id LIKE :time";
 
         $statement = $this->db->prepare($sql);
         $statement->bindParam(":time", $time);
@@ -215,7 +215,7 @@ class Appoint extends Samoyed
         $num = count($results);
         if (count($results) == 0) {
             // 没有ID
-            $id = $time . "01";
+            $id = date("ymdH") . "01";
         } else {
             for ($i = 0; $i < $num; $i++) {
                 $ids[$i] = $results[$i][0];
@@ -224,17 +224,17 @@ class Appoint extends Samoyed
             $id = $ids[$num - 1] + 1;
         }
 
-//        print_r($id);
         return $id;
     }
 
     // 保存预约
     protected function saveAppointData($data)
     {
+//        print_r($data);
         $sql = "INSERT INTO user_appointment
-                (appoint_id, appoint_status, appoint_user, appoint_building, appoint_date, appoint_time, appoint_address)
+                (appoint_id, appoint_status, appoint_user, appoint_building, appoint_date, appoint_time, appoint_address, appoint_contact)
                 VALUES
-                (:appoint_id, :appoint_status, :appoint_user, :appoint_building, :appoint_date, :appoint_time, :appoint_address)";
+                (:appoint_id, :appoint_status, :appoint_user, :appoint_building, :appoint_date, :appoint_time, :appoint_address, :appoint_contact)";
         $statement = $this->db->prepare($sql);
 
         $statement->bindParam(":appoint_id", $data['id']);
@@ -244,12 +244,13 @@ class Appoint extends Samoyed
         $statement->bindParam(":appoint_date", $data['time']['date']);
         $statement->bindParam(":appoint_time", $data['time']['time']);
         $statement->bindParam(":appoint_address", $data['uaddress']);
+        $statement->bindParam(":appoint_contact", $data['ucontacts']['uphone']);
 
         try {
             $statement->execute();
             return array(true, $data['id']);
         } catch (PDOException $e) {
-//            print_r($e);
+            print_r($e);
             return array(false, $data['id'], $e);
         }
     }

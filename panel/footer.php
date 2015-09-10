@@ -1,0 +1,3 @@
+<div class="footer">
+        Copyright &copy; 2015 <a href="http://mizhi.pub" target="_blank">觅知空间</a> • <a href="http://dswlkj.com.cn" target="_blank">笃善网络</a>
+</div>

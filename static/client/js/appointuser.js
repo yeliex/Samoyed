@@ -211,7 +211,7 @@ function setAppointmentUserInfo(uid) {
         $("#appoint_info .field.appoint.user label span").text(data.user_name);
         $("#appoint_info .field.appoint.address label span").text(data.extract_district + " " + data.extract_address);
         $($("#appoint_info .field.appoint.contacts label span")[0]).text(data.user_phone);
-        $($("#appoint_info .field.appoint.contacts label span")[1]).text(data.contacts__email);
+        $($("#appoint_info .field.appoint.contacts label span")[1]).text(data.contacts_email);
         (data.contacts_phone) ? ($($("#appoint_info .field.appoint.contacts label span")[2]).text(data.contacts_phone)) : ($($("#appoint_info .field.appoint.contacts label span")[2]).hide());
 
         // 设置时间

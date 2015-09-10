@@ -1,0 +1,59 @@
+.ye-page .form label.disabled {
+    color: rgba(0, 0, 0, .6) !important;
+}
+
+.ye-page #map-container {
+    height: 400px !important;
+}
+
+#units img {
+    width: 60%;
+    margin: auto;
+}
+
+#content-images img {
+    margin-top: 1em;
+}
+
+.ye-page #image-failed .hrader {
+    color: red;
+}
+
+.ye-tools.wrapper {
+    width: 50px;
+    /*height: 50px;*/
+    position: fixed;
+    top: 60%;
+    right: 10%;
+}
+
+.ye-tools ul {
+    list-style: none;
+    float: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.ye-tools ul li.item {
+    width: 50px;
+    height: 50px;
+    font-size: 38px;
+    line-height: 50px;
+}
+
+.ye-tools ul li.item button {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: #767676;
+    border: none !important;
+}
+.ye-tools ul li.item button:hover,
+.ye-tools ul li.item button:active {
+    color: rgba(0,0,0,.4);
+}

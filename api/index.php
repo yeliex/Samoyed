@@ -12,6 +12,7 @@ require('./config/db.config.php');
 require './config/sms.config.php';
 require('./library/db.php');
 require('./modules/samoyed.module.php');
+require_once './library/HTTPRequest.php';
 
 // 需要注意到，因为 Rewrite 获取的URL地址的第一个字符是"/"所以需要用 substr 将其删除
 // 如果日后因为 rewrite 配置修改了，那么一般问题也是出现在这里的
@@ -20,9 +21,8 @@ $urls = explode('/', substr($_GET['url'], 1));
 $class_name = "";
 $class = null;
 
-// 由于
 // 如果第一个参数为api: domain/api
-if($urls[0] == "api"){
+if ($urls[0] == "api") {
     array_shift($urls);
 }
 

@@ -80,11 +80,11 @@
                     </label>
                 </div>
                 <div class="appoint address field">
-                    <label class="disabled">接送地址: <a>修改 <i class="edit icon"></i></a></label>
+                    <label class="disabled">接送地址: <a onclick="appoineEdit()">修改 <i class="edit icon"></i></a></label>
                     <label><span></span></label>
                 </div>
                 <div class="appoint contacts field">
-                    <label class="disabled">联系方式: <a>修改 <i class="edit icon"></i></a></label>
+                    <label class="disabled">联系方式: <a onclick="appoineEdit()">修改 <i class="edit icon"></i></a></label>
                     <label><span></span></label>
                     <label><span></span></label>
                     <label><span></span></label>
@@ -142,7 +142,31 @@
 
     </div>
 </div>
-
+<div class="ui small modal" id="appointment-edit">
+    <div class="header">修改预约信息</div>
+    <div class="content">
+        <div class="ui form">
+            <div class="field">
+                <label>接送地址: </label>
+                <input type="text">
+            </div>
+            <div class="five wide field">
+                <label>备用号码: </label>
+                <input type="text" maxlength="13">
+            </div>
+            <div class="firld">
+                <label class="disabled">以上修改只对本次生效</label>
+            </div>
+            <div class="firld">
+                <label class="disabled">您可以在这里修改接送地址以及备用号码,其他信息请联系客服修改</label>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui cancel button">取消</div>
+        <div class="ui primary button">保存</div>
+    </div>
+</div>
 <div class="ui small modal" id="appointment-register">
     <div class="header">欢迎<span><!-- 这里需要显示称谓信息--></span>,您是首次登陆,我们需要一些信息</div>
     <div class="content">
