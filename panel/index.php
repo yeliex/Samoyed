@@ -7,10 +7,10 @@
  */
 ?>
 <?php
-include_once "base.php";
-include_once "nav.php";
-include_once "image-upload.php";
-include_once "footer.php";
+include_once "base.html";
+include_once "nav.html";
+include_once "image-upload.html";
+include_once "footer.html";
 ?>
 
 
