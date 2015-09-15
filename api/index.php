@@ -9,7 +9,8 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 require('./library/lib.php');
 require('./config/db.config.php');
-require './config/sms.config.php';
+require('./config/sms.config.php');
+require('./config/ses.config.php');
 require('./library/db.php');
 require('./modules/samoyed.module.php');
 require_once './library/HTTPRequest.php';

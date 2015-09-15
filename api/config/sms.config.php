@@ -1,7 +1,7 @@
 <?php
 define("SMS_SERVICES","UCPAAS"); // SMS服务商 融云
-//define('SMS_URL','http://dev.mzapp.info/index.php'); // API接口: 简单短信模板
-define('SMS_URL','www.ucpaas.com/maap/sms/code'); // API接口: 简单短信模板
+//define('SMS_URL','dev.mzapp.info/index.php'); // API接口: 简单短信模板
+define('SMS_URL','www.ucpaas.com/maap/sms/code'); // API接口: 简单短信模板 ,地址不能出现http
 define('SMS_POST',1); // 数据发送方式: post
 
 define('SMS_SID','b78f343c730bb97c2d087534bb6c9172'); // Account Sid

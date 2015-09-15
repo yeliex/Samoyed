@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh" style="height: auto">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <style type="text/css">
+        body {
+            height: auto;
+            padding: 0;
+            margin: 0 auto;
+            border: 0;
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', Arial, sans-serif;
+            color: rgb(51, 51, 51);
+            font-weight: 400;
+            width: 750px;
+        }
+
+        .container {
+            overflow: hidden;
+            display: table;
+            margin: 0;
+            width: 750px;
+            padding: 30px 0;
+            height: auto;
+        }
+
+        .header {
+            width: 700px;
+            border-bottom: solid 1px #7a7a7a;
+        }
+
+        .header .logo-wrapper {
+            padding-top: 9px;
+            width: 100%;
+        }
+
+        .header-wrapper .logo-wrapper .logo {
+            height: 49px;
+            display: block;
+            margin: 0;
+            width: 100%;
+        }
+
+        .header .header-wrapper {
+            width: 100%;
+        }
+
+        .header .header-wrapper .header_hero {
+            font-size: 28px;
+            height: 49px;
+            text-align: center;
+            line-height: 49px;
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        .header .header-wrapper .sub-title {
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.6em;
+            color: rgb(51, 51, 51);
+            padding: 4px 0px 50px;
+            height: auto;
+            text-align: center;
+        }
+
+        .main {
+            width: 700px;
+            border-bottom: solid 1px #7a7a7a;
+        }
+
+        .main .main-title {
+            font-size: 20px;
+            height: 41px;
+            line-height: 41px;
+        }
+
+        .main .main-content {
+            padding: 6px 0 51px 2rem;
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.6em;
+            color: rgb(51, 51, 51);
+            height: auto;
+            width: 100%;
+        }
+
+        .main .main-info {
+            width: 700px;
+        }
+
+        .main .main-content p {
+            margin: 0;
+        }
+
+        .main .main-content.license {
+            padding-left: 0;
+            /*border-bottom: solid 1px #7a7a7a;*/
+        }
+
+        .main .main-content.license a {
+            padding: 0 .5rem;
+        }
+
+        .main .info-content {
+            padding: 6px 0 51px 0;
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.6em;
+            color: rgb(51, 51, 51);
+            height: auto;
+            width: 100%;
+        }
+
+        .main .info-content .content-left {
+            width: 340px;
+            padding: 6px 0 12px 2rem;
+            display: inline-block;
+            /*float: left;*/
+        }
+
+        .main .info-content .content-right {
+            width: 300px;
+            display: inline-block;
+            float: right;
+        }
+
+        .main .info-content .content-left dl {
+            padding: 6px 0 6px 0;
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: rgb(51, 51, 51);
+            height: auto;
+        }
+
+        .main .info-content .content-left dl dt {
+            font-weight: bold;
+            line-height: 1.6em;
+        }
+
+        .main .info-content .content-left dl dd {
+            margin: 0;
+        }
+
+        .main .info-content .content-right img {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+        }
+
+        .main .main-info .main-content {
+            margin: 0 2rem;
+            width: 566px;
+            height: 256px;
+            padding: 0;
+            border: solid 1px #000000;
+        }
+
+        .help {
+            width: 700px;
+        }
+
+        .help .help-title {
+            font-size: 22px;
+            height: 41px;
+            width: 100%;
+            line-height: 41px;
+            text-align: center;
+        }
+
+        .help .help-content {
+            padding: 6px 0 51px 2rem;
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: rgb(51, 51, 51);
+            height: auto;
+        }
+
+        .help .help-content dl {
+            padding: .5rem 0;
+        }
+
+        .help .help-content dt {
+            font-weight: bold;
+            line-height: 1.6em;
+        }
+
+        .help .help-content dd {
+            margin: 0;
+        }
+
+        .footer {
+            width: 750px;
+            background: #f2f2f2;
+        }
+
+        .footer .footer-wrapper {
+            padding: 0 25px;
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer .footer-wrapper .copy {
+            font-family: 'Lucida Grande', 'Helvetica Neue', 'Lucida Sans Unicode', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1em;
+            color: rgb(204, 204, 204);
+            padding: 22px 0;
+            height: auto;
+            text-align: center; /** 无其他内容可不居中 **/
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo-wrapper">
+            <img class="logo" alt="LOGO">
+        </div>
+        <div class="header-wrapper">
+            <div class="header_hero">
+                感谢您的预约
+            </div>
+            <div class="sub-title">
+                我们会持续通知您此预约的进展
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-title">
+            预约已收到:
+        </div>
+        <div class="main-content">
+            user,我们已收到您 time 到 item 的预约.我们会在工作时间1小时内完成审核并专人联系跟进您的预约.
+        </div>
+        <div class="main-info">
+            <div class="main-title">
+                预约信息:
+            </div>
+            <div class="info-content">
+                <div class="content-left">
+                    <dl>
+                        <dt>item</dt>
+                        <dd>address</dd>
+                        <dd>户型数: units</dd>
+                        <dd>价格: price</dd>
+                        <dd>面积: size</dd>
+                    </dl>
+                </div>
+                <div class="content-right">
+                    <img alt="img">
+                </div>
+                <div class="main-content">
+                    %map%
+                </div>
+            </div>
+        </div>
+        <div class="main-content license">
+            <p><a href="">需要帮助?</a>不是你预约的/信息有误,请与我们联系</p>
+
+            <p style="padding-left: .5rem">下达此预约成功代表您已同意 <a href="">觅知空间使用协议</a>以及<a href="">觅知空间隐私政策</a></p>
+        </div>
+    </div>
+    <div class="help">
+        <div class="help-title">
+            常见问题解答
+        </div>
+        <div class="help-content">
+            <dl>
+                <dt>问题1</dt>
+                <dd>内容1</dd>
+            </dl>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-wrapper">
+            <div class="copy">copyright &copy; 2015 mizhi.pub</div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
