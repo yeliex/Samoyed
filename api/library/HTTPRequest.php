@@ -21,7 +21,7 @@ class HTTPRequest {
 	protected $additionalCurlOpts;
 	protected $authUsername;
 	protected $authPassword;
-	
+
 	public function __construct($host = null, $uri = '/', $port = 80, $useCurl = null, $timeout = 10) {
 		if (!$host) {
 			return false;
@@ -36,7 +36,7 @@ class HTTPRequest {
 		$this -> timeout = $timeout;
 		$this -> setHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
 		$this -> setHeader('Accept-Language', 'en-us,en;q=0.5');
-		$this -> setHeader('Accept-Encoding', 'deflate');	
+		$this -> setHeader('Accept-Encoding', 'deflate');
 		$this -> setHeader('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7');
 		$this -> setHeader('User-Agent', 'Mozilla/5.0 Firefox/3.6.12');
 		$this -> setHeader('Connection', 'close');
@@ -52,7 +52,7 @@ class HTTPRequest {
 		$this -> uri = $uri;
 		return $this;
 	}
-	
+
 	public function setPort($port) {
 		$this -> port = $port;
 		return $this;
@@ -62,7 +62,7 @@ class HTTPRequest {
 		$this -> timeout = $timeout;
 		return $this;
 	}
-	
+
 	// @TODO: Deprecate setGetData in preference of setQueryParams
 	public function setGetData($get) {
 		$this -> query = $get;
@@ -73,7 +73,7 @@ class HTTPRequest {
 		$this -> query = $get;
 		return $this;
 	}
-	
+
 	public function setUseCurl($use) {
 		if ($use && $this -> hasCurl) {
 			$this -> useCurl = true;
@@ -110,7 +110,7 @@ class HTTPRequest {
 		$this -> url = $url;
 		return $this;
 	}
-	
+
 	public function setHeader($header, $content) {
 		$this -> headers[$header] = $content;
 		return $this;
@@ -142,7 +142,7 @@ class HTTPRequest {
 
 	public function setAuthPassword($password = null) {
 		$this -> authPassword = $password;
-	}	
+	}
 
 	public function execute() {
 		if ($this -> useCurl) {
@@ -205,13 +205,13 @@ class HTTPRequest {
 		}
 		// Build and set URL.
 		$url = $protocol.'://'.$host.$uri.$query;
-		curl_setopt($ch, CURLOPT_URL, $url); 
+		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_PORT, $port);
 
 		// Add any authentication to the request.
 		// Currently supports only HTTP Basic Auth.
 		if ($this -> useBasicAuth === true) {
-			curl_setopt($ch, CURLOPT_USERPWD, $this -> authUsername.':'.$this -> authPassword);	
+			curl_setopt($ch, CURLOPT_USERPWD, $this -> authUsername.':'.$this -> authPassword);
 			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 		}
 
@@ -219,7 +219,7 @@ class HTTPRequest {
 		$rsp = curl_exec($ch);
 		$this -> curl = $ch;
 		$this -> executed = true;
-		
+
 		// Handle an error.
 		if (!$error = curl_error($ch)) {
 			$this -> response = array('responseText' => $rsp) + curl_getinfo($ch);
@@ -238,9 +238,9 @@ class HTTPRequest {
 		$HTTPVersion = $this -> HTTPVersion;
 		$data = property_exists($this, 'data') ? $this -> data : null;
 		$crlf = "\r\n";
-		
+
 		$rsp = '';
-		
+
 		// Deal with the data first.
 		if ($data && $type === 'POST') {
 			$data = $this -> param($data);
@@ -282,36 +282,36 @@ class HTTPRequest {
 		} else {
 			$req .= $crlf;
 		}
-		
+
 		// Construct hostname.
 		$fsock_host = ($port == 443 ? 'ssl://' : '').$host;
-		
+
 		// Open socket.
 		$httpreq = @fsockopen($fsock_host, $port, $errno, $errstr, 30);
-		
+
 		// Handle an error.
 		if (!$httpreq) {
 			$this -> error = $errno.': '.$errstr;
 			return false;
 		}
-		
+
 		// Send the request.
 		fputs($httpreq, $req);
-		
+
 		// Receive the response.
 		while ($line = fgets($httpreq)) {
 			$rsp .= $line;
 		}
-		
-		
+
+
 		// Extract the headers and the responseText.
 		list($headers, $responseText) = explode($crlf.$crlf, $rsp);
-		
+
 		// Store the finalized response.
 		$this -> response = $rsp;
 		$this -> responseText = $responseText;
 		$this -> status = array_shift($headers);
-		
+
 		// Store the response headers.
 		$headers = explode($crlf, $headers);
 		$this -> responseHeaders = array();
@@ -319,10 +319,10 @@ class HTTPRequest {
 			list($key, $val) = explode(': ', $header);
 			$this -> responseHeaders[$key] = $val;
 		}
-		
+
 		// Mark as executed.
 		$this -> executed = true;
-		
+
 		// Store the resource so we can close it later.
 		$this -> fsock = $httpreq;
 	}
@@ -380,10 +380,10 @@ class HTTPRequest {
 			return $headers[$header];
 		}
 	}
-	
+
 	public static function curlHeaders() {
 		return array(
-			'User-Agent' => CURLOPT_USERAGENT,
+				'User-Agent' => CURLOPT_USERAGENT,
 		);
 	}
 }
