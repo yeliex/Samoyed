@@ -1,0 +1,819 @@
+/*----------------------------------------------
+
+    Nav Style
+
+------------------------------------------------*/
+
+.ye-detail .ye-nav {
+    background: rgba(0, 0, 0, .1);
+    transition: padding 0.5s ease,
+    background 0.5s ease,
+    box-shadow 0.5s ease,
+    border 0.5s ease;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+}
+
+.ye-detail .ye-logo-title {
+    color: #FFFFFF;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.ye-detail .ye-nav.fixed {
+    padding: 0;
+    background: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.04);
+    -webkit-transition: padding 0.5s ease, background 0.5s ease, border 0.5s ease, color 0.5s ease;
+    -moz-transition: padding 0.5s ease, background 0.5s ease, border 0.5s ease, color 0.5s ease;
+    /*-ms-transition: padding 0.5s ease, background 0.5s ease, border 0.5s ease, color 0.5s ease;*/
+    -o-transition: padding 0.5s ease, background 0.5s ease, border 0.5s ease, color 0.5s ease;
+    transition: padding 0.5s ease, background 0.5s ease, border 0.5s ease, color 0.5s ease;
+    color: black !important;
+}
+
+.ye-detail .ye-nav.fixed .ye-logo-title {
+    color: #54c8ff !important;
+}
+
+.ye-detail .ye-nav.fixed .button {
+    box-shadow: 0 0 0 2px #54c8ff inset !important;
+}
+
+.ye-detail .ye-nav.fixed .ye-nav-menu {
+    color: #54c8ff !important;
+}
+
+.ye-detail .ye-nav.fixed .ui.secondary.inverted.menu .link.item,
+.ye-detail .ye-nav.fixed .ui.secondary.inverted.menu a.item {
+    color: #54c8ff !important;
+}
+
+.ye-detail .ye-nav.fixed .ui.secondary.inverted.menu .popup .link.item,
+.ye-detail .ye-nav.fixed .ui.secondary.inverted.menu .popup a.item {
+    color: rgba(0, 0, 0, .4) !important;
+}
+
+.ye-detail .ye-nav.fixed .ui.secondary.inverted.menu .popup .active.item,
+.ye-detail .ye-nav.fixed .ui.secondary.inverted.menu .popup .active.item:hover,
+.ye-detail .ye-nav.fixed .ui.secondary.inverted.menu .popup .active.item:active {
+    color: #54c8ff !important;
+    /*font-weight: bold;*/
+}
+
+/*----------------------------------------------
+
+    Intro-Nav Wrapper Style
+
+------------------------------------------------*/
+
+.ye-detail .seg-wrapper {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 1000;
+}
+
+.ye-detail .seg-wrapper.fixed {
+    top: 79px;
+    position: fixed;
+}
+
+.ye-detail .segament {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*z-index: -1;*/
+    width: 100%;
+    max-height: 800px;
+    opacity: 0.8;
+    /*background-image: url("http://7xked6.com2.z0.glb.qiniucdn.com/default_bg_10.jpg");*/
+    background-image: url("http://img.static.mzapp.info/default_bbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ye-detail .segament img {
+    width: 100%;
+    height: 100%;
+}
+
+.ye-detail .fixed .segament {
+    max-height: 80px;
+    opacity: 1;
+}
+
+.ye-detail .intro-wrapper {
+    width: 100%;
+    height: 120px;
+    bottom: 0;
+    padding: 2em 0;
+    left: auto;
+    overflow: hidden;
+    position: absolute;
+    /*opacity: 0.45;*/
+    background-color: rgba(0, 0, 0, .4);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .fixed .intro-wrapper {
+    top: 0;
+    left: 0;
+    position: relative;
+    padding: .5em 0;
+    height: 80px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .intro-wrapper .intro {
+    line-height: 100%;
+    color: #fff;
+    /*opacity: 1;*/
+}
+
+.ye-detail .intro-wrapper .intro.title {
+    float: left;
+    min-width: 300px;
+    max-width: 80%;
+    width: 60%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .fixed .intro-wrapper .intro.title {
+    width: 80%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .intro-wrapper .intro h1 {
+    font-size: 2rem;
+    font-weight: normal !important;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif !important;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .intro-wrapper .intro span.deco {
+    font-size: 1.25rem;
+    margin-left: 5rem;
+    margin-top: 0.75rem;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .intro-wrapper .intro h2 {
+    line-height: 1;
+    margin: 0 .5em;
+    font-size: 1.071rem;
+    font-weight: normal !important;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif !important;
+    float: none;
+}
+
+.ye-detail .intro-wrapper .intro.info {
+    padding: .5rem 0 0 75px;
+}
+
+.ye-detail .intro-wrapper .intro.info h1 {
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+    float: none;
+}
+
+.ye-detail .intro-wrapper .intro.info h2 {
+    font-size: 1.071rem;
+    float: none;
+}
+
+.ye-detail .fixed .intro-wrapper .intro h1 {
+    margin-bottom: .5rem;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+/*----------------------------------------------
+
+    Appointment Wrapper Style
+
+------------------------------------------------*/
+.ye-detail .appointment {
+    position: relative;
+}
+
+.ye-detail .fixed .appointment {
+    top: 80px !important;
+    /*transition: all 0.5s ease;*/
+}
+
+.ye-detail .appointment .grid {
+    margin-top: 0;
+}
+
+.ye-detail .appointment-wrapper {
+    padding: 30px 0 60px 0;
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: none;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.23);
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.23);
+    background: #54c8ff;
+    color: #fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .appointment-wrapper .appointment-preview {
+    width: 80%;
+    height: 0;
+    padding-bottom: 60%;
+    margin: 0 auto;
+    /*background-image: url("http://7xked6.com2.z0.glb.qiniucdn.com/default_bg_10.jpg");*/
+    background-image: url("http://img.static.mzapp.info/default_bbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background-size: contain;*/
+    display: none;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .fixed .appointment-wrapper .appointment-preview {
+    display: block;
+    opacity: 1;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .appointment-wrapper h1 {
+    text-align: center;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .appointment-wrapper form {
+    width: 80%;
+    margin: 0 auto;
+    display: none;
+}
+
+.ye-detail .appointment-wrapper form .field, .ye-detail .appointment-wrapper form .fields {
+    /*margin-bottom: 1em;*/
+}
+
+.ye-detail .appointment-wrapper form .message {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    /*-ms-transition: all 0.5s ease ;*/
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ye-detail .appointment-wrapper .form#building_name {
+    text-align: center;
+    display: block;
+}
+
+.ye-detail .appointment-wrapper #data-time-select {
+    padding-bottom: 10px;
+}
+
+.ye-detail .appointment-wrapper .divider {
+    /*padding-top: 1em;*/
+}
+
+.ye-detail .appointment-wrapper #appoint_loading {
+    padding: 30px 0;
+}
+
+.ye-detail .appointment-wrapper #appoint_loading .loader {
+    width: 100% !important;
+}
+
+.ye-detail .appointment-wrapper #appoint_loading .status {
+    display: none;
+    text-align: center;
+    height: auto !important;
+    width: 100% !important;
+    font-style: normal;
+}
+
+.ye-detail .appointment-wrapper #appoint_loading .status i {
+    font-size: 2em;
+}
+
+.ye-detail .appointment-wrapper #appoint_loading .status p {
+    font-size: 1em;
+    color: #FFFFFF;
+}
+
+.ye-detail .appointment-wrapper #appoint_loading .status.success {
+    color: #21ba45;
+}
+
+.ye-detail .appointment-wrapper #appoint_loading .status.failed {
+    color: #db2828;
+}
+
+.ye-detail .appointment-wrapper #appoint_id button {
+    float: right;
+}
+
+.ye-detail .appointment-wrapper .form label.disabled {
+    color: rgba(0, 0, 0, .6) !important;
+    font-weight: normal;
+}
+
+/*验证码输入框默认不显示*/
+.ye-detail .appointment-wrapper .form #verify-code {
+    display: none;
+}
+
+/*输入提示*/
+.form label.disabled {
+    color: rgba(0, 0, 0, .6) !important;
+}
+
+/*预约信息*/
+.ye-detail #appoint_info .field {
+    margin: 0 0 .25em;
+}
+
+.ye-detail #appoint_info .field label {
+    margin: 0;
+}
+
+.ye-detail #appoint_info .field label span {
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, .8) !important;
+    font-weight: normal;
+    padding-left: .5rem;
+}
+
+.ye-detail #appoint_info .field.appoint.loading h4,
+.ye-detail #appoint_info .field.appoint.appointed h4,
+.ye-detail #appoint_info .field.appoint.appointed h5{
+    text-align: center;
+    padding: 1rem 0;
+}
+.ye-detail #appoint_info .field.appoint.appointed h4 {
+    color: #21ba45;
+}
+.ye-detail #appoint_info .field label a {
+    float: right;
+}
+
+.ye-detail #appoint_info #data-time-select {
+    padding-left: .5rem;
+}
+
+.ye-detail #appoint_info .right {
+    float: right;
+}
+
+/*----------------------------------------------
+
+    UserInfo Wrapper Style
+
+------------------------------------------------*/
+#appointment-register .team {
+    display: none;
+}
+
+#appointment-register .personal {
+    display: block;
+}
+
+#appointment-register .selection {
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1rem;
+}
+
+#appointment-register .selection.selected {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/*----------------------------------------------
+
+    Main Wrapper Style
+
+------------------------------------------------*/
+.ye-detail .main-wrapper {
+    top: 800px;
+    width: 100%;
+    position: relative;
+    -webkit-transition: padding 0.5s ease;
+    -moz-transition: padding 0.5s ease;
+    /*-ms-transition: padding 0.5s ease ;*/
+    -o-transition: padding 0.5s ease;
+    transition: padding 0.5s ease;
+}
+
+/*----------------------------------------------
+
+    Detail Wrapper Style
+
+------------------------------------------------*/
+
+.ye-detail .main-wrapper .detail-wrapper {
+    /*padding-top: 4rem;*/
+    margin-left: -30px;
+    /*border: solid 1px #666666;*/
+    padding-top: 60px;
+    padding-bottom: 300px;
+    width: 100%;
+    overflow-x: hidden;
+    z-index: 1;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ye-detail .detail-wrapper .detail-title {
+    height: 2rem;
+    line-height: 2rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.ye-detail .detail-wrapper .detail-title h1 {
+    font-size: 1.5rem;
+    float: left;
+    line-height: 1.5rem;
+}
+
+.ye-detail .detail-wrapper .detail-title h1:before {
+    font-family: FontAwesome;
+    padding-right: 15px;
+}
+
+.detail-units .detail-title h2 {
+    float: right;
+    margin-top: 0.25rem;
+    padding-right: 50%;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    vertical-align: bottom;
+}
+
+.ye-detail .detail-wrapper .detail-item {
+    margin-bottom: 30px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*----------------------------------------------
+
+    Units List Style
+
+------------------------------------------------*/
+
+.ye-detail .detail-wrapper .detail-units {
+    width: 100%;
+}
+
+.ye-detail .detail-wrapper .detail-units h1:before {
+    content: "\f00b  ";
+}
+
+.detail-units .units-list {
+    padding: 0 5% 15px 5%;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size: 1rem;
+}
+
+.detail-units .units-list .list-title {
+    font-weight: bolder;
+    font-size: 1.1rem;
+}
+
+.detail-units .units-list ul.col {
+    width: 100%;
+}
+
+.detail-units .units-list ul.col li.list-title, .detail-units .units-list ul.col li.row {
+    list-style: none;
+    border-bottom: solid 1px #ccc;
+}
+
+.detail-units .units-list ul.col li.list-title {
+    height: 80px;
+}
+
+.detail-units .units-list ul.col li.row {
+    height: 120px;
+}
+
+/*.detail-units .units-list  ul {*/
+/*width: 100%;*/
+/*vertical-align: middle;*/
+/*}*/
+.detail-units .units-list .list-title ul {
+    line-height: 80px;
+}
+
+.detail-units .units-list .row ul {
+    line-height: 120px;
+}
+
+.detail-units .units-list .row ul li, .detail-units .units-list .list-title ul li {
+    float: left;
+    width: 20%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.detail-units .units-list .row ul li img {
+    width: 60%;
+    height: 80%;
+    line-height: 120px;
+    max-height: 80px;
+    vertical-align: middle;
+}
+
+.detail-units .units-list .row.second {
+    background: #EBEBEB;
+}
+
+#image-modal .image.content img {
+    width: 100%;
+}
+
+#image-modal .image.content {
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+.ui.dimmer {
+    z-index: 1011;
+    overflow: hidden;
+}
+
+/*.ui.modal#image-modal {*/
+/*z-index: 1012;*/
+/*max-width: 50%;*/
+/*overflow: hidden;*/
+/*margin: 0 !important;*/
+/*top: 10%;*/
+/*left: 25%;*/
+/*}*/
+.ui.modal {
+    z-index: 1012;
+    max-width: 50%;
+    overflow: hidden;
+    margin: 0 !important;
+    top: 10%;
+    left: 25%;
+}
+
+/*----------------------------------------------
+
+    Description Style
+
+------------------------------------------------*/
+
+.ye-detail .detail-wrapper .detail-desc .detail-title h1:before {
+    content: "\f129";
+}
+
+.detail-desc .desc-content {
+    padding: 30px 10% 15px 10%;
+}
+
+.detail-desc .desc-content p {
+    font-size: 1.2em;
+    text-indent: 2em;
+}
+
+/*----------------------------------------------
+
+    Image List Style
+
+------------------------------------------------*/
+.ye-detail .detail-wrapper .detail-img h1:before {
+    content: "\f03e";
+}
+
+.detail-img .column,
+.detail-map .column {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.detail-img .img-list {
+    padding: 30px 5% 15px 5%;
+}
+
+.detail-img .img-list .ui.medium.images .image,
+.detail-img .img-list .ui.medium.images img,
+.detail-img .img-list .ui.medium.images svg,
+.detail-img .img-list .ui.medium.image {
+    height: 230px;
+    width: 230px;
+    margin: 0;
+}
+
+.detail-img .img-list .ui.medium.images .segment {
+    width: 230px;
+    float: left;
+    border: none;
+    margin: 1rem .5rem;
+}
+
+.detail-img .img-list .ui.medium.images .segment .label {
+    font-size: 1rem;
+    line-height: 0.5;
+}
+
+.detail-img .img-list .ui.medium.images .segment .image {
+    border-top-left-radius: 0.28571429rem;
+    border-top-right-radius: 0.28571429rem;
+}
+
+.detail-img .no-img {
+    padding: 30px 10% 15px 10%;
+}
+
+.detail-img .no-img .no-img-content {
+    margin-left: -1rem;
+    font-size: 1.2em;
+    text-indent: 2em;
+}
+
+/*----------------------------------------------
+
+    Map Style
+
+------------------------------------------------*/
+.ye-detail .detail-wrapper .detail-map h1:before {
+    /*content: "\f041 ";*/
+    /*content: "\f279";*/
+    content: "\f278";
+}
+
+.detail-map .map-content {
+    padding: 30px 5% 15px 5%;
+    width: 100%;
+    height: 600px;
+}
+
+.detail-map .map-content #map-content {
+    width: 100%;
+    height: 100%;
+}
+
+.amap-copyright {
+    display: none;
+}
+
+.detail-map .map-content .btn-wrapper {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+}
+
+.detail-map .map-content .btn-wrapper .toggle {
+    margin: 0 auto;
+    padding: 15px 0;
+}
+
+.detail-map .map-content .btn-wrapper .button, {
+    background: rgba(224, 225, 226, .8);
+    font-weight: lighter;
+}
+
+.detail-map .map-content .btn-wrapper .blue.button {
+    background: rgba(33, 133, 208, .8);
+}
+
+/*----------------------------------------------
+
+    Self-Adaption Style
+
+------------------------------------------------*/
+@media (min-width: 1920px) {
+    .ye-detail .segament {
+        height: 800px;
+    }
+
+    .ye-detail .appointment {
+        top: 800px;
+    }
+
+    .detail-map .map-content {
+        height: 600px !important;
+    }
+}
+
+@media (max-width: 1920px) {
+    .ye-detail .segament {
+        height: 800px;
+    }
+
+    .ye-detail .appointment {
+        top: 800px;
+    }
+
+    .detail-map .map-content {
+        height: 600px !important;
+    }
+}
+
+@media (max-width: 1440px) {
+    .ye-detail .segament {
+        height: 600px;
+    }
+
+    .ye-detail .appointment {
+        top: 600px;
+    }
+
+    .ye-detail .fixed .appointment-wrapper {
+        max-height: 800px;
+    }
+}
+
+@media (max-width: 990px) {
+    .ye-detail .detail-wrapper, .ye-detail .appointment {
+        float: none;
+        margin: 30px auto;
+    }
+}
+
+@media (max-height: 1000px) {
+    .ye-detail .fixed .appointment-wrapper {
+        max-height: 800px;
+    }
+
+    .detail-map .map-content {
+        height: 480px;
+    }
+}
+
+@media (max-height: 800px) {
+    .ye-detail .fixed .appointment-wrapper {
+        max-height: 600px;
+    }
+
+    .detail-map .map-content {
+        height: 400px;
+    }
+}
+
+@media (max-height: 700px) {
+    .ye-detail .fixed .appointment-wrapper {
+        max-height: 500px;
+    }
+
+    .detail-map .map-content {
+        height: 300px;
+    }
+}

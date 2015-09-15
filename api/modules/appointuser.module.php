@@ -115,8 +115,13 @@ class Appointuser extends AppointuserControl
         $statement->execute();
         $result = array();
         $result['uid'] = $user_id;
-        if ($this->registerSuccess($data['personal']['name'], $data['personal']['title'], $data['phone'])) {
-            send_json(0, json_encode($result));
+        if ($this->registerSuccess_SMS($data['personal']['name'], $data['personal']['title'], $data['phone'])) {
+            // 短信发送成功,发送邮件
+            if ($this->registerSuccess_SES($data)) {
+                send_json(0, json_encode($result));
+            } else {
+                send_json(0, json_encode($result), $this->sesError); // 邮件发送失败不影响注册
+            }
         } else {
             send_json(3004, json_encode($result));
         }
@@ -135,6 +140,9 @@ class Appointuser extends AppointuserControl
 
 class AppointuserControl extends Samoyed
 {
+
+    protected $sesError = "";
+
     public function __construct()
     {
         parent::__construct();
@@ -166,7 +174,7 @@ class AppointuserControl extends Samoyed
         return $data;
     }
 
-    protected function registerSuccess($name, $title, $phone)
+    protected function registerSuccess_SMS($name, $title, $phone)
     {
         $token = $this->smsToken();
         //发送短信
@@ -186,6 +194,39 @@ class AppointuserControl extends Samoyed
             if ($result['respCode'] == "000000") {
                 return true;
             } else {
+                return false;
+            }
+        }
+    }
+
+    protected function registerSuccess_SES($user)
+    {
+        // 生成参数
+        $subvars = array();
+        $subvars['to'] = array($user['contacts']['email']);
+        $subvars['sub'] = array();
+        $subvars['sub']['user'] = array($user['personal']['name'] . " " . $user['personal']['title']);
+        $subvars['sub']['phone'] = array($user['phone']);
+        $subvars['sub']['contact_phone'] = array($user['contacts']['phone']);
+        $subvars['sub']['mail'] = array($user['contacts']['email']);
+        $subvars['sub']['address'] = array($user['extract']['district'] . " " . $user['extract']['address']);
+
+        $data = array();
+        $data['api_user'] = SES_API_USER;
+        $data['api_key'] = SES_API_KEY;
+        $data['from'] = SES_FROM;
+        $data['template_invoke_name'] = SES_TEMPLATE_REGISTER_SUCCESS;
+        $data['fromname'] = SES_FROM_NAME;
+        $data['substitution_vars'] = json_encode($subvars);
+
+        $result = $this->sendSES($data, SES_URL);
+        if ($result['request'] == "failed") {
+            return false;
+        } else {
+            if ($result['message'] == "success") {
+                return true;
+            } else {
+                $this->sesError = join(",", $result['errors']); // 可能会有多条错误信息
                 return false;
             }
         }
@@ -223,6 +264,29 @@ class AppointuserControl extends Samoyed
         }
 
         return $result;
+    }
+
+    // 发送邮件
+    protected function sendSES($data, $url)
+    {
+        // HTTPREQUEST
+        $http = new HTTPRequest(SES_URL_DOMAIN, $url);
+        $http->setType("POST");
+        $http->setData($data);
+        $http->execute();
+        $result = $http->getResponseText();
+        $error = $http->getError();
+        $http->close();
+
+        $return = array();
+        if ($error) {
+            $return['request'] = "failed";
+            $return['errors'][0] = $error;
+        } else {
+            $return = json_decode($result,true);
+            $return['request'] = "success";
+        }
+        return $return;
     }
 
     // 判断用户是否存在
