@@ -12,9 +12,7 @@ include_once "nav.html";
 include_once "image-upload.html";
 include_once "footer.html";
 ?>
-
-
-
+<script src="http://static.mzapp.info/public/js/google_analytics.js" type="text/javascript"></script>
 
 </body>
 </html>
