@@ -461,12 +461,10 @@
 
 ------------------------------------------------*/
 
-.ye-detail .main-wrapper .detail-wrapper {
-    /*padding-top: 4rem;*/
+.ye-detail .main-wrapper .detail-wrapper, .ye-footer .footer-wrapper .footer-detail {
     margin-left: -30px;
-    /*border: solid 1px #666666;*/
     padding-top: 60px;
-    padding-bottom: 300px;
+    padding-bottom: 30px;
     width: 100%;
     overflow-x: hidden;
     z-index: 1;
@@ -475,20 +473,20 @@
     box-sizing: border-box;
 }
 
-.ye-detail .detail-wrapper .detail-title {
+.ye-detail .detail-wrapper .detail-title, .ye-footer .footer-wrapper .detail-title {
     height: 2rem;
     line-height: 2rem;
     width: 90%;
     margin: 0 auto;
 }
 
-.ye-detail .detail-wrapper .detail-title h1 {
+.ye-detail .detail-wrapper .detail-title h1, .ye-footer .footer-wrapper .detail-title h1 {
     font-size: 1.5rem;
     float: left;
     line-height: 1.5rem;
 }
 
-.ye-detail .detail-wrapper .detail-title h1:before {
+.ye-detail .detail-wrapper .detail-title h1:before, .ye-footer .footer-wrapper .detail-title h1:before {
     font-family: FontAwesome;
     padding-right: 15px;
 }
@@ -502,7 +500,7 @@
     vertical-align: bottom;
 }
 
-.ye-detail .detail-wrapper .detail-item {
+.ye-detail .detail-wrapper .detail-item, .ye-footer .footer-wrapper .detail-item {
     margin-bottom: 30px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -727,7 +725,7 @@
     padding: 15px 0;
 }
 
-.detail-map .map-content .btn-wrapper .button, {
+.detail-map .map-content .btn-wrapper .button {
     background: rgba(224, 225, 226, .8);
     font-weight: lighter;
 }
@@ -746,8 +744,8 @@
         height: 800px;
     }
 
-    .ye-detail .main-wrapper, .ye-detail .appointment {
-        top: 800px;
+    .ye-detail .main-wrapper, .ye-detail .appointment,.ye-footer {
+        top: 800px !important;
     }
 
     .detail-map .map-content {
@@ -760,8 +758,8 @@
         height: 800px;
     }
 
-    .ye-detail .main-wrapper, .ye-detail .appointment {
-        top: 800px;
+    .ye-detail .main-wrapper, .ye-detail .appointment,.ye-footer {
+        top: 800px !important;
     }
 
     .detail-map .map-content {
@@ -774,8 +772,8 @@
         height: 600px;
     }
 
-    .ye-detail .main-wrapper, .ye-detail .appointment {
-        top: 600px;
+    .ye-detail .main-wrapper, .ye-detail .appointment,.ye-footer {
+        top: 600px !important;
     }
 
     .ye-detail .fixed .appointment-wrapper {
