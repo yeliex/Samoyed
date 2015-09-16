@@ -394,13 +394,15 @@
 
 .ye-detail #appoint_info .field.appoint.loading h4,
 .ye-detail #appoint_info .field.appoint.appointed h4,
-.ye-detail #appoint_info .field.appoint.appointed h5{
+.ye-detail #appoint_info .field.appoint.appointed h5 {
     text-align: center;
     padding: 1rem 0;
 }
+
 .ye-detail #appoint_info .field.appoint.appointed h4 {
     color: #21ba45;
 }
+
 .ye-detail #appoint_info .field label a {
     float: right;
 }
@@ -744,7 +746,7 @@
         height: 800px;
     }
 
-    .ye-detail .appointment {
+    .ye-detail .main-wrapper, .ye-detail .appointment {
         top: 800px;
     }
 
@@ -758,7 +760,7 @@
         height: 800px;
     }
 
-    .ye-detail .appointment {
+    .ye-detail .main-wrapper, .ye-detail .appointment {
         top: 800px;
     }
 
@@ -772,7 +774,7 @@
         height: 600px;
     }
 
-    .ye-detail .appointment {
+    .ye-detail .main-wrapper, .ye-detail .appointment {
         top: 600px;
     }
 
