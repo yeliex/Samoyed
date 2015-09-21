@@ -40,7 +40,7 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                         in the stack passed in $tokens.
      *
      * @return void
@@ -67,7 +67,7 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
      * Processes the opening section of a class declaration.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -82,18 +82,18 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
             $prevContent = $tokens[($stackPtr - 1)]['content'];
             if ($prevContent !== $phpcsFile->eolChar) {
                 $blankSpace = substr($prevContent, strpos($prevContent, $phpcsFile->eolChar));
-                $spaces     = strlen($blankSpace);
+                $spaces = strlen($blankSpace);
 
                 if ($tokens[($stackPtr - 2)]['code'] !== T_ABSTRACT
                     && $tokens[($stackPtr - 2)]['code'] !== T_FINAL
                 ) {
                     if ($spaces !== 0) {
-                        $type  = strtolower($tokens[$stackPtr]['content']);
+                        $type = strtolower($tokens[$stackPtr]['content']);
                         $error = 'Expected 0 spaces before %s keyword; %s found';
-                        $data  = array(
-                                  $type,
-                                  $spaces,
-                                 );
+                        $data = array(
+                            $type,
+                            $spaces,
+                        );
 
                         $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceBeforeKeyword', $data);
                         if ($fix === true) {
@@ -111,7 +111,7 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
      * Processes the closing section of a class declaration.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -130,7 +130,7 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
             // Ignore comments on the same lines as the brace.
             if ($tokens[$nextContent]['line'] === $tokens[$closeBrace]['line']
                 && ($tokens[$nextContent]['code'] === T_WHITESPACE
-                || $tokens[$nextContent]['code'] === T_COMMENT)
+                    || $tokens[$nextContent]['code'] === T_COMMENT)
             ) {
                 continue;
             }
@@ -153,8 +153,8 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
             || $tokens[$lastContent]['line'] === $tokens[$closeBrace]['line']
         ) {
             $error = 'Closing %s brace must be on a line by itself';
-            $data  = array($tokens[$stackPtr]['content']);
-            $fix   = $phpcsFile->addFixableError($error, $closeBrace, 'CloseBraceSameLine', $data);
+            $data = array($tokens[$stackPtr]['content']);
+            $fix = $phpcsFile->addFixableError($error, $closeBrace, 'CloseBraceSameLine', $data);
             if ($fix === true) {
                 if ($difference === -1) {
                     $phpcsFile->fixer->addNewlineBefore($nextContent);
@@ -168,15 +168,15 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
             $prevContent = $tokens[($closeBrace - 1)]['content'];
             if ($prevContent !== $phpcsFile->eolChar) {
                 $blankSpace = substr($prevContent, strpos($prevContent, $phpcsFile->eolChar));
-                $spaces     = strlen($blankSpace);
+                $spaces = strlen($blankSpace);
                 if ($spaces !== 0) {
                     if ($tokens[($closeBrace - 1)]['line'] !== $tokens[$closeBrace]['line']) {
                         $error = 'Expected 0 spaces before closing brace; newline found';
                         $phpcsFile->addError($error, $closeBrace, 'NewLineBeforeCloseBrace');
                     } else {
                         $error = 'Expected 0 spaces before closing brace; %s found';
-                        $data  = array($spaces);
-                        $fix   = $phpcsFile->addFixableError($error, $closeBrace, 'SpaceBeforeCloseBrace', $data);
+                        $data = array($spaces);
+                        $fix = $phpcsFile->addFixableError($error, $closeBrace, 'SpaceBeforeCloseBrace', $data);
                         if ($fix === true) {
                             $phpcsFile->fixer->replaceToken(($closeBrace - 1), '');
                         }
@@ -187,11 +187,11 @@ class Squiz_Sniffs_Classes_ClassDeclarationSniff extends PSR2_Sniffs_Classes_Cla
 
         if ($difference !== -1 && $difference !== 1) {
             $error = 'Closing brace of a %s must be followed by a single blank line; found %s';
-            $data  = array(
-                      $tokens[$stackPtr]['content'],
-                      $difference,
-                     );
-            $fix   = $phpcsFile->addFixableError($error, $closeBrace, 'NewlinesAfterCloseBrace', $data);
+            $data = array(
+                $tokens[$stackPtr]['content'],
+                $difference,
+            );
+            $fix = $phpcsFile->addFixableError($error, $closeBrace, 'NewlinesAfterCloseBrace', $data);
             if ($fix === true) {
                 if ($difference === 0) {
                     $first = $phpcsFile->findFirstOnLine(array(), $nextContent, true);

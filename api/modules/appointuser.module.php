@@ -283,7 +283,7 @@ class AppointuserControl extends Samoyed
             $return['request'] = "failed";
             $return['errors'][0] = $error;
         } else {
-            $return = json_decode($result,true);
+            $return = json_decode($result, true);
             $return['request'] = "success";
         }
         return $return;

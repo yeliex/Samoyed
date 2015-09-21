@@ -52,7 +52,7 @@ class PEAR_Sniffs_Formatting_MultiLineAssignmentSniff implements PHP_CodeSniffer
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -87,7 +87,7 @@ class PEAR_Sniffs_Formatting_MultiLineAssignmentSniff implements PHP_CodeSniffer
 
         // Find the required indent based on the ident of the previous line.
         $assignmentIndent = 0;
-        $prevLine         = $tokens[$prev]['line'];
+        $prevLine = $tokens[$prev]['line'];
         for ($i = ($prev - 1); $i >= 0; $i--) {
             if ($tokens[$i]['line'] !== $prevLine) {
                 $i++;
@@ -103,13 +103,13 @@ class PEAR_Sniffs_Formatting_MultiLineAssignmentSniff implements PHP_CodeSniffer
         $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1));
 
         $expectedIndent = ($assignmentIndent + $this->indent);
-        $foundIndent    = strlen($tokens[$prev]['content']);
+        $foundIndent = strlen($tokens[$prev]['content']);
         if ($foundIndent !== $expectedIndent) {
             $error = 'Multi-line assignment not indented correctly; expected %s spaces but found %s';
-            $data  = array(
-                      $expectedIndent,
-                      $foundIndent,
-                     );
+            $data = array(
+                $expectedIndent,
+                $foundIndent,
+            );
             $phpcsFile->addError($error, $stackPtr, 'Indent', $data);
         }
 

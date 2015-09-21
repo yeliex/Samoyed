@@ -63,9 +63,9 @@ class Generic_Sniffs_NamingConventions_ConstructorNameSniff extends PHP_CodeSnif
      * Processes this test when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
-     * @param int                  $currScope A pointer to the start of the scope.
+     * @param int $currScope A pointer to the start of the scope.
      *
      * @return void
      */
@@ -73,7 +73,8 @@ class Generic_Sniffs_NamingConventions_ConstructorNameSniff extends PHP_CodeSnif
         PHP_CodeSniffer_File $phpcsFile,
         $stackPtr,
         $currScope
-    ) {
+    )
+    {
         $className = $phpcsFile->getDeclarationName($currScope);
         if ($className !== $this->_currentClass) {
             $this->loadFunctionNamesInScope($phpcsFile, $currScope);
@@ -105,7 +106,7 @@ class Generic_Sniffs_NamingConventions_ConstructorNameSniff extends PHP_CodeSnif
         }
 
         $endFunctionIndex = $tokens[$stackPtr]['scope_closer'];
-        $startIndex       = $stackPtr;
+        $startIndex = $stackPtr;
         while ($doubleColonIndex = $phpcsFile->findNext(T_DOUBLE_COLON, $startIndex, $endFunctionIndex)) {
             if ($tokens[($doubleColonIndex + 1)]['code'] === T_STRING
                 && $tokens[($doubleColonIndex + 1)]['content'] === $parentClassName
@@ -124,7 +125,7 @@ class Generic_Sniffs_NamingConventions_ConstructorNameSniff extends PHP_CodeSnif
      * Extracts all the function names found in the given scope.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being scanned.
-     * @param int                  $currScope A pointer to the start of the scope.
+     * @param int $currScope A pointer to the start of the scope.
      *
      * @return void
      */

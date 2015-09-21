@@ -52,7 +52,7 @@ class Squiz_Sniffs_Debug_JavaScriptLintSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -66,7 +66,7 @@ class Squiz_Sniffs_Debug_JavaScriptLintSniff implements PHP_CodeSniffer_Sniff
             return;
         }
 
-        $cmd = '"'.$jslPath.'" -nologo -nofilelisting -nocontext -nosummary -output-format __LINE__:__ERROR__ -process "'.$fileName.'"';
+        $cmd = '"' . $jslPath . '" -nologo -nofilelisting -nocontext -nosummary -output-format __LINE__:__ERROR__ -process "' . $fileName . '"';
         $msg = exec($cmd, $output, $retval);
 
         // Variable $exitCode is the last line of $output if no error occurs, on
@@ -82,8 +82,8 @@ class Squiz_Sniffs_Debug_JavaScriptLintSniff implements PHP_CodeSniffer_Sniff
 
         if (is_array($output) === true) {
             foreach ($output as $finding) {
-                $split   = strpos($finding, ':');
-                $line    = substr($finding, 0, $split);
+                $split = strpos($finding, ':');
+                $line = substr($finding, 0, $split);
                 $message = substr($finding, ($split + 1));
                 $phpcsFile->addWarningOnLine(trim($message), $line, 'ExternalTool');
             }

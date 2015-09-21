@@ -27,7 +27,8 @@ final class Client
         $fileBody,
         $mimeType = null,
         array $headers = array()
-    ) {
+    )
+    {
         $data = array();
         $mimeBoundary = md5(microtime());
 
@@ -82,10 +83,10 @@ final class Client
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_HEADER => true,
             CURLOPT_NOBODY => false,
-            CURLOPT_CUSTOMREQUEST  => $request->method,
+            CURLOPT_CUSTOMREQUEST => $request->method,
             CURLOPT_URL => $request->url
         );
-        
+
         if (!empty($request->headers)) {
             $headers = array();
             foreach ($request->headers as $key => $val) {
@@ -101,7 +102,7 @@ final class Client
         curl_setopt_array($ch, $options);
         $result = curl_exec($ch);
         $t2 = microtime(true);
-        $duration = round($t2-$t1, 3);
+        $duration = round($t2 - $t1, 3);
         $ret = curl_errno($ch);
         if ($ret !== 0) {
             $r = new Response(-1, $duration, array(), null, curl_error($ch));
@@ -123,7 +124,7 @@ final class Client
         foreach ($headerLines as $line) {
             $headerLine = trim($line);
             $kv = explode(':', $headerLine);
-            if (count($kv) >1) {
+            if (count($kv) > 1) {
                 $headers[$kv[0]] = trim($kv[1]);
             }
         }

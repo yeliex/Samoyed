@@ -68,7 +68,7 @@ class Generic_Sniffs_Debug_ClosureLinterSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -91,7 +91,7 @@ class Generic_Sniffs_Debug_ClosureLinterSniff implements PHP_CodeSniffer_Sniff
         }
 
         foreach ($output as $finding) {
-            $matches    = array();
+            $matches = array();
             $numMatches = preg_match('/^(.*):([0-9]+):\(.*?([0-9]+)\)(.*)$/', $finding, $matches);
             if ($numMatches === 0) {
                 continue;
@@ -103,14 +103,14 @@ class Generic_Sniffs_Debug_ClosureLinterSniff implements PHP_CodeSniffer_Sniff
                 continue;
             }
 
-            $line  = (int) $matches[2];
+            $line = (int)$matches[2];
             $error = trim($matches[4]);
 
             $message = 'gjslint says: (%s) %s';
-            $data    = array(
-                        $code,
-                        $error,
-                       );
+            $data = array(
+                $code,
+                $error,
+            );
             if (in_array($code, $this->errorCodes) === true) {
                 $phpcsFile->addErrorOnLine($message, $line, 'ExternalToolError', $data);
             } else {

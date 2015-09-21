@@ -52,7 +52,7 @@ class Squiz_Sniffs_CSS_SemicolonSpacingSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -70,9 +70,9 @@ class Squiz_Sniffs_CSS_SemicolonSpacingSniff implements PHP_CodeSniffer_Sniff
 
         if ($tokens[($semicolon - 1)]['code'] === T_WHITESPACE) {
             $length = strlen($tokens[($semicolon - 1)]['content']);
-            $error  = 'Expected 0 spaces before semicolon in style definition; %s found';
-            $data   = array($length);
-            $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceFound', $data);
+            $error = 'Expected 0 spaces before semicolon in style definition; %s found';
+            $data = array($length);
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceFound', $data);
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($semicolon - 1), '');
             }

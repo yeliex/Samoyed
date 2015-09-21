@@ -50,17 +50,17 @@ class Generic_Sniffs_CodeAnalysis_EmptyStatementSniff implements PHP_CodeSniffer
     public function register()
     {
         return array(
-                T_CATCH,
-                T_DO,
-                T_ELSE,
-                T_ELSEIF,
-                T_FOR,
-                T_FOREACH,
-                T_IF,
-                T_SWITCH,
-                T_TRY,
-                T_WHILE,
-               );
+            T_CATCH,
+            T_DO,
+            T_ELSE,
+            T_ELSEIF,
+            T_FOR,
+            T_FOREACH,
+            T_IF,
+            T_SWITCH,
+            T_TRY,
+            T_WHILE,
+        );
 
     }//end register()
 
@@ -69,7 +69,7 @@ class Generic_Sniffs_CodeAnalysis_EmptyStatementSniff implements PHP_CodeSniffer
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -77,7 +77,7 @@ class Generic_Sniffs_CodeAnalysis_EmptyStatementSniff implements PHP_CodeSniffer
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip statements without a body.
         if (isset($token['scope_opener']) === false) {
@@ -96,9 +96,9 @@ class Generic_Sniffs_CodeAnalysis_EmptyStatementSniff implements PHP_CodeSniffer
         }
 
         // Get token identifier.
-        $name  = strtoupper($token['content']);
+        $name = strtoupper($token['content']);
         $error = 'Empty %s statement detected';
-        $phpcsFile->addError($error, $stackPtr, 'Detected'.$name, array($name));
+        $phpcsFile->addError($error, $stackPtr, 'Detected' . $name, array($name));
 
     }//end process()
 

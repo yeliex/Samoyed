@@ -37,9 +37,9 @@ class PEAR_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_Fi
     public function register()
     {
         return array(
-                T_CLASS,
-                T_INTERFACE,
-               );
+            T_CLASS,
+            T_INTERFACE,
+        );
 
     }//end register()
 
@@ -48,7 +48,7 @@ class PEAR_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_Fi
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -57,11 +57,11 @@ class PEAR_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_Fi
     {
         $this->currentFile = $phpcsFile;
 
-        $tokens    = $phpcsFile->getTokens();
-        $type      = strtolower($tokens[$stackPtr]['content']);
+        $tokens = $phpcsFile->getTokens();
+        $type = strtolower($tokens[$stackPtr]['content']);
         $errorData = array($type);
 
-        $find   = PHP_CodeSniffer_Tokens::$methodPrefixes;
+        $find = PHP_CodeSniffer_Tokens::$methodPrefixes;
         $find[] = T_WHITESPACE;
 
         $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
@@ -110,7 +110,7 @@ class PEAR_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_Fi
      * Process the version tag.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param array                $tags      The tokens for these tags.
+     * @param array $tags The tokens for these tags.
      *
      * @return void
      */
@@ -126,7 +126,7 @@ class PEAR_Sniffs_Commenting_ClassCommentSniff extends PEAR_Sniffs_Commenting_Fi
             $content = $tokens[($tag + 2)]['content'];
             if ((strstr($content, 'Release:') === false)) {
                 $error = 'Invalid version "%s" in doc comment; consider "Release: <package_version>" instead';
-                $data  = array($content);
+                $data = array($content);
                 $phpcsFile->addWarning($error, $tag, 'InvalidVersion', $data);
             }
         }

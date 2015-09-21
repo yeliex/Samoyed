@@ -38,10 +38,10 @@ class Generic_Sniffs_Files_ByteOrderMarkSniff implements PHP_CodeSniffer_Sniff
      * @var array
      */
     public $bomDefinitions = array(
-                              'UTF-8'       => 'efbbbf',
-                              'UTF-16 (BE)' => 'feff',
-                              'UTF-16 (LE)' => 'fffe',
-                             );
+        'UTF-8' => 'efbbbf',
+        'UTF-16 (BE)' => 'feff',
+        'UTF-16 (LE)' => 'fffe',
+    );
 
 
     /**
@@ -60,7 +60,7 @@ class Generic_Sniffs_Files_ByteOrderMarkSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -76,10 +76,10 @@ class Generic_Sniffs_Files_ByteOrderMarkSniff implements PHP_CodeSniffer_Sniff
 
         foreach ($this->bomDefinitions as $bomName => $expectedBomHex) {
             $bomByteLength = (strlen($expectedBomHex) / 2);
-            $htmlBomHex    = bin2hex(substr($tokens[$stackPtr]['content'], 0, $bomByteLength));
+            $htmlBomHex = bin2hex(substr($tokens[$stackPtr]['content'], 0, $bomByteLength));
             if ($htmlBomHex === $expectedBomHex) {
                 $errorData = array($bomName);
-                $error     = 'File contains %s byte order mark, which may corrupt your application';
+                $error = 'File contains %s byte order mark, which may corrupt your application';
                 $phpcsFile->addError($error, $stackPtr, 'Found', $errorData);
                 $phpcsFile->recordMetric($stackPtr, 'Using byte order mark', 'yes');
                 return;

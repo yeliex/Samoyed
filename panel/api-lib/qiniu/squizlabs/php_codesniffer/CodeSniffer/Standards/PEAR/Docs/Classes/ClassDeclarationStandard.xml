@@ -1,19 +1,19 @@
 <documentation title="Class Declarations">
     <standard>
-    <![CDATA[
+        <![CDATA[
     The opening brace of a class must be on the line after the definition by itself.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Opening brace on the correct line.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 <em>{</em>
 }
         ]]>
         </code>
         <code title="Invalid: Opening brace on same line as declaration.">
-        <![CDATA[
+            <![CDATA[
 class Foo <em>{</em>
 }
         ]]>

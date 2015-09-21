@@ -46,7 +46,7 @@ class PSR1_Sniffs_Files_SideEffectsSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the token stack.
      *
      * @return void
@@ -58,10 +58,10 @@ class PSR1_Sniffs_Files_SideEffectsSniff implements PHP_CodeSniffer_Sniff
 
         if ($result['symbol'] !== null && $result['effect'] !== null) {
             $error = 'A file should declare new symbols (classes, functions, constants, etc.) and cause no other side effects, or it should execute logic with side effects, but should not do both. The first symbol is defined on line %s and the first side effect is on line %s.';
-            $data  = array(
-                      $tokens[$result['symbol']]['line'],
-                      $tokens[$result['effect']]['line'],
-                     );
+            $data = array(
+                $tokens[$result['symbol']]['line'],
+                $tokens[$result['effect']]['line'],
+            );
             $phpcsFile->addWarning($error, 0, 'FoundWithSymbols', $data);
             $phpcsFile->recordMetric($stackPtr, 'Declarations and side effects mixed', 'yes');
         } else {
@@ -82,9 +82,9 @@ class PSR1_Sniffs_Files_SideEffectsSniff implements PHP_CodeSniffer_Sniff
      * found.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $start     The token to start searching from.
-     * @param int                  $end       The token to search to.
-     * @param array                $tokens    The stack of tokens that make up
+     * @param int $start The token to start searching from.
+     * @param int $end The token to search to.
+     * @param array $tokens The stack of tokens that make up
      *                                        the file.
      *
      * @return array
@@ -92,17 +92,17 @@ class PSR1_Sniffs_Files_SideEffectsSniff implements PHP_CodeSniffer_Sniff
     private function _searchForConflict(PHP_CodeSniffer_File $phpcsFile, $start, $end, $tokens)
     {
         $symbols = array(
-                    T_CLASS     => T_CLASS,
-                    T_INTERFACE => T_INTERFACE,
-                    T_TRAIT     => T_TRAIT,
-                    T_FUNCTION  => T_FUNCTION,
-                   );
+            T_CLASS => T_CLASS,
+            T_INTERFACE => T_INTERFACE,
+            T_TRAIT => T_TRAIT,
+            T_FUNCTION => T_FUNCTION,
+        );
 
         $conditions = array(
-                       T_IF     => T_IF,
-                       T_ELSE   => T_ELSE,
-                       T_ELSEIF => T_ELSEIF,
-                      );
+            T_IF => T_IF,
+            T_ELSE => T_ELSE,
+            T_ELSEIF => T_ELSEIF,
+        );
 
         $firstSymbol = null;
         $firstEffect = null;
@@ -213,9 +213,9 @@ class PSR1_Sniffs_Files_SideEffectsSniff implements PHP_CodeSniffer_Sniff
         }//end for
 
         return array(
-                'symbol' => $firstSymbol,
-                'effect' => $firstEffect,
-               );
+            'symbol' => $firstSymbol,
+            'effect' => $firstEffect,
+        );
 
     }//end _searchForConflict()
 

@@ -36,10 +36,10 @@ class Generic_Sniffs_WhiteSpace_DisallowTabIndentSniff implements PHP_CodeSniffe
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                   'CSS',
-                                  );
+        'PHP',
+        'JS',
+        'CSS',
+    );
 
 
     /**
@@ -58,22 +58,22 @@ class Generic_Sniffs_WhiteSpace_DisallowTabIndentSniff implements PHP_CodeSniffe
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile All the tokens found in the document.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens    = $phpcsFile->getTokens();
-        $error     = 'Spaces must be used to indent lines; tabs are not allowed';
+        $tokens = $phpcsFile->getTokens();
+        $error = 'Spaces must be used to indent lines; tabs are not allowed';
         $errorCode = 'TabsUsed';
 
         $checkTokens = array(
-                        T_WHITESPACE             => true,
-                        T_DOC_COMMENT_WHITESPACE => true,
-                        T_DOC_COMMENT_STRING     => true,
-                       );
+            T_WHITESPACE => true,
+            T_DOC_COMMENT_WHITESPACE => true,
+            T_DOC_COMMENT_STRING => true,
+        );
 
         for ($i = ($stackPtr + 1); $i < $phpcsFile->numTokens; $i++) {
             if (isset($checkTokens[$tokens[$i]['code']]) === false) {
@@ -115,8 +115,8 @@ class Generic_Sniffs_WhiteSpace_DisallowTabIndentSniff implements PHP_CodeSniffe
                 // record any metrics about them because they aren't
                 // line indent tokens.
                 if (strpos($content, "\t") !== false) {
-                    $tabFound  = true;
-                    $error     = 'Spaces must be used for alignment; tabs are not allowed';
+                    $tabFound = true;
+                    $error = 'Spaces must be used for alignment; tabs are not allowed';
                     $errorCode = 'NonIndentTabsUsed';
                 }
             }//end if

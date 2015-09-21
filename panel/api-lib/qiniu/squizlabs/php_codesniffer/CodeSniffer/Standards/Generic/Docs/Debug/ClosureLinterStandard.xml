@@ -1,17 +1,17 @@
 <documentation title="Closure Linter">
     <standard>
-    <![CDATA[
+        <![CDATA[
     All javascript files should pass basic Closure Linter tests.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Valid JS Syntax is used.">
-        <![CDATA[
+            <![CDATA[
 var foo = [1, 2<em></em>];
         ]]>
         </code>
         <code title="Invalid: Trailing comma in a javascript array.">
-        <![CDATA[
+            <![CDATA[
 var foo = [1, 2<em>,</em>];
         ]]>
         </code>

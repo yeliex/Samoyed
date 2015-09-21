@@ -8,11 +8,12 @@
 
 use Qiniu\Auth;
 
-class Imageupload extends Sampyedhouse{
+class Imageupload extends Sampyedhouse
+{
 
     protected $accessKey = 'vufCVXS05a3Xrxajk2HAvX-eoTYxkFRNoCOj1GhB';
     protected $secretKey = '7Fh1ZpZJTI3u4Y6egEsb_PkmWwSK7NyuvV8clXg5';
-    protected  $token;
+    protected $token;
 
     public function  __construct()
     {
@@ -21,11 +22,11 @@ class Imageupload extends Sampyedhouse{
 
     }
 
-    function token(){
+    function token()
+    {
 
         $bucket = $_GET['bucket'];
-        if(empty($bucket))
-        {
+        if (empty($bucket)) {
             $bucket = 'mzstatic';
         }
         $auth = new Auth($this->accessKey, $this->secretKey);

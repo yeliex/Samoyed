@@ -39,7 +39,8 @@ final class Auth
         $data .= "\n";
 
         if ($body != null &&
-            ($contentType == 'application/x-www-form-urlencoded') ||  $contentType == 'application/json') {
+            ($contentType == 'application/x-www-form-urlencoded') || $contentType == 'application/json'
+        ) {
             $data .= $body;
         }
         return $this->sign($data);
@@ -73,7 +74,8 @@ final class Auth
         $expires = 3600,
         $policy = null,
         $strictPolicy = true
-    ) {
+    )
+    {
         $deadline = time() + $expires;
         $scope = $bucket;
         if ($key != null) {

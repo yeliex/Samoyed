@@ -1,36 +1,36 @@
 <documentation title="Self Member Reference">
     <standard>
-    <![CDATA[
+        <![CDATA[
     The self keyword should be used instead of the current class name, should be lowercase, and should not have spaces before or after it.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Lowercase self used.">
-        <![CDATA[
+            <![CDATA[
 <em>self</em>::foo();
 ]]>
         </code>
         <code title="Invalid: Uppercase self used.">
-        <![CDATA[
+            <![CDATA[
 <em>SELF</em>::foo();
 ]]>
         </code>
     </code_comparison>
     <code_comparison>
         <code title="Valid: Correct spacing used.">
-        <![CDATA[
+            <![CDATA[
 self<em></em>::<em></em>foo();
 ]]>
         </code>
         <code title="Invalid: Incorrect spacing used.">
-        <![CDATA[
+            <![CDATA[
 self<em> </em>::<em> </em>foo();
 ]]>
         </code>
     </code_comparison>
     <code_comparison>
         <code title="Valid: Self used as reference.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     public static function bar()
@@ -45,7 +45,7 @@ class Foo
 ]]>
         </code>
         <code title="Invalid: Local class name used as reference.">
-        <![CDATA[
+            <![CDATA[
 class <em>Foo</em>
 {
     public static function bar()

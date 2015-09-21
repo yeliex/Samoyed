@@ -52,17 +52,17 @@ class Squiz_Sniffs_CSS_MissingColonSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens   = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $lastLine = $tokens[$stackPtr]['line'];
-        $end      = $tokens[$stackPtr]['bracket_closer'];
-        $endLine  = $tokens[$end]['line'];
+        $end = $tokens[$stackPtr]['bracket_closer'];
+        $endLine = $tokens[$end]['line'];
 
         // Do not check nested style definitions as, for example, in @media style rules.
         $nested = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1), $end);
@@ -70,7 +70,7 @@ class Squiz_Sniffs_CSS_MissingColonSniff implements PHP_CodeSniffer_Sniff
             return;
         }
 
-        $foundColon  = false;
+        $foundColon = false;
         $foundString = false;
         for ($i = ($stackPtr + 1); $i <= $end; $i++) {
             if ($tokens[$i]['line'] !== $lastLine) {
@@ -81,9 +81,9 @@ class Squiz_Sniffs_CSS_MissingColonSniff implements PHP_CodeSniffer_Sniff
                     $phpcsFile->addError($error, $foundString, 'Found');
                 }
 
-                $foundColon  = false;
+                $foundColon = false;
                 $foundString = false;
-                $lastLine    = $tokens[$i]['line'];
+                $lastLine = $tokens[$i]['line'];
             }
 
             if ($tokens[$i]['code'] === T_STRING) {

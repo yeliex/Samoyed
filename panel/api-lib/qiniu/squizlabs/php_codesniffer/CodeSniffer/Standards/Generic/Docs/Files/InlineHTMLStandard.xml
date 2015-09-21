@@ -1,19 +1,19 @@
 <documentation title="Inline HTML">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Files that contain php code should only have php code and should not have any "inline html".
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: A php file with only php code in it.">
-        <![CDATA[
+            <![CDATA[
 <?php
 $foo = 'bar';
 echo $foo . 'baz';
         ]]>
         </code>
         <code title="Invalid: A php file with html in it outside of the php tags.">
-        <![CDATA[
+            <![CDATA[
 <em>some string here</em>
 <?php
 $foo = 'bar';

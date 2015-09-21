@@ -35,9 +35,9 @@ class Generic_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeSni
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
     /**
      * If true, an error will be thrown; otherwise a warning.
@@ -55,9 +55,9 @@ class Generic_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeSni
     public function register()
     {
         return array(
-                T_STRING_CONCAT,
-                T_PLUS,
-               );
+            T_STRING_CONCAT,
+            T_PLUS,
+        );
 
     }//end register()
 
@@ -66,7 +66,7 @@ class Generic_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeSni
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -101,8 +101,8 @@ class Generic_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeSni
                 if ($phpcsFile->tokenizerType === 'PHP') {
                     $prevChar = substr($tokens[$prev]['content'], -2, 1);
                     $nextChar = $tokens[$next]['content'][1];
-                    $combined = $prevChar.$nextChar;
-                    if ($combined === '?'.'>' || $combined === '<'.'?') {
+                    $combined = $prevChar . $nextChar;
+                    if ($combined === '?' . '>' || $combined === '<' . '?') {
                         return;
                     }
                 }

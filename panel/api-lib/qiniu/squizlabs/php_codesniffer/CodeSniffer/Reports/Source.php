@@ -47,19 +47,20 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
      * and FALSE if it ignored the file. Returning TRUE indicates that the file and
      * its data should be counted in the grand totals.
      *
-     * @param array                $report      Prepared report data.
-     * @param PHP_CodeSniffer_File $phpcsFile   The file being reported on.
-     * @param boolean              $showSources Show sources?
-     * @param int                  $width       Maximum allowed line width.
+     * @param array $report Prepared report data.
+     * @param PHP_CodeSniffer_File $phpcsFile The file being reported on.
+     * @param boolean $showSources Show sources?
+     * @param int $width Maximum allowed line width.
      *
      * @return boolean
      */
     public function generateFileReport(
         $report,
         PHP_CodeSniffer_File $phpcsFile,
-        $showSources=false,
-        $width=80
-    ) {
+        $showSources = false,
+        $width = 80
+    )
+    {
         if ($report['errors'] === 0 && $report['warnings'] === 0) {
             // Nothing to print.
             return false;
@@ -84,9 +85,9 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
 
                             $sniff = $this->makeFriendlyName($parts[2]);
                             if (isset($parts[3]) === true) {
-                                $name    = $this->makeFriendlyName($parts[3]);
+                                $name = $this->makeFriendlyName($parts[3]);
                                 $name[0] = strtolower($name[0]);
-                                $sniff  .= ' '.$name;
+                                $sniff .= ' ' . $name;
                                 unset($parts[3]);
                             }
 
@@ -94,11 +95,11 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
                         }//end if
 
                         $this->_sourceCache[$source] = array(
-                                                        'count'   => 1,
-                                                        'fixable' => $error['fixable'],
-                                                        'parts'   => $parts,
-                                                        'strlen'  => strlen($sniff),
-                                                       );
+                            'count' => 1,
+                            'fixable' => $error['fixable'],
+                            'parts' => $parts,
+                            'strlen' => strlen($sniff),
+                        );
                     } else {
                         $this->_sourceCache[$source]['count']++;
                     }//end if
@@ -114,15 +115,15 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
     /**
      * Prints the source of all errors and warnings.
      *
-     * @param string  $cachedData    Any partial report data that was returned from
+     * @param string $cachedData Any partial report data that was returned from
      *                               generateFileReport during the run.
-     * @param int     $totalFiles    Total number of files processed during the run.
-     * @param int     $totalErrors   Total number of errors found during the run.
-     * @param int     $totalWarnings Total number of warnings found during the run.
-     * @param int     $totalFixable  Total number of problems that can be fixed.
-     * @param boolean $showSources   Show sources?
-     * @param int     $width         Maximum allowed line width.
-     * @param boolean $toScreen      Is the report being printed to screen?
+     * @param int $totalFiles Total number of files processed during the run.
+     * @param int $totalErrors Total number of errors found during the run.
+     * @param int $totalWarnings Total number of warnings found during the run.
+     * @param int $totalFixable Total number of problems that can be fixed.
+     * @param boolean $showSources Show sources?
+     * @param int $width Maximum allowed line width.
+     * @param boolean $toScreen Is the report being printed to screen?
      *
      * @return void
      */
@@ -132,10 +133,11 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
-        $showSources=false,
-        $width=80,
-        $toScreen=true
-    ) {
+        $showSources = false,
+        $width = 80,
+        $toScreen = true
+    )
+    {
         if (empty($this->_sourceCache) === true) {
             // Nothing to show.
             return;
@@ -158,26 +160,26 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
         asort($this->_sourceCache);
         $this->_sourceCache = array_reverse($this->_sourceCache);
 
-        echo PHP_EOL."\033[1mPHP CODE SNIFFER VIOLATION SOURCE SUMMARY\033[0m".PHP_EOL;
-        echo str_repeat('-', $width).PHP_EOL."\033[1m";
+        echo PHP_EOL . "\033[1mPHP CODE SNIFFER VIOLATION SOURCE SUMMARY\033[0m" . PHP_EOL;
+        echo str_repeat('-', $width) . PHP_EOL . "\033[1m";
         if ($showSources === true) {
             if ($totalFixable > 0) {
-                echo '    SOURCE'.str_repeat(' ', ($width - 15)).'COUNT'.PHP_EOL;
+                echo '    SOURCE' . str_repeat(' ', ($width - 15)) . 'COUNT' . PHP_EOL;
             } else {
-                echo 'SOURCE'.str_repeat(' ', ($width - 11)).'COUNT'.PHP_EOL;
+                echo 'SOURCE' . str_repeat(' ', ($width - 11)) . 'COUNT' . PHP_EOL;
             }
         } else {
             if ($totalFixable > 0) {
-                echo '    STANDARD  CATEGORY            SNIFF'.str_repeat(' ', ($width - 44)).'COUNT'.PHP_EOL;
+                echo '    STANDARD  CATEGORY            SNIFF' . str_repeat(' ', ($width - 44)) . 'COUNT' . PHP_EOL;
             } else {
-                echo 'STANDARD  CATEGORY            SNIFF'.str_repeat(' ', ($width - 40)).'COUNT'.PHP_EOL;
+                echo 'STANDARD  CATEGORY            SNIFF' . str_repeat(' ', ($width - 40)) . 'COUNT' . PHP_EOL;
             }
         }
 
-        echo "\033[0m".str_repeat('-', $width).PHP_EOL;
+        echo "\033[0m" . str_repeat('-', $width) . PHP_EOL;
 
         $fixableSources = 0;
-        $maxSniffWidth  = 37;
+        $maxSniffWidth = 37;
         if ($totalFixable > 0) {
             $maxSniffWidth += 4;
         }
@@ -209,14 +211,14 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
                     $parts[0] = substr($parts[0], 0, ((strlen($parts[0]) - 8) * -1));
                 }
 
-                echo $parts[0].str_repeat(' ', (10 - strlen($parts[0])));
+                echo $parts[0] . str_repeat(' ', (10 - strlen($parts[0])));
 
                 $category = $parts[1];
                 if (strlen($category) > 18) {
                     $category = substr($category, 0, ((strlen($category) - 18) * -1));
                 }
 
-                echo $category.str_repeat(' ', (20 - strlen($category)));
+                echo $category . str_repeat(' ', (20 - strlen($category)));
 
                 $sniff = $parts[2];
                 if (strlen($sniff) > ($width - $maxSniffWidth)) {
@@ -224,22 +226,22 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
                 }
 
                 if ($totalFixable > 0) {
-                    echo $sniff.str_repeat(' ', ($width - 39 - strlen($sniff)));
+                    echo $sniff . str_repeat(' ', ($width - 39 - strlen($sniff)));
                 } else {
-                    echo $sniff.str_repeat(' ', ($width - 35 - strlen($sniff)));
+                    echo $sniff . str_repeat(' ', ($width - 35 - strlen($sniff)));
                 }
             }//end if
 
-            echo $sourceData['count'].PHP_EOL;
+            echo $sourceData['count'] . PHP_EOL;
         }//end foreach
 
-        echo str_repeat('-', $width).PHP_EOL;
-        echo "\033[1m".'A TOTAL OF '.($totalErrors + $totalWarnings).' SNIFF VIOLATION';
+        echo str_repeat('-', $width) . PHP_EOL;
+        echo "\033[1m" . 'A TOTAL OF ' . ($totalErrors + $totalWarnings) . ' SNIFF VIOLATION';
         if (($totalErrors + $totalWarnings) > 1) {
             echo 'S';
         }
 
-        echo ' WERE FOUND IN '.count($this->_sourceCache).' SOURCE';
+        echo ' WERE FOUND IN ' . count($this->_sourceCache) . ' SOURCE';
         if (count($this->_sourceCache) !== 1) {
             echo 'S';
         }
@@ -247,11 +249,11 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
         echo "\033[0m";
 
         if ($totalFixable > 0) {
-            echo PHP_EOL.str_repeat('-', $width).PHP_EOL;
+            echo PHP_EOL . str_repeat('-', $width) . PHP_EOL;
             echo "\033[1mPHPCBF CAN FIX THE $fixableSources MARKED SOURCES AUTOMATICALLY ($totalFixable VIOLATIONS IN TOTAL)\033[0m";
         }
 
-        echo PHP_EOL.str_repeat('-', $width).PHP_EOL.PHP_EOL;
+        echo PHP_EOL . str_repeat('-', $width) . PHP_EOL . PHP_EOL;
 
         if ($toScreen === true && PHP_CODESNIFFER_INTERACTIVE === false) {
             PHP_CodeSniffer_Reporting::printRunTime();
@@ -274,9 +276,9 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
         }
 
         $friendlyName = '';
-        $length       = strlen($name);
+        $length = strlen($name);
 
-        $lastWasUpper   = false;
+        $lastWasUpper = false;
         $lastWasNumeric = false;
         for ($i = 0; $i < $length; $i++) {
             if (is_numeric($name[$i]) === true) {
@@ -284,7 +286,7 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
                     $friendlyName .= ' ';
                 }
 
-                $lastWasUpper   = false;
+                $lastWasUpper = false;
                 $lastWasNumeric = true;
             } else {
                 $lastWasNumeric = false;
@@ -313,7 +315,7 @@ class PHP_CodeSniffer_Reports_Source implements PHP_CodeSniffer_Report
             $friendlyName .= $name[$i];
         }//end for
 
-        $friendlyName    = trim($friendlyName);
+        $friendlyName = trim($friendlyName);
         $friendlyName[0] = strtoupper($friendlyName[0]);
 
         return $friendlyName;

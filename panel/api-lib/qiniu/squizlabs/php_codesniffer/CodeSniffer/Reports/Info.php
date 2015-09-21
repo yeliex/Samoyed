@@ -50,19 +50,20 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
      * and FALSE if it ignored the file. Returning TRUE indicates that the file and
      * its data should be counted in the grand totals.
      *
-     * @param array                $report      Prepared report data.
-     * @param PHP_CodeSniffer_File $phpcsFile   The file being reported on.
-     * @param boolean              $showSources Show sources?
-     * @param int                  $width       Maximum allowed line width.
+     * @param array $report Prepared report data.
+     * @param PHP_CodeSniffer_File $phpcsFile The file being reported on.
+     * @param boolean $showSources Show sources?
+     * @param int $width Maximum allowed line width.
      *
      * @return boolean
      */
     public function generateFileReport(
         $report,
         PHP_CodeSniffer_File $phpcsFile,
-        $showSources=false,
-        $width=80
-    ) {
+        $showSources = false,
+        $width = 80
+    )
+    {
         $metrics = $phpcsFile->getMetrics();
         foreach ($metrics as $metric => $data) {
             if (isset($this->_metricCache[$metric]) === false) {
@@ -71,7 +72,7 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
 
             foreach ($data['values'] as $value => $locations) {
                 $locations = array_unique($locations);
-                $count     = count($locations);
+                $count = count($locations);
 
                 if (isset($this->_metricCache[$metric][$value]) === false) {
                     $this->_metricCache[$metric][$value] = $count;
@@ -89,15 +90,15 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
     /**
      * Prints the source of all errors and warnings.
      *
-     * @param string  $cachedData    Any partial report data that was returned from
+     * @param string $cachedData Any partial report data that was returned from
      *                               generateFileReport during the run.
-     * @param int     $totalFiles    Total number of files processed during the run.
-     * @param int     $totalErrors   Total number of errors found during the run.
-     * @param int     $totalWarnings Total number of warnings found during the run.
-     * @param int     $totalFixable  Total number of problems that can be fixed.
-     * @param boolean $showSources   Show sources?
-     * @param int     $width         Maximum allowed line width.
-     * @param boolean $toScreen      Is the report being printed to screen?
+     * @param int $totalFiles Total number of files processed during the run.
+     * @param int $totalErrors Total number of errors found during the run.
+     * @param int $totalWarnings Total number of warnings found during the run.
+     * @param int $totalFixable Total number of problems that can be fixed.
+     * @param boolean $showSources Show sources?
+     * @param int $width Maximum allowed line width.
+     * @param boolean $toScreen Is the report being printed to screen?
      *
      * @return void
      */
@@ -107,10 +108,11 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
-        $showSources=false,
-        $width=80,
-        $toScreen=true
-    ) {
+        $showSources = false,
+        $width = 80,
+        $toScreen = true
+    )
+    {
         if (empty($this->_metricCache) === true) {
             // Nothing to show.
             return;
@@ -118,23 +120,23 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
 
         ksort($this->_metricCache);
 
-        echo PHP_EOL."\033[1m".'PHP CODE SNIFFER INFORMATION REPORT'."\033[0m".PHP_EOL;
-        echo str_repeat('-', 70).PHP_EOL;
+        echo PHP_EOL . "\033[1m" . 'PHP CODE SNIFFER INFORMATION REPORT' . "\033[0m" . PHP_EOL;
+        echo str_repeat('-', 70) . PHP_EOL;
 
         foreach ($this->_metricCache as $metric => $values) {
-            $winner      = '';
+            $winner = '';
             $winnerCount = 0;
-            $totalCount  = 0;
+            $totalCount = 0;
             foreach ($values as $value => $count) {
                 $totalCount += $count;
                 if ($count > $winnerCount) {
-                    $winner      = $value;
+                    $winner = $value;
                     $winnerCount = $count;
                 }
             }
 
             $winPercent = round(($winnerCount / $totalCount * 100), 2);
-            echo "$metric: \033[4m$winner\033[0m [$winnerCount/$totalCount, $winPercent%]".PHP_EOL;
+            echo "$metric: \033[4m$winner\033[0m [$winnerCount/$totalCount, $winPercent%]" . PHP_EOL;
 
             asort($values);
             $values = array_reverse($values, true);
@@ -144,13 +146,13 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
                 }
 
                 $percent = round(($count / $totalCount * 100), 2);
-                echo "\t$value => $count ($percent%)".PHP_EOL;
+                echo "\t$value => $count ($percent%)" . PHP_EOL;
             }
 
             echo PHP_EOL;
         }//end foreach
 
-        echo str_repeat('-', 70).PHP_EOL;
+        echo str_repeat('-', 70) . PHP_EOL;
 
         if ($toScreen === true && PHP_CODESNIFFER_INTERACTIVE === false) {
             PHP_CodeSniffer_Reporting::printRunTime();

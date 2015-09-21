@@ -52,7 +52,7 @@ class Squiz_Sniffs_CSS_ClassDefinitionClosingBraceSpaceSniff implements PHP_Code
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -70,8 +70,8 @@ class Squiz_Sniffs_CSS_ClassDefinitionClosingBraceSpaceSniff implements PHP_Code
             $found = (($tokens[$next]['line'] - $tokens[$stackPtr]['line']) - 1);
             if ($found !== 1) {
                 $error = 'Expected one blank line after closing brace of class definition; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterClose', $data);
+                $data = array($found);
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterClose', $data);
 
                 if ($fix === true) {
                     if ($found === 0) {
@@ -110,7 +110,7 @@ class Squiz_Sniffs_CSS_ClassDefinitionClosingBraceSpaceSniff implements PHP_Code
 
         if ($tokens[$prev]['line'] === $tokens[$stackPtr]['line']) {
             $error = 'Closing brace of class definition must be on new line';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'ContentBeforeClose');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'ContentBeforeClose');
             if ($fix === true) {
                 $phpcsFile->fixer->addNewlineBefore($stackPtr);
             }

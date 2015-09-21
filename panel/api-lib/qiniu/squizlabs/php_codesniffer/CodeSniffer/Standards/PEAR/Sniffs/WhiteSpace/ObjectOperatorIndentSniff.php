@@ -53,7 +53,7 @@ class PEAR_Sniffs_WhiteSpace_ObjectOperatorIndentSniff implements PHP_CodeSniffe
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile All the tokens found in the document.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -130,7 +130,7 @@ class PEAR_Sniffs_WhiteSpace_ObjectOperatorIndentSniff implements PHP_CodeSniffe
 
             if ($origBrackets === $brackets && $origConditions === $conditions) {
                 // Make sure it starts a line, otherwise dont check indent.
-                $prev   = $phpcsFile->findPrevious(T_WHITESPACE, ($next - 1), $stackPtr, true);
+                $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($next - 1), $stackPtr, true);
                 $indent = $tokens[($next - 1)];
                 if ($tokens[$prev]['line'] !== $tokens[$next]['line']
                     && $indent['code'] === T_WHITESPACE
@@ -143,10 +143,10 @@ class PEAR_Sniffs_WhiteSpace_ObjectOperatorIndentSniff implements PHP_CodeSniffe
 
                     if ($foundIndent !== $requiredIndent) {
                         $error = 'Object operator not indented correctly; expected %s spaces but found %s';
-                        $data  = array(
-                                  $requiredIndent,
-                                  $foundIndent,
-                                 );
+                        $data = array(
+                            $requiredIndent,
+                            $foundIndent,
+                        );
 
                         $fix = $phpcsFile->addFixableError($error, $next, 'Incorrect', $data);
                         if ($fix === true) {
@@ -164,7 +164,7 @@ class PEAR_Sniffs_WhiteSpace_ObjectOperatorIndentSniff implements PHP_CodeSniffe
                 $content = $phpcsFile->findNext(T_WHITESPACE, ($next + 1), null, true);
                 if ($tokens[$content]['line'] !== $tokens[$next]['line']) {
                     $error = 'Object operator must be at the start of the line, not the end';
-                    $fix   = $phpcsFile->addFixableError($error, $next, 'StartOfLine');
+                    $fix = $phpcsFile->addFixableError($error, $next, 'StartOfLine');
                     if ($fix === true) {
                         $phpcsFile->fixer->beginChangeset();
                         for ($x = ($next + 1); $x < $content; $x++) {

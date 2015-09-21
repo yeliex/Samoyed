@@ -38,7 +38,7 @@ class Squiz_Sniffs_WhiteSpace_ScopeKeywordSpacingSniff implements PHP_CodeSniffe
      */
     public function register()
     {
-        $register   = PHP_CodeSniffer_Tokens::$scopeModifiers;
+        $register = PHP_CodeSniffer_Tokens::$scopeModifiers;
         $register[] = T_STATIC;
         return $register;
 
@@ -49,7 +49,7 @@ class Squiz_Sniffs_WhiteSpace_ScopeKeywordSpacingSniff implements PHP_CodeSniffe
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -63,7 +63,7 @@ class Squiz_Sniffs_WhiteSpace_ScopeKeywordSpacingSniff implements PHP_CodeSniffe
 
         if ($tokens[$stackPtr]['code'] === T_STATIC
             && ($tokens[$nextToken]['code'] === T_DOUBLE_COLON
-            || $tokens[$prevToken]['code'] === T_NEW)
+                || $tokens[$prevToken]['code'] === T_NEW)
         ) {
             // Late static binding, e.g., static:: OR new static() usage.
             return;
@@ -79,8 +79,8 @@ class Squiz_Sniffs_WhiteSpace_ScopeKeywordSpacingSniff implements PHP_CodeSniffe
             || $nextToken['content'] === $phpcsFile->eolChar
         ) {
             $error = 'Scope keyword "%s" must be followed by a single space';
-            $data  = array($tokens[$stackPtr]['content']);
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
+            $data = array($tokens[$stackPtr]['content']);
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
             }

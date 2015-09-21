@@ -51,7 +51,7 @@ class Generic_Sniffs_CodeAnalysis_UnusedFunctionParameterSniff implements PHP_Co
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -59,7 +59,7 @@ class Generic_Sniffs_CodeAnalysis_UnusedFunctionParameterSniff implements PHP_Co
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip broken function declarations.
         if (isset($token['scope_opener']) === false || isset($token['parenthesis_opener']) === false) {
@@ -72,21 +72,21 @@ class Generic_Sniffs_CodeAnalysis_UnusedFunctionParameterSniff implements PHP_Co
         }
 
         $next = ++$token['scope_opener'];
-        $end  = --$token['scope_closer'];
+        $end = --$token['scope_closer'];
 
         $foundContent = false;
-        $validTokens  = array(
-                         T_HEREDOC              => T_HEREDOC,
-                         T_NOWDOC               => T_NOWDOC,
-                         T_END_HEREDOC          => T_END_HEREDOC,
-                         T_END_NOWDOC           => T_END_NOWDOC,
-                         T_DOUBLE_QUOTED_STRING => T_DOUBLE_QUOTED_STRING,
-                        );
+        $validTokens = array(
+            T_HEREDOC => T_HEREDOC,
+            T_NOWDOC => T_NOWDOC,
+            T_END_HEREDOC => T_END_HEREDOC,
+            T_END_NOWDOC => T_END_NOWDOC,
+            T_DOUBLE_QUOTED_STRING => T_DOUBLE_QUOTED_STRING,
+        );
         $validTokens += PHP_CodeSniffer_Tokens::$emptyTokens;
 
         for (; $next <= $end; ++$next) {
             $token = $tokens[$next];
-            $code  = $token['code'];
+            $code = $token['code'];
 
             // Ignorable tokens.
             if (isset(PHP_CodeSniffer_Tokens::$emptyTokens[$code]) === true) {
@@ -128,7 +128,7 @@ class Generic_Sniffs_CodeAnalysis_UnusedFunctionParameterSniff implements PHP_Co
                 if ($tokens[$nextToken]['code'] === T_OPEN_CURLY_BRACKET) {
                     $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($nextToken + 1), null, true);
                     if ($tokens[$nextToken]['code'] === T_STRING) {
-                        $varContent = '$'.$tokens[$nextToken]['content'];
+                        $varContent = '$' . $tokens[$nextToken]['content'];
                         if (isset($params[$varContent]) === true) {
                             unset($params[$varContent]);
                         }
@@ -158,7 +158,7 @@ class Generic_Sniffs_CodeAnalysis_UnusedFunctionParameterSniff implements PHP_Co
 
                     $varContent = '';
                     if ($stringToken[0] === T_DOLLAR_OPEN_CURLY_BRACES) {
-                        $varContent = '$'.$stringTokens[($stringPtr + 1)][1];
+                        $varContent = '$' . $stringTokens[($stringPtr + 1)][1];
                     } else if ($stringToken[0] === T_VARIABLE) {
                         $varContent = $stringToken[1];
                     }
@@ -173,7 +173,7 @@ class Generic_Sniffs_CodeAnalysis_UnusedFunctionParameterSniff implements PHP_Co
         if ($foundContent === true && count($params) > 0) {
             foreach ($params as $paramName => $position) {
                 $error = 'The method parameter %s is never used';
-                $data  = array($paramName);
+                $data = array($paramName);
                 $phpcsFile->addWarning($error, $position, 'Found', $data);
             }
         }

@@ -54,7 +54,7 @@ class Generic_Sniffs_Debug_JSHintSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -64,7 +64,7 @@ class Generic_Sniffs_Debug_JSHintSniff implements PHP_CodeSniffer_Sniff
     {
         $fileName = $phpcsFile->getFilename();
 
-        $rhinoPath  = PHP_CodeSniffer::getConfigData('rhino_path');
+        $rhinoPath = PHP_CodeSniffer::getConfigData('rhino_path');
         $jshintPath = PHP_CodeSniffer::getConfigData('jshint_path');
         if ($rhinoPath === null || $jshintPath === null) {
             return;
@@ -75,14 +75,14 @@ class Generic_Sniffs_Debug_JSHintSniff implements PHP_CodeSniffer_Sniff
 
         if (is_array($output) === true) {
             foreach ($output as $finding) {
-                $matches    = array();
+                $matches = array();
                 $numMatches = preg_match('/^(.+)\(.+:([0-9]+).*:[0-9]+\)$/', $finding, $matches);
                 if ($numMatches === 0) {
                     continue;
                 }
 
-                $line    = (int) $matches[2];
-                $message = 'jshint says: '.trim($matches[1]);
+                $line = (int)$matches[2];
+                $message = 'jshint says: ' . trim($matches[1]);
                 $phpcsFile->addWarningOnLine($message, $line, 'ExternalTool');
             }
         }

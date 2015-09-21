@@ -9,7 +9,7 @@ function verifySend(phone) {
             phone: phone
         }
     });
-    req.complete(function(returnData){
+    req.complete(function (returnData) {
         data = $.parseJSON(returnData.responseText);
         user.varifyCode = data.overview.varifyCode;
     });

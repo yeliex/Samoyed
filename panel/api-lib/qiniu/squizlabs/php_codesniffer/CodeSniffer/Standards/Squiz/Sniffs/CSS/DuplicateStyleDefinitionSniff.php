@@ -52,7 +52,7 @@ class Squiz_Sniffs_CSS_DuplicateStyleDefinitionSniff implements PHP_CodeSniffer_
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -62,7 +62,7 @@ class Squiz_Sniffs_CSS_DuplicateStyleDefinitionSniff implements PHP_CodeSniffer_
         $tokens = $phpcsFile->getTokens();
 
         // Find the content of each style definition name.
-        $end  = $tokens[$stackPtr]['bracket_closer'];
+        $end = $tokens[$stackPtr]['bracket_closer'];
         $next = $phpcsFile->findNext(T_STYLE, ($stackPtr + 1), $end);
         if ($next === false) {
             // Class definition is empty.
@@ -76,7 +76,7 @@ class Squiz_Sniffs_CSS_DuplicateStyleDefinitionSniff implements PHP_CodeSniffer_
             if (isset($styleNames[$name]) === true) {
                 $first = $styleNames[$name];
                 $error = 'Duplicate style definition found; first defined on line %s';
-                $data  = array($tokens[$first]['line']);
+                $data = array($tokens[$first]['line']);
                 $phpcsFile->addError($error, $next, 'Found', $data);
             } else {
                 $styleNames[$name] = $next;

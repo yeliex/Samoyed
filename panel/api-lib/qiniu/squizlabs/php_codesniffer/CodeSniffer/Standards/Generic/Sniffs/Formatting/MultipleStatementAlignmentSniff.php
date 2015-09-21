@@ -36,9 +36,9 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
     /**
      * If true, an error will be thrown; otherwise a warning.
@@ -77,7 +77,7 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return int
@@ -105,7 +105,7 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return int
@@ -115,12 +115,12 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
         $tokens = $phpcsFile->getTokens();
 
         $assignments = array();
-        $prevAssign  = null;
-        $lastLine    = $tokens[$stackPtr]['line'];
-        $maxPadding  = null;
-        $stopped     = null;
-        $lastCode    = $stackPtr;
-        $lastSemi    = null;
+        $prevAssign = null;
+        $lastLine = $tokens[$stackPtr]['line'];
+        $maxPadding = null;
+        $stopped = null;
+        $lastCode = $stackPtr;
+        $lastSemi = null;
 
         $find = PHP_CodeSniffer_Tokens::$assignmentTokens;
         unset($find[T_DOUBLE_ARROW]);
@@ -179,11 +179,11 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
             // Make sure we wouldn't break our max padding length if we
             // aligned with this statement, or they wouldn't break the max
             // padding length if they aligned with us.
-            $varEnd    = $tokens[($var + 1)]['column'];
+            $varEnd = $tokens[($var + 1)]['column'];
             $assignLen = $tokens[$assign]['length'];
             if ($assign !== $stackPtr) {
                 if (($varEnd + 1) > $assignments[$prevAssign]['assign_col']) {
-                    $padding      = 1;
+                    $padding = 1;
                     $assignColumn = ($varEnd + 1);
                 } else {
                     $padding = ($assignments[$prevAssign]['assign_col'] - $varEnd + $assignments[$prevAssign]['assign_len'] - $assignLen);
@@ -212,20 +212,20 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
                             }
 
                             $newPadding = ($varEnd - $data['var_end'] + $assignLen - $data['assign_len'] + 1);
-                            $assignments[$i]['expected']   = $newPadding;
+                            $assignments[$i]['expected'] = $newPadding;
                             $assignments[$i]['assign_col'] = ($data['var_end'] + $newPadding);
                         }
 
-                        $padding      = 1;
+                        $padding = 1;
                         $assignColumn = ($varEnd + 1);
                     }
                 } else if ($padding > $assignments[$maxPadding]['expected']) {
                     $maxPadding = $assign;
                 }//end if
             } else {
-                $padding      = 1;
+                $padding = 1;
                 $assignColumn = ($varEnd + 1);
-                $maxPadding   = $assign;
+                $maxPadding = $assign;
             }//end if
 
             $found = 0;
@@ -238,14 +238,14 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
             }
 
             $assignments[$assign] = array(
-                                     'var_end'    => $varEnd,
-                                     'assign_len' => $assignLen,
-                                     'assign_col' => $assignColumn,
-                                     'expected'   => $padding,
-                                     'found'      => $found,
-                                    );
+                'var_end' => $varEnd,
+                'assign_len' => $assignLen,
+                'assign_col' => $assignColumn,
+                'expected' => $padding,
+                'found' => $found,
+            );
 
-            $lastLine   = $tokens[$assign]['line'];
+            $lastLine = $tokens[$assign]['line'];
             $prevAssign = $assign;
         }//end for
 
@@ -259,7 +259,7 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
                 continue;
             }
 
-            $expectedText = $data['expected'].' space';
+            $expectedText = $data['expected'] . ' space';
             if ($data['expected'] !== 1) {
                 $expectedText .= 's';
             }
@@ -267,29 +267,29 @@ class Generic_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP_C
             if ($data['found'] === null) {
                 $foundText = 'a new line';
             } else {
-                $foundText = $data['found'].' space';
+                $foundText = $data['found'] . ' space';
                 if ($data['found'] !== 1) {
                     $foundText .= 's';
                 }
             }
 
             if (count($assignments) === 1) {
-                $type  = 'Incorrect';
+                $type = 'Incorrect';
                 $error = 'Equals sign not aligned correctly; expected %s but found %s';
             } else {
-                $type  = 'NotSame';
+                $type = 'NotSame';
                 $error = 'Equals sign not aligned with surrounding assignments; expected %s but found %s';
             }
 
             $errorData = array(
-                          $expectedText,
-                          $foundText,
-                         );
+                $expectedText,
+                $foundText,
+            );
 
             if ($this->error === true) {
                 $fix = $phpcsFile->addFixableError($error, $assignment, $type, $errorData);
             } else {
-                $fix = $phpcsFile->addFixableWarning($error, $assignment, $type.'Warning', $errorData);
+                $fix = $phpcsFile->addFixableWarning($error, $assignment, $type . 'Warning', $errorData);
             }
 
             $errorGenerated = true;

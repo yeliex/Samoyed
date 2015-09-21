@@ -37,9 +37,9 @@ class Generic_Sniffs_Functions_CallTimePassByReferenceSniff implements PHP_CodeS
     public function register()
     {
         return array(
-                T_STRING,
-                T_VARIABLE,
-               );
+            T_STRING,
+            T_VARIABLE,
+        );
 
     }//end register()
 
@@ -48,7 +48,7 @@ class Generic_Sniffs_Functions_CallTimePassByReferenceSniff implements PHP_CodeS
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -62,7 +62,7 @@ class Generic_Sniffs_Functions_CallTimePassByReferenceSniff implements PHP_CodeS
         // "myFunction" is T_STRING but we should skip because it is not a
         // function or method *call*.
         $functionName = $stackPtr;
-        $findTokens   = array_merge(
+        $findTokens = array_merge(
             PHP_CodeSniffer_Tokens::$emptyTokens,
             array(T_BITWISE_AND)
         );
@@ -107,7 +107,7 @@ class Generic_Sniffs_Functions_CallTimePassByReferenceSniff implements PHP_CodeS
 
             // Make sure the variable belongs directly to this function call
             // and is not inside a nested function call or array.
-            $brackets    = $tokens[$nextSeparator]['nested_parenthesis'];
+            $brackets = $tokens[$nextSeparator]['nested_parenthesis'];
             $lastBracket = array_pop($brackets);
             if ($lastBracket !== $closeBracket) {
                 continue;
@@ -135,18 +135,18 @@ class Generic_Sniffs_Functions_CallTimePassByReferenceSniff implements PHP_CodeS
                 // positives to not identifying a pass-by-reference call at all.
                 // The blacklist may not yet be complete.
                 switch ($tokens[$tokenBefore]['code']) {
-                case T_VARIABLE:
-                case T_CLOSE_PARENTHESIS:
-                case T_LNUMBER:
-                    // In these cases T_BITWISE_AND represents
-                    // the bitwise and operator.
-                    continue;
+                    case T_VARIABLE:
+                    case T_CLOSE_PARENTHESIS:
+                    case T_LNUMBER:
+                        // In these cases T_BITWISE_AND represents
+                        // the bitwise and operator.
+                        continue;
 
-                default:
-                    // T_BITWISE_AND represents a pass-by-reference.
-                    $error = 'Call-time pass-by-reference calls are prohibited';
-                    $phpcsFile->addError($error, $tokenBefore, 'NotAllowed');
-                    break;
+                    default:
+                        // T_BITWISE_AND represents a pass-by-reference.
+                        $error = 'Call-time pass-by-reference calls are prohibited';
+                        $phpcsFile->addError($error, $tokenBefore, 'NotAllowed');
+                        break;
                 }
             }//end if
         }//end while

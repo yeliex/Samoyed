@@ -1,12 +1,12 @@
 <documentation title="Useless Overriding Methods">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Methods should not be defined that only call the parent method.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: A method that extends functionality on a parent method.">
-        <![CDATA[
+            <![CDATA[
 final class Foo
 {
     public function bar()
@@ -18,7 +18,7 @@ final class Foo
         ]]>
         </code>
         <code title="Invalid: An overriding method that only calls the parent.">
-        <![CDATA[
+            <![CDATA[
 final class Foo
 {
     public function bar()

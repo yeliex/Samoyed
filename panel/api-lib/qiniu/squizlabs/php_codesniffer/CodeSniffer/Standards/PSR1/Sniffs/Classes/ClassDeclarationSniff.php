@@ -37,10 +37,10 @@ class PSR1_Sniffs_Classes_ClassDeclarationSniff implements PHP_CodeSniffer_Sniff
     public function register()
     {
         return array(
-                T_CLASS,
-                T_INTERFACE,
-                T_TRAIT,
-               );
+            T_CLASS,
+            T_INTERFACE,
+            T_TRAIT,
+        );
 
     }//end register()
 
@@ -49,7 +49,7 @@ class PSR1_Sniffs_Classes_ClassDeclarationSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param integer              $stackPtr  The position of the current token in
+     * @param integer $stackPtr The position of the current token in
      *                                        the token stack.
      *
      * @return void

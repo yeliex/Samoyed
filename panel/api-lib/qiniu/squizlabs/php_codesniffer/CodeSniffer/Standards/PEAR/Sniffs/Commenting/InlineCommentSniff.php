@@ -47,7 +47,7 @@ class PEAR_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -59,12 +59,12 @@ class PEAR_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sniff
         if ($tokens[$stackPtr]['content']{0} === '#') {
             $phpcsFile->recordMetric($stackPtr, 'Inline comment style', '# ...');
 
-            $error  = 'Perl-style comments are not allowed. Use "// Comment."';
+            $error = 'Perl-style comments are not allowed. Use "// Comment."';
             $error .= ' or "/* comment */" instead.';
-            $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'WrongStyle');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'WrongStyle');
             if ($fix === true) {
                 $newComment = ltrim($tokens[$stackPtr]['content'], '# ');
-                $newComment = '// '.$newComment;
+                $newComment = '// ' . $newComment;
                 $phpcsFile->fixer->replaceToken($stackPtr, $newComment);
             }
         } else if ($tokens[$stackPtr]['content']{0} === '/'

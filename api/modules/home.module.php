@@ -1,11 +1,14 @@
 <?php
 
-class Home{
-    public function __construct(){
+class Home
+{
+    public function __construct()
+    {
 
     }
 
-    public function say(){
+    public function say()
+    {
         echo "hello class.";
     }
 }

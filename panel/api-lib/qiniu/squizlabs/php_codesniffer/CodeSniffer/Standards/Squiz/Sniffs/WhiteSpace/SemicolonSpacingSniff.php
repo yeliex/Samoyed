@@ -36,9 +36,9 @@ class Squiz_Sniffs_WhiteSpace_SemicolonSpacingSniff implements PHP_CodeSniffer_S
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
 
     /**
@@ -57,7 +57,7 @@ class Squiz_Sniffs_WhiteSpace_SemicolonSpacingSniff implements PHP_CodeSniffer_S
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -77,13 +77,13 @@ class Squiz_Sniffs_WhiteSpace_SemicolonSpacingSniff implements PHP_CodeSniffer_S
             return;
         }
 
-        $expected = $tokens[$nonSpace]['content'].';';
-        $found    = $phpcsFile->getTokensAsString($nonSpace, ($stackPtr - $nonSpace)).';';
-        $error    = 'Space found before semicolon; expected "%s" but found "%s"';
-        $data     = array(
-                     $expected,
-                     $found,
-                    );
+        $expected = $tokens[$nonSpace]['content'] . ';';
+        $found = $phpcsFile->getTokensAsString($nonSpace, ($stackPtr - $nonSpace)) . ';';
+        $error = 'Space found before semicolon; expected "%s" but found "%s"';
+        $data = array(
+            $expected,
+            $found,
+        );
 
         $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
         if ($fix === true) {

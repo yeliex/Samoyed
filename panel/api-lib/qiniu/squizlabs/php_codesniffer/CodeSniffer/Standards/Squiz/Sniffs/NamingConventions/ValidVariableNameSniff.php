@@ -40,39 +40,39 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
      * @var array
      */
     private $_ignore = array(
-                        T_WHITESPACE,
-                        T_COMMENT,
-                       );
+        T_WHITESPACE,
+        T_COMMENT,
+    );
 
 
     /**
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
      */
     protected function processVariable(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens  = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $varName = ltrim($tokens[$stackPtr]['content'], '$');
 
         $phpReservedVars = array(
-                            '_SERVER',
-                            '_GET',
-                            '_POST',
-                            '_REQUEST',
-                            '_SESSION',
-                            '_ENV',
-                            '_COOKIE',
-                            '_FILES',
-                            'GLOBALS',
-                            'http_response_header',
-                            'HTTP_RAW_POST_DATA',
-                            'php_errormsg',
-                           );
+            '_SERVER',
+            '_GET',
+            '_POST',
+            '_REQUEST',
+            '_SESSION',
+            '_ENV',
+            '_COOKIE',
+            '_FILES',
+            'GLOBALS',
+            'http_response_header',
+            'HTTP_RAW_POST_DATA',
+            'php_errormsg',
+        );
 
         // If it's a php reserved var, then its ok.
         if (in_array($varName, $phpReservedVars) === true) {
@@ -98,7 +98,7 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
 
                     if (PHP_CodeSniffer::isCamelCaps($objVarName, false, true, false) === false) {
                         $error = 'Variable "%s" is not in valid camel caps format';
-                        $data  = array($originalVarName);
+                        $data = array($originalVarName);
                         $phpcsFile->addError($error, $var, 'NotCamelCaps', $data);
                     }
                 }//end if
@@ -126,7 +126,7 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
 
         if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false) {
             $error = 'Variable "%s" is not in valid camel caps format';
-            $data  = array($originalVarName);
+            $data = array($originalVarName);
             $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
         }
 
@@ -137,7 +137,7 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
      * Processes class member variables.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -146,7 +146,7 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
     {
         $tokens = $phpcsFile->getTokens();
 
-        $varName     = ltrim($tokens[$stackPtr]['content'], '$');
+        $varName = ltrim($tokens[$stackPtr]['content'], '$');
         $memberProps = $phpcsFile->getMemberProperties($stackPtr);
         if (empty($memberProps) === true) {
             // Couldn't get any info about this variable, which
@@ -156,16 +156,16 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
             return;
         }
 
-        $public    = ($memberProps['scope'] !== 'private');
+        $public = ($memberProps['scope'] !== 'private');
         $errorData = array($varName);
 
         if ($public === true) {
             if (substr($varName, 0, 1) === '_') {
                 $error = '%s member variable "%s" must not contain a leading underscore';
-                $data  = array(
-                          ucfirst($memberProps['scope']),
-                          $errorData[0],
-                         );
+                $data = array(
+                    ucfirst($memberProps['scope']),
+                    $errorData[0],
+                );
                 $phpcsFile->addError($error, $stackPtr, 'PublicHasUnderscore', $data);
                 return;
             }
@@ -189,7 +189,7 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
      * Processes the variable found within a double quoted string.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the double quoted
+     * @param int $stackPtr The position of the double quoted
      *                                        string.
      *
      * @return void
@@ -199,19 +199,19 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
         $tokens = $phpcsFile->getTokens();
 
         $phpReservedVars = array(
-                            '_SERVER',
-                            '_GET',
-                            '_POST',
-                            '_REQUEST',
-                            '_SESSION',
-                            '_ENV',
-                            '_COOKIE',
-                            '_FILES',
-                            'GLOBALS',
-                            'http_response_header',
-                            'HTTP_RAW_POST_DATA',
-                            'php_errormsg',
-                           );
+            '_SERVER',
+            '_GET',
+            '_POST',
+            '_REQUEST',
+            '_SESSION',
+            '_ENV',
+            '_COOKIE',
+            '_FILES',
+            'GLOBALS',
+            'http_response_header',
+            'HTTP_RAW_POST_DATA',
+            'php_errormsg',
+        );
 
         if (preg_match_all('|[^\\\]\${?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)|', $tokens[$stackPtr]['content'], $matches) !== 0) {
             foreach ($matches[1] as $varName) {
@@ -222,7 +222,7 @@ class Squiz_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSnif
 
                 if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false) {
                     $error = 'Variable "%s" is not in valid camel caps format';
-                    $data  = array($varName);
+                    $data = array($varName);
                     $phpcsFile->addError($error, $stackPtr, 'StringNotCamelCaps', $data);
                 }
             }

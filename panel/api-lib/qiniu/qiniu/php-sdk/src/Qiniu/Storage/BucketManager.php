@@ -184,7 +184,7 @@ final class BucketManager
     {
         $resource = \Qiniu\entry($bucket, $key);
         $encode_mime = \Qiniu\base64_urlSafeEncode($mime);
-        $path = '/chgm/' . $resource . '/mime/' .$encode_mime;
+        $path = '/chgm/' . $resource . '/mime/' . $encode_mime;
         list($_, $error) = $this->rsPost($path);
         return $error;
     }

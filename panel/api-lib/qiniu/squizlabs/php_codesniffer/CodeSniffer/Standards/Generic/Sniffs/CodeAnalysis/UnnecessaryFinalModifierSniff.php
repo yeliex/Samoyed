@@ -57,7 +57,7 @@ class Generic_Sniffs_CodeAnalysis_UnnecessaryFinalModifierSniff implements PHP_C
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -65,7 +65,7 @@ class Generic_Sniffs_CodeAnalysis_UnnecessaryFinalModifierSniff implements PHP_C
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip for-statements without body.
         if (isset($token['scope_opener']) === false) {
@@ -81,7 +81,7 @@ class Generic_Sniffs_CodeAnalysis_UnnecessaryFinalModifierSniff implements PHP_C
         }
 
         $next = ++$token['scope_opener'];
-        $end  = --$token['scope_closer'];
+        $end = --$token['scope_closer'];
 
         for (; $next <= $end; ++$next) {
             if ($tokens[$next]['code'] === T_FINAL) {

@@ -1,12 +1,12 @@
 <documentation title="Unused function parameters">
     <standard>
-    <![CDATA[
+        <![CDATA[
     All parameters in a functions signature should be used within the function.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: All the parameters are used.">
-        <![CDATA[
+            <![CDATA[
 function addThree($a, $b, $c)
 {
     return <em>$a + $b + $c</em>;
@@ -14,7 +14,7 @@ function addThree($a, $b, $c)
         ]]>
         </code>
         <code title="Invalid: One of the parameters is not being used.">
-        <![CDATA[
+            <![CDATA[
 function addThree($a, $b, $c)
 {
     return <em>$a + $b</em>;

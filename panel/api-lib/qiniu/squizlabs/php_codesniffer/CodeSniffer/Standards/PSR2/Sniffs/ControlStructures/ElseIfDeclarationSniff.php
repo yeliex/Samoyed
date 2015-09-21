@@ -37,9 +37,9 @@ class PSR2_Sniffs_ControlStructures_ElseIfDeclarationSniff implements PHP_CodeSn
     public function register()
     {
         return array(
-                T_ELSE,
-                T_ELSEIF,
-               );
+            T_ELSE,
+            T_ELSEIF,
+        );
 
     }//end register()
 
@@ -48,7 +48,7 @@ class PSR2_Sniffs_ControlStructures_ElseIfDeclarationSniff implements PHP_CodeSn
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -66,7 +66,7 @@ class PSR2_Sniffs_ControlStructures_ElseIfDeclarationSniff implements PHP_CodeSn
         if ($tokens[$next]['code'] === T_IF) {
             $phpcsFile->recordMetric($stackPtr, 'Use of ELSE IF or ELSEIF', 'else if');
             $error = 'Usage of ELSE IF is discouraged; use ELSEIF instead';
-            $fix   = $phpcsFile->addFixableWarning($error, $stackPtr, 'NotAllowed');
+            $fix = $phpcsFile->addFixableWarning($error, $stackPtr, 'NotAllowed');
 
             if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();

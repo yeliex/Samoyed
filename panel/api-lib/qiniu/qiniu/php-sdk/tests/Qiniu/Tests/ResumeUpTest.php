@@ -8,6 +8,7 @@ class ResumeUpTest extends \PHPUnit_Framework_TestCase
 {
     protected $bucketName;
     protected $auth;
+
     protected function setUp()
     {
         global $bucketName;
@@ -22,7 +23,7 @@ class ResumeUpTest extends \PHPUnit_Framework_TestCase
         $key = 'resumePutFile4ML';
         $upManager = new UploadManager();
         $token = $this->auth->uploadToken($this->bucketName, $key);
-        $tempFile = qiniuTempFile(4*1024*1024+10);
+        $tempFile = qiniuTempFile(4 * 1024 * 1024 + 10);
         list($ret, $error) = $upManager->putFile($token, $key, $tempFile);
         $this->assertNull($error);
         $this->assertNotNull($ret['hash']);

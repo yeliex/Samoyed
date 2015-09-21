@@ -55,8 +55,8 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
      * Processes the function tokens within the class.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
-     * @param int                  $currScope The current scope opener token.
+     * @param int $stackPtr The position where the token was found.
+     * @param int $currScope The current scope opener token.
      *
      * @return void
      */
@@ -68,7 +68,7 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
         if ($tokens[$calledClassName]['code'] === T_SELF) {
             if (strtolower($tokens[$calledClassName]['content']) !== $tokens[$calledClassName]['content']) {
                 $error = 'Must use "self::" for local static member reference; found "%s::"';
-                $data  = array($tokens[$calledClassName]['content']);
+                $data = array($tokens[$calledClassName]['content']);
                 $phpcsFile->addError($error, $calledClassName, 'IncorrectCase', $data);
                 return;
             }
@@ -76,12 +76,12 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
             // If the class is called with a namespace prefix, build fully qualified
             // namespace calls for both current scope class and requested class.
             if ($tokens[($calledClassName - 1)]['code'] === T_NS_SEPARATOR) {
-                $declarationName         = $this->getDeclarationNameWithNamespace($tokens, $calledClassName);
-                $declarationName         = substr($declarationName, 1);
-                $fullQualifiedClassName  = $this->getNamespaceOfScope($phpcsFile, $currScope);
-                $fullQualifiedClassName .= '\\'.$phpcsFile->getDeclarationName($currScope);
+                $declarationName = $this->getDeclarationNameWithNamespace($tokens, $calledClassName);
+                $declarationName = substr($declarationName, 1);
+                $fullQualifiedClassName = $this->getNamespaceOfScope($phpcsFile, $currScope);
+                $fullQualifiedClassName .= '\\' . $phpcsFile->getDeclarationName($currScope);
             } else {
-                $declarationName        = $phpcsFile->getDeclarationName($currScope);
+                $declarationName = $phpcsFile->getDeclarationName($currScope);
                 $fullQualifiedClassName = $tokens[$calledClassName]['content'];
             }
 
@@ -90,7 +90,7 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
                 // except if being used inside a closure.
                 if ($phpcsFile->hasCondition($stackPtr, T_CLOSURE) === false) {
                     $error = 'Must use "self::" for local static member reference';
-                    $fix   = $phpcsFile->addFixableError($error, $calledClassName, 'NotUsed');
+                    $fix = $phpcsFile->addFixableError($error, $calledClassName, 'NotUsed');
 
                     if ($fix === true) {
                         $prev = $phpcsFile->findPrevious(array(T_NS_SEPARATOR, T_STRING), ($stackPtr - 1), null, true);
@@ -111,8 +111,8 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
         if ($tokens[($stackPtr - 1)]['code'] === T_WHITESPACE) {
             $found = strlen($tokens[($stackPtr - 1)]['content']);
             $error = 'Expected 0 spaces before double colon; %s found';
-            $data  = array($found);
-            $fix   = $phpcsFile->addFixableError($error, $calledClassName, 'SpaceBefore', $data);
+            $data = array($found);
+            $fix = $phpcsFile->addFixableError($error, $calledClassName, 'SpaceBefore', $data);
 
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($stackPtr - 1), '');
@@ -122,8 +122,8 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
         if ($tokens[($stackPtr + 1)]['code'] === T_WHITESPACE) {
             $found = strlen($tokens[($stackPtr + 1)]['content']);
             $error = 'Expected 0 spaces after double colon; %s found';
-            $data  = array($found);
-            $fix   = $phpcsFile->addFixableError($error, $calledClassName, 'SpaceAfter', $data);
+            $data = array($found);
+            $fix = $phpcsFile->addFixableError($error, $calledClassName, 'SpaceAfter', $data);
 
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
@@ -136,14 +136,14 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
     /**
      * Returns the declaration names for classes/interfaces/functions with a namespace.
      *
-     * @param array $tokens   Token stack for this file
-     * @param int   $stackPtr The position where the namespace building will start.
+     * @param array $tokens Token stack for this file
+     * @param int $stackPtr The position where the namespace building will start.
      *
      * @return string
      */
     protected function getDeclarationNameWithNamespace(array $tokens, $stackPtr)
     {
-        $nameParts      = array();
+        $nameParts = array();
         $currentPointer = $stackPtr;
         while ($tokens[$currentPointer]['code'] === T_NS_SEPARATOR
             || $tokens[$currentPointer]['code'] === T_STRING
@@ -162,14 +162,14 @@ class Squiz_Sniffs_Classes_SelfMemberReferenceSniff extends PHP_CodeSniffer_Stan
      * Returns the namespace declaration of a file.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the search for the
+     * @param int $stackPtr The position where the search for the
      *                                        namespace declaration will start.
      *
      * @return string
      */
     protected function getNamespaceOfScope(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $namespace            = '\\';
+        $namespace = '\\';
         $namespaceDeclaration = $phpcsFile->findPrevious(T_NAMESPACE, $stackPtr);
 
         if ($namespaceDeclaration !== false) {

@@ -48,7 +48,7 @@ class Squiz_Sniffs_PHP_DisallowMultipleAssignmentsSniff implements PHP_CodeSniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -133,7 +133,7 @@ class Squiz_Sniffs_PHP_DisallowMultipleAssignmentsSniff implements PHP_CodeSniff
         }
 
         // Make sure this variable is the first thing in the statement.
-        $varLine  = $tokens[$varToken]['line'];
+        $varLine = $tokens[$varToken]['line'];
         $prevLine = 0;
         for ($i = ($varToken - 1); $i >= 0; $i--) {
             if ($tokens[$i]['code'] === T_SEMICOLON) {

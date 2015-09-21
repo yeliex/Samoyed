@@ -1,12 +1,12 @@
 <documentation title="One Class Per File">
     <standard>
-    <![CDATA[
+        <![CDATA[
     There should only be one class defined in a file.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Only one class in the file.">
-        <![CDATA[
+            <![CDATA[
 <?php
 <em>class Foo</em>
 {
@@ -14,7 +14,7 @@
         ]]>
         </code>
         <code title="Invalid: Multiple classes defined in one file.">
-        <![CDATA[
+            <![CDATA[
 <?php
 <em>class Foo</em>
 {

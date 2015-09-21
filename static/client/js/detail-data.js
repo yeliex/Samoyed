@@ -82,9 +82,9 @@ function getData(bid) {
     req.complete(function (returnData) {
         var data = returnData.responseText;
         dataTemp = $.parseJSON(data);
-        if(dataTemp.status!=="success"){
-            alert("获取数据失败: "+dataTemp.error_info);
-            window.location.href = location.origin+"/list";
+        if (dataTemp.status !== "success") {
+            alert("获取数据失败: " + dataTemp.error_info);
+            window.location.href = location.origin + "/list";
             return;
         }
     });

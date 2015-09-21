@@ -43,7 +43,7 @@ class MySource_Sniffs_Objects_DisallowNewWidgetSniff implements PHP_CodeSniffer_
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -59,8 +59,8 @@ class MySource_Sniffs_Objects_DisallowNewWidgetSniff implements PHP_CodeSniffer_
 
         if (substr(strtolower($tokens[$className]['content']), -10) === 'widgettype') {
             $widgetType = substr($tokens[$className]['content'], 0, -10);
-            $error      = 'Manual creation of widget objects is banned; use Widget::getWidget(\'%s\'); instead';
-            $data       = array($widgetType);
+            $error = 'Manual creation of widget objects is banned; use Widget::getWidget(\'%s\'); instead';
+            $data = array($widgetType);
             $phpcsFile->addError($error, $stackPtr, 'Found', $data);
         }
 

@@ -131,7 +131,7 @@ function uploadSuccess(info, target, serial) {
         case 6:
         {
             // 编辑:上传其他图片
-            onEditNewImageSave(url,serial);
+            onEditNewImageSave(url, serial);
             break;
         }
     }

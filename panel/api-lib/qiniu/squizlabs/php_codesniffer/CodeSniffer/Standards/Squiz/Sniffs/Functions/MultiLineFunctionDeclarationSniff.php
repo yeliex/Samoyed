@@ -39,18 +39,18 @@ class Squiz_Sniffs_Functions_MultiLineFunctionDeclarationSniff extends PEAR_Snif
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
 
     /**
      * Processes multi-line declarations.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
-     * @param array                $tokens    The stack of tokens that make up
+     * @param array $tokens The stack of tokens that make up
      *                                        the file.
      *
      * @return void
@@ -88,17 +88,17 @@ class Squiz_Sniffs_Functions_MultiLineFunctionDeclarationSniff extends PEAR_Snif
     /**
      * Processes the contents of a single set of brackets.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile   The file being scanned.
-     * @param int                  $openBracket The position of the open bracket
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int $openBracket The position of the open bracket
      *                                          in the stack passed in $tokens.
-     * @param array                $tokens      The stack of tokens that make up
+     * @param array $tokens The stack of tokens that make up
      *                                          the file.
-     * @param string               $type        The type of the token the brackets
+     * @param string $type The type of the token the brackets
      *                                          belong to (function or use).
      *
      * @return void
      */
-    public function processBracket(PHP_CodeSniffer_File $phpcsFile, $openBracket, $tokens, $type='function')
+    public function processBracket(PHP_CodeSniffer_File $phpcsFile, $openBracket, $tokens, $type = 'function')
     {
         $errorPrefix = '';
         if ($type === 'use') {
@@ -111,8 +111,8 @@ class Squiz_Sniffs_Functions_MultiLineFunctionDeclarationSniff extends PEAR_Snif
         if ($tokens[$openBracket]['line'] !== $tokens[$closeBracket]['line']) {
             $next = $phpcsFile->findNext(T_WHITESPACE, ($openBracket + 1), null, true);
             if ($tokens[$next]['line'] !== ($tokens[$openBracket]['line'] + 1)) {
-                $error = 'The first parameter of a multi-line '.$type.' declaration must be on the line after the opening bracket';
-                $fix   = $phpcsFile->addFixableError($error, $next, $errorPrefix.'FirstParamSpacing');
+                $error = 'The first parameter of a multi-line ' . $type . ' declaration must be on the line after the opening bracket';
+                $fix = $phpcsFile->addFixableError($error, $next, $errorPrefix . 'FirstParamSpacing');
                 if ($fix === true) {
                     $phpcsFile->fixer->addNewline($openBracket);
                 }
@@ -139,8 +139,8 @@ class Squiz_Sniffs_Functions_MultiLineFunctionDeclarationSniff extends PEAR_Snif
 
             $next = $phpcsFile->findNext(T_WHITESPACE, ($i + 1), null, true);
             if ($tokens[$next]['line'] !== ($tokens[$i]['line'] + 1)) {
-                $error = 'Multi-line '.$type.' declarations must define one parameter per line';
-                $fix   = $phpcsFile->addFixableError($error, $next, $errorPrefix.'OneParamPerLine');
+                $error = 'Multi-line ' . $type . ' declarations must define one parameter per line';
+                $fix = $phpcsFile->addFixableError($error, $next, $errorPrefix . 'OneParamPerLine');
                 if ($fix === true) {
                     $phpcsFile->fixer->addNewline($i);
                 }

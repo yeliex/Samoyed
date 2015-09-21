@@ -1,17 +1,17 @@
 <documentation title="Object Operator Spacing">
     <standard>
-    <![CDATA[
+        <![CDATA[
     The object operator (->) should not have any space around it.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: No spaces around the object operator.">
-        <![CDATA[
+            <![CDATA[
 $foo<em></em>-><em></em>bar();
 ]]>
         </code>
         <code title="Invalid: Whitespace surrounding the object operator.">
-        <![CDATA[
+            <![CDATA[
 $foo<em> </em>-><em> </em>bar();
 ]]>
         </code>

@@ -47,7 +47,7 @@ class Squiz_Sniffs_Commenting_EmptyCatchCommentSniff implements PHP_CodeSniffer_
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile All the tokens found in the document.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -56,7 +56,7 @@ class Squiz_Sniffs_Commenting_EmptyCatchCommentSniff implements PHP_CodeSniffer_
     {
         $tokens = $phpcsFile->getTokens();
 
-        $scopeStart   = $tokens[$stackPtr]['scope_opener'];
+        $scopeStart = $tokens[$stackPtr]['scope_opener'];
         $firstContent = $phpcsFile->findNext(T_WHITESPACE, ($scopeStart + 1), $tokens[$stackPtr]['scope_closer'], true);
 
         if ($firstContent === false) {

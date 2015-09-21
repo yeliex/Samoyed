@@ -54,15 +54,15 @@ abstract class PHP_CodeSniffer_DocGenerators_Generator
      *
      * @param string $standard The name of the coding standard to generate
      *                         docs for.
-     * @param array  $sniffs   An array of sniffs that we are limiting the
+     * @param array $sniffs An array of sniffs that we are limiting the
      *                         generated docs to.
      *
      * @see generate()
      */
-    public function __construct($standard, array $sniffs=array())
+    public function __construct($standard, array $sniffs = array())
     {
         $this->_standard = $standard;
-        $this->_sniffs   = $sniffs;
+        $this->_sniffs = $sniffs;
 
     }//end __construct()
 
@@ -138,20 +138,20 @@ abstract class PHP_CodeSniffer_DocGenerators_Generator
         $standardFiles = array();
         foreach ($sniffs as $className => $sniffClass) {
             $object = new ReflectionObject($sniffClass);
-            $sniff  = $object->getFilename();
+            $sniff = $object->getFilename();
             if (empty($this->_sniffs) === false) {
                 // We are limiting the docs to certain sniffs only, so filter
                 // out any unwanted sniffs.
-                $parts     = explode('_', $className);
-                $sniffName = $parts[0].'.'.$parts[2].'.'.substr($parts[3], 0, -5);
+                $parts = explode('_', $className);
+                $sniffName = $parts[0] . '.' . $parts[2] . '.' . substr($parts[3], 0, -5);
                 if (in_array($sniffName, $this->_sniffs) === false) {
                     continue;
                 }
             }
 
             $standardFile = str_replace(
-                DIRECTORY_SEPARATOR.'Sniffs'.DIRECTORY_SEPARATOR,
-                DIRECTORY_SEPARATOR.'Docs'.DIRECTORY_SEPARATOR,
+                DIRECTORY_SEPARATOR . 'Sniffs' . DIRECTORY_SEPARATOR,
+                DIRECTORY_SEPARATOR . 'Docs' . DIRECTORY_SEPARATOR,
                 $sniff
             );
             $standardFile = str_replace('Sniff.php', 'Standard.xml', $standardFile);

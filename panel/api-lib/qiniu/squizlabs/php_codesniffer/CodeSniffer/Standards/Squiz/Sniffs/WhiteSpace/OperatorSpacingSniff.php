@@ -36,9 +36,9 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
     /**
      * Allow newlines instead of spaces.
@@ -56,12 +56,12 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
     public function register()
     {
         $comparison = PHP_CodeSniffer_Tokens::$comparisonTokens;
-        $operators  = PHP_CodeSniffer_Tokens::$operators;
+        $operators = PHP_CodeSniffer_Tokens::$operators;
         $assignment = PHP_CodeSniffer_Tokens::$assignmentTokens;
-        $inlineIf   = array(
-                       T_INLINE_THEN,
-                       T_INLINE_ELSE,
-                      );
+        $inlineIf = array(
+            T_INLINE_THEN,
+            T_INLINE_ELSE,
+        );
 
         return array_unique(
             array_merge($comparison, $operators, $assignment, $inlineIf)
@@ -74,7 +74,7 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being checked.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -89,7 +89,7 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
         ) {
             if (isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
                 $parenthesis = array_keys($tokens[$stackPtr]['nested_parenthesis']);
-                $bracket     = array_pop($parenthesis);
+                $bracket = array_pop($parenthesis);
                 if (isset($tokens[$bracket]['parenthesis_owner']) === true) {
                     $function = $tokens[$bracket]['parenthesis_owner'];
                     if ($tokens[$function]['code'] === T_FUNCTION
@@ -112,11 +112,11 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
 
         // Skip short ternary such as: "$foo = $bar ?: true;".
         if (($tokens[$stackPtr]['code'] === T_INLINE_THEN
-            && $tokens[($stackPtr + 1)]['code'] === T_INLINE_ELSE)
+                && $tokens[($stackPtr + 1)]['code'] === T_INLINE_ELSE)
             || ($tokens[($stackPtr - 1)]['code'] === T_INLINE_THEN
-            && $tokens[$stackPtr]['code'] === T_INLINE_ELSE)
+                && $tokens[$stackPtr]['code'] === T_INLINE_ELSE)
         ) {
-                return;
+            return;
         }
 
         if ($tokens[$stackPtr]['code'] === T_BITWISE_AND) {
@@ -129,7 +129,7 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
             // Check there is one space before the & operator.
             if ($tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
                 $error = 'Expected 1 space before "&" operator; 0 found';
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBeforeAmp');
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBeforeAmp');
                 if ($fix === true) {
                     $phpcsFile->fixer->addContentBefore($stackPtr, ' ');
                 }
@@ -147,8 +147,8 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
                     && ($found !== 'newline' || $this->ignoreNewlines === false)
                 ) {
                     $error = 'Expected 1 space before "&" operator; %s found';
-                    $data  = array($found);
-                    $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBeforeAmp', $data);
+                    $data = array($found);
+                    $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBeforeAmp', $data);
                     if ($fix === true) {
                         $phpcsFile->fixer->replaceToken(($stackPtr - 1), ' ');
                     }
@@ -158,7 +158,7 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
             // Check there is one space after the & operator.
             if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
                 $error = 'Expected 1 space after "&" operator; 0 found';
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfterAmp');
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfterAmp');
                 if ($fix === true) {
                     $phpcsFile->fixer->addContent($stackPtr, ' ');
                 }
@@ -176,8 +176,8 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
                     && ($found !== 'newline' || $this->ignoreNewlines === false)
                 ) {
                     $error = 'Expected 1 space after "&" operator; %s found';
-                    $data  = array($found);
-                    $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterAmp', $data);
+                    $data = array($found);
+                    $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterAmp', $data);
                     if ($fix === true) {
                         $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
                     }
@@ -219,15 +219,15 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
             // A list of tokens that indicate that the token is not
             // part of an arithmetic operation.
             $invalidTokens = array(
-                              T_COMMA               => true,
-                              T_OPEN_PARENTHESIS    => true,
-                              T_OPEN_SQUARE_BRACKET => true,
-                              T_DOUBLE_ARROW        => true,
-                              T_COLON               => true,
-                              T_INLINE_THEN         => true,
-                              T_INLINE_ELSE         => true,
-                              T_CASE                => true,
-                             );
+                T_COMMA => true,
+                T_OPEN_PARENTHESIS => true,
+                T_OPEN_SQUARE_BRACKET => true,
+                T_DOUBLE_ARROW => true,
+                T_COLON => true,
+                T_INLINE_THEN => true,
+                T_INLINE_ELSE => true,
+                T_CASE => true,
+            );
 
             if (isset($invalidTokens[$tokens[$prev]['code']]) === true) {
                 // Just trying to use a negative value; eg. myFunction($var, -2).
@@ -239,7 +239,7 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
 
         if ($tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
             $error = "Expected 1 space before \"$operator\"; 0 found";
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBefore');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBefore');
             if ($fix === true) {
                 $phpcsFile->fixer->addContentBefore($stackPtr, ' ');
             }
@@ -259,11 +259,11 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
                 && ($found !== 'newline' || $this->ignoreNewlines === false)
             ) {
                 $error = 'Expected 1 space before "%s"; %s found';
-                $data  = array(
-                          $operator,
-                          $found,
-                         );
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBefore', $data);
+                $data = array(
+                    $operator,
+                    $found,
+                );
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBefore', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->beginChangeset();
                     if ($found === 'newline') {
@@ -282,7 +282,7 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
 
         if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
             $error = "Expected 1 space after \"$operator\"; 0 found";
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfter');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfter');
             if ($fix === true) {
                 $phpcsFile->fixer->addContent($stackPtr, ' ');
             }
@@ -300,11 +300,11 @@ class Squiz_Sniffs_WhiteSpace_OperatorSpacingSniff implements PHP_CodeSniffer_Sn
                 && ($found !== 'newline' || $this->ignoreNewlines === false)
             ) {
                 $error = 'Expected 1 space after "%s"; %s found';
-                $data  = array(
-                          $operator,
-                          $found,
-                         );
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfter', $data);
+                $data = array(
+                    $operator,
+                    $found,
+                );
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfter', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
                 }

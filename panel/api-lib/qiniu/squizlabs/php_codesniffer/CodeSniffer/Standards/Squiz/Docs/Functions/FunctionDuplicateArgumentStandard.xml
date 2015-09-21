@@ -1,19 +1,19 @@
 <documentation title="Lowercase Built-In functions">
     <standard>
-    <![CDATA[
+        <![CDATA[
     All PHP built-in functions should be lowercased when called.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Lowercase function call.">
-        <![CDATA[
+            <![CDATA[
 if (<em>isset</em>($foo)) {
     echo $foo;
 }
 ]]>
         </code>
         <code title="Invalid: isset not called as lowercase.">
-        <![CDATA[
+            <![CDATA[
 if (<em>isSet</em>($foo)) {
     echo $foo;
 }

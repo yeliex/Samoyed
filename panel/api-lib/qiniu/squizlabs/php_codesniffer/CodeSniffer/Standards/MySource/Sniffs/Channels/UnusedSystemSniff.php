@@ -43,7 +43,7 @@ class MySource_Sniffs_Channels_UnusedSystemSniff implements PHP_CodeSniffer_Snif
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -111,39 +111,39 @@ class MySource_Sniffs_Channels_UnusedSystemSniff implements PHP_CodeSniffer_Snif
             }
 
             switch ($tokens[$i]['code']) {
-            case T_DOUBLE_COLON:
-                $usedName = strtolower($tokens[($i - 1)]['content']);
-                if ($usedName === $systemName) {
-                    // The included system was used, so it is fine.
-                    return;
-                }
-                break;
-            case T_EXTENDS:
-                $classNameToken = $phpcsFile->findNext(T_STRING, ($i + 1));
-                $className      = strtolower($tokens[$classNameToken]['content']);
-                if ($className === $systemName) {
-                    // The included system was used, so it is fine.
-                    return;
-                }
-                break;
-            case T_IMPLEMENTS:
-                $endImplements = $phpcsFile->findNext(array(T_EXTENDS, T_OPEN_CURLY_BRACKET), ($i + 1));
-                for ($x = ($i + 1); $x < $endImplements; $x++) {
-                    if ($tokens[$x]['code'] === T_STRING) {
-                        $className = strtolower($tokens[$x]['content']);
-                        if ($className === $systemName) {
-                            // The included system was used, so it is fine.
-                            return;
+                case T_DOUBLE_COLON:
+                    $usedName = strtolower($tokens[($i - 1)]['content']);
+                    if ($usedName === $systemName) {
+                        // The included system was used, so it is fine.
+                        return;
+                    }
+                    break;
+                case T_EXTENDS:
+                    $classNameToken = $phpcsFile->findNext(T_STRING, ($i + 1));
+                    $className = strtolower($tokens[$classNameToken]['content']);
+                    if ($className === $systemName) {
+                        // The included system was used, so it is fine.
+                        return;
+                    }
+                    break;
+                case T_IMPLEMENTS:
+                    $endImplements = $phpcsFile->findNext(array(T_EXTENDS, T_OPEN_CURLY_BRACKET), ($i + 1));
+                    for ($x = ($i + 1); $x < $endImplements; $x++) {
+                        if ($tokens[$x]['code'] === T_STRING) {
+                            $className = strtolower($tokens[$x]['content']);
+                            if ($className === $systemName) {
+                                // The included system was used, so it is fine.
+                                return;
+                            }
                         }
                     }
-                }
-                break;
+                    break;
             }//end switch
         }//end for
 
         // If we get to here, the system was not use.
         $error = 'Included system "%s" is never used';
-        $data  = array($systemName);
+        $data = array($systemName);
         $phpcsFile->addError($error, $stackPtr, 'Found', $data);
 
     }//end process()

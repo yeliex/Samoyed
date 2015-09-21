@@ -53,7 +53,8 @@
     color: #767676;
     border: none !important;
 }
+
 .ye-tools ul li.item button:hover,
 .ye-tools ul li.item button:active {
-    color: rgba(0,0,0,.4);
+    color: rgba(0, 0, 0, .4);
 }

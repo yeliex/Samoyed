@@ -48,7 +48,7 @@ class PEAR_Sniffs_Functions_ValidDefaultValueSniff implements PHP_CodeSniffer_Sn
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -58,7 +58,7 @@ class PEAR_Sniffs_Functions_ValidDefaultValueSniff implements PHP_CodeSniffer_Sn
         $tokens = $phpcsFile->getTokens();
 
         $argStart = $tokens[$stackPtr]['parenthesis_opener'];
-        $argEnd   = $tokens[$stackPtr]['parenthesis_closer'];
+        $argEnd = $tokens[$stackPtr]['parenthesis_closer'];
 
         // Flag for when we have found a default in our arg list.
         // If there is a value without a default after this, it is an error.
@@ -89,14 +89,14 @@ class PEAR_Sniffs_Functions_ValidDefaultValueSniff implements PHP_CodeSniffer_Sn
      * Returns true if the passed argument has a default value.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $argPtr    The position of the argument
+     * @param int $argPtr The position of the argument
      *                                        in the stack.
      *
      * @return bool
      */
     private static function _argHasDefault(PHP_CodeSniffer_File $phpcsFile, $argPtr)
     {
-        $tokens    = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $nextToken = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($argPtr + 1), null, true);
         if ($tokens[$nextToken]['code'] !== T_EQUAL) {
             return false;

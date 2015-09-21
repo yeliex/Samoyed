@@ -52,7 +52,7 @@ class Squiz_Sniffs_CSS_DuplicateClassDefinitionSniff implements PHP_CodeSniffer_
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -63,17 +63,17 @@ class Squiz_Sniffs_CSS_DuplicateClassDefinitionSniff implements PHP_CodeSniffer_
 
         // Find the content of each class definition name.
         $classNames = array();
-        $next       = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1));
+        $next = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1));
         if ($next === false) {
             // No class definitions in the file.
             return;
         }
 
         $find = array(
-                 T_CLOSE_CURLY_BRACKET,
-                 T_COMMENT,
-                 T_OPEN_TAG,
-                );
+            T_CLOSE_CURLY_BRACKET,
+            T_COMMENT,
+            T_OPEN_TAG,
+        );
 
         while ($next !== false) {
             $prev = $phpcsFile->findPrevious($find, ($next - 1));
@@ -97,7 +97,7 @@ class Squiz_Sniffs_CSS_DuplicateClassDefinitionSniff implements PHP_CodeSniffer_
             if (isset($classNames[$name]) === true) {
                 $first = $classNames[$name];
                 $error = 'Duplicate class definition found; first defined on line %s';
-                $data  = array($tokens[$first]['line']);
+                $data = array($tokens[$first]['line']);
                 $phpcsFile->addError($error, $next, 'Found', $data);
             } else {
                 $classNames[$name] = $next;

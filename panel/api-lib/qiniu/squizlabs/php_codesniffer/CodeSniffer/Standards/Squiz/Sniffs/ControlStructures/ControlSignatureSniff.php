@@ -32,9 +32,9 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
 
     /**
@@ -45,16 +45,16 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
     public function register()
     {
         return array(
-                T_TRY,
-                T_CATCH,
-                T_DO,
-                T_WHILE,
-                T_FOR,
-                T_IF,
-                T_FOREACH,
-                T_ELSE,
-                T_ELSEIF,
-               );
+            T_TRY,
+            T_CATCH,
+            T_DO,
+            T_WHILE,
+            T_FOR,
+            T_IF,
+            T_FOREACH,
+            T_ELSE,
+            T_ELSEIF,
+        );
 
     }//end register()
 
@@ -63,7 +63,7 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -86,10 +86,10 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
 
         if ($found !== 1) {
             $error = 'Expected 1 space after %s keyword; %s found';
-            $data  = array(
-                      strtoupper($tokens[$stackPtr]['content']),
-                      $found,
-                     );
+            $data = array(
+                strtoupper($tokens[$stackPtr]['content']),
+                $found,
+            );
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceAfterKeyword', $data);
             if ($fix === true) {
@@ -105,14 +105,14 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
         if (isset($tokens[$stackPtr]['parenthesis_closer']) === true
             && isset($tokens[$stackPtr]['scope_opener']) === true
         ) {
-            $closer  = $tokens[$stackPtr]['parenthesis_closer'];
-            $opener  = $tokens[$stackPtr]['scope_opener'];
+            $closer = $tokens[$stackPtr]['parenthesis_closer'];
+            $opener = $tokens[$stackPtr]['scope_opener'];
             $content = $phpcsFile->getTokensAsString(($closer + 1), ($opener - $closer - 1));
 
             if ($content !== ' ') {
                 $error = 'Expected 1 space after closing parenthesis; found "%s"';
-                $data  = array(str_replace($phpcsFile->eolChar, '\n', $content));
-                $fix   = $phpcsFile->addFixableError($error, $closer, 'SpaceAfterCloseParenthesis', $data);
+                $data = array(str_replace($phpcsFile->eolChar, '\n', $content));
+                $fix = $phpcsFile->addFixableError($error, $closer, 'SpaceAfterCloseParenthesis', $data);
                 if ($fix === true) {
                     if ($closer === ($opener - 1)) {
                         $phpcsFile->fixer->addContent($closer, ' ');
@@ -162,8 +162,8 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
             $found = ($tokens[$next]['line'] - $tokens[$opener]['line']);
             if ($found !== 1) {
                 $error = 'Expected 1 newline after opening brace; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $opener, 'NewlineAfterOpenBrace', $data);
+                $data = array($found);
+                $fix = $phpcsFile->addFixableError($error, $opener, 'NewlineAfterOpenBrace', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->beginChangeset();
                     for ($i = ($opener + 1); $i < $next; $i++) {
@@ -181,7 +181,7 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
         } else if ($tokens[$stackPtr]['code'] === T_WHILE) {
             // Zero spaces after parenthesis closer.
             $closer = $tokens[$stackPtr]['parenthesis_closer'];
-            $found  = 0;
+            $found = 0;
             if ($tokens[($closer + 1)]['code'] === T_WHITESPACE) {
                 if (strpos($tokens[($closer + 1)]['content'], $phpcsFile->eolChar) !== false) {
                     $found = 'newline';
@@ -192,8 +192,8 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
 
             if ($found !== 0) {
                 $error = 'Expected 0 spaces before semicolon; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $closer, 'SpaceBeforeSemicolon', $data);
+                $data = array($found);
+                $fix = $phpcsFile->addFixableError($error, $closer, 'SpaceBeforeSemicolon', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($closer + 1), '');
                 }
@@ -230,8 +230,8 @@ class Squiz_Sniffs_ControlStructures_ControlSignatureSniff implements PHP_CodeSn
 
         if ($found !== 1) {
             $error = 'Expected 1 space after closing brace; %s found';
-            $data  = array($found);
-            $fix   = $phpcsFile->addFixableError($error, $closer, 'SpaceAfterCloseBrace', $data);
+            $data = array($found);
+            $fix = $phpcsFile->addFixableError($error, $closer, 'SpaceAfterCloseBrace', $data);
             if ($fix === true) {
                 if ($found === 0) {
                     $phpcsFile->fixer->addContent($closer, ' ');

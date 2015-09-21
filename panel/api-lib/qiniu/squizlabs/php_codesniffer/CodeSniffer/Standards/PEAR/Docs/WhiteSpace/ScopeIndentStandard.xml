@@ -1,12 +1,12 @@
 <documentation title="Scope Indentation">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Any scope openers except for switch statements should be indented 1 level.  This includes classes, functions, and control structures.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Consistent indentation level for scope.">
-        <![CDATA[
+            <![CDATA[
 function foo()
 {
 <em>    </em>if ($test) {
@@ -16,7 +16,7 @@ function foo()
         ]]>
         </code>
         <code title="Invalid: Indentation is not used for scope.">
-        <![CDATA[
+            <![CDATA[
 function foo()
 {
 <em></em>if ($test) {

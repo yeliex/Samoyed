@@ -1,19 +1,19 @@
 <documentation title="Function Argument Spacing">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Function arguments should have one space after a comma, and single spaces surrounding the equals sign for default values.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Single spaces after a comma.">
-        <![CDATA[
+            <![CDATA[
 function foo($bar,<em> </em>$baz)
 {
 }
         ]]>
         </code>
         <code title="Invalid: No spaces after a comma.">
-        <![CDATA[
+            <![CDATA[
 function foo($bar,<em></em>$baz)
 {
 }
@@ -22,14 +22,14 @@ function foo($bar,<em></em>$baz)
     </code_comparison>
     <code_comparison>
         <code title="Valid: Single spaces around an equals sign in function declaration.">
-        <![CDATA[
+            <![CDATA[
 function foo($bar, $baz<em> </em>=<em> </em>true)
 {
 }
         ]]>
         </code>
         <code title="Invalid: No spaces around an equals sign in function declaration.">
-        <![CDATA[
+            <![CDATA[
 function foo($bar, $baz<em></em>=<em></em>true)
 {
 }

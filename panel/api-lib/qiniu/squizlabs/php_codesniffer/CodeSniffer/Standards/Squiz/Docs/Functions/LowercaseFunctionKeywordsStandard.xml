@@ -1,12 +1,12 @@
 <documentation title="Lowercase Function Keywords">
     <standard>
-    <![CDATA[
+        <![CDATA[
     The php keywords function, public, private, protected, and static should be lowercase.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Lowercase function keyword.">
-        <![CDATA[
+            <![CDATA[
 <em>function</em> foo()
 {
     return true;
@@ -14,7 +14,7 @@
 ]]>
         </code>
         <code title="Invalid: Uppercase function keyword.">
-        <![CDATA[
+            <![CDATA[
 <em>FUNCTION</em> foo()
 {
     return true;

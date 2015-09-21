@@ -1,12 +1,12 @@
 <documentation title="Call-Time Pass-By-Reference">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Call-time pass-by-reference is not allowed. It should be declared in the function definition.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Pass-by-reference is specified in the function definition.">
-        <![CDATA[
+            <![CDATA[
 function foo(<em>&</em>$bar)
 {
     $bar++;
@@ -17,7 +17,7 @@ foo($baz);
         ]]>
         </code>
         <code title="Invalid: Pass-by-reference is done in the call to a function.">
-        <![CDATA[
+            <![CDATA[
 function foo($bar)
 {
     $bar++;

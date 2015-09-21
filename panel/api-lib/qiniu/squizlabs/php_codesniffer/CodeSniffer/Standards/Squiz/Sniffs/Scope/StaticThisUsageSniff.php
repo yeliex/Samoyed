@@ -50,15 +50,15 @@ class Squiz_Sniffs_Scope_StaticThisUsageSniff extends PHP_CodeSniffer_Standards_
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
-     * @param int                  $currScope A pointer to the start of the scope.
+     * @param int $currScope A pointer to the start of the scope.
      *
      * @return void
      */
     public function processTokenWithinScope(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $currScope)
     {
-        $tokens   = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $function = $tokens[($stackPtr + 2)];
 
         if ($function['code'] !== T_STRING) {
@@ -66,8 +66,8 @@ class Squiz_Sniffs_Scope_StaticThisUsageSniff extends PHP_CodeSniffer_Standards_
         }
 
         $functionName = $function['content'];
-        $classOpener  = $tokens[$currScope]['scope_condition'];
-        $className    = $tokens[($classOpener + 2)]['content'];
+        $classOpener = $tokens[$currScope]['scope_condition'];
+        $className = $tokens[($classOpener + 2)]['content'];
 
         $methodProps = $phpcsFile->getMethodProperties($stackPtr);
 

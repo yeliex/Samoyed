@@ -106,25 +106,25 @@ class PHP_CodeSniffer_Reporting
             // This is a path to a custom report class.
             $filename = realpath($type);
             if ($filename === false) {
-                echo 'ERROR: Custom report "'.$type.'" not found'.PHP_EOL;
+                echo 'ERROR: Custom report "' . $type . '" not found' . PHP_EOL;
                 exit(2);
             }
 
-            $reportClassName = 'PHP_CodeSniffer_Reports_'.basename($filename);
+            $reportClassName = 'PHP_CodeSniffer_Reports_' . basename($filename);
             $reportClassName = substr($reportClassName, 0, strpos($reportClassName, '.'));
             include_once $filename;
         } else {
-            $filename        = $type.'.php';
-            $reportClassName = 'PHP_CodeSniffer_Reports_'.$type;
+            $filename = $type . '.php';
+            $reportClassName = 'PHP_CodeSniffer_Reports_' . $type;
             if (class_exists($reportClassName, true) === false) {
-                echo 'ERROR: Report type "'.$type.'" not found'.PHP_EOL;
+                echo 'ERROR: Report type "' . $type . '" not found' . PHP_EOL;
                 exit(2);
             }
         }//end if
 
         $reportClass = new $reportClassName();
         if (false === ($reportClass instanceof PHP_CodeSniffer_Report)) {
-            throw new PHP_CodeSniffer_Exception('Class "'.$reportClassName.'" must implement the "PHP_CodeSniffer_Report" interface.');
+            throw new PHP_CodeSniffer_Exception('Class "' . $reportClassName . '" must implement the "PHP_CodeSniffer_Report" interface.');
         }
 
         $this->_reports[$type] = $reportClass;
@@ -137,7 +137,7 @@ class PHP_CodeSniffer_Reporting
      * Actually generates the report.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file that has been processed.
-     * @param array                $cliValues An array of command line arguments.
+     * @param array $cliValues An array of command line arguments.
      *
      * @return void
      */
@@ -149,12 +149,12 @@ class PHP_CodeSniffer_Reporting
             return;
         }
 
-        $reportData  = $this->prepareFileReport($phpcsFile);
+        $reportData = $this->prepareFileReport($phpcsFile);
         $errorsShown = false;
 
         foreach ($cliValues['reports'] as $report => $output) {
             $reportClass = $this->factory($report);
-            $report      = get_class($reportClass);
+            $report = get_class($reportClass);
 
             ob_start();
             $result = $reportClass->generateFileReport($reportData, $phpcsFile, $cliValues['showSources'], $cliValues['reportWidth']);
@@ -194,9 +194,9 @@ class PHP_CodeSniffer_Reporting
 
         if ($errorsShown === true) {
             $this->totalFiles++;
-            $this->totalErrors   += $reportData['errors'];
+            $this->totalErrors += $reportData['errors'];
             $this->totalWarnings += $reportData['warnings'];
-            $this->totalFixable  += $reportData['fixable'];
+            $this->totalFixable += $reportData['fixable'];
         }
 
     }//end cacheFileReport()
@@ -208,10 +208,10 @@ class PHP_CodeSniffer_Reporting
      * Returns an array with the number of errors and the number of
      * warnings, in the form ['errors' => int, 'warnings' => int].
      *
-     * @param string  $report      Report type.
+     * @param string $report Report type.
      * @param boolean $showSources Show sources?
-     * @param array   $cliValues   An array of command line arguments.
-     * @param string  $reportFile  Report file to generate.
+     * @param array $cliValues An array of command line arguments.
+     * @param string $reportFile Report file to generate.
      * @param integer $reportWidth Report max width.
      *
      * @return int[]
@@ -220,11 +220,12 @@ class PHP_CodeSniffer_Reporting
         $report,
         $showSources,
         array $cliValues,
-        $reportFile='',
-        $reportWidth=80
-    ) {
+        $reportFile = '',
+        $reportWidth = 80
+    )
+    {
         $reportClass = $this->factory($report);
-        $report      = get_class($reportClass);
+        $report = get_class($reportClass);
 
         if ($reportFile !== null) {
             $filename = $reportFile;
@@ -239,13 +240,13 @@ class PHP_CodeSniffer_Reporting
             }
         } else {
             if (isset($this->_tmpFiles[$report]) === true) {
-                $data        = stream_get_meta_data($this->_tmpFiles[$report]);
-                $filename    = $data['uri'];
+                $data = stream_get_meta_data($this->_tmpFiles[$report]);
+                $filename = $data['uri'];
                 $reportCache = file_get_contents($filename);
                 fclose($this->_tmpFiles[$report]);
             } else {
                 $reportCache = '';
-                $filename    = null;
+                $filename = null;
             }
 
             $toScreen = true;
@@ -274,7 +275,7 @@ class PHP_CodeSniffer_Reporting
                 echo $generatedReport;
             }
 
-            file_put_contents($reportFile, $generatedReport.PHP_EOL);
+            file_put_contents($reportFile, $generatedReport . PHP_EOL);
         } else {
             echo $generatedReport;
             if ($filename !== null && file_exists($filename) === true) {
@@ -283,9 +284,9 @@ class PHP_CodeSniffer_Reporting
         }
 
         return array(
-                'errors'   => $this->totalErrors,
-                'warnings' => $this->totalWarnings,
-               );
+            'errors' => $this->totalErrors,
+            'warnings' => $this->totalWarnings,
+        );
 
     }//end printReport()
 
@@ -302,12 +303,12 @@ class PHP_CodeSniffer_Reporting
     public function prepareFileReport(PHP_CodeSniffer_File $phpcsFile)
     {
         $report = array(
-                   'filename' => $phpcsFile->getFilename(),
-                   'errors'   => $phpcsFile->getErrorCount(),
-                   'warnings' => $phpcsFile->getWarningCount(),
-                   'fixable'  => $phpcsFile->getFixableCount(),
-                   'messages' => array(),
-                  );
+            'filename' => $phpcsFile->getFilename(),
+            'errors' => $phpcsFile->getErrorCount(),
+            'warnings' => $phpcsFile->getWarningCount(),
+            'fixable' => $phpcsFile->getFixableCount(),
+            'messages' => array(),
+        );
 
         if ($report['errors'] === 0 && $report['warnings'] === 0) {
             // Prefect score!
@@ -326,12 +327,12 @@ class PHP_CodeSniffer_Reporting
                 $newErrors = array();
                 foreach ($colErrors as $data) {
                     $newErrors[] = array(
-                                    'message'  => $data['message'],
-                                    'source'   => $data['source'],
-                                    'severity' => $data['severity'],
-                                    'fixable'  => $data['fixable'],
-                                    'type'     => 'ERROR',
-                                   );
+                        'message' => $data['message'],
+                        'source' => $data['source'],
+                        'severity' => $data['severity'],
+                        'fixable' => $data['fixable'],
+                        'type' => 'ERROR',
+                    );
                 }//end foreach
 
                 $errors[$line][$column] = $newErrors;
@@ -349,12 +350,12 @@ class PHP_CodeSniffer_Reporting
                 $newWarnings = array();
                 foreach ($colWarnings as $data) {
                     $newWarnings[] = array(
-                                      'message'  => $data['message'],
-                                      'source'   => $data['source'],
-                                      'severity' => $data['severity'],
-                                      'fixable'  => $data['fixable'],
-                                      'type'     => 'WARNING',
-                                     );
+                        'message' => $data['message'],
+                        'source' => $data['source'],
+                        'severity' => $data['severity'],
+                        'fixable' => $data['fixable'],
+                        'type' => 'WARNING',
+                    );
                 }//end foreach
 
                 if (isset($errors[$line]) === false) {
@@ -406,18 +407,18 @@ class PHP_CodeSniffer_Reporting
         if ($time > 60000) {
             $mins = floor($time / 60000);
             $secs = round((($time % 60000) / 1000), 2);
-            $time = $mins.' mins';
+            $time = $mins . ' mins';
             if ($secs !== 0) {
                 $time .= ", $secs secs";
             }
         } else if ($time > 1000) {
-            $time = round(($time / 1000), 2).' secs';
+            $time = round(($time / 1000), 2) . ' secs';
         } else {
-            $time = round($time).'ms';
+            $time = round($time) . 'ms';
         }
 
-        $mem = round((memory_get_peak_usage(true) / (1024 * 1024)), 2).'Mb';
-        echo "Time: $time; Memory: $mem".PHP_EOL.PHP_EOL;
+        $mem = round((memory_get_peak_usage(true) / (1024 * 1024)), 2) . 'Mb';
+        echo "Time: $time; Memory: $mem" . PHP_EOL . PHP_EOL;
 
     }//end printRunTime()
 

@@ -45,7 +45,7 @@ class Generic_Sniffs_PHP_SAPIUsageSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -55,11 +55,11 @@ class Generic_Sniffs_PHP_SAPIUsageSniff implements PHP_CodeSniffer_Sniff
         $tokens = $phpcsFile->getTokens();
 
         $ignore = array(
-                   T_DOUBLE_COLON    => true,
-                   T_OBJECT_OPERATOR => true,
-                   T_FUNCTION        => true,
-                   T_CONST           => true,
-                  );
+            T_DOUBLE_COLON => true,
+            T_OBJECT_OPERATOR => true,
+            T_FUNCTION => true,
+            T_CONST => true,
+        );
 
         $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
         if (isset($ignore[$tokens[$prevToken]['code']]) === true) {

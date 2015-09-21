@@ -35,7 +35,7 @@ class PSR2_Sniffs_Classes_PropertyDeclarationSniff extends PHP_CodeSniffer_Stand
      * Processes the function tokens within the class.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */
@@ -45,7 +45,7 @@ class PSR2_Sniffs_Classes_PropertyDeclarationSniff extends PHP_CodeSniffer_Stand
 
         if ($tokens[$stackPtr]['content'][1] === '_') {
             $error = 'Property name "%s" should not be prefixed with an underscore to indicate visibility';
-            $data  = array($tokens[$stackPtr]['content']);
+            $data = array($tokens[$stackPtr]['content']);
             $phpcsFile->addWarning($error, $stackPtr, 'Underscore', $data);
         }
 
@@ -73,7 +73,7 @@ class PSR2_Sniffs_Classes_PropertyDeclarationSniff extends PHP_CodeSniffer_Stand
         $modifier = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$scopeModifiers, $stackPtr);
         if (($modifier === false) || ($tokens[$modifier]['line'] !== $tokens[$stackPtr]['line'])) {
             $error = 'Visibility must be declared on property "%s"';
-            $data  = array($tokens[$stackPtr]['content']);
+            $data = array($tokens[$stackPtr]['content']);
             $phpcsFile->addError($error, $stackPtr, 'ScopeMissing', $data);
         }
 
@@ -84,7 +84,7 @@ class PSR2_Sniffs_Classes_PropertyDeclarationSniff extends PHP_CodeSniffer_Stand
      * Processes normal variables.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */
@@ -101,7 +101,7 @@ class PSR2_Sniffs_Classes_PropertyDeclarationSniff extends PHP_CodeSniffer_Stand
      * Processes variables in double quoted strings.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */

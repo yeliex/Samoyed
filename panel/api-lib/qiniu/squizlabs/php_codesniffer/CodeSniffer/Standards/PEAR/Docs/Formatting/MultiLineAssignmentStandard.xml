@@ -1,18 +1,18 @@
 <documentation title="Multi-Line Assignment">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Multi-line assignment should have the equals sign be the first item on the second line indented correctly.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Assignment operator at the start of the second line.">
-        <![CDATA[
+            <![CDATA[
 $foo
     <em>=</em> $bar;
         ]]>
         </code>
         <code title="Invalid: Assignment operator at end of first line.">
-        <![CDATA[
+            <![CDATA[
 $foo <em>=</em>
     $bar;
         ]]>
@@ -20,13 +20,13 @@ $foo <em>=</em>
     </code_comparison>
     <code_comparison>
         <code title="Valid: Assignment operator indented one level.">
-        <![CDATA[
+            <![CDATA[
 $foo
 <em>    </em>= $bar;
         ]]>
         </code>
         <code title="Invalid: Assignment operator not indented.">
-        <![CDATA[
+            <![CDATA[
 $foo
 <em></em>= $bar;
         ]]>

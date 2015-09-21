@@ -36,9 +36,9 @@ class Squiz_Sniffs_Commenting_PostStatementCommentSniff implements PHP_CodeSniff
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
 
     /**
@@ -57,7 +57,7 @@ class Squiz_Sniffs_Commenting_PostStatementCommentSniff implements PHP_CodeSniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -92,7 +92,7 @@ class Squiz_Sniffs_Commenting_PostStatementCommentSniff implements PHP_CodeSniff
         }
 
         $error = 'Comments may not appear after statements';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
+        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
         if ($fix === true) {
             $phpcsFile->fixer->addNewlineBefore($stackPtr);
         }

@@ -1,12 +1,12 @@
 <documentation title="Variable Names">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Private member variable names should be prefixed with an underscore and public/protected variable names should not.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Proper member variable names.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     public $<em>publicVar</em>;
@@ -16,7 +16,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: underscores used on public/protected variables and not used on private variables.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     public $<em>_publicVar</em>;

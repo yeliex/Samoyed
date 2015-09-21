@@ -40,10 +40,10 @@ class Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSniff
     public function register()
     {
         return array(
-                T_LOGICAL_AND,
-                T_LOGICAL_OR,
-                T_LOGICAL_XOR,
-               );
+            T_LOGICAL_AND,
+            T_LOGICAL_OR,
+            T_LOGICAL_XOR,
+        );
 
     }//end register()
 
@@ -52,7 +52,7 @@ class Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -62,10 +62,10 @@ class Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSniff
         $tokens = $phpcsFile->getTokens();
 
         $replacements = array(
-                         'and' => '&&',
-                         'or'  => '||',
-                         'xor' => '^',
-                        );
+            'and' => '&&',
+            'or' => '||',
+            'xor' => '^',
+        );
 
         $operator = strtolower($tokens[$stackPtr]['content']);
         if (isset($replacements[$operator]) === false) {
@@ -73,10 +73,10 @@ class Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSniff
         }
 
         $error = 'Logical operator "%s" is prohibited; use "%s" instead';
-        $data  = array(
-                  $operator,
-                  $replacements[$operator],
-                 );
+        $data = array(
+            $operator,
+            $replacements[$operator],
+        );
         $phpcsFile->addError($error, $stackPtr, 'NotAllowed', $data);
 
     }//end process()

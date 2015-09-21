@@ -50,9 +50,9 @@ function onDistrictSelected(value) {
 
 var map;
 
-function onMapLoaded(target,pos) {
-    if(pos == undefined){
-        pos = new Array("120.150492","30.180617");
+function onMapLoaded(target, pos) {
+    if (pos == undefined) {
+        pos = new Array("120.150492", "30.180617");
     }
     // 首先判断是否已选择区域以及建筑名
     var district = $("#district").parent().children('.text').text();
@@ -201,7 +201,7 @@ function onNewUnitClicked() {
     str += "<option value='工装'>工装</option>";
     str += "<option value='未装修'>未装修</option>";
     str += "</select></div></div></div>";
-    str += "<div class='two wide column'><button class='ui button' onclick='onUpload(2,"+currentUnitNum+")'>上传图片</button></div>";
+    str += "<div class='two wide column'><button class='ui button' onclick='onUpload(2," + currentUnitNum + ")'>上传图片</button></div>";
     str += "<div class='four wide column'><div class='field'>";
     str += "<img class='ui image' src='http://7xked6.com2.z0.glb.qiniucdn.com/default_unit.png'>";
     str += "</div></div></div></fieldset>";
@@ -217,18 +217,18 @@ function onNewImageClicked() {
     var currentImageNum = imagesNum + 1;
     var defaultImageNum = "图片" + currentImageNum;
     var html = $("#content-images").html(); // 获取已存在的html
-    var str = "<div class='field' id='image_"+currentImageNum+"'>";
+    var str = "<div class='field' id='image_" + currentImageNum + "'>";
     str += "<div class='ui action input'>";
     //str += "<div class='image-link' hidden>http://img.static.mzapp.info/default_unit.png</div>";
-    str += "<input type='text' placeholder='图片名称' value='"+defaultImageNum+"'>";
-    str += "<button class='ui teal right labeled icon button' onclick='onUpload(3,"+currentImageNum+")'><i class='upload icon'></i> 上传</button>";
+    str += "<input type='text' placeholder='图片名称' value='" + defaultImageNum + "'>";
+    str += "<button class='ui teal right labeled icon button' onclick='onUpload(3," + currentImageNum + ")'><i class='upload icon'></i> 上传</button>";
     str += "</div>";
     str += "<img class='ui medium image' src='http://img.static.mzapp.info/default_unit.png'>";
     str += "</div>";
 
     if ((currentImageNum - 1) % 4 === 0) {
         // 在每组的开头
-        str = "<div class='fields'>"+str;
+        str = "<div class='fields'>" + str;
     }
     else if (currentImageNum % 4 === 0) {
         // 在每组结尾
@@ -241,7 +241,7 @@ function onNewImageClicked() {
         html = html.substr(0, html.length - 6);
     }
     str += "</div>";
-    str = html+str;
+    str = html + str;
     $("#images_num span").text(currentImageNum);
     $("#content-images").html(str);
     imagesNum++

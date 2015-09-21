@@ -39,7 +39,7 @@ class MySource_Sniffs_Commenting_FunctionCommentSniff extends Squiz_Sniffs_Comme
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -49,7 +49,7 @@ class MySource_Sniffs_Commenting_FunctionCommentSniff extends Squiz_Sniffs_Comme
         parent::process($phpcsFile, $stackPtr);
 
         $tokens = $phpcsFile->getTokens();
-        $find   = PHP_CodeSniffer_Tokens::$methodPrefixes;
+        $find = PHP_CodeSniffer_Tokens::$methodPrefixes;
         $find[] = T_WHITESPACE;
 
         $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
@@ -58,7 +58,7 @@ class MySource_Sniffs_Commenting_FunctionCommentSniff extends Squiz_Sniffs_Comme
         }
 
         $commentStart = $tokens[$commentEnd]['comment_opener'];
-        $hasApiTag    = false;
+        $hasApiTag = false;
         foreach ($tokens[$commentStart]['comment_tags'] as $tag) {
             if ($tokens[$tag]['content'] === '@api') {
                 if ($hasApiTag === true) {
@@ -82,7 +82,7 @@ class MySource_Sniffs_Commenting_FunctionCommentSniff extends Squiz_Sniffs_Comme
                 $prev = $phpcsFile->findPrevious(array(T_DOC_COMMENT_STRING, T_DOC_COMMENT_TAG), ($tag - 1));
                 if ($tokens[$prev]['line'] !== ($tokens[$tag]['line'] - 1)) {
                     $error = 'There must be no blank line before the @%s tag in a function comment';
-                    $data  = array($tokens[$tag]['content']);
+                    $data = array($tokens[$tag]['content']);
                     $phpcsFile->addError($error, $tag, 'ApiTagSpacing', $data);
                 }
             }//end if

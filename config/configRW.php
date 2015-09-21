@@ -13,27 +13,28 @@ $config->Mysql_host = $config->configRead('Mysql-host');
 $config->Mysql_user = $config->configRead('Mysql-user');
 $config->Mysql_passWD = $config->configRead('Mysql-passWD');
 
-class config {
-    function configRead($config_item,$type = 'string'){
+class config
+{
+    function configRead($config_item, $type = 'string')
+    {
         $str = file_get_contents("./config/config.php");
-        if($type == 'int')
-        {
+        if ($type == 'int') {
             $config_value = preg_match("/" . $config_item . "=(.*);/", $str, $result);
             Return $result[1];
-        }
-        else
-        {
+        } else {
             $config_value = preg_match("/" . $config_item . "=\"(.*)\";/", $str, $result);
-            if($result[1] == null)
-            {
+            if ($result[1] == null) {
                 $config_value = preg_match("/" . $config_item . "='(.*)';/", $str, $result);
             }
             Return $result[1];
         }
     }
 }
-class configUpdate {
-    function configWrite($config_item,$config_value,$config_type = 'string'){
+
+class configUpdate
+{
+    function configWrite($config_item, $config_value, $config_type = 'string')
+    {
 
     }
 }

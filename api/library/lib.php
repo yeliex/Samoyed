@@ -1,77 +1,78 @@
 <?php
 
-    // 格式化返回数据
-    function send_json($error_code = 0,$data = "",$num = 0){
+// 格式化返回数据
+function send_json($error_code = 0, $data = "", $num = 0)
+{
 
-        $status_text = "";
-        $result = "failed";
+    $status_text = "";
+    $result = "failed";
 
-        switch($error_code){
-            case 0:
-                $result = "success";
-                $status_text = "";
+    switch ($error_code) {
+        case 0:
+            $result = "success";
+            $status_text = "";
             break;
-            case 1010:
-                $status_text = "API接口错误（未知协议）";
+        case 1010:
+            $status_text = "API接口错误（未知协议）";
             break;
-            case 1020:
-                $status_text = "API接口错误（未知城市）";
+        case 1020:
+            $status_text = "API接口错误（未知城市）";
             break;
-            case 1030:
-                $status_text = "API接口错误（未知邮编号）";
+        case 1030:
+            $status_text = "API接口错误（未知邮编号）";
             break;
-            case 1040:
-                $status_text = "API接口错误（未知的面积类型）";
+        case 1040:
+            $status_text = "API接口错误（未知的面积类型）";
             break;
-            case 1050:
-                $status_text = "API接口错误（未知的价格类型）";
+        case 1050:
+            $status_text = "API接口错误（未知的价格类型）";
             break;
-            case 1060:
-                $status_text = "API接口错误（请使用KeyWord）";
+        case 1060:
+            $status_text = "API接口错误（请使用KeyWord）";
             break;
-            case 1070:
-                $status_text = "错误的Building ID";
+        case 1070:
+            $status_text = "错误的Building ID";
             break;
-            // 预约相关错误
-            case 3001:
-                $status_text = "验证码发送失败:网络错误";
-                break;
-            case 3002:
-                $status_text = "手机号不能为空";
-                break;
-            case 3003:
-                $status_text = "验证码发送失败";
-                break;
-            case 3004:
-                $status_text = "注册成功通知发送失败";
-                break;
-            case 3005:
-                $status_text = "预约通知发送失败";
-                break;
-            case 3010:
-                $status_text = "用户不存在";
-                break;
-            case 3021:
-                $status_text = "数据保存失败";
-                break;
-            case 7010:
-                $status_text = "类文件不存在";
+        // 预约相关错误
+        case 3001:
+            $status_text = "验证码发送失败:网络错误";
             break;
-            case 9000:
-                $status_text = "无法建立数据库连接";
+        case 3002:
+            $status_text = "手机号不能为空";
             break;
-            default:
-                $status_text = "未知错误";
+        case 3003:
+            $status_text = "验证码发送失败";
             break;
-        }
-
-        header('Content-type:application/json');
-        if($data != ""){
-            echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","num":%d,"overview":%s}', $result , $error_code , $status_text , $num , $data );
-        }else{
-            echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","num":%d,"overview":""}', $result , $error_code , $status_text , $num , $data );
-        }
+        case 3004:
+            $status_text = "注册成功通知发送失败";
+            break;
+        case 3005:
+            $status_text = "预约通知发送失败";
+            break;
+        case 3010:
+            $status_text = "用户不存在";
+            break;
+        case 3021:
+            $status_text = "数据保存失败";
+            break;
+        case 7010:
+            $status_text = "类文件不存在";
+            break;
+        case 9000:
+            $status_text = "无法建立数据库连接";
+            break;
+        default:
+            $status_text = "未知错误";
+            break;
     }
+
+    header('Content-type:application/json');
+    if ($data != "") {
+        echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","num":%d,"overview":%s}', $result, $error_code, $status_text, $num, $data);
+    } else {
+        echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","num":%d,"overview":""}', $result, $error_code, $status_text, $num, $data);
+    }
+}
 
 
 

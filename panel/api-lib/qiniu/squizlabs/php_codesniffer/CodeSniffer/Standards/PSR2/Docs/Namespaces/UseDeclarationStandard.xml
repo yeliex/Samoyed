@@ -1,32 +1,32 @@
 <documentation title="Namespace Declarations">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Each use declaration must contain only one namespace and must come after the first namespace declaration.  There should be one blank line after the final use statement.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: One use declaration per namespace.">
-        <![CDATA[
+            <![CDATA[
 use \Foo;
 use \Bar;
         ]]>
         </code>
         <code title="Invalid: Multiple namespaces in a use declaration.">
-        <![CDATA[
+            <![CDATA[
 use <em>\Foo, \Bar</em>;
         ]]>
         </code>
     </code_comparison>
     <code_comparison>
         <code title="Valid: Use statements come after first namespace.">
-        <![CDATA[
+            <![CDATA[
 namespace \Foo;
 
 use \Bar;
         ]]>
         </code>
         <code title="Invalid: Namespace declared after use.">
-        <![CDATA[
+            <![CDATA[
 use \Bar;
 
 namespace \Foo;
@@ -35,7 +35,7 @@ namespace \Foo;
     </code_comparison>
     <code_comparison>
         <code title="Valid: A single blank line after the final use statement.">
-        <![CDATA[
+            <![CDATA[
 use \Foo;
 use \Bar;
 <em></em>
@@ -45,7 +45,7 @@ class Baz
         ]]>
         </code>
         <code title="Invalid: No blank line after the final use statement.">
-        <![CDATA[
+            <![CDATA[
 use \Foo;
 use \Bar;
 class Baz

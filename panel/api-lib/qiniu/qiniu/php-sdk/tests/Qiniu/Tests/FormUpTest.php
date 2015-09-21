@@ -8,6 +8,7 @@ class FormUpTest extends \PHPUnit_Framework_TestCase
 {
     protected $bucketName;
     protected $auth;
+
     protected function setUp()
     {
         global $bucketName;
@@ -16,6 +17,7 @@ class FormUpTest extends \PHPUnit_Framework_TestCase
         global $testAuth;
         $this->auth = $testAuth;
     }
+
     public function testData()
     {
         $token = $this->auth->uploadToken($this->bucketName);

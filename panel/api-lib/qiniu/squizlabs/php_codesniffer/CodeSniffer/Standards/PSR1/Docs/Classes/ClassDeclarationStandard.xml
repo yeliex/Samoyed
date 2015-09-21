@@ -1,12 +1,12 @@
 <documentation title="Class Declaration">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Each class must be in a file by itself and must be under a namespace (a top-level vendor name).
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: One class in a file.">
-        <![CDATA[
+            <![CDATA[
 <?php
 namespace Foo;
 
@@ -15,7 +15,7 @@ namespace Foo;
         ]]>
         </code>
         <code title="Invalid: Multiple classes in a single file.">
-        <![CDATA[
+            <![CDATA[
 <?php
 namespace Foo;
 
@@ -29,7 +29,7 @@ namespace Foo;
     </code_comparison>
     <code_comparison>
         <code title="Valid: A vendor-level namespace is used.">
-        <![CDATA[
+            <![CDATA[
 <?php
 <em>namespace Foo;</em>
 
@@ -38,7 +38,7 @@ class Bar {
         ]]>
         </code>
         <code title="Invalid: No namespace used in file.">
-        <![CDATA[
+            <![CDATA[
 <?php
 class Bar {
 }

@@ -40,7 +40,7 @@ class Squiz_Sniffs_NamingConventions_ValidFunctionNameSniff extends PEAR_Sniffs_
      * Processes the tokens outside the scope.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being processed.
-     * @param int                  $stackPtr  The position where this token was
+     * @param int $stackPtr The position where this token was
      *                                        found.
      *
      * @return void

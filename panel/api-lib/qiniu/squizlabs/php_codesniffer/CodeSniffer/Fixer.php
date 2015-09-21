@@ -127,10 +127,10 @@ class PHP_CodeSniffer_Fixer
     public function startFile($phpcsFile)
     {
         $this->_currentFile = $phpcsFile;
-        $this->_numFixes    = 0;
+        $this->_numFixes = 0;
         $this->_fixedTokens = array();
 
-        $tokens        = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $this->_tokens = array();
         foreach ($tokens as $index => $token) {
             if (isset($token['orig_content']) === true) {
@@ -156,7 +156,7 @@ class PHP_CodeSniffer_Fixer
             return false;
         }
 
-        $stdin     = false;
+        $stdin = false;
         $cliValues = $this->_currentFile->phpcs->cli->getCommandLineValues();
         if (empty($cliValues['files']) === true) {
             $stdin = true;
@@ -173,15 +173,15 @@ class PHP_CodeSniffer_Fixer
 
             if (PHP_CODESNIFFER_VERBOSITY > 2) {
                 @ob_end_clean();
-                echo '---START FILE CONTENT---'.PHP_EOL;
+                echo '---START FILE CONTENT---' . PHP_EOL;
                 $lines = explode($this->_currentFile->eolChar, $contents);
-                $max   = strlen(count($lines));
+                $max = strlen(count($lines));
                 foreach ($lines as $lineNum => $line) {
                     $lineNum++;
-                    echo str_pad($lineNum, $max, ' ', STR_PAD_LEFT).'|'.$line.PHP_EOL;
+                    echo str_pad($lineNum, $max, ' ', STR_PAD_LEFT) . '|' . $line . PHP_EOL;
                 }
 
-                echo '--- END FILE CONTENT ---'.PHP_EOL;
+                echo '--- END FILE CONTENT ---' . PHP_EOL;
                 ob_start();
             }
 
@@ -193,7 +193,7 @@ class PHP_CodeSniffer_Fixer
             $this->loops++;
 
             if (PHP_CODESNIFFER_CBF === true && $stdin === false) {
-                echo "\r".str_repeat(' ', 80)."\r";
+                echo "\r" . str_repeat(' ', 80) . "\r";
                 echo "\t=> Fixing file: $this->_numFixes/$fixable violations remaining [made $this->loops pass";
                 if ($this->loops > 1) {
                     echo 'es';
@@ -206,7 +206,7 @@ class PHP_CodeSniffer_Fixer
                 // Nothing left to do.
                 break;
             } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                echo "\t* fixed $this->_numFixes violations, starting loop ".($this->loops + 1).' *'.PHP_EOL;
+                echo "\t* fixed $this->_numFixes violations, starting loop " . ($this->loops + 1) . ' *' . PHP_EOL;
             }
         }//end while
 
@@ -215,7 +215,7 @@ class PHP_CodeSniffer_Fixer
         if ($this->_numFixes > 0) {
             if (PHP_CODESNIFFER_VERBOSITY > 1) {
                 @ob_end_clean();
-                echo "\t*** Reached maximum number of loops with $this->_numFixes violations left unfixed ***".PHP_EOL;
+                echo "\t*** Reached maximum number of loops with $this->_numFixes violations left unfixed ***" . PHP_EOL;
                 ob_start();
             }
 
@@ -230,38 +230,38 @@ class PHP_CodeSniffer_Fixer
     /**
      * Generates a text diff of the original file and the new content.
      *
-     * @param string  $filePath Optional file path to diff the file against.
+     * @param string $filePath Optional file path to diff the file against.
      *                          If not specified, the original version of the
      *                          file will be used.
-     * @param boolean $colors   Print colored output or not.
+     * @param boolean $colors Print colored output or not.
      *
      * @return string
      */
-    public function generateDiff($filePath=null, $colors=true)
+    public function generateDiff($filePath = null, $colors = true)
     {
         if ($filePath === null) {
             $filePath = $this->_currentFile->getFilename();
         }
 
-        $cwd      = getcwd().DIRECTORY_SEPARATOR;
+        $cwd = getcwd() . DIRECTORY_SEPARATOR;
         $filename = str_replace($cwd, '', $filePath);
         $contents = $this->getContents();
 
         if (function_exists('sys_get_temp_dir') === true) {
             // This is needed for HHVM support, but only available from 5.2.1.
-            $tempName  = tempnam(sys_get_temp_dir(), 'phpcs-fixer');
+            $tempName = tempnam(sys_get_temp_dir(), 'phpcs-fixer');
             $fixedFile = fopen($tempName, 'w');
         } else {
             $fixedFile = tmpfile();
-            $data      = stream_get_meta_data($fixedFile);
-            $tempName  = $data['uri'];
+            $data = stream_get_meta_data($fixedFile);
+            $tempName = $data['uri'];
         }
 
         fwrite($fixedFile, $contents);
 
         // We must use something like shell_exec() because whitespace at the end
         // of lines is critical to diff files.
-        $cmd  = "diff -u -L\"$filename\" -LPHP_CodeSniffer \"$filename\" \"$tempName\"";
+        $cmd = "diff -u -L\"$filename\" -LPHP_CodeSniffer \"$filename\" \"$tempName\"";
         $diff = shell_exec($cmd);
 
         fclose($fixedFile);
@@ -283,14 +283,14 @@ class PHP_CodeSniffer_Fixer
         foreach ($diffLines as $line) {
             if (isset($line[0]) === true) {
                 switch ($line[0]) {
-                case '-':
-                    $diff[] = "\033[31m$line\033[0m";
-                    break;
-                case '+':
-                    $diff[] = "\033[32m$line\033[0m";
-                    break;
-                default:
-                    $diff[] = $line;
+                    case '-':
+                        $diff[] = "\033[31m$line\033[0m";
+                        break;
+                    case '+':
+                        $diff[] = "\033[32m$line\033[0m";
+                        break;
+                    default:
+                        $diff[] = $line;
                 }
             }
         }
@@ -365,16 +365,16 @@ class PHP_CodeSniffer_Fixer
         }
 
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            $bt    = debug_backtrace();
+            $bt = debug_backtrace();
             $sniff = $bt[1]['class'];
-            $line  = $bt[0]['line'];
+            $line = $bt[0]['line'];
 
             @ob_end_clean();
-            echo "\t=> Changeset started by $sniff (line $line)".PHP_EOL;
+            echo "\t=> Changeset started by $sniff (line $line)" . PHP_EOL;
             ob_start();
         }
 
-        $this->_changeset   = array();
+        $this->_changeset = array();
         $this->_inChangeset = true;
 
     }//end beginChangeset()
@@ -412,13 +412,13 @@ class PHP_CodeSniffer_Fixer
 
             if (PHP_CODESNIFFER_VERBOSITY > 1) {
                 @ob_end_clean();
-                echo "\t=> Changeset failed to apply".PHP_EOL;
+                echo "\t=> Changeset failed to apply" . PHP_EOL;
                 ob_start();
             }
         } else if (PHP_CODESNIFFER_VERBOSITY > 1) {
             $fixes = count($this->_changeset);
             @ob_end_clean();
-            echo "\t=> Changeset ended: $fixes changes applied".PHP_EOL;
+            echo "\t=> Changeset ended: $fixes changes applied" . PHP_EOL;
             ob_start();
         }
 
@@ -430,8 +430,8 @@ class PHP_CodeSniffer_Fixer
     /**
      * Replace the entire contents of a token.
      *
-     * @param int    $stackPtr The position of the token in the token stack.
-     * @param string $content  The new content of the token.
+     * @param int $stackPtr The position of the token in the token stack.
+     * @param string $content The new content of the token.
      *
      * @return bool If the change was accepted.
      */
@@ -451,7 +451,7 @@ class PHP_CodeSniffer_Fixer
 
             if (PHP_CODESNIFFER_VERBOSITY > 1) {
                 @ob_end_clean();
-                echo "$indent* token $stackPtr has already been modified, skipping *".PHP_EOL;
+                echo "$indent* token $stackPtr has already been modified, skipping *" . PHP_EOL;
                 ob_start();
             }
 
@@ -462,19 +462,19 @@ class PHP_CodeSniffer_Fixer
             $bt = debug_backtrace();
             if ($bt[1]['class'] === 'PHP_CodeSniffer_Fixer') {
                 $sniff = $bt[2]['class'];
-                $line  = $bt[1]['line'];
+                $line = $bt[1]['line'];
             } else {
                 $sniff = $bt[1]['class'];
-                $line  = $bt[0]['line'];
+                $line = $bt[0]['line'];
             }
 
-            $tokens     = $this->_currentFile->getTokens();
-            $type       = $tokens[$stackPtr]['type'];
+            $tokens = $this->_currentFile->getTokens();
+            $type = $tokens[$stackPtr]['type'];
             $oldContent = PHP_CodeSniffer::prepareForOutput($this->_tokens[$stackPtr]);
             $newContent = PHP_CodeSniffer::prepareForOutput($content);
             if (trim($this->_tokens[$stackPtr]) === '' && isset($this->_tokens[($stackPtr + 1)]) === true) {
                 // Add some context for whitespace only changes.
-                $append      = PHP_CodeSniffer::prepareForOutput($this->_tokens[($stackPtr + 1)]);
+                $append = PHP_CodeSniffer::prepareForOutput($this->_tokens[($stackPtr + 1)]);
                 $oldContent .= $append;
                 $newContent .= $append;
             }
@@ -485,7 +485,7 @@ class PHP_CodeSniffer_Fixer
 
             if (PHP_CODESNIFFER_VERBOSITY > 1) {
                 @ob_end_clean();
-                echo "\t\tQ: $sniff (line $line) replaced token $stackPtr ($type) \"$oldContent\" => \"$newContent\"".PHP_EOL;
+                echo "\t\tQ: $sniff (line $line) replaced token $stackPtr ($type) \"$oldContent\" => \"$newContent\"" . PHP_EOL;
                 ob_start();
             }
 
@@ -494,10 +494,10 @@ class PHP_CodeSniffer_Fixer
 
         if (isset($this->_oldTokenValues[$stackPtr]) === false) {
             $this->_oldTokenValues[$stackPtr] = array(
-                                                 'curr' => $content,
-                                                 'prev' => $this->_tokens[$stackPtr],
-                                                 'loop' => $this->loops,
-                                                );
+                'curr' => $content,
+                'prev' => $this->_tokens[$stackPtr],
+                'loop' => $this->loops,
+            );
         } else {
             if ($this->_oldTokenValues[$stackPtr]['prev'] === $content) {
                 if (PHP_CODESNIFFER_VERBOSITY > 1) {
@@ -509,14 +509,14 @@ class PHP_CodeSniffer_Fixer
                     $loop = $this->_oldTokenValues[$stackPtr]['loop'];
 
                     @ob_end_clean();
-                    echo "$indent**** $sniff (line $line) has possible conflict with another sniff on loop $loop; caused by the following change ****".PHP_EOL;
-                    echo "$indent**** replaced token $stackPtr ($type) \"$oldContent\" => \"$newContent\" ****".PHP_EOL;
+                    echo "$indent**** $sniff (line $line) has possible conflict with another sniff on loop $loop; caused by the following change ****" . PHP_EOL;
+                    echo "$indent**** replaced token $stackPtr ($type) \"$oldContent\" => \"$newContent\" ****" . PHP_EOL;
                 }
 
                 if ($this->_oldTokenValues[$stackPtr]['loop'] >= ($this->loops - 1)) {
                     $this->_inConflict = true;
                     if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                        echo "$indent**** ignoring all changes until next loop ****".PHP_EOL;
+                        echo "$indent**** ignoring all changes until next loop ****" . PHP_EOL;
                     }
                 }
 
@@ -533,7 +533,7 @@ class PHP_CodeSniffer_Fixer
         }//end if
 
         $this->_fixedTokens[$stackPtr] = $this->_tokens[$stackPtr];
-        $this->_tokens[$stackPtr]      = $content;
+        $this->_tokens[$stackPtr] = $content;
         $this->_numFixes++;
 
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
@@ -543,7 +543,7 @@ class PHP_CodeSniffer_Fixer
             }
 
             @ob_end_clean();
-            echo "$indent$sniff (line $line) replaced token $stackPtr ($type) \"$oldContent\" => \"$newContent\"".PHP_EOL;
+            echo "$indent$sniff (line $line) replaced token $stackPtr ($type) \"$oldContent\" => \"$newContent\"" . PHP_EOL;
             ob_start();
         }
 
@@ -569,19 +569,19 @@ class PHP_CodeSniffer_Fixer
             $bt = debug_backtrace();
             if ($bt[1]['class'] === 'PHP_CodeSniffer_Fixer') {
                 $sniff = $bt[2]['class'];
-                $line  = $bt[1]['line'];
+                $line = $bt[1]['line'];
             } else {
                 $sniff = $bt[1]['class'];
-                $line  = $bt[0]['line'];
+                $line = $bt[0]['line'];
             }
 
-            $tokens     = $this->_currentFile->getTokens();
-            $type       = $tokens[$stackPtr]['type'];
+            $tokens = $this->_currentFile->getTokens();
+            $type = $tokens[$stackPtr]['type'];
             $oldContent = PHP_CodeSniffer::prepareForOutput($this->_tokens[$stackPtr]);
             $newContent = PHP_CodeSniffer::prepareForOutput($this->_fixedTokens[$stackPtr]);
             if (trim($this->_tokens[$stackPtr]) === '' && isset($tokens[($stackPtr + 1)]) === true) {
                 // Add some context for whitespace only changes.
-                $append      = PHP_CodeSniffer::prepareForOutput($this->_tokens[($stackPtr + 1)]);
+                $append = PHP_CodeSniffer::prepareForOutput($this->_tokens[($stackPtr + 1)]);
                 $oldContent .= $append;
                 $newContent .= $append;
             }
@@ -598,7 +598,7 @@ class PHP_CodeSniffer_Fixer
             }
 
             @ob_end_clean();
-            echo "$indent$sniff (line $line) reverted token $stackPtr ($type) \"$oldContent\" => \"$newContent\"".PHP_EOL;
+            echo "$indent$sniff (line $line) reverted token $stackPtr ($type) \"$oldContent\" => \"$newContent\"" . PHP_EOL;
             ob_start();
         }
 
@@ -611,13 +611,13 @@ class PHP_CodeSniffer_Fixer
      * Replace the content of a token with a part of its current content.
      *
      * @param int $stackPtr The position of the token in the token stack.
-     * @param int $start    The first character to keep.
-     * @param int $length   The number of chacters to keep. If NULL, the content of
+     * @param int $start The first character to keep.
+     * @param int $length The number of chacters to keep. If NULL, the content of
      *                      the token from $start to the end of the content is kept.
      *
      * @return bool If the change was accepted.
      */
-    public function substrToken($stackPtr, $start, $length=null)
+    public function substrToken($stackPtr, $start, $length = null)
     {
         $current = $this->getTokenContent($stackPtr);
 
@@ -642,7 +642,7 @@ class PHP_CodeSniffer_Fixer
     public function addNewline($stackPtr)
     {
         $current = $this->getTokenContent($stackPtr);
-        return $this->replaceToken($stackPtr, $current.$this->_currentFile->eolChar);
+        return $this->replaceToken($stackPtr, $current . $this->_currentFile->eolChar);
 
     }//end addNewline()
 
@@ -657,7 +657,7 @@ class PHP_CodeSniffer_Fixer
     public function addNewlineBefore($stackPtr)
     {
         $current = $this->getTokenContent($stackPtr);
-        return $this->replaceToken($stackPtr, $this->_currentFile->eolChar.$current);
+        return $this->replaceToken($stackPtr, $this->_currentFile->eolChar . $current);
 
     }//end addNewlineBefore()
 
@@ -665,15 +665,15 @@ class PHP_CodeSniffer_Fixer
     /**
      * Adds content to the end of a token's current content.
      *
-     * @param int    $stackPtr The position of the token in the token stack.
-     * @param string $content  The content to add.
+     * @param int $stackPtr The position of the token in the token stack.
+     * @param string $content The content to add.
      *
      * @return bool If the change was accepted.
      */
     public function addContent($stackPtr, $content)
     {
         $current = $this->getTokenContent($stackPtr);
-        return $this->replaceToken($stackPtr, $current.$content);
+        return $this->replaceToken($stackPtr, $current . $content);
 
     }//end addContent()
 
@@ -681,15 +681,15 @@ class PHP_CodeSniffer_Fixer
     /**
      * Adds content to the start of a token's current content.
      *
-     * @param int    $stackPtr The position of the token in the token stack.
-     * @param string $content  The content to add.
+     * @param int $stackPtr The position of the token in the token stack.
+     * @param string $content The content to add.
      *
      * @return bool If the change was accepted.
      */
     public function addContentBefore($stackPtr, $content)
     {
         $current = $this->getTokenContent($stackPtr);
-        return $this->replaceToken($stackPtr, $content.$current);
+        return $this->replaceToken($stackPtr, $content . $current);
 
     }//end addContentBefore()
 

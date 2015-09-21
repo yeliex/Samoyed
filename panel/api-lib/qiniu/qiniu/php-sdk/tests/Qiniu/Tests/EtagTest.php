@@ -16,7 +16,7 @@ class EtagTest extends \PHPUnit_Framework_TestCase
 
     public function testLess4M()
     {
-        $file = qiniuTempFile(3*1024*1024);
+        $file = qiniuTempFile(3 * 1024 * 1024);
         list($r, $error) = Etag::sum($file);
         unlink($file);
         $this->assertEquals('lrGEYiVvREEgGl_foQEnZ5a5BqwZ', $r);
@@ -25,7 +25,7 @@ class EtagTest extends \PHPUnit_Framework_TestCase
 
     public function test4M()
     {
-        $file = qiniuTempFile(4*1024*1024);
+        $file = qiniuTempFile(4 * 1024 * 1024);
         list($r, $error) = Etag::sum($file);
         unlink($file);
         $this->assertEquals('lvOwUCzD-YVymzwJLRGZR3eD__GV', $r);
@@ -34,7 +34,7 @@ class EtagTest extends \PHPUnit_Framework_TestCase
 
     public function testMore4M()
     {
-        $file = qiniuTempFile(5*1024*1024);
+        $file = qiniuTempFile(5 * 1024 * 1024);
         list($r, $error) = Etag::sum($file);
         unlink($file);
         $this->assertEquals('lqtEDHt7Yo5j1a2mjlB2Ds8DUYNM', $r);
@@ -43,7 +43,7 @@ class EtagTest extends \PHPUnit_Framework_TestCase
 
     public function test8M()
     {
-        $file = qiniuTempFile(8*1024*1024);
+        $file = qiniuTempFile(8 * 1024 * 1024);
         list($r, $error) = Etag::sum($file);
         unlink($file);
         $this->assertEquals('ljpekgMJ9VSYlE8hMX06GIWXxfDI', $r);

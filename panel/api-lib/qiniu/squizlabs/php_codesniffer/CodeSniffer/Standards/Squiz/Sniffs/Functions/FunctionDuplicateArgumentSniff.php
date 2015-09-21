@@ -47,7 +47,7 @@ class Squiz_Sniffs_Functions_FunctionDuplicateArgumentSniff implements PHP_CodeS
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -56,7 +56,7 @@ class Squiz_Sniffs_Functions_FunctionDuplicateArgumentSniff implements PHP_CodeS
     {
         $tokens = $phpcsFile->getTokens();
 
-        $openBracket  = $tokens[$stackPtr]['parenthesis_opener'];
+        $openBracket = $tokens[$stackPtr]['parenthesis_opener'];
         $closeBracket = $tokens[$stackPtr]['parenthesis_closer'];
 
         $foundVariables = array();
@@ -65,7 +65,7 @@ class Squiz_Sniffs_Functions_FunctionDuplicateArgumentSniff implements PHP_CodeS
                 $variable = $tokens[$i]['content'];
                 if (in_array($variable, $foundVariables) === true) {
                     $error = 'Variable "%s" appears more than once in function declaration';
-                    $data  = array($variable);
+                    $data = array($variable);
                     $phpcsFile->addError($error, $i, 'Found', $data);
                 } else {
                     $foundVariables[] = $variable;

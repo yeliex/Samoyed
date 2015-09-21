@@ -60,7 +60,7 @@ class Generic_Sniffs_CodeAnalysis_ForLoopWithTestFunctionCallSniff implements PH
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -68,7 +68,7 @@ class Generic_Sniffs_CodeAnalysis_ForLoopWithTestFunctionCallSniff implements PH
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip invalid statement.
         if (isset($token['parenthesis_opener']) === false) {
@@ -76,7 +76,7 @@ class Generic_Sniffs_CodeAnalysis_ForLoopWithTestFunctionCallSniff implements PH
         }
 
         $next = ++$token['parenthesis_opener'];
-        $end  = --$token['parenthesis_closer'];
+        $end = --$token['parenthesis_closer'];
 
         $position = 0;
 

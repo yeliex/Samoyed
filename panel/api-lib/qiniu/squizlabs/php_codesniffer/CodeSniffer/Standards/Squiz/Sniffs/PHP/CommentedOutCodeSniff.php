@@ -36,9 +36,9 @@ class Squiz_Sniffs_PHP_CommentedOutCodeSniff implements PHP_CodeSniffer_Sniff
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'CSS',
-                                  );
+        'PHP',
+        'CSS',
+    );
 
     /**
      * If a comment is more than $maxPercentage% code, a warning will be shown.
@@ -64,7 +64,7 @@ class Squiz_Sniffs_PHP_CommentedOutCodeSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -124,7 +124,7 @@ class Squiz_Sniffs_PHP_CommentedOutCodeSniff implements PHP_CodeSniffer_Sniff
                 $tokenContent = substr($tokenContent, 1);
             }
 
-            $content .= $tokenContent.$phpcsFile->eolChar;
+            $content .= $tokenContent . $phpcsFile->eolChar;
         }//end for
 
         $content = trim($content);
@@ -145,12 +145,12 @@ class Squiz_Sniffs_PHP_CommentedOutCodeSniff implements PHP_CodeSniffer_Sniff
         ini_set('error_reporting', $oldErrors);
 
         $emptyTokens = array(
-                        T_WHITESPACE              => true,
-                        T_STRING                  => true,
-                        T_STRING_CONCAT           => true,
-                        T_ENCAPSED_AND_WHITESPACE => true,
-                        T_NONE                    => true,
-                       );
+            T_WHITESPACE => true,
+            T_STRING => true,
+            T_STRING_CONCAT => true,
+            T_ENCAPSED_AND_WHITESPACE => true,
+            T_NONE => true,
+        );
 
         $numTokens = count($stringTokens);
 
@@ -181,9 +181,9 @@ class Squiz_Sniffs_PHP_CommentedOutCodeSniff implements PHP_CodeSniffer_Sniff
             return;
         }
 
-        $numComment  = 0;
+        $numComment = 0;
         $numPossible = 0;
-        $numCode     = 0;
+        $numCode = 0;
 
         for ($i = 0; $i < $numTokens; $i++) {
             if (isset($emptyTokens[$stringTokens[$i]['code']]) === true) {
@@ -218,7 +218,7 @@ class Squiz_Sniffs_PHP_CommentedOutCodeSniff implements PHP_CodeSniffer_Sniff
             $percentCode = min(100, $percentCode);
 
             $error = 'This comment is %s%% valid code; is this commented out code?';
-            $data  = array($percentCode);
+            $data = array($percentCode);
             $phpcsFile->addWarning($error, $stackPtr, 'Found', $data);
         }
 

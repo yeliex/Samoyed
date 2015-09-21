@@ -14,7 +14,8 @@ final class FormUploader
         $params,
         $mime,
         $checkCrc
-    ) {
+    )
+    {
         $fields = array('token' => $upToken);
         if ($key === null) {
             $fname = 'filename';
@@ -45,7 +46,8 @@ final class FormUploader
         $params,
         $mime,
         $checkCrc
-    ) {
+    )
+    {
 
         $fields = array('token' => $upToken, 'file' => self::createFile($filePath, $mime));
         if ($key === null) {
@@ -62,7 +64,7 @@ final class FormUploader
                 $fields[$k] = $v;
             }
         }
-        $headers =array('Content-Type' => 'multipart/form-data');
+        $headers = array('Content-Type' => 'multipart/form-data');
         $response = client::post(Config::$defaultHost, $fields, $headers);
         if (!$response->ok()) {
             return array(null, new Error(Config::$defaultHost, $response));

@@ -97,7 +97,7 @@ final class Response
         if (self::isJson($headers)) {
             try {
                 $jsonData = self::bodyJson($body);
-                if ($code >=400) {
+                if ($code >= 400) {
                     if ($jsonData['error'] != null) {
                         $this->error = $jsonData['error'];
                     } else {
@@ -112,7 +112,7 @@ final class Response
                     $this->error = $body;
                 }
             }
-        } elseif ($code >=400) {
+        } elseif ($code >= 400) {
             $this->error = $body;
         }
         return;
@@ -126,7 +126,7 @@ final class Response
     private static function bodyJson($body, array $config = array())
     {
         return \Qiniu\json_decode(
-            (string) $body,
+            (string)$body,
             isset($config['object']) ? !$config['object'] : true,
             512,
             isset($config['big_int_strings']) ? JSON_BIGINT_AS_STRING : 0
@@ -163,7 +163,7 @@ final class Response
     public function needRetry()
     {
         $code = $this->statusCode;
-        if ($code< 0 || ($code / 100 == 5 and $code != 579) || $code == 996) {
+        if ($code < 0 || ($code / 100 == 5 and $code != 579) || $code == 996) {
             return true;
         }
     }

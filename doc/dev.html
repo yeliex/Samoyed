@@ -1,164 +1,191 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<style>
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-    color: #737373;
-    background-color: white;
-    margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {	
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;	
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote {
+            margin: 0;
+            padding: 0;
+        }
 
-a {
-    color: #0069d6;
-}
-a:hover {
-    color: #0050a3;
-    text-decoration: none;
-}
-a img {
-    border: none;
-}
-p {
-    margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #404040;
-    line-height: 36px;
-}
-h1 {
-    margin-bottom: 18px;
-    font-size: 30px;
-}
-h2 {
-    font-size: 24px;
-}
-h3 {
-    font-size: 18px;
-}
-h4 {
-    font-size: 16px;
-}
-h5 {
-    font-size: 14px;
-}
-h6 {
-    font-size: 13px;
-}
-hr {
-    margin: 0 0 19px;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-}
-blockquote {
-    padding: 13px 13px 21px 15px;
-    margin-bottom: 18px;
-    font-family:georgia,serif;
-    font-style: italic;
-}
-blockquote:before {
-    content:"\201C";
-    font-size:40px;
-    margin-left:-10px;
-    font-family:georgia,serif;
-    color:#eee;
-}
-blockquote p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-bottom: 0;
-    font-style: italic;
-}
-code, pre {
-    font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-    background-color: #fee9cc;
-    color: rgba(0, 0, 0, 0.75);
-    padding: 1px 3px;
-    font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-pre {
-    display: block;
-    padding: 14px;
-    margin: 0 0 18px;
-    line-height: 16px;
-    font-size: 11px;
-    border: 1px solid #d9d9d9;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-pre code {
-    background-color: #fff;
-    color:#737373;
-    font-size: 11px;
-    padding: 0;
-}
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:10px auto;
-    }
-}
-@media print {
-	body,code,pre code,h1,h2,h3,h4,h5,h6 {
-		color: black;
-	}
-	table, pre {
-		page-break-inside: avoid;
-	}
-}
-</style>
-<title>Project-Samoyed Docs</title>
+        body {
+            font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+            font-size: 13px;
+            line-height: 18px;
+            color: #737373;
+            background-color: white;
+            margin: 10px 13px 10px 13px;
+        }
+
+        table {
+            margin: 10px 0 15px 0;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 3px 10px;
+        }
+
+        th {
+            padding: 5px 10px;
+        }
+
+        a {
+            color: #0069d6;
+        }
+
+        a:hover {
+            color: #0050a3;
+            text-decoration: none;
+        }
+
+        a img {
+            border: none;
+        }
+
+        p {
+            margin-bottom: 9px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #404040;
+            line-height: 36px;
+        }
+
+        h1 {
+            margin-bottom: 18px;
+            font-size: 30px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
+
+        h4 {
+            font-size: 16px;
+        }
+
+        h5 {
+            font-size: 14px;
+        }
+
+        h6 {
+            font-size: 13px;
+        }
+
+        hr {
+            margin: 0 0 19px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        blockquote {
+            padding: 13px 13px 21px 15px;
+            margin-bottom: 18px;
+            font-family: georgia, serif;
+            font-style: italic;
+        }
+
+        blockquote:before {
+            content: "\201C";
+            font-size: 40px;
+            margin-left: -10px;
+            font-family: georgia, serif;
+            color: #eee;
+        }
+
+        blockquote p {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 18px;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        code, pre {
+            font-family: Monaco, Andale Mono, Courier New, monospace;
+        }
+
+        code {
+            background-color: #fee9cc;
+            color: rgba(0, 0, 0, 0.75);
+            padding: 1px 3px;
+            font-size: 12px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        pre {
+            display: block;
+            padding: 14px;
+            margin: 0 0 18px;
+            line-height: 16px;
+            font-size: 11px;
+            border: 1px solid #d9d9d9;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        pre code {
+            background-color: #fff;
+            color: #737373;
+            font-size: 11px;
+            padding: 0;
+        }
+
+        sup {
+            font-size: 0.83em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        @media screen and (min-width: 914px) {
+            body {
+                width: 854px;
+                margin: 10px auto;
+            }
+        }
+
+        @media print {
+            body, code, pre code, h1, h2, h3, h4, h5, h6 {
+                color: black;
+            }
+
+            table, pre {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+    <title>Project-Samoyed Docs</title>
 
 </head>
 <body>
 <h1>Project-Samoyed Docs</h1>
 
-<p><img src="http://25.io/mou/Mou_128.png" title="Samoyed" alt="Project icon" /></p>
+<p><img src="http://25.io/mou/Mou_128.png" title="Samoyed" alt="Project icon"/></p>
 
 <h2>Development Document</h2>
 
@@ -166,718 +193,718 @@ sup {
 
 <h3>Document Update</h3>
 
-<hr />
+<hr/>
 
 <table>
-<thead>
-<tr>
-<th>Version </th>
-<th> Date </th>
-<th> Update</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V 1.0  </td>
-<td> 2015-07-23 </td>
-<td> 第一代版本文档</td>
-</tr>
-<tr>
-<td>V 1.5  </td>
-<td> 2015-08-07 </td>
-<td> 修改数据库名 type_items为unit_items</td>
-</tr>
-<tr>
-<td>V 1.9  </td>
-<td> 2015-08-10 </td>
-<td> 修改building_product字段:  building_unit_num,building_pic_num</td>
-</tr>
-<tr>
-<td>V 2.0  </td>
-<td> 2015-08-10 </td>
-<td> 修改数据库: building_img</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Version</th>
+        <th> Date</th>
+        <th> Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>V 1.0</td>
+        <td> 2015-07-23</td>
+        <td> 第一代版本文档</td>
+    </tr>
+    <tr>
+        <td>V 1.5</td>
+        <td> 2015-08-07</td>
+        <td> 修改数据库名 type_items为unit_items</td>
+    </tr>
+    <tr>
+        <td>V 1.9</td>
+        <td> 2015-08-10</td>
+        <td> 修改building_product字段: building_unit_num,building_pic_num</td>
+    </tr>
+    <tr>
+        <td>V 2.0</td>
+        <td> 2015-08-10</td>
+        <td> 修改数据库: building_img</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h3>Technology Stack</h3>
 
-<hr />
+<hr/>
 
 <h4>Database</h4>
 
 <ol>
-<li>Mysql</li>
+    <li>Mysql</li>
 </ol>
 
 
 <h4>Web-Server</h4>
 
 <ol>
-<li>Langiage: PHP</li>
+    <li>Langiage: PHP</li>
 </ol>
 
 
 <h4>Web-Client</h4>
 
 <ol>
-<li>Language: HTML, HTML5, CSS, CSS3, Javascript</li>
-<li>Front-End Framework: Semantic-UI</li>
-<li>Javascrpti Framework: jQuery</li>
+    <li>Language: HTML, HTML5, CSS, CSS3, Javascript</li>
+    <li>Front-End Framework: Semantic-UI</li>
+    <li>Javascrpti Framework: jQuery</li>
 </ol>
 
 
 <h4>Web-Background</h4>
 
 <ol>
-<li>Language: HTML, CSS, Javascript, PHP</li>
-<li>Front-End Framework: Semantic-UI, Amazi-UI</li>
-<li>Javascript Framework: jQuery</li>
+    <li>Language: HTML, CSS, Javascript, PHP</li>
+    <li>Front-End Framework: Semantic-UI, Amazi-UI</li>
+    <li>Javascript Framework: jQuery</li>
 </ol>
 
 
 <h3>Database Structure</h3>
 
-<hr />
+<hr/>
 
 <h4>Database</h4>
 
-<hr />
+<hr/>
 
 <h5>mizhi_app</h5>
 
 <table>
-<thead>
-<tr>
-<th>Tables </th>
-<th> Fields </th>
-<th> Intro </th>
-<th> Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>admin_users </td>
-<td> 8 </td>
-<td> 后台管理员数据库 </td>
-<td> 有后台使用权限的员工数据</td>
-</tr>
-<tr>
-<td>building_product </td>
-<td> 17 </td>
-<td> 建筑信息数据库 </td>
-<td> 所有当前有效的建筑信息</td>
-</tr>
-<tr>
-<td>type_items </td>
-<td> 6 </td>
-<td> 户型数据库 </td>
-<td> 所有当前有效建筑的户型信息</td>
-</tr>
-<tr>
-<td>building_img </td>
-<td> 4 </td>
-<td> 图片数据库 </td>
-<td> 所有建筑的图片</td>
-</tr>
-<tr>
-<td>users_info </td>
-<td> 5 </td>
-<td> 用户信息 </td>
-<td> 预约过的用户信息</td>
-</tr>
-<tr>
-<td>user_appointment </td>
-<td> 4 </td>
-<td> 预约信息 </td>
-<td> 用户预约信息</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Tables</th>
+        <th> Fields</th>
+        <th> Intro</th>
+        <th> Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>admin_users</td>
+        <td> 8</td>
+        <td> 后台管理员数据库</td>
+        <td> 有后台使用权限的员工数据</td>
+    </tr>
+    <tr>
+        <td>building_product</td>
+        <td> 17</td>
+        <td> 建筑信息数据库</td>
+        <td> 所有当前有效的建筑信息</td>
+    </tr>
+    <tr>
+        <td>type_items</td>
+        <td> 6</td>
+        <td> 户型数据库</td>
+        <td> 所有当前有效建筑的户型信息</td>
+    </tr>
+    <tr>
+        <td>building_img</td>
+        <td> 4</td>
+        <td> 图片数据库</td>
+        <td> 所有建筑的图片</td>
+    </tr>
+    <tr>
+        <td>users_info</td>
+        <td> 5</td>
+        <td> 用户信息</td>
+        <td> 预约过的用户信息</td>
+    </tr>
+    <tr>
+        <td>user_appointment</td>
+        <td> 4</td>
+        <td> 预约信息</td>
+        <td> 用户预约信息</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h4>Tables</h4>
 
-<hr />
+<hr/>
 
 <h5>admin_users</h5>
 
 <table>
-<thead>
-<tr>
-<th>Fields </th>
-<th> Type </th>
-<th> Collection </th>
-<th> Property </th>
-<th> Default </th>
-<th>Empty </th>
-<th> Primary </th>
-<th> Unique</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>uid </td>
-<td> int(1) </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> true </td>
-<td> </td>
-</tr>
-<tr>
-<td>username </td>
-<td> varchar(15) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>usergroup </td>
-<td> varchar(3) </td>
-<td>utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>password </td>
-<td> varchar(255) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>usermail </td>
-<td> varchar(255) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>salt </td>
-<td> varchar(6) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>lastip </td>
-<td> varchar(15</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>lastpos </td>
-<td> varchar(255) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Fields</th>
+        <th> Type</th>
+        <th> Collection</th>
+        <th> Property</th>
+        <th> Default</th>
+        <th>Empty</th>
+        <th> Primary</th>
+        <th> Unique</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>uid</td>
+        <td> int(1)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td> true</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>username</td>
+        <td> varchar(15)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>usergroup</td>
+        <td> varchar(3)</td>
+        <td>utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td> varchar(255)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>usermail</td>
+        <td> varchar(255)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>salt</td>
+        <td> varchar(6)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>lastip</td>
+        <td> varchar(15</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>lastpos</td>
+        <td> varchar(255)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h5>building_product</h5>
 
 <table>
-<thead>
-<tr>
-<th>Fields </th>
-<th> Type </th>
-<th> Collection </th>
-<th> Property </th>
-<th> Default </th>
-<th>Empty </th>
-<th> Primary </th>
-<th> Unique</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>building_id </td>
-<td> int(9) </td>
-<td> </td>
-<td>UNSIGNED </td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_name </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_type </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_decoration </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_district </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_area </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_address </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_pos </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_metro </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_unit_num </td>
-<td> int(2)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_price </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_cate_price </td>
-<td> int(1)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_size </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_cate_size </td>
-<td> int(1)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_pic_num </td>
-<td> int(2)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_pic </td>
-<td> longtext </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_description </td>
-<td> longtext  </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Fields</th>
+        <th> Type</th>
+        <th> Collection</th>
+        <th> Property</th>
+        <th> Default</th>
+        <th>Empty</th>
+        <th> Primary</th>
+        <th> Unique</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>building_id</td>
+        <td> int(9)</td>
+        <td></td>
+        <td>UNSIGNED</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_name</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_type</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_decoration</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_district</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_area</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_address</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_pos</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_metro</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_unit_num</td>
+        <td> int(2)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_price</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_cate_price</td>
+        <td> int(1)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_size</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_cate_size</td>
+        <td> int(1)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_pic_num</td>
+        <td> int(2)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_pic</td>
+        <td> longtext</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_description</td>
+        <td> longtext</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h5>unit_items</h5>
 
 <table>
-<thead>
-<tr>
-<th>Fields </th>
-<th> Type </th>
-<th> Collection </th>
-<th> Property </th>
-<th> Default </th>
-<th>Empty </th>
-<th> Primary </th>
-<th> Unique</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type_id </td>
-<td> bigint(12)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_id </td>
-<td> int(9)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>type_name </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>type_price </td>
-<td> varchar(10) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>type_size </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>type_pic </td>
-<td> longtext </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Fields</th>
+        <th> Type</th>
+        <th> Collection</th>
+        <th> Property</th>
+        <th> Default</th>
+        <th>Empty</th>
+        <th> Primary</th>
+        <th> Unique</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>type_id</td>
+        <td> bigint(12)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_id</td>
+        <td> int(9)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>type_name</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>type_price</td>
+        <td> varchar(10)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>type_size</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>type_pic</td>
+        <td> longtext</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h5>building_img</h5>
 
 <table>
-<thead>
-<tr>
-<th>Fields </th>
-<th> Type </th>
-<th> Collection </th>
-<th> Property </th>
-<th> Default </th>
-<th>Empty </th>
-<th> Primary </th>
-<th> Unique</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>img_id </td>
-<td> bigint(12) </td>
-<td> </td>
-<td> UNSIGNED </td>
-<td> AUTO_INCREMENT</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_name </td>
-<td> varchar(100) </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>img_avaliable </td>
-<td> tinyint(1) (Boolen)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>building_id </td>
-<td> int(9) </td>
-<td> </td>
-<td> UNSIGNED</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>img_uri </td>
-<td> longtext </td>
-<td> utf8_general_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Fields</th>
+        <th> Type</th>
+        <th> Collection</th>
+        <th> Property</th>
+        <th> Default</th>
+        <th>Empty</th>
+        <th> Primary</th>
+        <th> Unique</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>img_id</td>
+        <td> bigint(12)</td>
+        <td></td>
+        <td> UNSIGNED</td>
+        <td> AUTO_INCREMENT</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_name</td>
+        <td> varchar(100)</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>img_avaliable</td>
+        <td> tinyint(1) (Boolen)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>building_id</td>
+        <td> int(9)</td>
+        <td></td>
+        <td> UNSIGNED</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>img_uri</td>
+        <td> longtext</td>
+        <td> utf8_general_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h5>users_info</h5>
 
 <table>
-<thead>
-<tr>
-<th>Fields </th>
-<th> Type </th>
-<th> Collection </th>
-<th> Property </th>
-<th> Default </th>
-<th>Empty </th>
-<th> Primary </th>
-<th> Unique</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>user_id </td>
-<td> int(5) </td>
-<td> </td>
-<td> </td>
-<td>AUTO_INCREMENT</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>user_name </td>
-<td> varchar(10) </td>
-<td> latin1_swedish_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>user_phone </td>
-<td> char(11) </td>
-<td> latin1_swedish_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>user_email </td>
-<td> varchar(255) </td>
-<td> latin1_swedish_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>user_male </td>
-<td> varchar(2) </td>
-<td> latin1_swedish_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Fields</th>
+        <th> Type</th>
+        <th> Collection</th>
+        <th> Property</th>
+        <th> Default</th>
+        <th>Empty</th>
+        <th> Primary</th>
+        <th> Unique</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>user_id</td>
+        <td> int(5)</td>
+        <td></td>
+        <td></td>
+        <td>AUTO_INCREMENT</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>user_name</td>
+        <td> varchar(10)</td>
+        <td> latin1_swedish_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>user_phone</td>
+        <td> char(11)</td>
+        <td> latin1_swedish_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>user_email</td>
+        <td> varchar(255)</td>
+        <td> latin1_swedish_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>user_male</td>
+        <td> varchar(2)</td>
+        <td> latin1_swedish_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h5>user_appointment</h5>
 
 <table>
-<thead>
-<tr>
-<th>Fields </th>
-<th> Type </th>
-<th> Collection </th>
-<th> Property </th>
-<th> Default </th>
-<th>Empty </th>
-<th> Primary </th>
-<th> Unique</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>user_id </td>
-<td> char(5) </td>
-<td> latin1_swedish_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>appoint_status </td>
-<td> tinyint(1) (Boolen)</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>appoint_date </td>
-<td> date</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>appoint_time </td>
-<td> varchar(2) </td>
-<td> latin1_swedish_ci</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Fields</th>
+        <th> Type</th>
+        <th> Collection</th>
+        <th> Property</th>
+        <th> Default</th>
+        <th>Empty</th>
+        <th> Primary</th>
+        <th> Unique</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>user_id</td>
+        <td> char(5)</td>
+        <td> latin1_swedish_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>appoint_status</td>
+        <td> tinyint(1) (Boolen)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>appoint_date</td>
+        <td> date</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>appoint_time</td>
+        <td> varchar(2)</td>
+        <td> latin1_swedish_ci</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
 </table>
 
 </body>

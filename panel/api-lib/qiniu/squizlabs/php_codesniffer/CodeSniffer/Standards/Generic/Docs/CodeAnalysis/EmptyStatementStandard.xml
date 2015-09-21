@@ -1,19 +1,19 @@
 <documentation title="Empty Statements">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Control Structures must have at least one statement inside of the body.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: There is a statement inside the control structure.">
-        <![CDATA[
+            <![CDATA[
 if ($test) {
     $var = 1;
 }
         ]]>
         </code>
         <code title="Invalid: The control structure has no statements.">
-        <![CDATA[
+            <![CDATA[
 if ($test) {
     <em>// do nothing</em>
 }

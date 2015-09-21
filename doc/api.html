@@ -1,164 +1,191 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<style>
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-    color: #737373;
-    background-color: white;
-    margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {	
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;	
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote {
+            margin: 0;
+            padding: 0;
+        }
 
-a {
-    color: #0069d6;
-}
-a:hover {
-    color: #0050a3;
-    text-decoration: none;
-}
-a img {
-    border: none;
-}
-p {
-    margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #404040;
-    line-height: 36px;
-}
-h1 {
-    margin-bottom: 18px;
-    font-size: 30px;
-}
-h2 {
-    font-size: 24px;
-}
-h3 {
-    font-size: 18px;
-}
-h4 {
-    font-size: 16px;
-}
-h5 {
-    font-size: 14px;
-}
-h6 {
-    font-size: 13px;
-}
-hr {
-    margin: 0 0 19px;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-}
-blockquote {
-    padding: 13px 13px 21px 15px;
-    margin-bottom: 18px;
-    font-family:georgia,serif;
-    font-style: italic;
-}
-blockquote:before {
-    content:"\201C";
-    font-size:40px;
-    margin-left:-10px;
-    font-family:georgia,serif;
-    color:#eee;
-}
-blockquote p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-bottom: 0;
-    font-style: italic;
-}
-code, pre {
-    font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-    background-color: #fee9cc;
-    color: rgba(0, 0, 0, 0.75);
-    padding: 1px 3px;
-    font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-pre {
-    display: block;
-    padding: 14px;
-    margin: 0 0 18px;
-    line-height: 16px;
-    font-size: 11px;
-    border: 1px solid #d9d9d9;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-pre code {
-    background-color: #fff;
-    color:#737373;
-    font-size: 11px;
-    padding: 0;
-}
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:10px auto;
-    }
-}
-@media print {
-	body,code,pre code,h1,h2,h3,h4,h5,h6 {
-		color: black;
-	}
-	table, pre {
-		page-break-inside: avoid;
-	}
-}
-</style>
-<title>Project-Samoyed Docs</title>
+        body {
+            font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+            font-size: 13px;
+            line-height: 18px;
+            color: #737373;
+            background-color: white;
+            margin: 10px 13px 10px 13px;
+        }
+
+        table {
+            margin: 10px 0 15px 0;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 3px 10px;
+        }
+
+        th {
+            padding: 5px 10px;
+        }
+
+        a {
+            color: #0069d6;
+        }
+
+        a:hover {
+            color: #0050a3;
+            text-decoration: none;
+        }
+
+        a img {
+            border: none;
+        }
+
+        p {
+            margin-bottom: 9px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #404040;
+            line-height: 36px;
+        }
+
+        h1 {
+            margin-bottom: 18px;
+            font-size: 30px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
+
+        h4 {
+            font-size: 16px;
+        }
+
+        h5 {
+            font-size: 14px;
+        }
+
+        h6 {
+            font-size: 13px;
+        }
+
+        hr {
+            margin: 0 0 19px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        blockquote {
+            padding: 13px 13px 21px 15px;
+            margin-bottom: 18px;
+            font-family: georgia, serif;
+            font-style: italic;
+        }
+
+        blockquote:before {
+            content: "\201C";
+            font-size: 40px;
+            margin-left: -10px;
+            font-family: georgia, serif;
+            color: #eee;
+        }
+
+        blockquote p {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 18px;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        code, pre {
+            font-family: Monaco, Andale Mono, Courier New, monospace;
+        }
+
+        code {
+            background-color: #fee9cc;
+            color: rgba(0, 0, 0, 0.75);
+            padding: 1px 3px;
+            font-size: 12px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        pre {
+            display: block;
+            padding: 14px;
+            margin: 0 0 18px;
+            line-height: 16px;
+            font-size: 11px;
+            border: 1px solid #d9d9d9;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        pre code {
+            background-color: #fff;
+            color: #737373;
+            font-size: 11px;
+            padding: 0;
+        }
+
+        sup {
+            font-size: 0.83em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        @media screen and (min-width: 914px) {
+            body {
+                width: 854px;
+                margin: 10px auto;
+            }
+        }
+
+        @media print {
+            body, code, pre code, h1, h2, h3, h4, h5, h6 {
+                color: black;
+            }
+
+            table, pre {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+    <title>Project-Samoyed Docs</title>
 
 </head>
 <body>
 <h1>Project-Samoyed Docs</h1>
 
-<p><img src="http://25.io/mou/Mou_128.png" title="Samoyed" alt="Project icon" /></p>
+<p><img src="http://25.io/mou/Mou_128.png" title="Samoyed" alt="Project icon"/></p>
 
 <h2>API Document</h2>
 
@@ -166,64 +193,64 @@ sup {
 
 <h3>Document Update</h3>
 
-<hr />
+<hr/>
 
 <table>
-<thead>
-<tr>
-<th>Version </th>
-<th> Date </th>
-<th> Update</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V 1.0  </td>
-<td> 2015-07-1  </td>
-<td> 第一代版本文档</td>
-</tr>
-<tr>
-<td>V 1.1  </td>
-<td> 2015-07-20 </td>
-<td> 更新了请求接口: 新增全局参数(协议),列表参数(城市编码)</td>
-</tr>
-<tr>
-<td>V 2.0  </td>
-<td> 2015-07-23 </td>
-<td> 项目文档更新</td>
-</tr>
-<tr>
-<td>V 2.1  </td>
-<td> 2015-07-25 </td>
-<td> 启用新的API域名</td>
-</tr>
-<tr>
-<td>V 2.5  </td>
-<td> 2015-08-1 </td>
-<td> 更新了item接口中的价格/面积/图片获取(直接获取具体数值)</td>
-</tr>
-<tr>
-<td>V 3.0  </td>
-<td> 2015-08-7 </td>
-<td> 新增units接口获取户型,更新了所有接口的返回数据(下划线连接)</td>
-</tr>
-<tr>
-<td>V 3.1  </td>
-<td> 2015-08-10 </td>
-<td> item接口更新: 新增返回参数: dog_add(返回地址),dog_desc(返回详细介绍)</td>
-</tr>
-<tr>
-<td>V 4.0  </td>
-<td> 2015-08-10 </td>
-<td> 新增item/images接口获取建筑图片，修改units接口为item/units</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Version</th>
+        <th> Date</th>
+        <th> Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>V 1.0</td>
+        <td> 2015-07-1</td>
+        <td> 第一代版本文档</td>
+    </tr>
+    <tr>
+        <td>V 1.1</td>
+        <td> 2015-07-20</td>
+        <td> 更新了请求接口: 新增全局参数(协议),列表参数(城市编码)</td>
+    </tr>
+    <tr>
+        <td>V 2.0</td>
+        <td> 2015-07-23</td>
+        <td> 项目文档更新</td>
+    </tr>
+    <tr>
+        <td>V 2.1</td>
+        <td> 2015-07-25</td>
+        <td> 启用新的API域名</td>
+    </tr>
+    <tr>
+        <td>V 2.5</td>
+        <td> 2015-08-1</td>
+        <td> 更新了item接口中的价格/面积/图片获取(直接获取具体数值)</td>
+    </tr>
+    <tr>
+        <td>V 3.0</td>
+        <td> 2015-08-7</td>
+        <td> 新增units接口获取户型,更新了所有接口的返回数据(下划线连接)</td>
+    </tr>
+    <tr>
+        <td>V 3.1</td>
+        <td> 2015-08-10</td>
+        <td> item接口更新: 新增返回参数: dog_add(返回地址),dog_desc(返回详细介绍)</td>
+    </tr>
+    <tr>
+        <td>V 4.0</td>
+        <td> 2015-08-10</td>
+        <td> 新增item/images接口获取建筑图片，修改units接口为item/units</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <h3>API interfaces</h3>
 
-<hr />
+<hr/>
 
 <h4>1. 列表请求接口</h4>
 
@@ -231,208 +258,208 @@ sup {
 
 <blockquote><p><strong>api.mzapp.info/plist</strong></p></blockquote>
 
-<p><strong>Description:</strong>  <strong><em>获取所有item列表的接口</em></strong></p>
+<p><strong>Description:</strong> <strong><em>获取所有item列表的接口</em></strong></p>
 
 <p><strong>Request: </strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th>  类型 </th>
-<th> 必填 </th>
-<th> 值 </th>
-<th> 默认值 </th>
-<th>   描述      </th>
-<th>   示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>district </td>
-<td>  string  </td>
-<td>   true    </td>
-<td>   区域代码    </td>
-<td>   0(选择全部)    </td>
-<td>   城区选择    </td>
-<td>    310051(滨江区)</td>
-</tr>
-<tr>
-<td>size    </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   面积范围编号  </td>
-<td>   0(选择全部)    </td>
-<td>   选择面积    </td>
-<td>    1</td>
-</tr>
-<tr>
-<td>price   </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   价格范围编号  </td>
-<td>   0(选择全部)    </td>
-<td>   选择价格    </td>
-<td>    1</td>
-</tr>
-<tr>
-<td>page    </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   页码          </td>
-<td>   0(选择第一页)  </td>
-<td>   选择显示页码,每页20     </td>
-<td>    1(第一页)</td>
-</tr>
-<tr>
-<td>protocol </td>
-<td> string </td>
-<td> true </td>
-<td> 协议 </td>
-<td> json </td>
-<td> 数据协议 </td>
-<td> json</td>
-</tr>
-<tr>
-<td>city </td>
-<td> int </td>
-<td> true </td>
-<td> 城市编码 </td>
-<td> 0571(杭州) </td>
-<td> 选择城市 </td>
-<td> 0571</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 必填</th>
+        <th> 值</th>
+        <th> 默认值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>district</td>
+        <td> string</td>
+        <td> true</td>
+        <td> 区域代码</td>
+        <td> 0(选择全部)</td>
+        <td> 城区选择</td>
+        <td> 310051(滨江区)</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 面积范围编号</td>
+        <td> 0(选择全部)</td>
+        <td> 选择面积</td>
+        <td> 1</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 价格范围编号</td>
+        <td> 0(选择全部)</td>
+        <td> 选择价格</td>
+        <td> 1</td>
+    </tr>
+    <tr>
+        <td>page</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 页码</td>
+        <td> 0(选择第一页)</td>
+        <td> 选择显示页码,每页20</td>
+        <td> 1(第一页)</td>
+    </tr>
+    <tr>
+        <td>protocol</td>
+        <td> string</td>
+        <td> true</td>
+        <td> 协议</td>
+        <td> json</td>
+        <td> 数据协议</td>
+        <td> json</td>
+    </tr>
+    <tr>
+        <td>city</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 城市编码</td>
+        <td> 0571(杭州)</td>
+        <td> 选择城市</td>
+        <td> 0571</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Return:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th> 类型 </th>
-<th> 返回 </th>
-<th> 值 </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status </td>
-<td> string </td>
-<td>   always </td>
-<td>    success/failed </td>
-<td> 请求是否成功 </td>
-<td> status = 成功; failed = 失败</td>
-</tr>
-<tr>
-<td>error_code  </td>
-<td>   int  </td>
-<td>  status=failed   </td>
-<td>   错误代码    </td>
-<td>  错误代码  </td>
-<td>  10241</td>
-</tr>
-<tr>
-<td>error_info  </td>
-<td>   string  </td>
-<td>   status=failed   </td>
-<td>   错误内容   </td>
-<td> 错误信息   </td>
-<td>   数据库连接失败</td>
-</tr>
-<tr>
-<td>num </td>
-<td>   int </td>
-<td>   status=success  </td>
-<td>   项目总数 / 0    </td>
-<td>   项目总数量(非显示数量)   </td>
-<td>   59 / 0(没有时)</td>
-</tr>
-<tr>
-<td>overview    </td>
-<td>   array   </td>
-<td>   status=success &amp;&amp; num!= 0   </td>
-<td>   详细信息   </td>
-<td>   当前页所有值的详细信息 </td>
-<td> b1['ID']=310051001; b1['Name']='汇智地';</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 返回</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>status</td>
+        <td> string</td>
+        <td> always</td>
+        <td> success/failed</td>
+        <td> 请求是否成功</td>
+        <td> status = 成功; failed = 失败</td>
+    </tr>
+    <tr>
+        <td>error_code</td>
+        <td> int</td>
+        <td> status=failed</td>
+        <td> 错误代码</td>
+        <td> 错误代码</td>
+        <td> 10241</td>
+    </tr>
+    <tr>
+        <td>error_info</td>
+        <td> string</td>
+        <td> status=failed</td>
+        <td> 错误内容</td>
+        <td> 错误信息</td>
+        <td> 数据库连接失败</td>
+    </tr>
+    <tr>
+        <td>num</td>
+        <td> int</td>
+        <td> status=success</td>
+        <td> 项目总数 / 0</td>
+        <td> 项目总数量(非显示数量)</td>
+        <td> 59 / 0(没有时)</td>
+    </tr>
+    <tr>
+        <td>overview</td>
+        <td> array</td>
+        <td> status=success &amp;&amp; num!= 0</td>
+        <td> 详细信息</td>
+        <td> 当前页所有值的详细信息</td>
+        <td> b1['ID']=310051001; b1['Name']='汇智地';</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>overview参数:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数  </th>
-<th> 类型 </th>
-<th> 值  </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dog_id </td>
-<td> int </td>
-<td> ID </td>
-<td> 建筑DI    </td>
-<td>   310051001</td>
-</tr>
-<tr>
-<td>dog_name    </td>
-<td> string </td>
-<td> 名字 </td>
-<td> 建筑名字    </td>
-<td> 汇智地</td>
-</tr>
-<tr>
-<td>dog_area    </td>
-<td> string </td>
-<td> 商圈   </td>
-<td>   建筑所在商圈  </td>
-<td>   滨江商圈</td>
-</tr>
-<tr>
-<td>dog_size </td>
-<td> string </td>
-<td> 面积 </td>
-<td>    建筑面积范围(平方米)   </td>
-<td>   300-800</td>
-</tr>
-<tr>
-<td>dog_price </td>
-<td> string </td>
-<td> 价格 </td>
-<td>   建筑最低价格(元/月/平方米) </td>
-<td>   35</td>
-</tr>
-<tr>
-<td>dog_pic </td>
-<td> url   </td>
-<td>   连接   </td>
-<td>  标题图片    </td>
-<td>   img.domain.com/dogID.img</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>dog_id</td>
+        <td> int</td>
+        <td> ID</td>
+        <td> 建筑DI</td>
+        <td> 310051001</td>
+    </tr>
+    <tr>
+        <td>dog_name</td>
+        <td> string</td>
+        <td> 名字</td>
+        <td> 建筑名字</td>
+        <td> 汇智地</td>
+    </tr>
+    <tr>
+        <td>dog_area</td>
+        <td> string</td>
+        <td> 商圈</td>
+        <td> 建筑所在商圈</td>
+        <td> 滨江商圈</td>
+    </tr>
+    <tr>
+        <td>dog_size</td>
+        <td> string</td>
+        <td> 面积</td>
+        <td> 建筑面积范围(平方米)</td>
+        <td> 300-800</td>
+    </tr>
+    <tr>
+        <td>dog_price</td>
+        <td> string</td>
+        <td> 价格</td>
+        <td> 建筑最低价格(元/月/平方米)</td>
+        <td> 35</td>
+    </tr>
+    <tr>
+        <td>dog_pic</td>
+        <td> url</td>
+        <td> 连接</td>
+        <td> 标题图片</td>
+        <td> img.domain.com/dogID.img</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Notice:</strong></p>
 
 <ol>
-<li>区域编码</li>
-<li>面积范围对应编号</li>
-<li>价格范围对应编号</li>
+    <li>区域编码</li>
+    <li>面积范围对应编号</li>
+    <li>价格范围对应编号</li>
 </ol>
 
 
-<hr />
+<hr/>
 
 <h4>2. 搜索接口</h4>
 
@@ -440,215 +467,215 @@ sup {
 
 <blockquote><p><strong>api.mzapp.info/list/search</strong></p></blockquote>
 
-<p><strong>Description:</strong>  <strong><em>根据关键字获取item列表的接口</em></strong></p>
+<p><strong>Description:</strong> <strong><em>根据关键字获取item列表的接口</em></strong></p>
 
 <p><strong>Request:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th>  类型 </th>
-<th> 必填 </th>
-<th> 值 </th>
-<th> 默认值 </th>
-<th>   描述      </th>
-<th>   示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>keyword </td>
-<td>  string  </td>
-<td>    false   </td>
-<td>   关键字   </td>
-<td>    不搜索    </td>
-<td>   搜索关键字    </td>
-<td>    汇智地</td>
-</tr>
-<tr>
-<td>district </td>
-<td>  string  </td>
-<td>   true    </td>
-<td>   区域代码    </td>
-<td>   0(选择全部)    </td>
-<td>   城区选择    </td>
-<td>    310051(滨江区)</td>
-</tr>
-<tr>
-<td>size    </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   面积范围编号  </td>
-<td>   0(选择全部)    </td>
-<td>   选择面积    </td>
-<td>    1</td>
-</tr>
-<tr>
-<td>price   </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   价格范围编号  </td>
-<td>   0(选择全部)    </td>
-<td>   选择价格    </td>
-<td>    1</td>
-</tr>
-<tr>
-<td>page    </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   页码          </td>
-<td>   0(选择第一页)  </td>
-<td>   选择显示页码,每页20     </td>
-<td>    1(第一页)</td>
-</tr>
-<tr>
-<td>protocol </td>
-<td> string </td>
-<td> true </td>
-<td> 协议 </td>
-<td> json </td>
-<td> 数据协议 </td>
-<td> json</td>
-</tr>
-<tr>
-<td>city </td>
-<td> int </td>
-<td> true </td>
-<td> 城市编码 </td>
-<td> 0571(杭州) </td>
-<td> 选择城市 </td>
-<td> 0571</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 必填</th>
+        <th> 值</th>
+        <th> 默认值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>keyword</td>
+        <td> string</td>
+        <td> false</td>
+        <td> 关键字</td>
+        <td> 不搜索</td>
+        <td> 搜索关键字</td>
+        <td> 汇智地</td>
+    </tr>
+    <tr>
+        <td>district</td>
+        <td> string</td>
+        <td> true</td>
+        <td> 区域代码</td>
+        <td> 0(选择全部)</td>
+        <td> 城区选择</td>
+        <td> 310051(滨江区)</td>
+    </tr>
+    <tr>
+        <td>size</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 面积范围编号</td>
+        <td> 0(选择全部)</td>
+        <td> 选择面积</td>
+        <td> 1</td>
+    </tr>
+    <tr>
+        <td>price</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 价格范围编号</td>
+        <td> 0(选择全部)</td>
+        <td> 选择价格</td>
+        <td> 1</td>
+    </tr>
+    <tr>
+        <td>page</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 页码</td>
+        <td> 0(选择第一页)</td>
+        <td> 选择显示页码,每页20</td>
+        <td> 1(第一页)</td>
+    </tr>
+    <tr>
+        <td>protocol</td>
+        <td> string</td>
+        <td> true</td>
+        <td> 协议</td>
+        <td> json</td>
+        <td> 数据协议</td>
+        <td> json</td>
+    </tr>
+    <tr>
+        <td>city</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 城市编码</td>
+        <td> 0571(杭州)</td>
+        <td> 选择城市</td>
+        <td> 0571</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Return:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th> 类型 </th>
-<th> 返回 </th>
-<th> 值 </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status </td>
-<td> string </td>
-<td>   always </td>
-<td>    success/failed </td>
-<td> 请求是否成功 </td>
-<td> status = 成功; failed = 失败</td>
-</tr>
-<tr>
-<td>error_code  </td>
-<td>   int  </td>
-<td>  status=failed   </td>
-<td>   错误代码    </td>
-<td>  错误代码  </td>
-<td>  10241</td>
-</tr>
-<tr>
-<td>error_info  </td>
-<td>   string  </td>
-<td>   status=failed   </td>
-<td>   错误内容   </td>
-<td> 错误信息   </td>
-<td>   数据库连接失败</td>
-</tr>
-<tr>
-<td>num </td>
-<td>   int </td>
-<td>   status=success  </td>
-<td>   项目总数 / 0    </td>
-<td>   项目总数量(非显示数量)   </td>
-<td>   59 / 0(没有时)</td>
-</tr>
-<tr>
-<td>overview    </td>
-<td>   array   </td>
-<td>   status=success &amp;&amp; num!= 0   </td>
-<td>   详细信息   </td>
-<td>   当前页所有值的详细信息 </td>
-<td> b1['ID']=310051001; b1['Name']='汇智地';</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 返回</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>status</td>
+        <td> string</td>
+        <td> always</td>
+        <td> success/failed</td>
+        <td> 请求是否成功</td>
+        <td> status = 成功; failed = 失败</td>
+    </tr>
+    <tr>
+        <td>error_code</td>
+        <td> int</td>
+        <td> status=failed</td>
+        <td> 错误代码</td>
+        <td> 错误代码</td>
+        <td> 10241</td>
+    </tr>
+    <tr>
+        <td>error_info</td>
+        <td> string</td>
+        <td> status=failed</td>
+        <td> 错误内容</td>
+        <td> 错误信息</td>
+        <td> 数据库连接失败</td>
+    </tr>
+    <tr>
+        <td>num</td>
+        <td> int</td>
+        <td> status=success</td>
+        <td> 项目总数 / 0</td>
+        <td> 项目总数量(非显示数量)</td>
+        <td> 59 / 0(没有时)</td>
+    </tr>
+    <tr>
+        <td>overview</td>
+        <td> array</td>
+        <td> status=success &amp;&amp; num!= 0</td>
+        <td> 详细信息</td>
+        <td> 当前页所有值的详细信息</td>
+        <td> b1['ID']=310051001; b1['Name']='汇智地';</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Overview参数:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数  </th>
-<th> 类型 </th>
-<th> 值  </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dog_id </td>
-<td> int </td>
-<td> ID </td>
-<td> 建筑DI    </td>
-<td>   310051001</td>
-</tr>
-<tr>
-<td>dog_name    </td>
-<td> string </td>
-<td> 名字 </td>
-<td> 建筑名字    </td>
-<td> 汇智地</td>
-</tr>
-<tr>
-<td>dog_area    </td>
-<td> string </td>
-<td> 商圈   </td>
-<td>   建筑所在商圈  </td>
-<td>   滨江商圈</td>
-</tr>
-<tr>
-<td>dog_aize </td>
-<td> string </td>
-<td> 面积 </td>
-<td>    建筑面积范围(平方米)   </td>
-<td>   300-800</td>
-</tr>
-<tr>
-<td>dog_price </td>
-<td> string </td>
-<td> 价格 </td>
-<td>   建筑最低价格(元/月/平方米) </td>
-<td>   35</td>
-</tr>
-<tr>
-<td>dog_pic </td>
-<td> url   </td>
-<td>   连接   </td>
-<td>  标题图片    </td>
-<td>   img.domain.com/dogID.img</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>dog_id</td>
+        <td> int</td>
+        <td> ID</td>
+        <td> 建筑DI</td>
+        <td> 310051001</td>
+    </tr>
+    <tr>
+        <td>dog_name</td>
+        <td> string</td>
+        <td> 名字</td>
+        <td> 建筑名字</td>
+        <td> 汇智地</td>
+    </tr>
+    <tr>
+        <td>dog_area</td>
+        <td> string</td>
+        <td> 商圈</td>
+        <td> 建筑所在商圈</td>
+        <td> 滨江商圈</td>
+    </tr>
+    <tr>
+        <td>dog_aize</td>
+        <td> string</td>
+        <td> 面积</td>
+        <td> 建筑面积范围(平方米)</td>
+        <td> 300-800</td>
+    </tr>
+    <tr>
+        <td>dog_price</td>
+        <td> string</td>
+        <td> 价格</td>
+        <td> 建筑最低价格(元/月/平方米)</td>
+        <td> 35</td>
+    </tr>
+    <tr>
+        <td>dog_pic</td>
+        <td> url</td>
+        <td> 连接</td>
+        <td> 标题图片</td>
+        <td> img.domain.com/dogID.img</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Notice:</strong></p>
 
 <ol>
-<li>keyword: 根据标题,区域,商圈,地址检索</li>
+    <li>keyword: 根据标题,区域,商圈,地址检索</li>
 </ol>
 
 
-<hr />
+<hr/>
 
 <h4>3. 详细内容获取</h4>
 
@@ -656,218 +683,218 @@ sup {
 
 <blockquote><p><strong>api.mzapp.info/item</strong></p></blockquote>
 
-<p><strong>Description:</strong>  <strong><em>根据ID获取item的详细信息</em></strong></p>
+<p><strong>Description:</strong> <strong><em>根据ID获取item的详细信息</em></strong></p>
 
 <p><strong>Request:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th>  类型 </th>
-<th> 必填 </th>
-<th> 值 </th>
-<th> 默认值 </th>
-<th>   描述      </th>
-<th>   示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id  </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   建筑ID    </td>
-<td>   ∕ </td>
-<td>   当前页显示的建筑ID  </td>
-<td> 310051</td>
-</tr>
-<tr>
-<td>protocol </td>
-<td> string </td>
-<td> true </td>
-<td> 协议 </td>
-<td> json </td>
-<td> 数据协议 </td>
-<td> json</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 必填</th>
+        <th> 值</th>
+        <th> 默认值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 建筑ID</td>
+        <td> ∕</td>
+        <td> 当前页显示的建筑ID</td>
+        <td> 310051</td>
+    </tr>
+    <tr>
+        <td>protocol</td>
+        <td> string</td>
+        <td> true</td>
+        <td> 协议</td>
+        <td> json</td>
+        <td> 数据协议</td>
+        <td> json</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Return:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th> 类型 </th>
-<th> 返回 </th>
-<th> 值 </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status </td>
-<td> string </td>
-<td>   always </td>
-<td>    success/failed </td>
-<td> 请求是否成功 </td>
-<td> success = 成功; false = 失败</td>
-</tr>
-<tr>
-<td>error_code  </td>
-<td>   int  </td>
-<td>  status=failed   </td>
-<td>   错误代码    </td>
-<td>  错误代码  </td>
-<td>  10241</td>
-</tr>
-<tr>
-<td>error_info  </td>
-<td>   string  </td>
-<td>   status=failed   </td>
-<td>   错误内容   </td>
-<td> 错误信息   </td>
-<td>   ID不存在</td>
-</tr>
-<tr>
-<td>num </td>
-<td>   int </td>
-<td>   status=success  </td>
-<td>   建筑数   </td>
-<td>   当前页的建筑数   </td>
-<td>   1 / 0 (不存在时)</td>
-</tr>
-<tr>
-<td>overview    </td>
-<td>   array   </td>
-<td>   status=success &amp;&amp; num!= 0   </td>
-<td>   详细信息   </td>
-<td>   当前建筑的详细信息 </td>
-<td> b1['dog_id']=310051001; b1['dog_name']='汇智地';</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 返回</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>status</td>
+        <td> string</td>
+        <td> always</td>
+        <td> success/failed</td>
+        <td> 请求是否成功</td>
+        <td> success = 成功; false = 失败</td>
+    </tr>
+    <tr>
+        <td>error_code</td>
+        <td> int</td>
+        <td> status=failed</td>
+        <td> 错误代码</td>
+        <td> 错误代码</td>
+        <td> 10241</td>
+    </tr>
+    <tr>
+        <td>error_info</td>
+        <td> string</td>
+        <td> status=failed</td>
+        <td> 错误内容</td>
+        <td> 错误信息</td>
+        <td> ID不存在</td>
+    </tr>
+    <tr>
+        <td>num</td>
+        <td> int</td>
+        <td> status=success</td>
+        <td> 建筑数</td>
+        <td> 当前页的建筑数</td>
+        <td> 1 / 0 (不存在时)</td>
+    </tr>
+    <tr>
+        <td>overview</td>
+        <td> array</td>
+        <td> status=success &amp;&amp; num!= 0</td>
+        <td> 详细信息</td>
+        <td> 当前建筑的详细信息</td>
+        <td> b1['dog_id']=310051001; b1['dog_name']='汇智地';</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>overview参数:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数  </th>
-<th> 类型 </th>
-<th> 返回 </th>
-<th> 值 </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dog_id </td>
-<td> int </td>
-<td> status=success </td>
-<td>ID </td>
-<td> 建筑DI    </td>
-<td>   310051001</td>
-</tr>
-<tr>
-<td>dog_name    </td>
-<td> string </td>
-<td> status=success   </td>
-<td> 名字 </td>
-<td>  建筑名字 </td>
-<td> 汇智地</td>
-</tr>
-<tr>
-<td>dog_area    </td>
-<td> string </td>
-<td> status=success   </td>
-<td> 商圈    </td>
-<td>   建筑所在商圈 </td>
-<td> 滨江商圈</td>
-</tr>
-<tr>
-<td>dog_district    </td>
-<td> string </td>
-<td> status=success   </td>
-<td> 区   </td>
-<td>   建筑所在区邮编 </td>
-<td> 310051</td>
-</tr>
-<tr>
-<td>dog_add </td>
-<td> string </td>
-<td> status=success   </td>
-<td> 地址    </td>
-<td>   建筑地址 </td>
-<td> 南环路</td>
-</tr>
-<tr>
-<td>dog_pos </td>
-<td> array </td>
-<td> status=success    </td>
-<td> 坐标    </td>
-<td>   建筑坐标(经纬度) </td>
-<td> 111|111</td>
-</tr>
-<tr>
-<td>dog_size </td>
-<td> string </td>
-<td> status=success  </td>
-<td> 面积 </td>
-<td> 建筑面积范围(平方米)</td>
-<td> 300-800</td>
-</tr>
-<tr>
-<td>dog_price </td>
-<td> string </td>
-<td> status=success </td>
-<td> 价格    </td>
-<td> 建筑最低价格(元/月/平方米) </td>
-<td>  35</td>
-</tr>
-<tr>
-<td>dog_desc </td>
-<td> string </td>
-<td> status=success </td>
-<td> 描述 </td>
-<td> 建筑详细描述 </td>
-<td>  ...</td>
-</tr>
-<tr>
-<td>dog_pic </td>
-<td> array </td>
-<td> status=success </td>
-<td> 链接 </td>
-<td> 大图图片 </td>
-<td> http://domain.com/img.jpg</td>
-</tr>
-<tr>
-<td>pic_num </td>
-<td> imt   </td>
-<td> status=success </td>
-<td> 数量 </td>
-<td> 图片数量 </td>
-<td> 5</td>
-</tr>
-<tr>
-<td>units_num </td>
-<td> int </td>
-<td> status=success </td>
-<td> 数量 </td>
-<td> 所有房型的数量 </td>
-<td> 5</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 返回</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>dog_id</td>
+        <td> int</td>
+        <td> status=success</td>
+        <td>ID</td>
+        <td> 建筑DI</td>
+        <td> 310051001</td>
+    </tr>
+    <tr>
+        <td>dog_name</td>
+        <td> string</td>
+        <td> status=success</td>
+        <td> 名字</td>
+        <td> 建筑名字</td>
+        <td> 汇智地</td>
+    </tr>
+    <tr>
+        <td>dog_area</td>
+        <td> string</td>
+        <td> status=success</td>
+        <td> 商圈</td>
+        <td> 建筑所在商圈</td>
+        <td> 滨江商圈</td>
+    </tr>
+    <tr>
+        <td>dog_district</td>
+        <td> string</td>
+        <td> status=success</td>
+        <td> 区</td>
+        <td> 建筑所在区邮编</td>
+        <td> 310051</td>
+    </tr>
+    <tr>
+        <td>dog_add</td>
+        <td> string</td>
+        <td> status=success</td>
+        <td> 地址</td>
+        <td> 建筑地址</td>
+        <td> 南环路</td>
+    </tr>
+    <tr>
+        <td>dog_pos</td>
+        <td> array</td>
+        <td> status=success</td>
+        <td> 坐标</td>
+        <td> 建筑坐标(经纬度)</td>
+        <td> 111|111</td>
+    </tr>
+    <tr>
+        <td>dog_size</td>
+        <td> string</td>
+        <td> status=success</td>
+        <td> 面积</td>
+        <td> 建筑面积范围(平方米)</td>
+        <td> 300-800</td>
+    </tr>
+    <tr>
+        <td>dog_price</td>
+        <td> string</td>
+        <td> status=success</td>
+        <td> 价格</td>
+        <td> 建筑最低价格(元/月/平方米)</td>
+        <td> 35</td>
+    </tr>
+    <tr>
+        <td>dog_desc</td>
+        <td> string</td>
+        <td> status=success</td>
+        <td> 描述</td>
+        <td> 建筑详细描述</td>
+        <td> ...</td>
+    </tr>
+    <tr>
+        <td>dog_pic</td>
+        <td> array</td>
+        <td> status=success</td>
+        <td> 链接</td>
+        <td> 大图图片</td>
+        <td> http://domain.com/img.jpg</td>
+    </tr>
+    <tr>
+        <td>pic_num</td>
+        <td> imt</td>
+        <td> status=success</td>
+        <td> 数量</td>
+        <td> 图片数量</td>
+        <td> 5</td>
+    </tr>
+    <tr>
+        <td>units_num</td>
+        <td> int</td>
+        <td> status=success</td>
+        <td> 数量</td>
+        <td> 所有房型的数量</td>
+        <td> 5</td>
+    </tr>
+    </tbody>
 </table>
 
 
-<hr />
+<hr/>
 
 <h4>4. 户型详细内容获取</h4>
 
@@ -875,163 +902,163 @@ sup {
 
 <blockquote><p><strong>api.mzapp.info/item/units</strong></p></blockquote>
 
-<p><strong>Description:</strong>  <strong><em>根据ID获取units的详细信息</em></strong></p>
+<p><strong>Description:</strong> <strong><em>根据ID获取units的详细信息</em></strong></p>
 
 <p><strong>Request:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th>  类型 </th>
-<th> 必填 </th>
-<th> 值 </th>
-<th> 默认值 </th>
-<th>   描述      </th>
-<th>   示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id  </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   建筑ID    </td>
-<td>   ∕ </td>
-<td>   当前页显示的建筑ID  </td>
-<td> 310051</td>
-</tr>
-<tr>
-<td>protocol </td>
-<td> string </td>
-<td> true </td>
-<td> 协议 </td>
-<td> json </td>
-<td> 数据协议 </td>
-<td> json</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 必填</th>
+        <th> 值</th>
+        <th> 默认值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 建筑ID</td>
+        <td> ∕</td>
+        <td> 当前页显示的建筑ID</td>
+        <td> 310051</td>
+    </tr>
+    <tr>
+        <td>protocol</td>
+        <td> string</td>
+        <td> true</td>
+        <td> 协议</td>
+        <td> json</td>
+        <td> 数据协议</td>
+        <td> json</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Return:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th> 类型 </th>
-<th> 返回 </th>
-<th> 值 </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status </td>
-<td> string </td>
-<td>   always </td>
-<td>    success/failed </td>
-<td> 请求是否成功 </td>
-<td> success = 成功; false = 失败</td>
-</tr>
-<tr>
-<td>error_code  </td>
-<td>   int  </td>
-<td>  status=failed   </td>
-<td>   错误代码    </td>
-<td>  错误代码  </td>
-<td>  10241</td>
-</tr>
-<tr>
-<td>error_info  </td>
-<td>   string  </td>
-<td>   status=failed   </td>
-<td>   错误内容   </td>
-<td> 错误信息   </td>
-<td>   ID不存在</td>
-</tr>
-<tr>
-<td>num </td>
-<td>   int </td>
-<td>   status=success  </td>
-<td>   户型数   </td>
-<td>   当前建筑的户型数   </td>
-<td>   5 (不会为0)</td>
-</tr>
-<tr>
-<td>overview    </td>
-<td>   array   </td>
-<td>   status=success &amp;&amp; num!= 0   </td>
-<td>   详细信息   </td>
-<td>   当前建筑所有户型的详细信息 </td>
-<td> b1['unit_id']=310051001; b1['Name']='汇智地';</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 返回</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>status</td>
+        <td> string</td>
+        <td> always</td>
+        <td> success/failed</td>
+        <td> 请求是否成功</td>
+        <td> success = 成功; false = 失败</td>
+    </tr>
+    <tr>
+        <td>error_code</td>
+        <td> int</td>
+        <td> status=failed</td>
+        <td> 错误代码</td>
+        <td> 错误代码</td>
+        <td> 10241</td>
+    </tr>
+    <tr>
+        <td>error_info</td>
+        <td> string</td>
+        <td> status=failed</td>
+        <td> 错误内容</td>
+        <td> 错误信息</td>
+        <td> ID不存在</td>
+    </tr>
+    <tr>
+        <td>num</td>
+        <td> int</td>
+        <td> status=success</td>
+        <td> 户型数</td>
+        <td> 当前建筑的户型数</td>
+        <td> 5 (不会为0)</td>
+    </tr>
+    <tr>
+        <td>overview</td>
+        <td> array</td>
+        <td> status=success &amp;&amp; num!= 0</td>
+        <td> 详细信息</td>
+        <td> 当前建筑所有户型的详细信息</td>
+        <td> b1['unit_id']=310051001; b1['Name']='汇智地';</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>overview参数:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数  </th>
-<th> 类型 </th>
-<th> 值  </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>unit_id </td>
-<td> int </td>
-<td> ID </td>
-<td>    户型DI    </td>
-<td>   310051001001</td>
-</tr>
-<tr>
-<td>unit_name </td>
-<td> string </td>
-<td> 名字 </td>
-<td>   户型名字    </td>
-<td> 户型1</td>
-</tr>
-<tr>
-<td>unit_size </td>
-<td> string </td>
-<td> 面积 </td>
-<td> 户型面积(平方米) </td>
-<td> 200</td>
-</tr>
-<tr>
-<td>unit_price </td>
-<td> string </td>
-<td> 价格 </td>
-<td> 户型价格(元/月/平方米) </td>
-<td> 35</td>
-</tr>
-<tr>
-<td>unit_deco </td>
-<td> string </td>
-<td> 装修 </td>
-<td> 装修类型 </td>
-<td> 精装修</td>
-</tr>
-<tr>
-<td>unit_pic </td>
-<td> URL </td>
-<td> 链接 </td>
-<td> 户型图片 </td>
-<td> img.domain.com/unit1.img</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>unit_id</td>
+        <td> int</td>
+        <td> ID</td>
+        <td> 户型DI</td>
+        <td> 310051001001</td>
+    </tr>
+    <tr>
+        <td>unit_name</td>
+        <td> string</td>
+        <td> 名字</td>
+        <td> 户型名字</td>
+        <td> 户型1</td>
+    </tr>
+    <tr>
+        <td>unit_size</td>
+        <td> string</td>
+        <td> 面积</td>
+        <td> 户型面积(平方米)</td>
+        <td> 200</td>
+    </tr>
+    <tr>
+        <td>unit_price</td>
+        <td> string</td>
+        <td> 价格</td>
+        <td> 户型价格(元/月/平方米)</td>
+        <td> 35</td>
+    </tr>
+    <tr>
+        <td>unit_deco</td>
+        <td> string</td>
+        <td> 装修</td>
+        <td> 装修类型</td>
+        <td> 精装修</td>
+    </tr>
+    <tr>
+        <td>unit_pic</td>
+        <td> URL</td>
+        <td> 链接</td>
+        <td> 户型图片</td>
+        <td> img.domain.com/unit1.img</td>
+    </tr>
+    </tbody>
 </table>
 
 
-<hr />
+<hr/>
 
 <h4>4. 建筑展示图片获取</h4>
 
@@ -1039,138 +1066,138 @@ sup {
 
 <blockquote><p><strong>api.mzapp.info/item/images</strong></p></blockquote>
 
-<p><strong>Description:</strong>  <strong><em>根据ID获取units的详细信息</em></strong></p>
+<p><strong>Description:</strong> <strong><em>根据ID获取units的详细信息</em></strong></p>
 
 <p><strong>Request:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th>  类型 </th>
-<th> 必填 </th>
-<th> 值 </th>
-<th> 默认值 </th>
-<th>   描述      </th>
-<th>   示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id  </td>
-<td>   int </td>
-<td>   true    </td>
-<td>   建筑ID    </td>
-<td>   ∕ </td>
-<td>   当前页显示的建筑ID  </td>
-<td> 310051</td>
-</tr>
-<tr>
-<td>protocol </td>
-<td> string </td>
-<td> true </td>
-<td> 协议 </td>
-<td> json </td>
-<td> 数据协议 </td>
-<td> json</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 必填</th>
+        <th> 值</th>
+        <th> 默认值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td> int</td>
+        <td> true</td>
+        <td> 建筑ID</td>
+        <td> ∕</td>
+        <td> 当前页显示的建筑ID</td>
+        <td> 310051</td>
+    </tr>
+    <tr>
+        <td>protocol</td>
+        <td> string</td>
+        <td> true</td>
+        <td> 协议</td>
+        <td> json</td>
+        <td> 数据协议</td>
+        <td> json</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>Return:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数 </th>
-<th> 类型 </th>
-<th> 返回 </th>
-<th> 值 </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status </td>
-<td> string </td>
-<td>   always </td>
-<td>    success/failed </td>
-<td> 请求是否成功 </td>
-<td> success = 成功; false = 失败</td>
-</tr>
-<tr>
-<td>error_code  </td>
-<td>   int  </td>
-<td>  status=failed   </td>
-<td>   错误代码    </td>
-<td>  错误代码  </td>
-<td>  10241</td>
-</tr>
-<tr>
-<td>error_info  </td>
-<td>   string  </td>
-<td>   status=failed   </td>
-<td>   错误内容   </td>
-<td> 错误信息   </td>
-<td>   ID不存在</td>
-</tr>
-<tr>
-<td>num </td>
-<td>   int </td>
-<td>   status=success  </td>
-<td>   户型数   </td>
-<td>   当前建筑的户型数   </td>
-<td>   5 (不会为0)</td>
-</tr>
-<tr>
-<td>overview    </td>
-<td>   array   </td>
-<td>   status=success &amp;&amp; num!= 0   </td>
-<td>   详细信息   </td>
-<td>   当前建筑所有图片的详细信息 </td>
-<td> i1['image_id']=310051001; i1['image_url']='http://domain.com/image1.jpg';</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 返回</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>status</td>
+        <td> string</td>
+        <td> always</td>
+        <td> success/failed</td>
+        <td> 请求是否成功</td>
+        <td> success = 成功; false = 失败</td>
+    </tr>
+    <tr>
+        <td>error_code</td>
+        <td> int</td>
+        <td> status=failed</td>
+        <td> 错误代码</td>
+        <td> 错误代码</td>
+        <td> 10241</td>
+    </tr>
+    <tr>
+        <td>error_info</td>
+        <td> string</td>
+        <td> status=failed</td>
+        <td> 错误内容</td>
+        <td> 错误信息</td>
+        <td> ID不存在</td>
+    </tr>
+    <tr>
+        <td>num</td>
+        <td> int</td>
+        <td> status=success</td>
+        <td> 户型数</td>
+        <td> 当前建筑的户型数</td>
+        <td> 5 (不会为0)</td>
+    </tr>
+    <tr>
+        <td>overview</td>
+        <td> array</td>
+        <td> status=success &amp;&amp; num!= 0</td>
+        <td> 详细信息</td>
+        <td> 当前建筑所有图片的详细信息</td>
+        <td> i1['image_id']=310051001; i1['image_url']='http://domain.com/image1.jpg';</td>
+    </tr>
+    </tbody>
 </table>
 
 
 <p><strong>overview参数:</strong></p>
 
 <table>
-<thead>
-<tr>
-<th>参数  </th>
-<th> 类型 </th>
-<th> 值  </th>
-<th> 描述 </th>
-<th> 示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>image_id </td>
-<td> int </td>
-<td> ID </td>
-<td>   图片DI    </td>
-<td>   310051001001</td>
-</tr>
-<tr>
-<td>image_name </td>
-<td> string </td>
-<td> 名字 </td>
-<td>  图片名字    </td>
-<td>   图片1</td>
-</tr>
-<tr>
-<td>image_url </td>
-<td> URL </td>
-<td> 链接 </td>
-<td> 图片连接 </td>
-<td> img.domain.com/image1.img</td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th> 类型</th>
+        <th> 值</th>
+        <th> 描述</th>
+        <th> 示例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>image_id</td>
+        <td> int</td>
+        <td> ID</td>
+        <td> 图片DI</td>
+        <td> 310051001001</td>
+    </tr>
+    <tr>
+        <td>image_name</td>
+        <td> string</td>
+        <td> 名字</td>
+        <td> 图片名字</td>
+        <td> 图片1</td>
+    </tr>
+    <tr>
+        <td>image_url</td>
+        <td> URL</td>
+        <td> 链接</td>
+        <td> 图片连接</td>
+        <td> img.domain.com/image1.img</td>
+    </tr>
+    </tbody>
 </table>
 
 </body>

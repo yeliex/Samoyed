@@ -14,7 +14,7 @@
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
 
-if (is_file(dirname(__FILE__).'/../CodeSniffer/CLI.php') === true) {
+if (is_file(dirname(__FILE__) . '/../CodeSniffer/CLI.php') === true) {
     include_once dirname(__FILE__) . '/../CodeSniffer/CLI.php';
 } else {
     include_once 'PHP/CodeSniffer/CLI.php';
@@ -60,7 +60,7 @@ class PHP_CodeSniffer_SVN_Hook extends PHP_CodeSniffer_CLI
      * Assumes all unknown arguments are files and folders to check.
      *
      * @param string $arg The command line argument.
-     * @param int    $pos The position of the argument on the command line.
+     * @param int $pos The position of the argument on the command line.
      *
      * @return void
      */
@@ -79,20 +79,20 @@ class PHP_CodeSniffer_SVN_Hook extends PHP_CodeSniffer_CLI
      * @return int The number of error and warning messages shown.
      * @see    getCommandLineValues()
      */
-    public function process($values=array())
+    public function process($values = array())
     {
         if (empty($values) === true) {
             $values = $this->getCommandLineValues();
         } else {
-            $values       = array_merge($this->getDefaults(), $values);
+            $values = array_merge($this->getDefaults(), $values);
             $this->values = $values;
         }
 
         // Get list of files in this transaction.
-        $command = PHP_CODESNIFFER_SVNLOOK.' changed '.implode(' ', $values['svnArgs']);
-        $handle  = popen($command, 'r');
+        $command = PHP_CODESNIFFER_SVNLOOK . ' changed ' . implode(' ', $values['svnArgs']);
+        $handle = popen($command, 'r');
         if ($handle === false) {
-            echo 'ERROR: Could not execute "'.$command.'"'.PHP_EOL.PHP_EOL;
+            echo 'ERROR: Could not execute "' . $command . '"' . PHP_EOL . PHP_EOL;
             exit(2);
         }
 
@@ -111,7 +111,7 @@ class PHP_CodeSniffer_SVN_Hook extends PHP_CodeSniffer_CLI
             if (PHP_CodeSniffer::isInstalledStandard($standard) === false) {
                 // They didn't select a valid coding standard, so help them
                 // out by letting them know which standards are installed.
-                echo 'ERROR: the "'.$standard.'" coding standard is not installed. ';
+                echo 'ERROR: the "' . $standard . '" coding standard is not installed. ';
                 $this->printInstalledStandards();
                 exit(2);
             }
@@ -172,10 +172,10 @@ class PHP_CodeSniffer_SVN_Hook extends PHP_CodeSniffer_CLI
             }
 
             // Get the contents of each file, as it would be after this transaction.
-            $command = PHP_CODESNIFFER_SVNLOOK.' cat '.implode(' ', $values['svnArgs']).' '.escapeshellarg($path);
-            $handle  = popen($command, 'r');
+            $command = PHP_CODESNIFFER_SVNLOOK . ' cat ' . implode(' ', $values['svnArgs']) . ' ' . escapeshellarg($path);
+            $handle = popen($command, 'r');
             if ($handle === false) {
-                echo 'ERROR: Could not execute "'.$command.'"'.PHP_EOL.PHP_EOL;
+                echo 'ERROR: Could not execute "' . $command . '"' . PHP_EOL . PHP_EOL;
                 exit(2);
             }
 
@@ -206,12 +206,12 @@ class PHP_CodeSniffer_SVN_Hook extends PHP_CodeSniffer_CLI
         parent::printUsage();
 
         echo PHP_EOL;
-        echo '    Each additional argument is passed to the `svnlook changed ...`'.PHP_EOL;
-        echo '    and `svnlook cat ...` commands.  The report is printed on standard output,'.PHP_EOL;
-        echo '    however Subversion displays only standard error to the user, so in a'.PHP_EOL;
-        echo '    pre-commit hook, this script should be invoked as follows:'.PHP_EOL;
+        echo '    Each additional argument is passed to the `svnlook changed ...`' . PHP_EOL;
+        echo '    and `svnlook cat ...` commands.  The report is printed on standard output,' . PHP_EOL;
+        echo '    however Subversion displays only standard error to the user, so in a' . PHP_EOL;
+        echo '    pre-commit hook, this script should be invoked as follows:' . PHP_EOL;
         echo PHP_EOL;
-        echo '    '.basename($_SERVER['argv'][0]).' ... "$REPOS" -t "$TXN" >&2 || exit 1'.PHP_EOL;
+        echo '    ' . basename($_SERVER['argv'][0]) . ' ... "$REPOS" -t "$TXN" >&2 || exit 1' . PHP_EOL;
 
     }//end printUsage()
 

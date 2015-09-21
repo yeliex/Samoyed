@@ -59,7 +59,7 @@ class Generic_Sniffs_Metrics_NestingLevelSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -75,7 +75,7 @@ class Generic_Sniffs_Metrics_NestingLevelSniff implements PHP_CodeSniffer_Sniff
 
         // Detect start and end of this function definition.
         $start = $tokens[$stackPtr]['scope_opener'];
-        $end   = $tokens[$stackPtr]['scope_closer'];
+        $end = $tokens[$stackPtr]['scope_closer'];
 
         $nestingLevel = 0;
 
@@ -92,17 +92,17 @@ class Generic_Sniffs_Metrics_NestingLevelSniff implements PHP_CodeSniffer_Sniff
 
         if ($nestingLevel > $this->absoluteNestingLevel) {
             $error = 'Function\'s nesting level (%s) exceeds allowed maximum of %s';
-            $data  = array(
-                      $nestingLevel,
-                      $this->absoluteNestingLevel,
-                     );
+            $data = array(
+                $nestingLevel,
+                $this->absoluteNestingLevel,
+            );
             $phpcsFile->addError($error, $stackPtr, 'MaxExceeded', $data);
         } else if ($nestingLevel > $this->nestingLevel) {
             $warning = 'Function\'s nesting level (%s) exceeds %s; consider refactoring the function';
-            $data    = array(
-                        $nestingLevel,
-                        $this->nestingLevel,
-                       );
+            $data = array(
+                $nestingLevel,
+                $this->nestingLevel,
+            );
             $phpcsFile->addWarning($warning, $stackPtr, 'TooHigh', $data);
         }
 

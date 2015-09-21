@@ -45,7 +45,7 @@ class Generic_Sniffs_Formatting_DisallowMultipleStatementsSniff implements PHP_C
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -79,7 +79,7 @@ class Generic_Sniffs_Formatting_DisallowMultipleStatementsSniff implements PHP_C
             $phpcsFile->recordMetric($stackPtr, 'Multiple statements on same line', 'yes');
 
             $error = 'Each PHP statement must be on a line by itself';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SameLine');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SameLine');
             if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();
                 $phpcsFile->fixer->addNewline($prev);

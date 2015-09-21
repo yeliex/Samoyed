@@ -38,7 +38,7 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
      * Processes class member variables.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -52,8 +52,8 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
             return;
         }
 
-        $memberName     = ltrim($tokens[$stackPtr]['content'], '$');
-        $scope          = $memberProps['scope'];
+        $memberName = ltrim($tokens[$stackPtr]['content'], '$');
+        $scope = $memberProps['scope'];
         $scopeSpecified = $memberProps['scope_specified'];
 
         if ($memberProps['scope'] === 'private') {
@@ -65,7 +65,7 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
         // If it's a private member, it must have an underscore on the front.
         if ($isPublic === false && $memberName{0} !== '_') {
             $error = 'Private member variable "%s" must be prefixed with an underscore';
-            $data  = array($memberName);
+            $data = array($memberName);
             $phpcsFile->addError($error, $stackPtr, 'PrivateNoUnderscore', $data);
             return;
         }
@@ -73,10 +73,10 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
         // If it's not a private member, it must not have an underscore on the front.
         if ($isPublic === true && $scopeSpecified === true && $memberName{0} === '_') {
             $error = '%s member variable "%s" must not be prefixed with an underscore';
-            $data  = array(
-                      ucfirst($scope),
-                      $memberName,
-                     );
+            $data = array(
+                ucfirst($scope),
+                $memberName,
+            );
             $phpcsFile->addError($error, $stackPtr, 'PublicUnderscore', $data);
             return;
         }
@@ -88,7 +88,7 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
      * Processes normal variables.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */
@@ -105,7 +105,7 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
      * Processes variables in double quoted strings.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */
