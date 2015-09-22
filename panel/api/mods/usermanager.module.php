@@ -17,7 +17,7 @@ class Usermanager extends UserManagerControl
             $statement->execute();
 //            print_r($statement->debugDumpParams());
             $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-            send_json(0, json_encode($results));
+            send_json(0, json_encode(array_unique($results)));
         } catch (PDOException $e) {
             print_r($statement->debugDumpParams());
 

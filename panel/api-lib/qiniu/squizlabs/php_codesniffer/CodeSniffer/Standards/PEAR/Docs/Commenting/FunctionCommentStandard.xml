@@ -1,12 +1,12 @@
 <documentation title="Function Comments">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Functions must have a non-empty doc comment.  The short description must be on the second line of the comment.  Each description must have one blank comment line before and after.  There must be one blank line before the tags in the comments.  There must be a tag for each of the parameters in the right order with the right variable names with a comment.  There must be a return tag.  Any throw tag must have an exception class.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: A function doc comment is used.">
-        <![CDATA[
+            <![CDATA[
 <em>/**
  * Short description here.
  *
@@ -18,7 +18,7 @@
         ]]>
         </code>
         <code title="Invalid: No doc comment for the function.">
-        <![CDATA[
+            <![CDATA[
  function foo()
  {
  }
@@ -27,7 +27,7 @@
     </code_comparison>
     <code_comparison>
         <code title="Valid: Short description is the second line of the comment.">
-        <![CDATA[
+            <![CDATA[
 /**
  * <em>Short description here.</em>
  *
@@ -39,7 +39,7 @@
         ]]>
         </code>
         <code title="Invalid: An extra blank line before the short description.">
-        <![CDATA[
+            <![CDATA[
 /**
  * <em></em>
  * <em>Short description here.</em>
@@ -54,7 +54,7 @@
     </code_comparison>
     <code_comparison>
         <code title="Valid: Exactly one blank line around descriptions.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  * <em></em>
@@ -68,7 +68,7 @@
         ]]>
         </code>
         <code title="Invalid: Extra blank lines around the descriptions.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  * <em></em>
@@ -86,7 +86,7 @@
     </code_comparison>
     <code_comparison>
         <code title="Valid: Exactly one blank line before the tags.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -100,7 +100,7 @@
         ]]>
         </code>
         <code title="Invalid: Extra blank lines before the tags.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -117,7 +117,7 @@
     </code_comparison>
     <code_comparison>
         <code title="Valid: Throws tag has an exception class.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -130,7 +130,7 @@
         ]]>
         </code>
         <code title="Invalid: No exception class given for throws tag.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -145,7 +145,7 @@
     </code_comparison>
     <code_comparison>
         <code title="Valid: Return tag present.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -157,7 +157,7 @@
         ]]>
         </code>
         <code title="Invalid: No return tag.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  */
@@ -169,7 +169,7 @@
     </code_comparison>
     <code_comparison>
         <code title="Valid: Param names are correct.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -183,7 +183,7 @@
         ]]>
         </code>
         <code title="Invalid: Wrong parameter name doesn't match function signature.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -199,7 +199,7 @@
     </code_comparison>
     <code_comparison>
         <code title="Valid: Param names are ordered correctly.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *
@@ -213,7 +213,7 @@
         ]]>
         </code>
         <code title="Invalid: Wrong parameter order.">
-        <![CDATA[
+            <![CDATA[
 /**
  * Short description here.
  *

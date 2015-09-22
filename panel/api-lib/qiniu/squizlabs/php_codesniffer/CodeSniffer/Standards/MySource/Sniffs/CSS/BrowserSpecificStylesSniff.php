@@ -45,12 +45,12 @@ class MySource_Sniffs_CSS_BrowserSpecificStylesSniff implements PHP_CodeSniffer_
      * @var array
      */
     protected $specificStylesheets = array(
-                                      'moz'    => true,
-                                      'ie'     => true,
-                                      'ie7'    => true,
-                                      'ie8'    => true,
-                                      'webkit' => true,
-                                     );
+        'moz' => true,
+        'ie' => true,
+        'ie7' => true,
+        'ie8' => true,
+        'webkit' => true,
+    );
 
 
     /**
@@ -69,7 +69,7 @@ class MySource_Sniffs_CSS_BrowserSpecificStylesSniff implements PHP_CodeSniffer_
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -77,7 +77,7 @@ class MySource_Sniffs_CSS_BrowserSpecificStylesSniff implements PHP_CodeSniffer_
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         // Ignore files with browser-specific suffixes.
-        $filename  = $phpcsFile->getFilename();
+        $filename = $phpcsFile->getFilename();
         $breakChar = strrpos($filename, '_');
         if ($breakChar !== false && substr($filename, -4) === '.css') {
             $specific = substr($filename, ($breakChar + 1), -4);
@@ -86,7 +86,7 @@ class MySource_Sniffs_CSS_BrowserSpecificStylesSniff implements PHP_CodeSniffer_
             }
         }
 
-        $tokens  = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $content = $tokens[$stackPtr]['content'];
 
         if ($content{0} === '-') {

@@ -47,7 +47,7 @@ class Squiz_Sniffs_Functions_GlobalFunctionSniff implements PHP_CodeSniffer_Snif
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -65,7 +65,7 @@ class Squiz_Sniffs_Functions_GlobalFunctionSniff implements PHP_CodeSniffer_Snif
             // Special exception for __autoload as it needs to be global.
             if ($functionName !== '__autoload') {
                 $error = 'Consider putting global function "%s" in a static class';
-                $data  = array($functionName);
+                $data = array($functionName);
                 $phpcsFile->addWarning($error, $stackPtr, 'Found', $data);
             }
         }

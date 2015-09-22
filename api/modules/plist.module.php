@@ -1,39 +1,41 @@
 <?php
 
-class Plist extends Samoyed{
+class Plist extends Samoyed
+{
     private $city;
     private $district;
     private $size;
     private $price;
     private $page;
 
-    public function __construct(){
+    public function __construct()
+    {
 
         parent::__construct();
 
         //获取城市编号
-        if((!isset($_GET['city'])) || (!$this->checkCity($_GET['city']))){
+        if ((!isset($_GET['city'])) || (!$this->checkCity($_GET['city']))) {
             send_json(1020);
             exit;
         }
         $this->city = $_GET['city'];
 
         // 获取区编号
-        if((!isset($_GET['district'])) || (!$this->checkDistrict($_GET['district']))){
+        if ((!isset($_GET['district'])) || (!$this->checkDistrict($_GET['district']))) {
             send_json(1030);
             exit;
         }
         $this->district = $_GET['district'];
 
         // 获取房屋面积区间
-        if((!isset($_GET['size'])) || (!$this->checkSize($_GET['size']))){
+        if ((!isset($_GET['size'])) || (!$this->checkSize($_GET['size']))) {
             send_json(1040);
             exit;
         }
         $this->size = $_GET['size'];
 
         // 获取房屋价格区间
-        if((!isset($_GET['price'])) || (!$this->checkPrice($_GET['price']))){
+        if ((!isset($_GET['price'])) || (!$this->checkPrice($_GET['price']))) {
             send_json(1050);
             exit;
         }
@@ -45,7 +47,8 @@ class Plist extends Samoyed{
     }
 
     //处理默认动作
-    public function defaultAction(){
+    public function defaultAction()
+    {
 
         // 接口需要返回的数据是：
         /*
@@ -76,15 +79,15 @@ class Plist extends Samoyed{
 
         // 因为是字符串链接，所以需要注意最后面的空格
         // 不然会导致 SQL 语句解析错误
-        if($this->district != 0){
+        if ($this->district != 0) {
             $sql .= 'AND building_product.building_district = :district ';
         }
 
-        if($this->size != 0){
+        if ($this->size != 0) {
             $sql .= 'AND building_product.building_cate_size = :size ';
         }
 
-        if($this->price != 0){
+        if ($this->price != 0) {
             $sql .= 'AND building_product.building_cate_price = :price ';
         }
 
@@ -92,21 +95,21 @@ class Plist extends Samoyed{
 
         $statement = $this->db->prepare($sql);
 
-        if($this->district != 0){
-            $statement->bindParam(':district',$this->district);
+        if ($this->district != 0) {
+            $statement->bindParam(':district', $this->district);
         }
 
-        if($this->size != 0){
-            $statement->bindParam(':size',$this->size);
+        if ($this->size != 0) {
+            $statement->bindParam(':size', $this->size);
         }
 
-        if($this->price != 0){
-            $statement->bindParam(':price',$this->price);
+        if ($this->price != 0) {
+            $statement->bindParam(':price', $this->price);
         }
 
         $statement->execute();
 
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        send_json(0,json_encode($results),count($results));
+        send_json(0, json_encode($results), count($results));
     }
 }

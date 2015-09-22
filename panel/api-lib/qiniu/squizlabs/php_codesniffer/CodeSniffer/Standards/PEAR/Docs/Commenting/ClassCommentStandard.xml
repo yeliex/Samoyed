@@ -1,12 +1,12 @@
 <documentation title="Class Comments">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Classes and interfaces must have a non-empty doc comment.  The short description must be on the second line of the comment.  Each description must have one blank comment line before and after.  There must be one blank line before the tags in the comments.  A @version tag must be in Release: package_version format.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: A doc comment for the class.">
-        <![CDATA[
+            <![CDATA[
 <em>/**
  * The Foo class.
  */</em>
@@ -16,7 +16,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: No doc comment for the class.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
 }
@@ -25,7 +25,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: A doc comment for the class.">
-        <![CDATA[
+            <![CDATA[
 <em>/**
  * The Foo class.
  */</em>
@@ -35,7 +35,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: Invalid comment type for the class.">
-        <![CDATA[
+            <![CDATA[
 // The Foo class.
 class Foo
 {
@@ -45,7 +45,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: A doc comment for the class.">
-        <![CDATA[
+            <![CDATA[
 <em>/**
  * The Foo class.
  */</em>
@@ -55,7 +55,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: The blank line after the comment makes it appear as a file comment, not a class comment.">
-        <![CDATA[
+            <![CDATA[
 <em>/**
  * The Foo class.
  */</em>
@@ -68,7 +68,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: Short description is the second line of the comment.">
-        <![CDATA[
+            <![CDATA[
 /**
  * <em>The Foo class.</em>
  */
@@ -78,7 +78,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: An extra blank line before the short description.">
-        <![CDATA[
+            <![CDATA[
 /**
  *
  * <em>The Foo class.</em>
@@ -91,7 +91,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: Exactly one blank line around descriptions.">
-        <![CDATA[
+            <![CDATA[
 /**
  * The Foo class.
  * <em></em>
@@ -105,7 +105,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: Extra blank lines around the descriptions.">
-        <![CDATA[
+            <![CDATA[
 /**
  * The Foo class.
  * <em></em>
@@ -123,7 +123,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: Exactly one blank line before the tags.">
-        <![CDATA[
+            <![CDATA[
 /**
  * The Foo class.
  * <em></em>
@@ -135,7 +135,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: Extra blank lines before the tags.">
-        <![CDATA[
+            <![CDATA[
 /**
  * The Foo class.
  * <em></em>
@@ -150,7 +150,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: Version tag is in the correct format.">
-        <![CDATA[
+            <![CDATA[
 /**
  * The Foo class.
  *
@@ -162,7 +162,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: No Release: text.">
-        <![CDATA[
+            <![CDATA[
 /**
  * The Foo class.
  *

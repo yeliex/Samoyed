@@ -1,12 +1,12 @@
 <documentation title="Property Declarations">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Property names should not be prefixed with an underscore to indicate visibility.  Visibility should be used to declare properties rather than the var keyword.  Only one property should be declared within a statement.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Correct property naming.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     private $<em>bar</em>;
@@ -14,7 +14,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: An underscore prefix used to indicate visibility.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     private $<em>_bar</em>;
@@ -24,7 +24,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: Visibility of property declared.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     <em>private</em> $bar;
@@ -32,7 +32,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: Var keyword used to declare property.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     <em>var</em> $bar;
@@ -42,7 +42,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: One property declared per statement.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     private $bar;
@@ -51,7 +51,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: Multiple properties declared in one statement.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     private <em>$bar, $baz</em>;

@@ -2,25 +2,32 @@ body {
     cursor: default;
     min-height: calc(100% - 60px);
 }
+
 html {
     min-height: calc(100% - 60px);
 }
+
 .ui.form .wide.field {
     margin: auto;
 }
+
 .ye-nav {
     width: 100%;
 }
-.ye-nav .top.menu{
+
+.ye-nav .top.menu {
     font-size: 1.5rem !important;
     border-radius: 0;
 }
+
 .ye-nav .secondary.menu {
     margin-top: 81px;
 }
+
 .ye-nav .top.menu .right .small.item {
     font-size: 1.2rem;
 }
+
 .ye-nav .top.menu span {
     padding: 0 5px;
     color: #333333;
@@ -29,13 +36,16 @@ html {
 .ye-page {
     padding: 15px 30px 120px 30px;
 }
+
 .ye-nav .fixed.menu {
     z-index: 1000;
 }
+
 .ye-main {
     padding-top: 80px;
     min-height: calc(100% - 60px);
 }
+
 .amap-copyright {
     display: none;
 }
@@ -47,6 +57,7 @@ html {
     bottom: 30px;
     position: relative;
 }
+
 .form label.disabled {
     color: rgba(0, 0, 0, .6) !important;
 }

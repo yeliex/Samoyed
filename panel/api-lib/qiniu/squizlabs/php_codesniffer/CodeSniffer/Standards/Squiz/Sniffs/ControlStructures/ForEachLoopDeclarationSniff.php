@@ -62,15 +62,15 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $this->requiredSpacesAfterOpen   = (int) $this->requiredSpacesAfterOpen;
-        $this->requiredSpacesBeforeClose = (int) $this->requiredSpacesBeforeClose;
+        $this->requiredSpacesAfterOpen = (int)$this->requiredSpacesAfterOpen;
+        $this->requiredSpacesBeforeClose = (int)$this->requiredSpacesBeforeClose;
         $tokens = $phpcsFile->getTokens();
 
         $openingBracket = $phpcsFile->findNext(T_OPEN_PARENTHESIS, $stackPtr);
@@ -78,7 +78,7 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
 
         if ($this->requiredSpacesAfterOpen === 0 && $tokens[($openingBracket + 1)]['code'] === T_WHITESPACE) {
             $error = 'Space found after opening bracket of FOREACH loop';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceAfterOpen');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceAfterOpen');
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($openingBracket + 1), '');
             }
@@ -90,11 +90,11 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
 
             if ($spaceAfterOpen !== $this->requiredSpacesAfterOpen) {
                 $error = 'Expected %s spaces after opening bracket; %s found';
-                $data  = array(
-                          $this->requiredSpacesAfterOpen,
-                          $spaceAfterOpen,
-                         );
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterOpen', $data);
+                $data = array(
+                    $this->requiredSpacesAfterOpen,
+                    $spaceAfterOpen,
+                );
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterOpen', $data);
                 if ($fix === true) {
                     $padding = str_repeat(' ', $this->requiredSpacesAfterOpen);
                     if ($spaceAfterOpen === 0) {
@@ -108,7 +108,7 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
 
         if ($this->requiredSpacesBeforeClose === 0 && $tokens[($closingBracket - 1)]['code'] === T_WHITESPACE) {
             $error = 'Space found before closing bracket of FOREACH loop';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceBeforeClose');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceBeforeClose');
             if ($fix === true) {
                 $phpcsFile->fixer->replaceToken(($closingBracket - 1), '');
             }
@@ -120,11 +120,11 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
 
             if ($spaceBeforeClose !== $this->requiredSpacesBeforeClose) {
                 $error = 'Expected %s spaces before closing bracket; %s found';
-                $data  = array(
-                          $this->requiredSpacesBeforeClose,
-                          $spaceBeforeClose,
-                         );
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceBeforeClose', $data);
+                $data = array(
+                    $this->requiredSpacesBeforeClose,
+                    $spaceBeforeClose,
+                );
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceBeforeClose', $data);
                 if ($fix === true) {
                     $padding = str_repeat(' ', $this->requiredSpacesBeforeClose);
                     if ($spaceBeforeClose === 0) {
@@ -140,11 +140,11 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
         $content = $tokens[$asToken]['content'];
         if ($content !== strtolower($content)) {
             $expected = strtolower($content);
-            $error    = 'AS keyword must be lowercase; expected "%s" but found "%s"';
-            $data     = array(
-                         $expected,
-                         $content,
-                        );
+            $error = 'AS keyword must be lowercase; expected "%s" but found "%s"';
+            $data = array(
+                $expected,
+                $content,
+            );
 
             $fix = $phpcsFile->addFixableError($error, $asToken, 'AsNotLower', $data);
             if ($fix === true) {
@@ -157,16 +157,16 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
         if ($doubleArrow !== false) {
             if ($tokens[($doubleArrow - 1)]['code'] !== T_WHITESPACE) {
                 $error = 'Expected 1 space before "=>"; 0 found';
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBeforeArrow');
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBeforeArrow');
                 if ($fix === true) {
                     $phpcsFile->fixer->addContentBefore($doubleArrow, ' ');
                 }
             } else {
                 if (strlen($tokens[($doubleArrow - 1)]['content']) !== 1) {
                     $spaces = strlen($tokens[($doubleArrow - 1)]['content']);
-                    $error  = 'Expected 1 space before "=>"; %s found';
-                    $data   = array($spaces);
-                    $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBeforeArrow', $data);
+                    $error = 'Expected 1 space before "=>"; %s found';
+                    $data = array($spaces);
+                    $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBeforeArrow', $data);
                     if ($fix === true) {
                         $phpcsFile->fixer->replaceToken(($doubleArrow - 1), ' ');
                     }
@@ -175,16 +175,16 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
 
             if ($tokens[($doubleArrow + 1)]['code'] !== T_WHITESPACE) {
                 $error = 'Expected 1 space after "=>"; 0 found';
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfterArrow');
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfterArrow');
                 if ($fix === true) {
                     $phpcsFile->fixer->addContent($doubleArrow, ' ');
                 }
             } else {
                 if (strlen($tokens[($doubleArrow + 1)]['content']) !== 1) {
                     $spaces = strlen($tokens[($doubleArrow + 1)]['content']);
-                    $error  = 'Expected 1 space after "=>"; %s found';
-                    $data   = array($spaces);
-                    $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterArrow', $data);
+                    $error = 'Expected 1 space after "=>"; %s found';
+                    $data = array($spaces);
+                    $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterArrow', $data);
                     if ($fix === true) {
                         $phpcsFile->fixer->replaceToken(($doubleArrow + 1), ' ');
                     }
@@ -194,16 +194,16 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
 
         if ($tokens[($asToken - 1)]['code'] !== T_WHITESPACE) {
             $error = 'Expected 1 space before "as"; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBeforeAs');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBeforeAs');
             if ($fix === true) {
                 $phpcsFile->fixer->addContentBefore($asToken, ' ');
             }
         } else {
             if (strlen($tokens[($asToken - 1)]['content']) !== 1) {
                 $spaces = strlen($tokens[($asToken - 1)]['content']);
-                $error  = 'Expected 1 space before "as"; %s found';
-                $data   = array($spaces);
-                $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBeforeAs', $data);
+                $error = 'Expected 1 space before "as"; %s found';
+                $data = array($spaces);
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBeforeAs', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($asToken - 1), ' ');
                 }
@@ -212,16 +212,16 @@ class Squiz_Sniffs_ControlStructures_ForEachLoopDeclarationSniff implements PHP_
 
         if ($tokens[($asToken + 1)]['code'] !== T_WHITESPACE) {
             $error = 'Expected 1 space after "as"; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfterAs');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfterAs');
             if ($fix === true) {
                 $phpcsFile->fixer->addContent($asToken, ' ');
             }
         } else {
             if (strlen($tokens[($asToken + 1)]['content']) !== 1) {
                 $spaces = strlen($tokens[($asToken + 1)]['content']);
-                $error  = 'Expected 1 space after "as"; %s found';
-                $data   = array($spaces);
-                $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterAs', $data);
+                $error = 'Expected 1 space after "as"; %s found';
+                $data = array($spaces);
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterAs', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($asToken + 1), ' ');
                 }

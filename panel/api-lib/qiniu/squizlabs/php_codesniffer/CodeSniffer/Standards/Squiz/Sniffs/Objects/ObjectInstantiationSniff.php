@@ -47,7 +47,7 @@ class Squiz_Sniffs_Objects_ObjectInstantiationSniff implements PHP_CodeSniffer_S
      * Process the tokens that this sniff is listening for.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -56,19 +56,19 @@ class Squiz_Sniffs_Objects_ObjectInstantiationSniff implements PHP_CodeSniffer_S
     {
         $tokens = $phpcsFile->getTokens();
 
-        $allowedTokens   = PHP_CodeSniffer_Tokens::$emptyTokens;
+        $allowedTokens = PHP_CodeSniffer_Tokens::$emptyTokens;
         $allowedTokens[] = T_BITWISE_AND;
 
         $prev = $phpcsFile->findPrevious($allowedTokens, ($stackPtr - 1), null, true);
 
         $allowedTokens = array(
-                          T_EQUAL        => true,
-                          T_DOUBLE_ARROW => true,
-                          T_THROW        => true,
-                          T_RETURN       => true,
-                          T_INLINE_THEN  => true,
-                          T_INLINE_ELSE  => true,
-                         );
+            T_EQUAL => true,
+            T_DOUBLE_ARROW => true,
+            T_THROW => true,
+            T_RETURN => true,
+            T_INLINE_THEN => true,
+            T_INLINE_ELSE => true,
+        );
 
         if (isset($allowedTokens[$tokens[$prev]['code']]) === false) {
             $error = 'New objects must be assigned to a variable';

@@ -55,14 +55,14 @@ class Squiz_Sniffs_Strings_ConcatenationSpacingSniff implements PHP_CodeSniffer_
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $this->spacing = (int) $this->spacing;
+        $this->spacing = (int)$this->spacing;
 
         $tokens = $phpcsFile->getTokens();
         if ($tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
@@ -94,7 +94,7 @@ class Squiz_Sniffs_Strings_ConcatenationSpacingSniff implements PHP_CodeSniffer_
 
         if ($this->spacing === 0) {
             $message = 'Concat operator must not be surrounded by spaces';
-            $data    = array();
+            $data = array();
         } else {
             if ($this->spacing > 1) {
                 $message = 'Concat operator must be surrounded by %s spaces';

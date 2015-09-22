@@ -34,10 +34,10 @@ class Generic_Sniffs_Files_EndFileNoNewlineSniff implements PHP_CodeSniffer_Snif
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                   'CSS',
-                                  );
+        'PHP',
+        'JS',
+        'CSS',
+    );
 
 
     /**
@@ -56,7 +56,7 @@ class Generic_Sniffs_Files_EndFileNoNewlineSniff implements PHP_CodeSniffer_Snif
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return int
@@ -64,7 +64,7 @@ class Generic_Sniffs_Files_EndFileNoNewlineSniff implements PHP_CodeSniffer_Snif
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         // Skip to the end of the file.
-        $tokens   = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $stackPtr = ($phpcsFile->numTokens - 1);
 
         if ($phpcsFile->tokenizerType !== 'PHP') {
@@ -72,10 +72,10 @@ class Generic_Sniffs_Files_EndFileNoNewlineSniff implements PHP_CodeSniffer_Snif
         }
 
         $eolCharLen = strlen($phpcsFile->eolChar);
-        $lastChars  = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
+        $lastChars = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
         if ($lastChars === $phpcsFile->eolChar) {
             $error = 'File must not end with a newline character';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
             if ($fix === true) {
                 $newContent = substr($tokens[$stackPtr]['content'], 0, ($eolCharLen * -1));
                 $phpcsFile->fixer->replaceToken($stackPtr, $newContent);

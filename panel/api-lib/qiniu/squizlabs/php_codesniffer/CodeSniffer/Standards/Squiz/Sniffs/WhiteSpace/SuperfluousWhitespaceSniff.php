@@ -38,10 +38,10 @@ class Squiz_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSnif
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                   'CSS',
-                                  );
+        'PHP',
+        'JS',
+        'CSS',
+    );
 
     /**
      * If TRUE, whitespace rules are not checked for blank lines.
@@ -61,13 +61,13 @@ class Squiz_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSnif
     public function register()
     {
         return array(
-                T_OPEN_TAG,
-                T_CLOSE_TAG,
-                T_WHITESPACE,
-                T_COMMENT,
-                T_DOC_COMMENT_WHITESPACE,
-                T_CLOSURE,
-               );
+            T_OPEN_TAG,
+            T_CLOSE_TAG,
+            T_WHITESPACE,
+            T_COMMENT,
+            T_DOC_COMMENT_WHITESPACE,
+            T_CLOSURE,
+        );
 
     }//end register()
 
@@ -76,7 +76,7 @@ class Squiz_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSnif
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -177,7 +177,7 @@ class Squiz_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSnif
                 }
 
                 if ($phpcsFile->fixer->enabled === true) {
-                    $prev     = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
+                    $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
                     $stackPtr = ($prev + 1);
                 }
             }//end if
@@ -215,7 +215,7 @@ class Squiz_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSnif
                 if ($tokenContent !== rtrim($tokenContent)) {
                     $fix = $phpcsFile->addFixableError('Whitespace found at end of line', $stackPtr, 'EndLine');
                     if ($fix === true) {
-                        $phpcsFile->fixer->replaceToken($stackPtr, rtrim($tokenContent).$phpcsFile->eolChar);
+                        $phpcsFile->fixer->replaceToken($stackPtr, rtrim($tokenContent) . $phpcsFile->eolChar);
                     }
                 }
             } else if ($tokens[($stackPtr - 1)]['content'] !== rtrim($tokens[($stackPtr - 1)]['content'])
@@ -232,18 +232,18 @@ class Squiz_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff implements PHP_CodeSnif
             */
 
             if (($phpcsFile->hasCondition($stackPtr, T_FUNCTION) === true
-                || $phpcsFile->hasCondition($stackPtr, T_CLOSURE) === true)
+                    || $phpcsFile->hasCondition($stackPtr, T_CLOSURE) === true)
                 && $tokens[($stackPtr - 1)]['line'] < $tokens[$stackPtr]['line']
                 && $tokens[($stackPtr - 2)]['line'] === $tokens[($stackPtr - 1)]['line']
             ) {
                 // This is an empty line and the line before this one is not
                 // empty, so this could be the start of a multiple empty
                 // line block.
-                $next  = $phpcsFile->findNext(T_WHITESPACE, $stackPtr, null, true);
+                $next = $phpcsFile->findNext(T_WHITESPACE, $stackPtr, null, true);
                 $lines = ($tokens[$next]['line'] - $tokens[$stackPtr]['line']);
                 if ($lines > 1) {
                     $error = 'Functions must not contain multiple empty lines in a row; found %s empty lines';
-                    $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'EmptyLines', array($lines));
+                    $fix = $phpcsFile->addFixableError($error, $stackPtr, 'EmptyLines', array($lines));
                     if ($fix === true) {
                         $phpcsFile->fixer->beginChangeset();
                         $i = $stackPtr;

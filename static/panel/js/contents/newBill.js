@@ -20,7 +20,7 @@ function onNewBillCreate_BillTime() {
 
 function onNewBillCreate_BillID(district) {
     var billID;
-    var req = $.ajax('http://api.panel.dev.mzapp.info/newbill/billid/', {
+    var req = $.ajax('http://api.panel.mzapp.info/newbill/billid/', {
         method: "GET",
         data: {
             protocol: 'json',
@@ -155,16 +155,16 @@ function onNewBillCheck(data) {
         // 判断Unit Price/Size not null
         for (var i = 0; i < data.units.ulist.length; i++) {
             var unit = data.units.ulist[i];
-            if(unit.size === ""){
-                alert("第"+(i+1)+"个户型的面积不能为空");
+            if (unit.size === "") {
+                alert("第" + (i + 1) + "个户型的面积不能为空");
                 return false;
             }
-            else if(unit.price === ""){
-                alert("第"+(i+1)+"个户型的价格不能为空");
+            else if (unit.price === "") {
+                alert("第" + (i + 1) + "个户型的价格不能为空");
                 return false;
             }
-            else if(unit.decoration === ""){
-                alert("必须为第"+(i+1)+"个户型选择一个装修类型");
+            else if (unit.decoration === "") {
+                alert("必须为第" + (i + 1) + "个户型选择一个装修类型");
                 return false;
             }
             else {
@@ -177,7 +177,7 @@ function onNewBillCheck(data) {
 }
 
 function onDataSend(data) {
-    var req = $.ajax("http://api.panel.dev.mzapp.info/newbill/create/?protocol=json", {
+    var req = $.ajax("http://api.panel.mzapp.info/newbill/create/?protocol=json", {
         method: "POST",
         data: {
             data: data

@@ -39,10 +39,10 @@ class Generic_Sniffs_PHP_UpperCaseConstantSniff implements PHP_CodeSniffer_Sniff
     public function register()
     {
         return array(
-                T_TRUE,
-                T_FALSE,
-                T_NULL,
-               );
+            T_TRUE,
+            T_FALSE,
+            T_NULL,
+        );
 
     }//end register()
 
@@ -51,15 +51,15 @@ class Generic_Sniffs_PHP_UpperCaseConstantSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens   = $phpcsFile->getTokens();
-        $keyword  = $tokens[$stackPtr]['content'];
+        $tokens = $phpcsFile->getTokens();
+        $keyword = $tokens[$stackPtr]['content'];
         $expected = strtoupper($keyword);
         if ($keyword !== $expected) {
             if ($keyword === strtolower($keyword)) {
@@ -69,10 +69,10 @@ class Generic_Sniffs_PHP_UpperCaseConstantSniff implements PHP_CodeSniffer_Sniff
             }
 
             $error = 'TRUE, FALSE and NULL must be uppercase; expected "%s" but found "%s"';
-            $data  = array(
-                      $expected,
-                      $keyword,
-                     );
+            $data = array(
+                $expected,
+                $keyword,
+            );
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Found', $data);
             if ($fix === true) {

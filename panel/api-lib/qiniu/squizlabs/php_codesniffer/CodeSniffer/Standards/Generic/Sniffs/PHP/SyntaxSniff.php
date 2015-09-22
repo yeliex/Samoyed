@@ -47,7 +47,7 @@ class Generic_Sniffs_PHP_SyntaxSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -60,13 +60,13 @@ class Generic_Sniffs_PHP_SyntaxSniff implements PHP_CodeSniffer_Sniff
         }
 
         $fileName = $phpcsFile->getFilename();
-        $cmd      = "$phpPath -l \"$fileName\" 2>&1";
-        $output   = shell_exec($cmd);
+        $cmd = "$phpPath -l \"$fileName\" 2>&1";
+        $output = shell_exec($cmd);
 
         $matches = array();
         if (preg_match('/^.*error:(.*) in .* on line ([0-9]+)/', $output, $matches) === 1) {
             $error = trim($matches[1]);
-            $line  = (int) $matches[2];
+            $line = (int)$matches[2];
             $phpcsFile->addErrorOnLine("PHP syntax error: $error", $line, 'PHPSyntax');
         }
 

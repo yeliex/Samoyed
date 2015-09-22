@@ -47,7 +47,7 @@ class Squiz_Sniffs_WhiteSpace_CastSpacingSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -56,16 +56,16 @@ class Squiz_Sniffs_WhiteSpace_CastSpacingSniff implements PHP_CodeSniffer_Sniff
     {
         $tokens = $phpcsFile->getTokens();
 
-        $content  = $tokens[$stackPtr]['content'];
+        $content = $tokens[$stackPtr]['content'];
         $expected = str_replace(' ', '', $content);
         $expected = str_replace("\t", '', $expected);
 
         if ($content !== $expected) {
             $error = 'Cast statements must not contain whitespace; expected "%s" but found "%s"';
-            $data  = array(
-                      $expected,
-                      $content,
-                     );
+            $data = array(
+                $expected,
+                $content,
+            );
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'ContainsWhiteSpace', $data);
             if ($fix === true) {

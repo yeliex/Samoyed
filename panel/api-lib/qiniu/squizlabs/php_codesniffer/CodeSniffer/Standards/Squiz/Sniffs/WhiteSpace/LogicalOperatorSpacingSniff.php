@@ -36,9 +36,9 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
 
     /**
@@ -57,7 +57,7 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being checked.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -69,7 +69,7 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
         // Check there is one space before the operator.
         if ($tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
             $error = 'Expected 1 space before logical operator; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBefore');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBefore');
             if ($fix === true) {
                 $phpcsFile->fixer->addContentBefore($stackPtr, ' ');
             }
@@ -80,8 +80,8 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
             ) {
                 $found = strlen($tokens[($stackPtr - 1)]['content']);
                 $error = 'Expected 1 space before logical operator; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpaceBefore', $data);
+                $data = array($found);
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpaceBefore', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($stackPtr - 1), ' ');
                 }
@@ -91,7 +91,7 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
         // Check there is one space after the operator.
         if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
             $error = 'Expected 1 space after logical operator; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfter');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfter');
             if ($fix === true) {
                 $phpcsFile->fixer->addContent($stackPtr, ' ');
             }
@@ -102,8 +102,8 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
             ) {
                 $found = strlen($tokens[($stackPtr + 1)]['content']);
                 $error = 'Expected 1 space after logical operator; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpaceAfter', $data);
+                $data = array($found);
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpaceAfter', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
                 }

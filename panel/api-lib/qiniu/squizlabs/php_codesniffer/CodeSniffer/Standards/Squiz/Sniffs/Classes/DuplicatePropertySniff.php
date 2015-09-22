@@ -52,7 +52,7 @@ class Squiz_Sniffs_Classes_DuplicatePropertySniff implements PHP_CodeSniffer_Sni
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being processed.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -61,11 +61,11 @@ class Squiz_Sniffs_Classes_DuplicatePropertySniff implements PHP_CodeSniffer_Sni
     {
         $tokens = $phpcsFile->getTokens();
 
-        $properties   = array();
+        $properties = array();
         $wantedTokens = array(
-                         T_PROPERTY,
-                         T_OBJECT,
-                        );
+            T_PROPERTY,
+            T_OBJECT,
+        );
 
         $next = $phpcsFile->findNext($wantedTokens, ($stackPtr + 1), $tokens[$stackPtr]['bracket_closer']);
         while ($next !== false && $next < $tokens[$stackPtr]['bracket_closer']) {
@@ -76,10 +76,10 @@ class Squiz_Sniffs_Classes_DuplicatePropertySniff implements PHP_CodeSniffer_Sni
                 $propName = $tokens[$next]['content'];
                 if (isset($properties[$propName]) === true) {
                     $error = 'Duplicate property definition found for "%s"; previously defined on line %s';
-                    $data  = array(
-                              $propName,
-                              $tokens[$properties[$propName]]['line'],
-                             );
+                    $data = array(
+                        $propName,
+                        $tokens[$properties[$propName]]['line'],
+                    );
                     $phpcsFile->addError($error, $next, 'Found', $data);
                 }
 

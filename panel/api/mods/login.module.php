@@ -115,11 +115,12 @@ class Login extends Sampyedhouse
         send_json($error_code, json_encode($returnData));
     }
 
-    public function logout(){
+    public function logout()
+    {
         session_start();
         session_destroy();
         $result = array();
         $result['logout_status'] = "success";
-        send_json(0,json_encode($result));
+        send_json(0, json_encode($result));
     }
 }

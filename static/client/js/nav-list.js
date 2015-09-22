@@ -1,6 +1,3 @@
-/**
- * Created by yeliex on 15/7/20.
- */
 String.prototype.trim = function () {
     return this.replace(/(^\s*)|(\s*$)/g, "");
 };

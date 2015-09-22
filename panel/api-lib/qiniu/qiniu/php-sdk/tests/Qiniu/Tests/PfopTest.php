@@ -12,7 +12,7 @@ class PfopTest extends \PHPUnit_Framework_TestCase
         $bucket = 'testres';
         $key = 'sintel_trailer.mp4';
         $pfop = new PersistentFop($testAuth, $bucket);
-        
+
         $fops = 'avthumb/m3u8/segtime/10/vcodec/libx264/s/320x240';
         list($id, $error) = $pfop->execute($key, $fops);
         $this->assertNull($error);
@@ -28,9 +28,9 @@ class PfopTest extends \PHPUnit_Framework_TestCase
         $bucket = 'testres';
         $key = 'sintel_trailer.mp4';
         $fops = array(
-                'avthumb/m3u8/segtime/10/vcodec/libx264/s/320x240',
-                'vframe/jpg/offset/7/w/480/h/360',
-            );
+            'avthumb/m3u8/segtime/10/vcodec/libx264/s/320x240',
+            'vframe/jpg/offset/7/w/480/h/360',
+        );
         $pfop = new PersistentFop($testAuth, $bucket);
 
         list($id, $error) = $pfop->execute($key, $fops);

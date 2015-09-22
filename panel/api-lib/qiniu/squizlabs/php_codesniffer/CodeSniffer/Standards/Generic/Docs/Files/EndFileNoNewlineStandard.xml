@@ -1,6 +1,6 @@
 <documentation title="No End of File Newline">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Files should not end with a newline character.
     ]]>
     </standard>

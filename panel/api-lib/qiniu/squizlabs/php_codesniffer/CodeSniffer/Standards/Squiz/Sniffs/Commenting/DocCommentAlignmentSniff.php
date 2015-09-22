@@ -36,9 +36,9 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
 
     /**
@@ -57,7 +57,7 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                         in the stack passed in $tokens.
      *
      * @return void
@@ -75,19 +75,19 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
         }
 
         $nextToken = $phpcsFile->findNext($ignore, ($stackPtr + 1), null, true);
-        $ignore    = array(
-                      T_CLASS     => true,
-                      T_INTERFACE => true,
-                      T_FUNCTION  => true,
-                      T_PUBLIC    => true,
-                      T_PRIVATE   => true,
-                      T_PROTECTED => true,
-                      T_STATIC    => true,
-                      T_ABSTRACT  => true,
-                      T_PROPERTY  => true,
-                      T_OBJECT    => true,
-                      T_PROTOTYPE => true,
-                     );
+        $ignore = array(
+            T_CLASS => true,
+            T_INTERFACE => true,
+            T_FUNCTION => true,
+            T_PUBLIC => true,
+            T_PRIVATE => true,
+            T_PROTECTED => true,
+            T_STATIC => true,
+            T_ABSTRACT => true,
+            T_PROPERTY => true,
+            T_OBJECT => true,
+            T_PROTOTYPE => true,
+        );
 
         if (isset($ignore[$tokens[$nextToken]['code']]) === false) {
             // Could be a file comment.
@@ -100,7 +100,7 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
         // There must be one space after each star (unless it is an empty comment line)
         // and all the stars must be aligned correctly.
         $requiredColumn = ($tokens[$stackPtr]['column'] + 1);
-        $endComment     = $tokens[$stackPtr]['comment_closer'];
+        $endComment = $tokens[$stackPtr]['comment_closer'];
         for ($i = ($stackPtr + 1); $i <= $endComment; $i++) {
             if ($tokens[$i]['code'] !== T_DOC_COMMENT_STAR
                 && $tokens[$i]['code'] !== T_DOC_COMMENT_CLOSE_TAG
@@ -118,11 +118,11 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
 
             if ($tokens[$i]['column'] !== $requiredColumn) {
                 $error = 'Expected %s space(s) before asterisk; %s found';
-                $data  = array(
-                          ($requiredColumn - 1),
-                          ($tokens[$i]['column'] - 1),
-                         );
-                $fix   = $phpcsFile->addFixableError($error, $i, 'SpaceBeforeStar', $data);
+                $data = array(
+                    ($requiredColumn - 1),
+                    ($tokens[$i]['column'] - 1),
+                );
+                $fix = $phpcsFile->addFixableError($error, $i, 'SpaceBeforeStar', $data);
                 if ($fix === true) {
                     $padding = str_repeat(' ', ($requiredColumn - 1));
                     if ($tokens[$i]['column'] === 1) {
@@ -144,7 +144,7 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
 
             if ($tokens[($i + 1)]['code'] !== T_DOC_COMMENT_WHITESPACE) {
                 $error = 'Expected 1 space after asterisk; 0 found';
-                $fix   = $phpcsFile->addFixableError($error, $i, 'NoSpaceAfterStar');
+                $fix = $phpcsFile->addFixableError($error, $i, 'NoSpaceAfterStar');
                 if ($fix === true) {
                     $phpcsFile->fixer->addContent($i, ' ');
                 }
@@ -152,8 +152,8 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
                 && $tokens[($i + 1)]['content'] !== ' '
             ) {
                 $error = 'Expected 1 space after asterisk; %s found';
-                $data  = array(strlen($tokens[($i + 1)]['content']));
-                $fix   = $phpcsFile->addFixableError($error, $i, 'SpaceAfterStar', $data);
+                $data = array(strlen($tokens[($i + 1)]['content']));
+                $fix = $phpcsFile->addFixableError($error, $i, 'SpaceAfterStar', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($i + 1), ' ');
                 }

@@ -47,7 +47,7 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -61,9 +61,9 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
         // function myFunction...
         // "myFunction" is T_STRING but we should skip because it is not a
         // function or method *call*.
-        $functionName    = $stackPtr;
-        $ignoreTokens    = PHP_CodeSniffer_Tokens::$emptyTokens;
-        $ignoreTokens[]  = T_BITWISE_AND;
+        $functionName = $stackPtr;
+        $ignoreTokens = PHP_CodeSniffer_Tokens::$emptyTokens;
+        $ignoreTokens[] = T_BITWISE_AND;
         $functionKeyword = $phpcsFile->findPrevious($ignoreTokens, ($stackPtr - 1), null, true);
         if ($tokens[$functionKeyword]['code'] === T_FUNCTION || $tokens[$functionKeyword]['code'] === T_CLASS) {
             return;
@@ -80,15 +80,15 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
             return;
         }
 
-        $closeBracket  = $tokens[$openBracket]['parenthesis_closer'];
+        $closeBracket = $tokens[$openBracket]['parenthesis_closer'];
         $nextSeparator = $openBracket;
 
         $find = array(
-                 T_COMMA,
-                 T_VARIABLE,
-                 T_CLOSURE,
-                 T_OPEN_SHORT_ARRAY,
-                );
+            T_COMMA,
+            T_VARIABLE,
+            T_CLOSURE,
+            T_OPEN_SHORT_ARRAY,
+        );
 
         while (($nextSeparator = $phpcsFile->findNext($find, ($nextSeparator + 1), $closeBracket)) !== false) {
             if ($tokens[$nextSeparator]['code'] === T_CLOSURE) {
@@ -103,7 +103,7 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
 
             // Make sure the comma or variable belongs directly to this function call,
             // and is not inside a nested function call or array.
-            $brackets    = $tokens[$nextSeparator]['nested_parenthesis'];
+            $brackets = $tokens[$nextSeparator]['nested_parenthesis'];
             $lastBracket = array_pop($brackets);
             if ($lastBracket !== $closeBracket) {
                 continue;
@@ -113,7 +113,7 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
                 if ($tokens[($nextSeparator - 1)]['code'] === T_WHITESPACE) {
                     if (isset(PHP_CodeSniffer_Tokens::$heredocTokens[$tokens[($nextSeparator - 2)]['code']]) === false) {
                         $error = 'Space found before comma in function call';
-                        $fix   = $phpcsFile->addFixableError($error, $nextSeparator, 'SpaceBeforeComma');
+                        $fix = $phpcsFile->addFixableError($error, $nextSeparator, 'SpaceBeforeComma');
                         if ($fix === true) {
                             $phpcsFile->fixer->replaceToken(($nextSeparator - 1), '');
                         }
@@ -122,7 +122,7 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
 
                 if ($tokens[($nextSeparator + 1)]['code'] !== T_WHITESPACE) {
                     $error = 'No space found after comma in function call';
-                    $fix   = $phpcsFile->addFixableError($error, $nextSeparator, 'NoSpaceAfterComma');
+                    $fix = $phpcsFile->addFixableError($error, $nextSeparator, 'NoSpaceAfterComma');
                     if ($fix === true) {
                         $phpcsFile->fixer->addContent($nextSeparator, ' ');
                     }
@@ -133,8 +133,8 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
                         $space = strlen($tokens[($nextSeparator + 1)]['content']);
                         if ($space > 1) {
                             $error = 'Expected 1 space after comma in function call; %s found';
-                            $data  = array($space);
-                            $fix   = $phpcsFile->addFixableError($error, $nextSeparator, 'TooMuchSpaceAfterComma', $data);
+                            $data = array($space);
+                            $fix = $phpcsFile->addFixableError($error, $nextSeparator, 'TooMuchSpaceAfterComma', $data);
                             if ($fix === true) {
                                 $phpcsFile->fixer->replaceToken(($nextSeparator + 1), ' ');
                             }
@@ -148,7 +148,7 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
                     if ($tokens[$nextToken]['code'] === T_EQUAL) {
                         if (($tokens[($nextToken - 1)]['code']) !== T_WHITESPACE) {
                             $error = 'Expected 1 space before = sign of default value';
-                            $fix   = $phpcsFile->addFixableError($error, $nextToken, 'NoSpaceBeforeEquals');
+                            $fix = $phpcsFile->addFixableError($error, $nextToken, 'NoSpaceBeforeEquals');
                             if ($fix === true) {
                                 $phpcsFile->fixer->addContentBefore($nextToken, ' ');
                             }
@@ -156,7 +156,7 @@ class Generic_Sniffs_Functions_FunctionCallArgumentSpacingSniff implements PHP_C
 
                         if ($tokens[($nextToken + 1)]['code'] !== T_WHITESPACE) {
                             $error = 'Expected 1 space after = sign of default value';
-                            $fix   = $phpcsFile->addFixableError($error, $nextToken, 'NoSpaceAfterEquals');
+                            $fix = $phpcsFile->addFixableError($error, $nextToken, 'NoSpaceAfterEquals');
                             if ($fix === true) {
                                 $phpcsFile->fixer->addContent($nextToken, ' ');
                             }

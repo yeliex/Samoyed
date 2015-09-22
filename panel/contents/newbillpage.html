@@ -1,1 +1,104 @@
-<link href="//static.mzapp.info/panel/css/newBill.css" rel="stylesheet" type="text/css"><div class="ui container ye-page" id="new_bill"><h2 class="ui center aligned icon header"><i class="skyatlas icon"></i> 创建房源 </h2><div class="ui form"><div class="inline fields"><div class="four wide field" id="bill_time"><label>创建时间: </label><span>111</span></div><div class="four wide field" id="bill_id"><label>房源标识号码: </label><span>请先选择房源所在区...</span></div></div><div class="ui divider"></div><h4 class="ui dividing header">基本信息</h4><div class="inline field" id="basic"><label>房源</label><input type="text" placeholder="房源名称"><label class="disabled">非唯一,请手动加以区分.同时也是定位依据</label></div><div class="inline fields" id="type"><div class="inline field"><label>选择类型</label><select class="ui search dropdown disabled" disabled><option>暂时禁用</option><option value="类型A">类型A</option><option value="类型B">类型B</option><option value="类型C">类型C</option><option value="类型D">类型D</option></select><label class="disabled">暂时禁用,将在完善后开放.届时可在房源管理修改</label></div></div><h4 class="ui dividing header">附加信息</h4><div class="inline field" id="metro"><label>地铁信息</label><div class="ui checkbox"><input type="checkbox"><label>1号线</label></div><div class="ui checkbox"><input type="checkbox"><label>2号线</label></div><div class="ui checkbox"><input type="checkbox"><label>4号线</label></div><div class="ui checkbox"><input type="checkbox"><label>5号线</label></div><div class="ui checkbox"><input type="checkbox"><label>6号线</label></div></div><div class="fields" id="description"><div class="eight wide field"><label>房源描述</label><textarea></textarea></div><div class="eight wide field"><label class="disabled">后续考虑加入可编辑文字样式</label></div></div><h4 class="ui dividing header">地址信息</h4><div class="inline fields" id="address"><div class="field"><select class="ui search dropdown" id="district" onchange="onDistrictSelected(this.value)"><option value="">选择所在区</option><option value="310002">上城区</option><option value="310006">下城区</option><option value="310016">江干区</option><option value="310011">拱墅区</option><option value="310013">西湖区</option><option value="310051">滨江区</option><option value="311201">萧山区</option><option value="311100">余杭区</option></select></div><div class="field"><select class="ui search dropdown" id="area"><option value="">选择商圈</option></select></div><div class="six wide field"><input type="text" id="add" placeholder="地址 (只需输入简要地址,如: 汇智地)"></div></div><div class="inline fields" id="map-wrapper"><div class="inline field"><input type="text" id="posx" disabled placeholder="在地图上选择坐标"><input type="text" id="posy" disabled><button class="ui button" onclick="onMapLoaded(this)">生成地图</button></div></div><div class="inline field" id="map-container"></div><h4 class="ui dividing header">户型信息</h4><div class="inline field" id="units_num"><label>当前户型数: <span>0 </span></label><button class="ui little button" onclick="onNewUnitClicked()">添加</button></div><div class="field" id="units"></div><h4 class="ui dividing header">房源图片</h4><div class="fields" id="main-image"><div class="inline field"><label>主图</label><input type="url" readonly><button class="ui button" onclick="onUpload(1)">上传图片</button></div><div class="field"><img class="ui medium image" src="http://7xked6.com2.z0.glb.qiniucdn.com/default_unit.png"></div></div><h4 class="ui dividing header">其他图片</h4><div class="inline field" id="images_num"><label>当前图片数: <span>0 </span></label><button class="ui little button" onclick="onNewImageClicked()">添加</button></div><div id="content-images"></div></div></div><div class="ye-tools wrapper"><ul><li class="item"><button onclick="$(body).animate({scrollTop:0}, 'fast')" title="返回顶部"><i class="chevron circle up icon"></i></button></li><li class="item"><button onclick="onNewBillSave()" title="保存"><i class="check circle icon"></i></button></li><li class="item"><button title="清空" onclick="onNewBillClear()"><i class="remove circle up icon"></i></button></li></ul></div><script src="//static.mzapp.info/panel/js/contents/newBill-ui.js" type="text/javascript"></script><script type="text/javascript">onNewBillLoaded();</script>
+<link href="//static.mzapp.info/panel/css/newBill.min.css" rel="stylesheet" type="text/css">
+<div class="ui container ye-page" id="new_bill"><h2 class="ui center aligned icon header"><i class="skyatlas icon"></i>
+    创建房源 </h2>
+
+    <div class="ui form">
+        <div class="inline fields">
+            <div class="four wide field" id="bill_time"><label>创建时间: </label><span>111</span></div>
+            <div class="four wide field" id="bill_id"><label>房源标识号码: </label><span>请先选择房源所在区...</span></div>
+        </div>
+        <div class="ui divider"></div>
+        <h4 class="ui dividing header">基本信息</h4>
+
+        <div class="inline field" id="basic"><label>房源</label><input type="text" placeholder="房源名称"><label
+                class="disabled">非唯一,请手动加以区分.同时也是定位依据</label></div>
+        <div class="inline fields" id="type">
+            <div class="inline field"><label>选择类型</label><select class="ui search dropdown disabled" disabled>
+                <option>暂时禁用</option>
+                <option value="类型A">类型A</option>
+                <option value="类型B">类型B</option>
+                <option value="类型C">类型C</option>
+                <option value="类型D">类型D</option>
+            </select><label class="disabled">暂时禁用,将在完善后开放.届时可在房源管理修改</label></div>
+        </div>
+        <h4 class="ui dividing header">附加信息</h4>
+
+        <div class="inline field" id="metro"><label>地铁信息</label>
+
+            <div class="ui checkbox"><input type="checkbox"><label>1号线</label></div>
+            <div class="ui checkbox"><input type="checkbox"><label>2号线</label></div>
+            <div class="ui checkbox"><input type="checkbox"><label>4号线</label></div>
+            <div class="ui checkbox"><input type="checkbox"><label>5号线</label></div>
+            <div class="ui checkbox"><input type="checkbox"><label>6号线</label></div>
+        </div>
+        <div class="fields" id="description">
+            <div class="eight wide field"><label>房源描述</label><textarea></textarea></div>
+            <div class="eight wide field"><label class="disabled">后续考虑加入可编辑文字样式</label></div>
+        </div>
+        <h4 class="ui dividing header">地址信息</h4>
+
+        <div class="inline fields" id="address">
+            <div class="field"><select class="ui search dropdown" id="district"
+                                       onchange="onDistrictSelected(this.value)">
+                <option value="">选择所在区</option>
+                <option value="310002">上城区</option>
+                <option value="310006">下城区</option>
+                <option value="310016">江干区</option>
+                <option value="310011">拱墅区</option>
+                <option value="310013">西湖区</option>
+                <option value="310051">滨江区</option>
+                <option value="311201">萧山区</option>
+                <option value="311100">余杭区</option>
+            </select></div>
+            <div class="field"><select class="ui search dropdown" id="area">
+                <option value="">选择商圈</option>
+            </select></div>
+            <div class="six wide field"><input type="text" id="add" placeholder="地址 (只需输入简要地址,如: 汇智地)"></div>
+        </div>
+        <div class="inline fields" id="map-wrapper">
+            <div class="inline field"><input type="text" id="posx" disabled placeholder="在地图上选择坐标"><input type="text"
+                                                                                                          id="posy"
+                                                                                                          disabled>
+                <button class="ui button" onclick="onMapLoaded(this)">生成地图</button>
+            </div>
+        </div>
+        <div class="inline field" id="map-container"></div>
+        <h4 class="ui dividing header">户型信息</h4>
+
+        <div class="inline field" id="units_num"><label>当前户型数: <span>0 </span></label>
+            <button class="ui little button" onclick="onNewUnitClicked()">添加</button>
+        </div>
+        <div class="field" id="units"></div>
+        <h4 class="ui dividing header">房源图片</h4>
+
+        <div class="fields" id="main-image">
+            <div class="inline field"><label>主图</label><input type="url" readonly>
+                <button class="ui button" onclick="onUpload(1)">上传图片</button>
+            </div>
+            <div class="field"><img class="ui medium image"
+                                    src="http://7xked6.com2.z0.glb.qiniucdn.com/default_unit.png"></div>
+        </div>
+        <h4 class="ui dividing header">其他图片</h4>
+
+        <div class="inline field" id="images_num"><label>当前图片数: <span>0 </span></label>
+            <button class="ui little button" onclick="onNewImageClicked()">添加</button>
+        </div>
+        <div id="content-images"></div>
+    </div>
+</div>
+<div class="ye-tools wrapper">
+    <ul>
+        <li class="item">
+            <button onclick="$(body).animate({scrollTop:0}, 'fast')" title="返回顶部"><i class="chevron circle up icon"></i>
+            </button>
+        </li>
+        <li class="item">
+            <button onclick="onNewBillSave()" title="保存"><i class="check circle icon"></i></button>
+        </li>
+        <li class="item">
+            <button title="清空" onclick="onNewBillClear()"><i class="remove circle up icon"></i></button>
+        </li>
+    </ul>
+</div>
+<script src="//static.mzapp.info/panel/js/contents/newBill-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript">onNewBillLoaded();</script>

@@ -1,12 +1,12 @@
 <documentation title="Constructor name">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Constructors should be named __construct, not after the class.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: The constructor is named __construct.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     function <em>__construct</em>()
@@ -16,7 +16,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: The old style class name constructor is used.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     function <em>Foo</em>()

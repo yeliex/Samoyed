@@ -37,9 +37,9 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
     /**
      * The number of spaces code should be indented.
@@ -65,7 +65,7 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -81,11 +81,11 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
             return;
         }
 
-        $switch        = $tokens[$stackPtr];
-        $nextCase      = $stackPtr;
+        $switch = $tokens[$stackPtr];
+        $nextCase = $stackPtr;
         $caseAlignment = ($switch['column'] + $this->indent);
-        $caseCount     = 0;
-        $foundDefault  = false;
+        $caseCount = 0;
+        $foundDefault = false;
 
         while (($nextCase = $phpcsFile->findNext(array(T_CASE, T_DEFAULT, T_SWITCH), ($nextCase + 1), $switch['scope_closer'])) !== false) {
             // Skip nested SWITCH statements; they are handled on their own.
@@ -95,7 +95,7 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
             }
 
             if ($tokens[$nextCase]['code'] === T_DEFAULT) {
-                $type         = 'Default';
+                $type = 'Default';
                 $foundDefault = true;
             } else {
                 $type = 'Case';
@@ -104,21 +104,21 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
 
             if ($tokens[$nextCase]['content'] !== strtolower($tokens[$nextCase]['content'])) {
                 $expected = strtolower($tokens[$nextCase]['content']);
-                $error    = strtoupper($type).' keyword must be lowercase; expected "%s" but found "%s"';
-                $data     = array(
-                             $expected,
-                             $tokens[$nextCase]['content'],
-                            );
+                $error = strtoupper($type) . ' keyword must be lowercase; expected "%s" but found "%s"';
+                $data = array(
+                    $expected,
+                    $tokens[$nextCase]['content'],
+                );
 
-                $fix = $phpcsFile->addFixableError($error, $nextCase, $type.'NotLower', $data);
+                $fix = $phpcsFile->addFixableError($error, $nextCase, $type . 'NotLower', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken($nextCase, $expected);
                 }
             }
 
             if ($tokens[$nextCase]['column'] !== $caseAlignment) {
-                $error = strtoupper($type).' keyword must be indented '.$this->indent.' spaces from SWITCH keyword';
-                $fix   = $phpcsFile->addFixableError($error, $nextCase, $type.'Indent');
+                $error = strtoupper($type) . ' keyword must be indented ' . $this->indent . ' spaces from SWITCH keyword';
+                $fix = $phpcsFile->addFixableError($error, $nextCase, $type . 'Indent');
 
                 if ($fix === true) {
                     $padding = str_repeat(' ', ($caseAlignment - 1));
@@ -134,10 +134,10 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
 
             if ($type === 'Case'
                 && ($tokens[($nextCase + 1)]['type'] !== 'T_WHITESPACE'
-                || $tokens[($nextCase + 1)]['content'] !== ' ')
+                    || $tokens[($nextCase + 1)]['content'] !== ' ')
             ) {
                 $error = 'CASE keyword must be followed by a single space';
-                $fix   = $phpcsFile->addFixableError($error, $nextCase, 'SpacingAfterCase');
+                $fix = $phpcsFile->addFixableError($error, $nextCase, 'SpacingAfterCase');
                 if ($fix === true) {
                     if ($tokens[($nextCase + 1)]['type'] !== 'T_WHITESPACE') {
                         $phpcsFile->fixer->addContent($nextCase, ' ');
@@ -155,8 +155,8 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
 
             $opener = $tokens[$nextCase]['scope_opener'];
             if ($tokens[($opener - 1)]['type'] === 'T_WHITESPACE') {
-                $error = 'There must be no space before the colon in a '.strtoupper($type).' statement';
-                $fix   = $phpcsFile->addFixableError($error, $nextCase, 'SpaceBeforeColon'.$type);
+                $error = 'There must be no space before the colon in a ' . strtoupper($type) . ' statement';
+                $fix = $phpcsFile->addFixableError($error, $nextCase, 'SpaceBeforeColon' . $type);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken(($opener - 1), '');
                 }
@@ -174,8 +174,8 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
                     // break is shared between multiple case statements, or even
                     // the default case.
                     if ($tokens[$nextBreak]['column'] !== $caseAlignment) {
-                        $error = 'Case breaking statement must be indented '.$this->indent.' spaces from SWITCH keyword';
-                        $fix   = $phpcsFile->addFixableError($error, $nextBreak, 'BreakIndent');
+                        $error = 'Case breaking statement must be indented ' . $this->indent . ' spaces from SWITCH keyword';
+                        $fix = $phpcsFile->addFixableError($error, $nextBreak, 'BreakIndent');
 
                         if ($fix === true) {
                             $padding = str_repeat(' ', ($caseAlignment - 1));
@@ -196,7 +196,7 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
                     }
 
                     $breakLine = $tokens[$nextBreak]['line'];
-                    $nextLine  = $tokens[$tokens[$stackPtr]['scope_closer']]['line'];
+                    $nextLine = $tokens[$tokens[$stackPtr]['scope_closer']]['line'];
                     $semicolon = $phpcsFile->findNext(T_SEMICOLON, $nextBreak);
                     for ($i = ($semicolon + 1); $i < $tokens[$stackPtr]['scope_closer']; $i++) {
                         if ($tokens[$i]['type'] !== 'T_WHITESPACE') {
@@ -210,7 +210,7 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
                         // a single blank line, or the end switch brace.
                         if ($nextLine !== ($tokens[$semicolon]['line'] + 2) && $i !== $tokens[$stackPtr]['scope_closer']) {
                             $error = 'Case breaking statements must be followed by a single blank line';
-                            $fix   = $phpcsFile->addFixableError($error, $nextBreak, 'SpacingAfterBreak');
+                            $fix = $phpcsFile->addFixableError($error, $nextBreak, 'SpacingAfterBreak');
                             if ($fix === true) {
                                 $phpcsFile->fixer->beginChangeset();
                                 for ($i = ($semicolon + 1); $i <= $tokens[$stackPtr]['scope_closer']; $i++) {
@@ -247,8 +247,8 @@ class Squiz_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeS
                     }
 
                     if ($nextLine !== ($caseLine + 1)) {
-                        $error = 'Blank lines are not allowed after '.strtoupper($type).' statements';
-                        $phpcsFile->addError($error, $nextCase, 'SpacingAfter'.$type);
+                        $error = 'Blank lines are not allowed after ' . strtoupper($type) . ' statements';
+                        $phpcsFile->addError($error, $nextCase, 'SpacingAfter' . $type);
                     }
                 }//end if
 

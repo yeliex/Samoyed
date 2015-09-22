@@ -43,10 +43,10 @@ class Squiz_Sniffs_Functions_FunctionDeclarationSniff extends PHP_CodeSniffer_St
     protected function getPatterns()
     {
         return array(
-                'function abc(...);',
-                'function abc(...)',
-                'abstract function abc(...);',
-               );
+            'function abc(...);',
+            'function abc(...)',
+            'abstract function abc(...);',
+        );
 
     }//end getPatterns()
 

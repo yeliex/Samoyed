@@ -44,12 +44,12 @@ class Squiz_Sniffs_CSS_ShorthandSizeSniff implements PHP_CodeSniffer_Sniff
      * @var array
      */
     public $excludeStyles = array(
-                             'background-position'      => 'background-position',
-                             'box-shadow'               => 'box-shadow',
-                             'transform-origin'         => 'transform-origin',
-                             '-webkit-transform-origin' => '-webkit-transform-origin',
-                             '-ms-transform-origin'     => '-ms-transform-origin',
-                            );
+        'background-position' => 'background-position',
+        'box-shadow' => 'box-shadow',
+        'transform-origin' => 'transform-origin',
+        '-webkit-transform-origin' => '-webkit-transform-origin',
+        '-ms-transform-origin' => '-ms-transform-origin',
+    );
 
 
     /**
@@ -68,7 +68,7 @@ class Squiz_Sniffs_CSS_ShorthandSizeSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -84,7 +84,7 @@ class Squiz_Sniffs_CSS_ShorthandSizeSniff implements PHP_CodeSniffer_Sniff
         }
 
         // Get the whole style content.
-        $end         = $phpcsFile->findNext(T_SEMICOLON, ($stackPtr + 1));
+        $end = $phpcsFile->findNext(T_SEMICOLON, ($stackPtr + 1));
         $origContent = $phpcsFile->getTokensAsString(($stackPtr + 1), ($end - $stackPtr - 1));
         $origContent = trim($origContent, ': ');
 
@@ -97,10 +97,10 @@ class Squiz_Sniffs_CSS_ShorthandSizeSniff implements PHP_CodeSniffer_Sniff
 
         // Check if this style value is a set of numbers with optional prefixes.
         $content = preg_replace('/\s+/', ' ', $content);
-        $values  = array();
-        $num     = preg_match_all(
+        $values = array();
+        $num = preg_match_all(
             '/([0-9]+)([a-zA-Z]{2}\s+|%\s+|\s+)/',
-            $content.' ',
+            $content . ' ',
             $values,
             PREG_SET_ORDER
         );
@@ -121,10 +121,10 @@ class Squiz_Sniffs_CSS_ShorthandSizeSniff implements PHP_CodeSniffer_Sniff
         }
 
         if ($num === 3) {
-            $expected = trim($content.' '.$values[1][1].$values[1][2]);
-            $error    = 'Shorthand syntax not allowed here; use %s instead';
-            $data     = array($expected);
-            $fix      = $phpcsFile->addFixableError($error, $stackPtr, 'NotAllowed', $data);
+            $expected = trim($content . ' ' . $values[1][1] . $values[1][2]);
+            $error = 'Shorthand syntax not allowed here; use %s instead';
+            $data = array($expected);
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NotAllowed', $data);
 
             if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();
@@ -158,16 +158,16 @@ class Squiz_Sniffs_CSS_ShorthandSizeSniff implements PHP_CodeSniffer_Sniff
             // All values are the same.
             $expected = $values[0][0];
         } else {
-            $expected = $values[0][0].' '.$values[1][0];
+            $expected = $values[0][0] . ' ' . $values[1][0];
         }
 
         $expected = preg_replace('/\s+/', ' ', trim($expected));
 
         $error = 'Size definitions must use shorthand if available; expected "%s" but found "%s"';
-        $data  = array(
-                  $expected,
-                  $content,
-                 );
+        $data = array(
+            $expected,
+            $content,
+        );
 
         $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NotUsed', $data);
         if ($fix === true) {

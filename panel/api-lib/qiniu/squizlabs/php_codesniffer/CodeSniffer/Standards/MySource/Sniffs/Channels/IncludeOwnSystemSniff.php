@@ -43,7 +43,7 @@ class MySource_Sniffs_Channels_IncludeOwnSystemSniff implements PHP_CodeSniffer_
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -51,34 +51,34 @@ class MySource_Sniffs_Channels_IncludeOwnSystemSniff implements PHP_CodeSniffer_
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $fileName = $phpcsFile->getFilename();
-        $matches  = array();
+        $matches = array();
         if (preg_match('|/systems/(.*)/([^/]+)?actions.inc$|i', $fileName, $matches) === 0) {
             // Not an actions file.
             return;
         }
 
         $ownClass = $matches[2];
-        $tokens   = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
 
         $typeName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, ($stackPtr + 2), null, false, true);
         $typeName = trim($tokens[$typeName]['content'], " '");
         switch (strtolower($tokens[($stackPtr + 1)]['content'])) {
-        case 'includesystem' :
-            $included = strtolower($typeName);
-            break;
-        case 'includeasset' :
-            $included = strtolower($typeName).'assettype';
-            break;
-        case 'includewidget' :
-            $included = strtolower($typeName).'widgettype';
-            break;
-        default:
-            return;
+            case 'includesystem' :
+                $included = strtolower($typeName);
+                break;
+            case 'includeasset' :
+                $included = strtolower($typeName) . 'assettype';
+                break;
+            case 'includewidget' :
+                $included = strtolower($typeName) . 'widgettype';
+                break;
+            default:
+                return;
         }
 
         if ($included === strtolower($ownClass)) {
             $error = "You do not need to include \"%s\" from within the system's own actions file";
-            $data  = array($ownClass);
+            $data = array($ownClass);
             $phpcsFile->addError($error, $stackPtr, 'NotRequired', $data);
         }
 
@@ -89,8 +89,8 @@ class MySource_Sniffs_Channels_IncludeOwnSystemSniff implements PHP_CodeSniffer_
      * Determines the included class name from given token.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param array                $tokens    The array of file tokens.
-     * @param int                  $stackPtr  The position in the tokens array of the
+     * @param array $tokens The array of file tokens.
+     * @param int $stackPtr The position in the tokens array of the
      *                                        potentially included class.
      *
      * @return string
@@ -99,7 +99,8 @@ class MySource_Sniffs_Channels_IncludeOwnSystemSniff implements PHP_CodeSniffer_
         PHP_CodeSniffer_File $phpcsFile,
         array $tokens,
         $stackPtr
-    ) {
+    )
+    {
 
         return false;
 

@@ -3,14 +3,15 @@
 
 /**
  * @param int $error_code 错误代码
- * @param string $data  返回数据
+ * @param string $data 返回数据
  * @param string $error_info 自定义错误信息
  */
-function send_json($error_code = 0,$data = "",$error_info = "") {
+function send_json($error_code = 0, $data = "", $error_info = "")
+{
 
     $result = "failed";
 
-    switch($error_code) {
+    switch ($error_code) {
         case 0:
             $result = "success";
             $error_info = " ";
@@ -48,8 +49,8 @@ function send_json($error_code = 0,$data = "",$error_info = "") {
         case 3311:
             $error_info = "保存失败";
             break;
-        default:{
-            if($error_info == ""){
+        default: {
+            if ($error_info == "") {
                 $error_info = "未知错误";
             }
             break;
@@ -58,10 +59,10 @@ function send_json($error_code = 0,$data = "",$error_info = "") {
 
     header('Content-type: application/json');
 
-    if($error_code == 0){
-        echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","data":%s}', $result , $error_code , $error_info , $data );
-    }else{
-        echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","data":""}', $result , $error_code , $error_info , $data );
+    if ($error_code == 0) {
+        echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","data":%s}', $result, $error_code, $error_info, $data);
+    } else {
+        echo sprintf('{"status":"%s","error_code":"%s","error_info":"%s","data":""}', $result, $error_code, $error_info, $data);
     }
 
 

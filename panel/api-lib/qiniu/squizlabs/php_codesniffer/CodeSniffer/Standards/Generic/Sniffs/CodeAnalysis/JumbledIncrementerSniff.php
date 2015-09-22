@@ -64,7 +64,7 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -72,7 +72,7 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip for-loop without body.
         if (isset($token['scope_opener']) === false) {
@@ -89,7 +89,7 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
 
         // Find nested for loops.
         $start = ++$token['scope_opener'];
-        $end   = --$token['scope_closer'];
+        $end = --$token['scope_closer'];
 
         for (; $start <= $end; ++$start) {
             if ($tokens[$start]['code'] !== T_FOR) {
@@ -97,11 +97,11 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
             }
 
             $inner = $this->findIncrementers($tokens, $tokens[$start]);
-            $diff  = array_intersect($outer, $inner);
+            $diff = array_intersect($outer, $inner);
 
             if (count($diff) !== 0) {
                 $error = 'Loop incrementor (%s) jumbling with inner loop';
-                $data  = array(join(', ', $diff));
+                $data = array(join(', ', $diff));
                 $phpcsFile->addWarning($error, $stackPtr, 'Found', $data);
             }
         }
@@ -113,7 +113,7 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
      * Get all used variables in the incrementer part of a for statement.
      *
      * @param array(integer=>array) $tokens Array with all code sniffer tokens.
-     * @param array(string=>mixed)  $token  Current for loop token
+     * @param array(string=>mixed) $token Current for loop token
      *
      * @return string[] List of all found incrementer variables.
      */
@@ -125,10 +125,10 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
         }
 
         $start = ++$token['parenthesis_opener'];
-        $end   = --$token['parenthesis_closer'];
+        $end = --$token['parenthesis_closer'];
 
         $incrementers = array();
-        $semicolons   = 0;
+        $semicolons = 0;
         for ($next = $start; $next <= $end; ++$next) {
             $code = $tokens[$next]['code'];
             if ($code === T_SEMICOLON) {

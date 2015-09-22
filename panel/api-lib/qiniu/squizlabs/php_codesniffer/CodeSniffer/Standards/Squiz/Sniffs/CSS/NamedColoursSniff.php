@@ -44,24 +44,24 @@ class Squiz_Sniffs_CSS_NamedColoursSniff implements PHP_CodeSniffer_Sniff
      * @var array
      */
     public $colourNames = array(
-                           'aqua'    => 'aqua',
-                           'black'   => 'black',
-                           'blue'    => 'blue',
-                           'fuchsia' => 'fuchsia',
-                           'gray'    => 'gray',
-                           'green'   => 'green',
-                           'lime'    => 'lime',
-                           'maroon'  => 'maroon',
-                           'navy'    => 'navy',
-                           'olive'   => 'olive',
-                           'orange'  => 'orange',
-                           'purple'  => 'purple',
-                           'red'     => 'red',
-                           'silver'  => 'silver',
-                           'teal'    => 'teal',
-                           'white'   => 'white',
-                           'yellow'  => 'yellow',
-                          );
+        'aqua' => 'aqua',
+        'black' => 'black',
+        'blue' => 'blue',
+        'fuchsia' => 'fuchsia',
+        'gray' => 'gray',
+        'green' => 'green',
+        'lime' => 'lime',
+        'maroon' => 'maroon',
+        'navy' => 'navy',
+        'olive' => 'olive',
+        'orange' => 'orange',
+        'purple' => 'purple',
+        'red' => 'red',
+        'silver' => 'silver',
+        'teal' => 'teal',
+        'white' => 'white',
+        'yellow' => 'yellow',
+    );
 
 
     /**
@@ -80,7 +80,7 @@ class Squiz_Sniffs_CSS_NamedColoursSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void

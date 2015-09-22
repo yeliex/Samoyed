@@ -34,10 +34,10 @@ class Generic_Sniffs_WhiteSpace_DisallowSpaceIndentSniff implements PHP_CodeSnif
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                   'CSS',
-                                  );
+        'PHP',
+        'JS',
+        'CSS',
+    );
 
     /**
      * The --tab-width CLI value that is being used.
@@ -63,7 +63,7 @@ class Generic_Sniffs_WhiteSpace_DisallowSpaceIndentSniff implements PHP_CodeSnif
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile All the tokens found in the document.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -86,8 +86,8 @@ class Generic_Sniffs_WhiteSpace_DisallowSpaceIndentSniff implements PHP_CodeSnif
         for ($i = ($stackPtr + 1); $i < $phpcsFile->numTokens; $i++) {
             if ($tokens[$i]['column'] !== 1
                 || ($tokens[$i]['code'] !== T_WHITESPACE
-                && $tokens[$i]['code'] !== T_DOC_COMMENT_WHITESPACE
-                && $tokens[$i]['code'] !== T_CONSTANT_ENCAPSED_STRING)
+                    && $tokens[$i]['code'] !== T_DOC_COMMENT_WHITESPACE
+                    && $tokens[$i]['code'] !== T_CONSTANT_ENCAPSED_STRING)
             ) {
                 continue;
             }
@@ -110,20 +110,20 @@ class Generic_Sniffs_WhiteSpace_DisallowSpaceIndentSniff implements PHP_CodeSnif
                 // by tabs, as is the case with standard docblock comments.
                 $phpcsFile->recordMetric($i, 'Line indent', 'spaces');
                 $error = 'Tabs must be used to indent lines; spaces are not allowed';
-                $fix   = $phpcsFile->addFixableError($error, $i, 'SpacesUsed');
+                $fix = $phpcsFile->addFixableError($error, $i, 'SpacesUsed');
                 if ($fix === true) {
-                    $trimmed   = ltrim($content, ' ');
+                    $trimmed = ltrim($content, ' ');
                     $numSpaces = (strlen($content) - strlen($trimmed));
                     if ($numSpaces < $this->_tabWidth) {
                         $numTabs = 1;
                         $padding = "\t";
                     } else {
-                        $numTabs   = floor($numSpaces / $this->_tabWidth);
+                        $numTabs = floor($numSpaces / $this->_tabWidth);
                         $remaining = ($numSpaces - ($numTabs * $this->_tabWidth));
-                        $padding   = str_repeat("\t", $numTabs).$padding = str_repeat(' ', $remaining);
+                        $padding = str_repeat("\t", $numTabs) . $padding = str_repeat(' ', $remaining);
                     }
 
-                    $phpcsFile->fixer->replaceToken($i, $padding.$trimmed);
+                    $phpcsFile->fixer->replaceToken($i, $padding . $trimmed);
                 }
             } else if ($content[0] === "\t") {
                 $phpcsFile->recordMetric($i, 'Line indent', 'tabs');

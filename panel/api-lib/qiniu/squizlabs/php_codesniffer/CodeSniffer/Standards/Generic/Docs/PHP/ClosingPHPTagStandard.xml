@@ -1,19 +1,19 @@
 <documentation title="Closing PHP Tags">
     <standard>
-    <![CDATA[
+        <![CDATA[
     All opening php tags should have a corresponding closing tag.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: A closing tag paired with it's opening tag.">
-        <![CDATA[
+            <![CDATA[
 <em><?php</em>
 echo 'Foo';
 <em>?></em>
         ]]>
         </code>
         <code title="Invalid: No closing tag paired with the opening tag.">
-        <![CDATA[
+            <![CDATA[
 <em><?php</em>
 echo 'Foo';
         ]]>

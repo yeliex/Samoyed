@@ -36,10 +36,10 @@ class Generic_Sniffs_Files_LineEndingsSniff implements PHP_CodeSniffer_Sniff
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                   'CSS',
-                                  );
+        'PHP',
+        'JS',
+        'CSS',
+    );
 
     /**
      * The valid EOL character.
@@ -65,7 +65,7 @@ class Generic_Sniffs_Files_LineEndingsSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return int
@@ -86,7 +86,7 @@ class Generic_Sniffs_Files_LineEndingsSniff implements PHP_CodeSniffer_Sniff
         // Check for single line files without an EOL. This is a very special
         // case and the EOL char is set to \n when this happens.
         if ($found === '\n') {
-            $tokens    = $phpcsFile->getTokens();
+            $tokens = $phpcsFile->getTokens();
             $lastToken = ($phpcsFile->numTokens - 1);
             if ($tokens[$lastToken]['line'] === 1
                 && $tokens[$lastToken]['content'] !== "\n"
@@ -95,32 +95,32 @@ class Generic_Sniffs_Files_LineEndingsSniff implements PHP_CodeSniffer_Sniff
             }
         }
 
-        $error    = 'End of line character is invalid; expected "%s" but found "%s"';
+        $error = 'End of line character is invalid; expected "%s" but found "%s"';
         $expected = $this->eolChar;
         $expected = str_replace("\n", '\n', $expected);
         $expected = str_replace("\r", '\r', $expected);
-        $data     = array(
-                     $expected,
-                     $found,
-                    );
+        $data = array(
+            $expected,
+            $found,
+        );
 
         $fix = $phpcsFile->addFixableError($error, $stackPtr, 'InvalidEOLChar', $data);
 
         if ($fix === true) {
             $tokens = $phpcsFile->getTokens();
             switch ($this->eolChar) {
-            case '\n':
-                $eolChar = "\n";
-                break;
-            case '\r':
-                $eolChar = "\r";
-                break;
-            case '\r\n':
-                $eolChar = "\r\n";
-                break;
-            default:
-                $eolChar = $this->eolChar;
-                break;
+                case '\n':
+                    $eolChar = "\n";
+                    break;
+                case '\r':
+                    $eolChar = "\r";
+                    break;
+                case '\r\n':
+                    $eolChar = "\r\n";
+                    break;
+                default:
+                    $eolChar = $this->eolChar;
+                    break;
             }
 
             for ($i = $stackPtr; $i < $phpcsFile->numTokens; $i++) {
@@ -128,7 +128,7 @@ class Generic_Sniffs_Files_LineEndingsSniff implements PHP_CodeSniffer_Sniff
                     || $tokens[($i + 1)]['line'] > $tokens[$i]['line']
                 ) {
                     // Token is the last on a line.
-                    $newContent  = rtrim($tokens[$i]['content'], "\r\n");
+                    $newContent = rtrim($tokens[$i]['content'], "\r\n");
                     $newContent .= $eolChar;
                     $phpcsFile->fixer->replaceToken($i, $newContent);
                 }

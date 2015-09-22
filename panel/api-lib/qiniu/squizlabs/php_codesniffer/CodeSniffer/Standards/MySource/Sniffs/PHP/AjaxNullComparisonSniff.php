@@ -46,7 +46,7 @@ class MySource_Sniffs_PHP_AjaxNullComparisonSniff implements PHP_CodeSniffer_Sni
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -56,9 +56,9 @@ class MySource_Sniffs_PHP_AjaxNullComparisonSniff implements PHP_CodeSniffer_Sni
         $tokens = $phpcsFile->getTokens();
 
         // Make sure it is an API function. We know this by the doc comment.
-        $commentEnd   = $phpcsFile->findPrevious(T_DOC_COMMENT_CLOSE_TAG, $stackPtr);
+        $commentEnd = $phpcsFile->findPrevious(T_DOC_COMMENT_CLOSE_TAG, $stackPtr);
         $commentStart = $phpcsFile->findPrevious(T_DOC_COMMENT_OPEN_TAG, ($commentEnd - 1));
-        $comment      = $phpcsFile->getTokensAsString($commentStart, ($commentEnd - $commentStart));
+        $comment = $phpcsFile->getTokensAsString($commentStart, ($commentEnd - $commentStart));
         if (strpos($comment, '* @api') === false) {
             return;
         }
@@ -66,8 +66,8 @@ class MySource_Sniffs_PHP_AjaxNullComparisonSniff implements PHP_CodeSniffer_Sni
         // Find all the vars passed in as we are only interested in comparisons
         // to NULL for these specific variables.
         $foundVars = array();
-        $open      = $tokens[$stackPtr]['parenthesis_opener'];
-        $close     = $tokens[$stackPtr]['parenthesis_closer'];
+        $open = $tokens[$stackPtr]['parenthesis_opener'];
+        $close = $tokens[$stackPtr]['parenthesis_closer'];
         for ($i = ($open + 1); $i < $close; $i++) {
             if ($tokens[$i]['code'] === T_VARIABLE) {
                 $foundVars[$tokens[$i]['content']] = true;
@@ -79,7 +79,7 @@ class MySource_Sniffs_PHP_AjaxNullComparisonSniff implements PHP_CodeSniffer_Sni
         }
 
         $start = $tokens[$stackPtr]['scope_opener'];
-        $end   = $tokens[$stackPtr]['scope_closer'];
+        $end = $tokens[$stackPtr]['scope_closer'];
         for ($i = ($start + 1); $i < $end; $i++) {
             if ($tokens[$i]['code'] !== T_VARIABLE
                 || isset($foundVars[$tokens[$i]['content']]) === false

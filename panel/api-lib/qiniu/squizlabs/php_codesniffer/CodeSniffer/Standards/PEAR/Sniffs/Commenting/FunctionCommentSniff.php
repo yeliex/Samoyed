@@ -45,7 +45,7 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -53,7 +53,7 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $find   = PHP_CodeSniffer_Tokens::$methodPrefixes;
+        $find = PHP_CodeSniffer_Tokens::$methodPrefixes;
         $find[] = T_WHITESPACE;
 
         $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
@@ -110,10 +110,10 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
     /**
      * Process the return comment of this function comment.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile    The file being scanned.
-     * @param int                  $stackPtr     The position of the current token
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int $stackPtr The position of the current token
      *                                           in the stack passed in $tokens.
-     * @param int                  $commentStart The position in the stack where the comment started.
+     * @param int $commentStart The position in the stack where the comment started.
      *
      * @return void
      */
@@ -122,7 +122,7 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
         $tokens = $phpcsFile->getTokens();
 
         // Skip constructor and destructor.
-        $methodName      = $phpcsFile->getDeclarationName($stackPtr);
+        $methodName = $phpcsFile->getDeclarationName($stackPtr);
         $isSpecialMethod = ($methodName === '__construct' || $methodName === '__destruct');
 
         $return = null;
@@ -159,10 +159,10 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
     /**
      * Process any throw tags that this function comment has.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile    The file being scanned.
-     * @param int                  $stackPtr     The position of the current token
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int $stackPtr The position of the current token
      *                                           in the stack passed in $tokens.
-     * @param int                  $commentStart The position in the stack where the comment started.
+     * @param int $commentStart The position in the stack where the comment started.
      *
      * @return void
      */
@@ -177,7 +177,7 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
             }
 
             $exception = null;
-            $comment   = null;
+            $comment = null;
             if ($tokens[($tag + 2)]['code'] === T_DOC_COMMENT_STRING) {
                 $matches = array();
                 preg_match('/([^\s]+)(?:\s+(.*))?/', $tokens[($tag + 2)]['content'], $matches);
@@ -199,10 +199,10 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
     /**
      * Process the function parameter comments.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile    The file being scanned.
-     * @param int                  $stackPtr     The position of the current token
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int $stackPtr The position of the current token
      *                                           in the stack passed in $tokens.
-     * @param int                  $commentStart The position in the stack where the comment started.
+     * @param int $commentStart The position in the stack where the comment started.
      *
      * @return void
      */
@@ -210,33 +210,33 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
     {
         $tokens = $phpcsFile->getTokens();
 
-        $params  = array();
+        $params = array();
         $maxType = 0;
-        $maxVar  = 0;
+        $maxVar = 0;
         foreach ($tokens[$commentStart]['comment_tags'] as $pos => $tag) {
             if ($tokens[$tag]['content'] !== '@param') {
                 continue;
             }
 
-            $type      = '';
+            $type = '';
             $typeSpace = 0;
-            $var       = '';
-            $varSpace  = 0;
-            $comment   = '';
+            $var = '';
+            $varSpace = 0;
+            $comment = '';
             if ($tokens[($tag + 2)]['code'] === T_DOC_COMMENT_STRING) {
                 $matches = array();
                 preg_match('/([^$&]+)(?:((?:\$|&)[^\s]+)(?:(\s+)(.*))?)?/', $tokens[($tag + 2)]['content'], $matches);
 
-                $typeLen   = strlen($matches[1]);
-                $type      = trim($matches[1]);
+                $typeLen = strlen($matches[1]);
+                $type = trim($matches[1]);
                 $typeSpace = ($typeLen - strlen($type));
-                $typeLen   = strlen($type);
+                $typeLen = strlen($type);
                 if ($typeLen > $maxType) {
                     $maxType = $typeLen;
                 }
 
                 if (isset($matches[2]) === true) {
-                    $var    = $matches[2];
+                    $var = $matches[2];
                     $varLen = strlen($var);
                     if ($varLen > $maxVar) {
                         $maxVar = $varLen;
@@ -244,7 +244,7 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
 
                     if (isset($matches[4]) === true) {
                         $varSpace = strlen($matches[3]);
-                        $comment  = $matches[4];
+                        $comment = $matches[4];
 
                         // Any strings until the next tag belong to this comment.
                         if (isset($tokens[$commentStart]['comment_tags'][($pos + 1)]) === true) {
@@ -255,7 +255,7 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
 
                         for ($i = ($tag + 3); $i < $end; $i++) {
                             if ($tokens[$i]['code'] === T_DOC_COMMENT_STRING) {
-                                $comment .= ' '.$tokens[$i]['content'];
+                                $comment .= ' ' . $tokens[$i]['content'];
                             }
                         }
                     } else {
@@ -272,16 +272,16 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
             }//end if
 
             $params[] = array(
-                         'tag'        => $tag,
-                         'type'       => $type,
-                         'var'        => $var,
-                         'comment'    => $comment,
-                         'type_space' => $typeSpace,
-                         'var_space'  => $varSpace,
-                        );
+                'tag' => $tag,
+                'type' => $type,
+                'var' => $var,
+                'comment' => $comment,
+                'type_space' => $typeSpace,
+                'var_space' => $varSpace,
+            );
         }//end foreach
 
-        $realParams  = $phpcsFile->getMethodParameters($stackPtr);
+        $realParams = $phpcsFile->getMethodParameters($stackPtr);
         $foundParams = array();
 
         foreach ($params as $pos => $param) {
@@ -295,14 +295,14 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
             $spaces = ($maxType - strlen($param['type']) + 1);
             if ($param['type_space'] !== $spaces) {
                 $error = 'Expected %s spaces after parameter type; %s found';
-                $data  = array(
-                          $spaces,
-                          $param['type_space'],
-                         );
+                $data = array(
+                    $spaces,
+                    $param['type_space'],
+                );
 
                 $fix = $phpcsFile->addFixableError($error, $param['tag'], 'SpacingAfterParamType', $data);
                 if ($fix === true) {
-                    $content  = $param['type'];
+                    $content = $param['type'];
                     $content .= str_repeat(' ', $spaces);
                     $content .= $param['var'];
                     $content .= str_repeat(' ', $param['var_space']);
@@ -317,14 +317,14 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
                 if ($realName !== $param['var']) {
                     $code = 'ParamNameNoMatch';
                     $data = array(
-                             $param['var'],
-                             $realName,
-                            );
+                        $param['var'],
+                        $realName,
+                    );
 
                     $error = 'Doc comment for parameter %s does not match ';
                     if (strtolower($param['var']) === strtolower($realName)) {
                         $error .= 'case of ';
-                        $code   = 'ParamNameNoCaseMatch';
+                        $code = 'ParamNameNoCaseMatch';
                     }
 
                     $error .= 'actual variable name %s';
@@ -345,14 +345,14 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
             $spaces = ($maxVar - strlen($param['var']) + 1);
             if ($param['var_space'] !== $spaces) {
                 $error = 'Expected %s spaces after parameter name; %s found';
-                $data  = array(
-                          $spaces,
-                          $param['var_space'],
-                         );
+                $data = array(
+                    $spaces,
+                    $param['var_space'],
+                );
 
                 $fix = $phpcsFile->addFixableError($error, $param['tag'], 'SpacingAfterParamName', $data);
                 if ($fix === true) {
-                    $content  = $param['type'];
+                    $content = $param['type'];
                     $content .= str_repeat(' ', $param['type_space']);
                     $content .= $param['var'];
                     $content .= str_repeat(' ', $spaces);
@@ -371,7 +371,7 @@ class PEAR_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
         $diff = array_diff($realNames, $foundParams);
         foreach ($diff as $neededParam) {
             $error = 'Doc comment for parameter "%s" missing';
-            $data  = array($neededParam);
+            $data = array($neededParam);
             $phpcsFile->addError($error, $commentStart, 'MissingParamTag', $data);
         }
 

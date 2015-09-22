@@ -44,11 +44,11 @@ class Squiz_Sniffs_PHP_ForbiddenFunctionsSniff extends Generic_Sniffs_PHP_Forbid
      * @var array(string => string|null)
      */
     public $forbiddenFunctions = array(
-                                  'sizeof'          => 'count',
-                                  'delete'          => 'unset',
-                                  'print'           => 'echo',
-                                  'is_null'         => null,
-                                  'create_function' => null,
-                                 );
+        'sizeof' => 'count',
+        'delete' => 'unset',
+        'print' => 'echo',
+        'is_null' => null,
+        'create_function' => null,
+    );
 
 }//end class

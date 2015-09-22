@@ -39,10 +39,10 @@ class Squiz_Sniffs_Commenting_ClosingDeclarationCommentSniff implements PHP_Code
     public function register()
     {
         return array(
-                T_FUNCTION,
-                T_CLASS,
-                T_INTERFACE,
-               );
+            T_FUNCTION,
+            T_CLASS,
+            T_INTERFACE,
+        );
 
     }//end register()
 
@@ -51,7 +51,7 @@ class Squiz_Sniffs_Commenting_ClosingDeclarationCommentSniff implements PHP_Code
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens..
      *
      * @return void
@@ -86,7 +86,7 @@ class Squiz_Sniffs_Commenting_ClosingDeclarationCommentSniff implements PHP_Code
             }
 
             $decName = $phpcsFile->getDeclarationName($stackPtr);
-            $comment = '//end '.$decName.'()';
+            $comment = '//end ' . $decName . '()';
         } else if ($tokens[$stackPtr]['code'] === T_CLASS) {
             $comment = '//end class';
         } else {
@@ -95,7 +95,7 @@ class Squiz_Sniffs_Commenting_ClosingDeclarationCommentSniff implements PHP_Code
 
         if (isset($tokens[$stackPtr]['scope_closer']) === false) {
             $error = 'Possible parse error: %s missing opening or closing brace';
-            $data  = array($tokens[$stackPtr]['content']);
+            $data = array($tokens[$stackPtr]['content']);
             $phpcsFile->addWarning($error, $stackPtr, 'MissingBrace', $data);
             return;
         }
@@ -107,12 +107,12 @@ class Squiz_Sniffs_Commenting_ClosingDeclarationCommentSniff implements PHP_Code
             return;
         }
 
-        $error = 'Expected '.$comment;
+        $error = 'Expected ' . $comment;
         if (isset($tokens[($closingBracket + 1)]) === false || $tokens[($closingBracket + 1)]['code'] !== T_COMMENT) {
             $next = $phpcsFile->findNext(T_WHITESPACE, ($closingBracket + 1), null, true);
             if (rtrim($tokens[$next]['content']) === $comment) {
                 // The comment isn't really missing; it is just in the wrong place.
-                $fix = $phpcsFile->addFixableError($error.' directly after closing brace', $closingBracket, 'Misplaced');
+                $fix = $phpcsFile->addFixableError($error . ' directly after closing brace', $closingBracket, 'Misplaced');
                 if ($fix === true) {
                     $phpcsFile->fixer->beginChangeset();
                     for ($i = ($closingBracket + 1); $i < $next; $i++) {
@@ -121,13 +121,13 @@ class Squiz_Sniffs_Commenting_ClosingDeclarationCommentSniff implements PHP_Code
 
                     // Just in case, because indentation fixes can add indents onto
                     // these comments and cause us to be unable to fix them.
-                    $phpcsFile->fixer->replaceToken($next, $comment.$phpcsFile->eolChar);
+                    $phpcsFile->fixer->replaceToken($next, $comment . $phpcsFile->eolChar);
                     $phpcsFile->fixer->endChangeset();
                 }
             } else {
                 $fix = $phpcsFile->addFixableError($error, $closingBracket, 'Missing');
                 if ($fix === true) {
-                    $phpcsFile->fixer->replaceToken($closingBracket, '}'.$comment.$phpcsFile->eolChar);
+                    $phpcsFile->fixer->replaceToken($closingBracket, '}' . $comment . $phpcsFile->eolChar);
                 }
             }
 
@@ -137,7 +137,7 @@ class Squiz_Sniffs_Commenting_ClosingDeclarationCommentSniff implements PHP_Code
         if (rtrim($tokens[($closingBracket + 1)]['content']) !== $comment) {
             $fix = $phpcsFile->addFixableError($error, $closingBracket, 'Incorrect');
             if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($closingBracket + 1), $comment.$phpcsFile->eolChar);
+                $phpcsFile->fixer->replaceToken(($closingBracket + 1), $comment . $phpcsFile->eolChar);
             }
 
             return;

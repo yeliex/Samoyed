@@ -1,19 +1,19 @@
 <documentation title="Silenced Errors">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Suppressing Errors is not allowed.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: isset() is used to verify that a variable exists before trying to use it.">
-        <![CDATA[
+            <![CDATA[
 if (<em>isset($foo)</em> && $foo) {
     echo "Hello\n";
 }
         ]]>
         </code>
         <code title="Invalid: Errors are suppressed.">
-        <![CDATA[
+            <![CDATA[
 if (<em>@</em>$foo) {
     echo "Hello\n";
 }

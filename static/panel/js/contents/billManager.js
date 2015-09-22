@@ -1,5 +1,6 @@
 $(function () {
     $("#select-district .ui.dropdown").dropdown();
+    districtSelect(0);
 });
 
 function districtSelect(code) {
@@ -12,10 +13,9 @@ function districtSelect(code) {
     }
     $("#bill_manager #list_num span").text(num);
 }
-
 function getList(code) {
     var data;
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/billlist/", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/billlist/", {
         method: "GET",
         async: false,
         data: {
@@ -176,7 +176,7 @@ function previewImage(id) {
     // 查看图片
     // 直接Ajax请求图片 服务器再根据ID位数判断显示哪个 9位为大图 12位为户型图
     var data;
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/getImage", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/getImage", {
         method: "GET",
         async: false,
         data: {
@@ -209,7 +209,7 @@ function previewImage(id) {
 function previewUnits(id) {
     // 查看户型列表
     var data;
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/getUnits", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/getUnits", {
         method: "GET",
         async: false,
         data: {
@@ -245,7 +245,7 @@ function previewUnits(id) {
 function previewImages(id) {
     // 查看图片列表
     var data;
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/getImages", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/getImages", {
         method: "GET",
         async: false,
         data: {
@@ -283,7 +283,7 @@ function editBasic(id) {
     clearEdit();
     // 编辑房源基本信息
     var data;
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/getBasic", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/getBasic", {
         method: "GET",
         async: false,
         data: {
@@ -350,7 +350,7 @@ function editBasic(id) {
                     var newData = new NewBasicData();
                     if (onBasicCheck(newData)) {
                         // 校验通过,发送数据
-                        var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/basicsave/?protocol=json", {
+                        var req = $.ajax("http://api.panel.mzapp.info/billmanager/basicsave/?protocol=json", {
                             method: "POST",
                             async: false,
                             data: {
@@ -383,7 +383,7 @@ function editUnits(id) {
     // 编辑户型信息
     // 首先获取户型数据
     var data;
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/getUnits", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/getUnits", {
         method: "GET",
         async: false,
         data: {
@@ -447,7 +447,7 @@ function editImages(id) {
     // 编辑图片列表
     // 首先获取其他图片数据
     var data;
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/getImages", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/getImages", {
         method: "GET",
         async: false,
         data: {
@@ -509,7 +509,7 @@ function editImages(id) {
 
     // 设置主图
     var main_image;
-    var main_req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/getMainImage", {
+    var main_req = $.ajax("http://api.panel.mzapp.info/billmanager/getMainImage", {
         method: "GET",
         async: false,
         data: {
@@ -529,7 +529,7 @@ function editRemove(id) {
     // 删除房源
     // Ajax删除后不需要重新加载页面 直接将表格行标红 后面操作按钮变为已删除 文字也变成删除样式
     if (confirm("是否要删除户型: " + id)) {
-        var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/deleteBuilding/", {
+        var req = $.ajax("http://api.panel.mzapp.info/billmanager/deleteBuilding/", {
             method: "GET",
             async: false,
             data: {
@@ -574,7 +574,7 @@ function onUnitDelete(id, bid) {
         // 确认删除
         // 直接Ajax删除后重新加载
         var data;
-        var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/deleteUnit", {
+        var req = $.ajax("http://api.panel.mzapp.info/billmanager/deleteUnit", {
             method: "GET",
             async: false,
             data: {
@@ -601,7 +601,7 @@ function onImageDelete(id, bid) {
         // 确认删除
         // 直接Ajax删除后重新加载
         var data;
-        var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/deleteImage", {
+        var req = $.ajax("http://api.panel.mzapp.info/billmanager/deleteImage", {
             method: "GET",
             async: false,
             data: {
@@ -672,7 +672,7 @@ function onEditUnitSave(num) {
     }
 
     // Ajax上传户型数据
-    var req = $.ajax("http://api.panel.dev.mzapp.info/billmanager/unitsave/?protocol=json", {
+    var req = $.ajax("http://api.panel.mzapp.info/billmanager/unitsave/?protocol=json", {
         method: "POST",
         async: false,
         data: {
@@ -706,7 +706,7 @@ function GetUnitData(num, bid) {
 
 function getUnitID(bid) {
     var uid;
-    var req = $.ajax('http://api.panel.dev.mzapp.info/billmanager/unitid/', {
+    var req = $.ajax('http://api.panel.mzapp.info/billmanager/unitid/', {
         method: "GET",
         async: false,
         data: {
@@ -774,7 +774,7 @@ function clearEdit() {
 function onEditMainImageSave(url) {
     var id = $($(".edit.images h5.header span")[0]).text();
     // 保存图片
-    var req = $.ajax('http://api.panel.dev.mzapp.info/billmanager/newMainImage/?protocol=json', {
+    var req = $.ajax('http://api.panel.mzapp.info/billmanager/newMainImage/?protocol=json', {
         method: "POST",
         async: false,
         data: {
@@ -799,7 +799,7 @@ function onEditNewImageSave(url, serial) {
     var bid = $($(".edit.images h5.header span")[1]).text();
     var iname = $(".edit.images #image_" + serial + " input").val();
     // Ajax保存图片
-    var req = $.ajax('http://api.panel.dev.mzapp.info/billmanager/newImageSave/?protocol=json', {
+    var req = $.ajax('http://api.panel.mzapp.info/billmanager/newImageSave/?protocol=json', {
         method: "POST",
         async: false,
         data: {

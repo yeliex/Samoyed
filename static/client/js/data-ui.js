@@ -1,6 +1,3 @@
-/**
- * Created by yeliex on 15/7/28.
- */
 function resetUnitsListUI() {
     var unitsList = $(".units-list .row");
     var unitsNum = unitsList.length;
@@ -155,7 +152,7 @@ function bindImgClicked() {
         var src = $(this).attr("src");
         var target = $(this);
         var modal = $("#image-modal");
-        if(target.hasClass("modal")){
+        if (target.hasClass("modal")) {
             return;
         }
         if (target.hasClass('image')) {
@@ -166,8 +163,8 @@ function bindImgClicked() {
             // 户型图片
             $("#image-modal span").text($(this).parentsUntil(".row").last().children().first().text());
         }
-        $("#image-modal img").attr("src",src);
-        modal.css("max-height",window.outerHeight *0.8);
+        $("#image-modal img").attr("src", src);
+        modal.css("max-height", window.outerHeight * 0.8);
         modal.modal("show");
     });
 }

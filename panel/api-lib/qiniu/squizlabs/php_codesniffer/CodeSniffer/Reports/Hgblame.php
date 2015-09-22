@@ -48,7 +48,7 @@ class PHP_CodeSniffer_Reports_Hgblame extends PHP_CodeSniffer_Reports_VersionCon
     protected function getAuthor($line)
     {
         $blameParts = array();
-        $line       = preg_replace('|\s+|', ' ', $line);
+        $line = preg_replace('|\s+|', ' ', $line);
 
         preg_match(
             '|(.+[0-9]{2}:[0-9]{2}:[0-9]{2}\s[0-9]{4}\s.[0-9]{4}:)|',
@@ -85,16 +85,16 @@ class PHP_CodeSniffer_Reports_Hgblame extends PHP_CodeSniffer_Reports_VersionCon
         $cwd = getcwd();
 
         if (PHP_CODESNIFFER_VERBOSITY > 0) {
-            echo 'Getting MERCURIAL blame info for '.basename($filename).'... ';
+            echo 'Getting MERCURIAL blame info for ' . basename($filename) . '... ';
         }
 
         $fileParts = explode(DIRECTORY_SEPARATOR, $filename);
-        $found     = false;
-        $location  = '';
+        $found = false;
+        $location = '';
         while (empty($fileParts) === false) {
             array_pop($fileParts);
             $location = implode($fileParts, DIRECTORY_SEPARATOR);
-            if (is_dir($location.DIRECTORY_SEPARATOR.'.hg') === true) {
+            if (is_dir($location . DIRECTORY_SEPARATOR . '.hg') === true) {
                 $found = true;
                 break;
             }
@@ -103,14 +103,14 @@ class PHP_CodeSniffer_Reports_Hgblame extends PHP_CodeSniffer_Reports_VersionCon
         if ($found === true) {
             chdir($location);
         } else {
-            echo 'ERROR: Could not locate .hg directory '.PHP_EOL.PHP_EOL;
+            echo 'ERROR: Could not locate .hg directory ' . PHP_EOL . PHP_EOL;
             exit(2);
         }
 
-        $command = 'hg blame -u -d -v "'.$filename.'"';
-        $handle  = popen($command, 'r');
+        $command = 'hg blame -u -d -v "' . $filename . '"';
+        $handle = popen($command, 'r');
         if ($handle === false) {
-            echo 'ERROR: Could not execute "'.$command.'"'.PHP_EOL.PHP_EOL;
+            echo 'ERROR: Could not execute "' . $command . '"' . PHP_EOL . PHP_EOL;
             exit(2);
         }
 
@@ -118,7 +118,7 @@ class PHP_CodeSniffer_Reports_Hgblame extends PHP_CodeSniffer_Reports_VersionCon
         fclose($handle);
 
         if (PHP_CODESNIFFER_VERBOSITY > 0) {
-            echo 'DONE'.PHP_EOL;
+            echo 'DONE' . PHP_EOL;
         }
 
         $blames = explode("\n", $rawContent);

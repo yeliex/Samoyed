@@ -1,6 +1,3 @@
-/**
- * Created by yeliex on 15/7/21.
- */
 $(function () {
     var wrapper = $(".seg-wrapper");
     var wrapperHeight = wrapper.height();

@@ -40,12 +40,12 @@ class Squiz_Sniffs_PHP_NonExecutableCodeSniff implements PHP_CodeSniffer_Sniff
     public function register()
     {
         return array(
-                T_BREAK,
-                T_CONTINUE,
-                T_RETURN,
-                T_THROW,
-                T_EXIT,
-               );
+            T_BREAK,
+            T_CONTINUE,
+            T_RETURN,
+            T_THROW,
+            T_EXIT,
+        );
 
     }//end register()
 
@@ -54,7 +54,7 @@ class Squiz_Sniffs_PHP_NonExecutableCodeSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -115,15 +115,15 @@ class Squiz_Sniffs_PHP_NonExecutableCodeSniff implements PHP_CodeSniffer_Sniff
                 // end of SWITCH token will not be executable.
                 $next = $phpcsFile->findNext(
                     array(
-                     T_CASE,
-                     T_DEFAULT,
-                     T_CLOSE_CURLY_BRACKET,
+                        T_CASE,
+                        T_DEFAULT,
+                        T_CLOSE_CURLY_BRACKET,
                     ),
                     ($stackPtr + 1)
                 );
 
                 if ($next !== false) {
-                    $end      = $phpcsFile->findNext(array(T_SEMICOLON), ($stackPtr + 1));
+                    $end = $phpcsFile->findNext(array(T_SEMICOLON), ($stackPtr + 1));
                     $lastLine = $tokens[$end]['line'];
                     for ($i = ($stackPtr + 1); $i < $next; $i++) {
                         if (isset(PHP_CodeSniffer_Tokens::$emptyTokens[$tokens[$i]['code']]) === true) {
@@ -132,9 +132,9 @@ class Squiz_Sniffs_PHP_NonExecutableCodeSniff implements PHP_CodeSniffer_Sniff
 
                         $line = $tokens[$i]['line'];
                         if ($line > $lastLine) {
-                            $type    = substr($tokens[$stackPtr]['type'], 2);
+                            $type = substr($tokens[$stackPtr]['type'], 2);
                             $warning = 'Code after %s statement cannot be executed';
-                            $data    = array($type);
+                            $data = array($type);
                             $phpcsFile->addWarning($warning, $i, 'Unreachable', $data);
                             $lastLine = $line;
                         }
@@ -151,12 +151,12 @@ class Squiz_Sniffs_PHP_NonExecutableCodeSniff implements PHP_CodeSniffer_Sniff
         // we should ignore this token.
         $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 1), null, true);
         if (isset($tokens[$prev]['parenthesis_owner']) === true) {
-            $owner  = $tokens[$prev]['parenthesis_owner'];
+            $owner = $tokens[$prev]['parenthesis_owner'];
             $ignore = array(
-                       T_IF     => true,
-                       T_ELSE   => true,
-                       T_ELSEIF => true,
-                      );
+                T_IF => true,
+                T_ELSE => true,
+                T_ELSEIF => true,
+            );
             if (isset($ignore[$tokens[$owner]['code']]) === true) {
                 return;
             }
@@ -256,9 +256,9 @@ class Squiz_Sniffs_PHP_NonExecutableCodeSniff implements PHP_CodeSniffer_Sniff
 
             $line = $tokens[$i]['line'];
             if ($line > $lastLine) {
-                $type    = substr($tokens[$stackPtr]['type'], 2);
+                $type = substr($tokens[$stackPtr]['type'], 2);
                 $warning = 'Code after %s statement cannot be executed';
-                $data    = array($type);
+                $data = array($type);
                 $phpcsFile->addWarning($warning, $i, 'Unreachable', $data);
                 $lastLine = $line;
             }

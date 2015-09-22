@@ -1,6 +1,6 @@
 <?php
 // @codingStandardsIgnoreFile
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Qiniu\Auth;
 
@@ -29,7 +29,7 @@ function qiniuTempFile($size)
     $fileName = tempnam(sys_get_temp_dir(), 'qiniu_');
     $file = fopen($fileName, 'wb');
     if ($size > 0) {
-        fseek($file, $size-1);
+        fseek($file, $size - 1);
         fwrite($file, ' ');
     }
     fclose($file);

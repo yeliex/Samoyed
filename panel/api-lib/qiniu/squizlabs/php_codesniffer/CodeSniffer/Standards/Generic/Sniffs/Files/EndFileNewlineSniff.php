@@ -34,10 +34,10 @@ class Generic_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                   'CSS',
-                                  );
+        'PHP',
+        'JS',
+        'CSS',
+    );
 
 
     /**
@@ -56,7 +56,7 @@ class Generic_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return int
@@ -64,7 +64,7 @@ class Generic_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         // Skip to the end of the file.
-        $tokens   = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $stackPtr = ($phpcsFile->numTokens - 1);
 
         if ($phpcsFile->tokenizerType !== 'PHP') {
@@ -72,12 +72,12 @@ class Generic_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
         }
 
         $eolCharLen = strlen($phpcsFile->eolChar);
-        $lastChars  = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
+        $lastChars = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
         if ($lastChars !== $phpcsFile->eolChar) {
             $phpcsFile->recordMetric($stackPtr, 'Newline at EOF', 'no');
 
             $error = 'File must end with a newline character';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NotFound');
+            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NotFound');
             if ($fix === true) {
                 $phpcsFile->fixer->addNewline($stackPtr);
             }

@@ -45,7 +45,7 @@ class PSR2_Sniffs_Namespaces_NamespaceDeclarationSniff implements PHP_CodeSniffe
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -79,7 +79,7 @@ class PSR2_Sniffs_Namespaces_NamespaceDeclarationSniff implements PHP_CodeSniffe
         }
 
         $error = 'There must be one blank line after the namespace declaration';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'BlankLineAfter');
+        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'BlankLineAfter');
 
         if ($fix === true) {
             if ($diff === 0) {

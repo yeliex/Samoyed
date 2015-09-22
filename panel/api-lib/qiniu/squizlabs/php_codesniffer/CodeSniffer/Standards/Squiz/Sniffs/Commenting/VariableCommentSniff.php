@@ -29,7 +29,6 @@ if (class_exists('PHP_CodeSniffer_Standards_AbstractVariableSniff', true) === fa
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-
 class Squiz_Sniffs_Commenting_VariableCommentSniff extends PHP_CodeSniffer_Standards_AbstractVariableSniff
 {
 
@@ -38,18 +37,18 @@ class Squiz_Sniffs_Commenting_VariableCommentSniff extends PHP_CodeSniffer_Stand
      * Called to process class member vars.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
      */
     public function processMemberVar(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens       = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $commentToken = array(
-                         T_COMMENT,
-                         T_DOC_COMMENT_CLOSE_TAG,
-                        );
+            T_COMMENT,
+            T_DOC_COMMENT_CLOSE_TAG,
+        );
 
         $commentEnd = $phpcsFile->findPrevious($commentToken, $stackPtr);
         if ($commentEnd === false) {
@@ -92,7 +91,7 @@ class Squiz_Sniffs_Commenting_VariableCommentSniff extends PHP_CodeSniffer_Stand
                 }
             } else {
                 $error = '%s tag is not allowed in member variable comment';
-                $data  = array($tokens[$tag]['content']);
+                $data = array($tokens[$tag]['content']);
                 $phpcsFile->addWarning($error, $tag, 'TagNotAllowed', $data);
             }//end if
         }//end foreach
@@ -118,14 +117,14 @@ class Squiz_Sniffs_Commenting_VariableCommentSniff extends PHP_CodeSniffer_Stand
             return;
         }
 
-        $varType       = $tokens[($foundVar + 2)]['content'];
+        $varType = $tokens[($foundVar + 2)]['content'];
         $suggestedType = PHP_CodeSniffer::suggestType($varType);
         if ($varType !== $suggestedType) {
             $error = 'Expected "%s" but found "%s" for @var tag in member variable comment';
-            $data  = array(
-                      $suggestedType,
-                      $varType,
-                     );
+            $data = array(
+                $suggestedType,
+                $varType,
+            );
             $phpcsFile->addError($error, ($foundVar + 2), 'IncorrectVarType', $data);
         }
 
@@ -138,7 +137,7 @@ class Squiz_Sniffs_Commenting_VariableCommentSniff extends PHP_CodeSniffer_Stand
      * Not required for this sniff.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The PHP_CodeSniffer file where this token was found.
-     * @param int                  $stackPtr  The position where the double quoted
+     * @param int $stackPtr The position where the double quoted
      *                                        string was found.
      *
      * @return void
@@ -155,7 +154,7 @@ class Squiz_Sniffs_Commenting_VariableCommentSniff extends PHP_CodeSniffer_Stand
      * Not required for this sniff.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The PHP_CodeSniffer file where this token was found.
-     * @param int                  $stackPtr  The position where the double quoted
+     * @param int $stackPtr The position where the double quoted
      *                                        string was found.
      *
      * @return void

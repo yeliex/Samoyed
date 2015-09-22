@@ -43,7 +43,7 @@ class MySource_Sniffs_PHP_GetRequestDataSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -90,19 +90,19 @@ class MySource_Sniffs_PHP_GetRequestDataSniff implements PHP_CodeSniffer_Sniff
         // If we get to here, the super global was used incorrectly.
         // First find out how it is being used.
         $globalName = strtolower(substr($varName, 2));
-        $usedVar    = '';
+        $usedVar = '';
 
         $openBracket = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
         if ($tokens[$openBracket]['code'] === T_OPEN_SQUARE_BRACKET) {
             $closeBracket = $tokens[$openBracket]['bracket_closer'];
-            $usedVar      = $phpcsFile->getTokensAsString(($openBracket + 1), ($closeBracket - $openBracket - 1));
+            $usedVar = $phpcsFile->getTokensAsString(($openBracket + 1), ($closeBracket - $openBracket - 1));
         }
 
-        $type  = 'SuperglobalAccessed';
+        $type = 'SuperglobalAccessed';
         $error = 'The %s super global must not be accessed directly; use Security::getRequestData(';
-        $data  = array($varName);
+        $data = array($varName);
         if ($usedVar !== '') {
-            $type  .= 'WithVar';
+            $type .= 'WithVar';
             $error .= '%s, \'%s\'';
             $data[] = $usedVar;
             $data[] = $globalName;

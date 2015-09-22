@@ -43,7 +43,7 @@ class MySource_Sniffs_PHP_EvalObjectFactorySniff implements PHP_CodeSniffer_Snif
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -57,11 +57,11 @@ class MySource_Sniffs_PHP_EvalObjectFactorySniff implements PHP_CodeSniffer_Snif
             to determine if the "new" keyword is being used.
         */
 
-        $openBracket  = $phpcsFile->findNext(T_OPEN_PARENTHESIS, ($stackPtr + 1));
+        $openBracket = $phpcsFile->findNext(T_OPEN_PARENTHESIS, ($stackPtr + 1));
         $closeBracket = $tokens[$openBracket]['parenthesis_closer'];
 
         $strings = array();
-        $vars    = array();
+        $vars = array();
 
         for ($i = ($openBracket + 1); $i < $closeBracket; $i++) {
             if (isset(PHP_CodeSniffer_Tokens::$stringTokens[$tokens[$i]['code']]) === true) {

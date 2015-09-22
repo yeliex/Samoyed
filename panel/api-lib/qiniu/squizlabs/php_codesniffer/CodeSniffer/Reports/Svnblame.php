@@ -71,13 +71,13 @@ class PHP_CodeSniffer_Reports_Svnblame extends PHP_CodeSniffer_Reports_VersionCo
     protected function getBlameContent($filename)
     {
         if (PHP_CODESNIFFER_VERBOSITY > 0) {
-            echo 'Getting SVN blame info for '.basename($filename).'... ';
+            echo 'Getting SVN blame info for ' . basename($filename) . '... ';
         }
 
-        $command = 'svn blame "'.$filename.'"';
-        $handle  = popen($command, 'r');
+        $command = 'svn blame "' . $filename . '"';
+        $handle = popen($command, 'r');
         if ($handle === false) {
-            echo 'ERROR: Could not execute "'.$command.'"'.PHP_EOL.PHP_EOL;
+            echo 'ERROR: Could not execute "' . $command . '"' . PHP_EOL . PHP_EOL;
             exit(2);
         }
 
@@ -85,7 +85,7 @@ class PHP_CodeSniffer_Reports_Svnblame extends PHP_CodeSniffer_Reports_VersionCo
         fclose($handle);
 
         if (PHP_CODESNIFFER_VERBOSITY > 0) {
-            echo 'DONE'.PHP_EOL;
+            echo 'DONE' . PHP_EOL;
         }
 
         $blames = explode("\n", $rawContent);

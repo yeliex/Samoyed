@@ -1,12 +1,6 @@
-/**
- * Created by yeliex on 15/7/29.
- */
-
-// Get logined user
-
 $(function () {
 
-    var req = $.ajax(location.origin+'/api/login/iflogin/', {
+    var req = $.ajax(location.origin + '/api/login/iflogin/', {
         method: "GET",
         data: {
             protocol: 'json'
@@ -35,7 +29,7 @@ function ifLogin(returnData) {
     }
     else {
         // 已登录
-        logined(returnData.data.uid,returnData.data.user);
+        logined(returnData.data.uid, returnData.data.user);
     }
 }
 
@@ -63,7 +57,7 @@ $(function () {
         $("#loginBox #alert").parent().removeClass('visible');
         $("#loginBox .actions .primary.button#login").addClass("loading");
 
-        var req = $.ajax(location.origin+'/api/login?protocol=json', {
+        var req = $.ajax(location.origin + '/api/login?protocol=json', {
             method: "POST",
             data: postData
         });
@@ -99,20 +93,20 @@ function logined(uid, user) {
 
     // 设置页面显示用户信息
     $(".ye-nav #user-name span").text(user);
-    setInterval(function(){
+    setInterval(function () {
         var datetime = new Date();
         $(".ye-nav #nav-time").text(
-            datetime.getFullYear()+"-"
-            +(datetime.getMonth()+1)+"-"
-            +datetime.getDate()+"   "
-            +datetime.getHours()+":"
-            +datetime.getMinutes()+":"
-            +datetime.getSeconds());
-    },1000);
+            datetime.getFullYear() + "-"
+            + (datetime.getMonth() + 1) + "-"
+            + datetime.getDate() + "   "
+            + datetime.getHours() + ":"
+            + datetime.getMinutes() + ":"
+            + datetime.getSeconds());
+    }, 1000);
 }
 
-function logout(){
-    var req = $.ajax(location.origin+'/api/login/logout', {
+function logout() {
+    var req = $.ajax(location.origin + '/api/login/logout', {
         method: "GET",
         data: {
             protocol: 'json'

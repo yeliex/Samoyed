@@ -37,234 +37,234 @@ class PHP_CodeSniffer_Tokenizers_PHP
      * @var array
      */
     public $scopeOpeners = array(
-                            T_IF            => array(
-                                                'start'  => array(
-                                                             T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
-                                                             T_COLON              => T_COLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                                                             T_ENDIF               => T_ENDIF,
-                                                             T_ELSE                => T_ELSE,
-                                                             T_ELSEIF              => T_ELSEIF,
-                                                            ),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(
-                                                             T_ELSE   => T_ELSE,
-                                                             T_ELSEIF => T_ELSEIF,
-                                                            ),
-                                               ),
-                            T_TRY           => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_CATCH         => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_FINALLY       => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_ELSE          => array(
-                                                'start'  => array(
-                                                             T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
-                                                             T_COLON              => T_COLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                                                             T_ENDIF               => T_ENDIF,
-                                                            ),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(
-                                                             T_IF     => T_IF,
-                                                             T_ELSEIF => T_ELSEIF,
-                                                            ),
-                                               ),
-                            T_ELSEIF        => array(
-                                                'start'  => array(
-                                                             T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
-                                                             T_COLON              => T_COLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                                                             T_ENDIF               => T_ENDIF,
-                                                             T_ELSE                => T_ELSE,
-                                                             T_ELSEIF              => T_ELSEIF,
-                                                            ),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(
-                                                             T_IF   => T_IF,
-                                                             T_ELSE => T_ELSE,
-                                                            ),
-                                               ),
-                            T_FOR           => array(
-                                                'start'  => array(
-                                                             T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
-                                                             T_COLON              => T_COLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                                                             T_ENDFOR              => T_ENDFOR,
-                                                            ),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_FOREACH       => array(
-                                                'start'  => array(
-                                                             T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
-                                                             T_COLON              => T_COLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                                                             T_ENDFOREACH          => T_ENDFOREACH,
-                                                            ),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_INTERFACE     => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_FUNCTION      => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_CLASS         => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_TRAIT         => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_USE           => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_DECLARE       => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_NAMESPACE     => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_WHILE         => array(
-                                                'start'  => array(
-                                                             T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
-                                                             T_COLON              => T_COLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                                                             T_ENDWHILE            => T_ENDWHILE,
-                                                            ),
-                                                'strict' => false,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_DO            => array(
-                                                'start'  => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
-                                                'end'    => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_SWITCH        => array(
-                                                'start'  => array(
-                                                             T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
-                                                             T_COLON              => T_COLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                                                             T_ENDSWITCH           => T_ENDSWITCH,
-                                                            ),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                            T_CASE          => array(
-                                                'start'  => array(
-                                                             T_COLON     => T_COLON,
-                                                             T_SEMICOLON => T_SEMICOLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_BREAK    => T_BREAK,
-                                                             T_RETURN   => T_RETURN,
-                                                             T_CONTINUE => T_CONTINUE,
-                                                             T_THROW    => T_THROW,
-                                                             T_EXIT     => T_EXIT,
-                                                            ),
-                                                'strict' => true,
-                                                'shared' => true,
-                                                'with'   => array(
-                                                             T_DEFAULT => T_DEFAULT,
-                                                             T_CASE    => T_CASE,
-                                                             T_SWITCH  => T_SWITCH,
-                                                            ),
-                                               ),
-                            T_DEFAULT       => array(
-                                                'start'  => array(
-                                                             T_COLON     => T_COLON,
-                                                             T_SEMICOLON => T_SEMICOLON,
-                                                            ),
-                                                'end'    => array(
-                                                             T_BREAK    => T_BREAK,
-                                                             T_RETURN   => T_RETURN,
-                                                             T_CONTINUE => T_CONTINUE,
-                                                             T_THROW    => T_THROW,
-                                                             T_EXIT     => T_EXIT,
-                                                            ),
-                                                'strict' => true,
-                                                'shared' => true,
-                                                'with'   => array(
-                                                             T_CASE   => T_CASE,
-                                                             T_SWITCH => T_SWITCH,
-                                                            ),
-                                               ),
-                            T_START_HEREDOC => array(
-                                                'start'  => array(T_START_HEREDOC => T_START_HEREDOC),
-                                                'end'    => array(T_END_HEREDOC => T_END_HEREDOC),
-                                                'strict' => true,
-                                                'shared' => false,
-                                                'with'   => array(),
-                                               ),
-                           );
+        T_IF => array(
+            'start' => array(
+                T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
+                T_COLON => T_COLON,
+            ),
+            'end' => array(
+                T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                T_ENDIF => T_ENDIF,
+                T_ELSE => T_ELSE,
+                T_ELSEIF => T_ELSEIF,
+            ),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(
+                T_ELSE => T_ELSE,
+                T_ELSEIF => T_ELSEIF,
+            ),
+        ),
+        T_TRY => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_CATCH => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_FINALLY => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_ELSE => array(
+            'start' => array(
+                T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
+                T_COLON => T_COLON,
+            ),
+            'end' => array(
+                T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                T_ENDIF => T_ENDIF,
+            ),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(
+                T_IF => T_IF,
+                T_ELSEIF => T_ELSEIF,
+            ),
+        ),
+        T_ELSEIF => array(
+            'start' => array(
+                T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
+                T_COLON => T_COLON,
+            ),
+            'end' => array(
+                T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                T_ENDIF => T_ENDIF,
+                T_ELSE => T_ELSE,
+                T_ELSEIF => T_ELSEIF,
+            ),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(
+                T_IF => T_IF,
+                T_ELSE => T_ELSE,
+            ),
+        ),
+        T_FOR => array(
+            'start' => array(
+                T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
+                T_COLON => T_COLON,
+            ),
+            'end' => array(
+                T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                T_ENDFOR => T_ENDFOR,
+            ),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_FOREACH => array(
+            'start' => array(
+                T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
+                T_COLON => T_COLON,
+            ),
+            'end' => array(
+                T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                T_ENDFOREACH => T_ENDFOREACH,
+            ),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_INTERFACE => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_FUNCTION => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_CLASS => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_TRAIT => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_USE => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_DECLARE => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_NAMESPACE => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_WHILE => array(
+            'start' => array(
+                T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
+                T_COLON => T_COLON,
+            ),
+            'end' => array(
+                T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                T_ENDWHILE => T_ENDWHILE,
+            ),
+            'strict' => false,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_DO => array(
+            'start' => array(T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET),
+            'end' => array(T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_SWITCH => array(
+            'start' => array(
+                T_OPEN_CURLY_BRACKET => T_OPEN_CURLY_BRACKET,
+                T_COLON => T_COLON,
+            ),
+            'end' => array(
+                T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                T_ENDSWITCH => T_ENDSWITCH,
+            ),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+        T_CASE => array(
+            'start' => array(
+                T_COLON => T_COLON,
+                T_SEMICOLON => T_SEMICOLON,
+            ),
+            'end' => array(
+                T_BREAK => T_BREAK,
+                T_RETURN => T_RETURN,
+                T_CONTINUE => T_CONTINUE,
+                T_THROW => T_THROW,
+                T_EXIT => T_EXIT,
+            ),
+            'strict' => true,
+            'shared' => true,
+            'with' => array(
+                T_DEFAULT => T_DEFAULT,
+                T_CASE => T_CASE,
+                T_SWITCH => T_SWITCH,
+            ),
+        ),
+        T_DEFAULT => array(
+            'start' => array(
+                T_COLON => T_COLON,
+                T_SEMICOLON => T_SEMICOLON,
+            ),
+            'end' => array(
+                T_BREAK => T_BREAK,
+                T_RETURN => T_RETURN,
+                T_CONTINUE => T_CONTINUE,
+                T_THROW => T_THROW,
+                T_EXIT => T_EXIT,
+            ),
+            'strict' => true,
+            'shared' => true,
+            'with' => array(
+                T_CASE => T_CASE,
+                T_SWITCH => T_SWITCH,
+            ),
+        ),
+        T_START_HEREDOC => array(
+            'start' => array(T_START_HEREDOC => T_START_HEREDOC),
+            'end' => array(T_END_HEREDOC => T_END_HEREDOC),
+            'strict' => true,
+            'shared' => false,
+            'with' => array(),
+        ),
+    );
 
     /**
      * A list of tokens that end the scope.
@@ -276,15 +276,15 @@ class PHP_CodeSniffer_Tokenizers_PHP
      * @var array
      */
     public $endScopeTokens = array(
-                              T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                              T_ENDIF               => T_ENDIF,
-                              T_ENDFOR              => T_ENDFOR,
-                              T_ENDFOREACH          => T_ENDFOREACH,
-                              T_ENDWHILE            => T_ENDWHILE,
-                              T_ENDSWITCH           => T_ENDSWITCH,
-                              T_BREAK               => T_BREAK,
-                              T_END_HEREDOC         => T_END_HEREDOC,
-                             );
+        T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+        T_ENDIF => T_ENDIF,
+        T_ENDFOR => T_ENDFOR,
+        T_ENDFOREACH => T_ENDFOREACH,
+        T_ENDWHILE => T_ENDWHILE,
+        T_ENDSWITCH => T_ENDSWITCH,
+        T_BREAK => T_BREAK,
+        T_END_HEREDOC => T_END_HEREDOC,
+    );
 
     /**
      * A cache of different token types, resolved into arrays.
@@ -301,26 +301,26 @@ class PHP_CodeSniffer_Tokenizers_PHP
      * Starts by using token_get_all() but does a lot of extra processing
      * to insert information about the context of the token.
      *
-     * @param string $string  The string to tokenize.
+     * @param string $string The string to tokenize.
      * @param string $eolChar The EOL character to use for splitting strings.
      *
      * @return array
      */
-    public function tokenizeString($string, $eolChar='\n')
+    public function tokenizeString($string, $eolChar = '\n')
     {
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            echo "\t*** START PHP TOKENIZING ***".PHP_EOL;
+            echo "\t*** START PHP TOKENIZING ***" . PHP_EOL;
             $isWin = false;
             if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
                 $isWin = true;
             }
         }
 
-        $tokens      = @token_get_all($string);
+        $tokens = @token_get_all($string);
         $finalTokens = array();
 
-        $newStackPtr       = 0;
-        $numTokens         = count($tokens);
+        $newStackPtr = 0;
+        $numTokens = count($tokens);
         $lastNotEmptyToken = 0;
 
         $insideInlineIf = array();
@@ -328,17 +328,17 @@ class PHP_CodeSniffer_Tokenizers_PHP
         $commentTokenizer = new PHP_CodeSniffer_Tokenizers_Comment();
 
         for ($stackPtr = 0; $stackPtr < $numTokens; $stackPtr++) {
-            $token        = (array) $tokens[$stackPtr];
+            $token = (array)$tokens[$stackPtr];
             $tokenIsArray = isset($token[1]);
 
             if (PHP_CODESNIFFER_VERBOSITY > 1) {
                 if ($tokenIsArray === true) {
-                    $type    = token_name($token[0]);
+                    $type = token_name($token[0]);
                     $content = PHP_CodeSniffer::prepareForOutput($token[1]);
                 } else {
                     $newToken = self::resolveSimpleToken($token[0]);
-                    $type     = $newToken['type'];
-                    $content  = PHP_CodeSniffer::prepareForOutput($token[0]);
+                    $type = $newToken['type'];
+                    $content = PHP_CodeSniffer::prepareForOutput($token[0]);
                 }
 
                 echo "\tProcess token ";
@@ -415,17 +415,17 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 // Binary casts need a special token.
                 if ($token[0] === 'b"') {
                     $finalTokens[$newStackPtr] = array(
-                                                  'code'    => T_BINARY_CAST,
-                                                  'type'    => 'T_BINARY_CAST',
-                                                  'content' => 'b',
-                                                 );
+                        'code' => T_BINARY_CAST,
+                        'type' => 'T_BINARY_CAST',
+                        'content' => 'b',
+                    );
                     $newStackPtr++;
                 }
 
                 $tokenContent = '"';
-                $nestedVars   = array();
+                $nestedVars = array();
                 for ($i = ($stackPtr + 1); $i < $numTokens; $i++) {
-                    $subToken        = (array) $tokens[$i];
+                    $subToken = (array)$tokens[$i];
                     $subTokenIsArray = isset($subToken[1]);
 
                     if ($subTokenIsArray === true) {
@@ -456,8 +456,8 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 // Convert each line within the double quoted string to a
                 // new token, so it conforms with other multiple line tokens.
                 $tokenLines = explode($eolChar, $tokenContent);
-                $numLines   = count($tokenLines);
-                $newToken   = array();
+                $numLines = count($tokenLines);
+                $newToken = array();
 
                 for ($j = 0; $j < $numLines; $j++) {
                     $newToken['content'] = $tokenLines[$j];
@@ -469,8 +469,8 @@ class PHP_CodeSniffer_Tokenizers_PHP
                         $newToken['content'] .= $eolChar;
                     }
 
-                    $newToken['code']          = T_DOUBLE_QUOTED_STRING;
-                    $newToken['type']          = 'T_DOUBLE_QUOTED_STRING';
+                    $newToken['code'] = T_DOUBLE_QUOTED_STRING;
+                    $newToken['type'] = 'T_DOUBLE_QUOTED_STRING';
                     $finalTokens[$newStackPtr] = $newToken;
                     $newStackPtr++;
                 }
@@ -524,8 +524,8 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 // Convert each line within the heredoc to a
                 // new token, so it conforms with other multiple line tokens.
                 $tokenLines = explode($eolChar, $tokenContent);
-                $numLines   = count($tokenLines);
-                $newToken   = array();
+                $numLines = count($tokenLines);
+                $newToken = array();
 
                 for ($j = 0; $j < $numLines; $j++) {
                     $newToken['content'] = $tokenLines[$j];
@@ -577,9 +577,9 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 && $tokens[($stackPtr + 1)] === '.'
                 && $tokens[($stackPtr + 2)] === '.'
             ) {
-                $newToken            = array();
-                $newToken['code']    = T_ELLIPSIS;
-                $newToken['type']    = 'T_ELLIPSIS';
+                $newToken = array();
+                $newToken['code'] = T_ELLIPSIS;
+                $newToken['type'] = 'T_ELLIPSIS';
                 $newToken['content'] = '...';
                 $finalTokens[$newStackPtr] = $newToken;
 
@@ -602,11 +602,11 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 && $tokens[($stackPtr - 1)][0] !== T_PAAMAYIM_NEKUDOTAYIM
             ) {
                 $stopTokens = array(
-                               T_CASE               => true,
-                               T_SEMICOLON          => true,
-                               T_OPEN_CURLY_BRACKET => true,
-                               T_INLINE_THEN        => true,
-                              );
+                    T_CASE => true,
+                    T_SEMICOLON => true,
+                    T_OPEN_CURLY_BRACKET => true,
+                    T_INLINE_THEN => true,
+                );
 
                 for ($x = ($newStackPtr - 1); $x > 0; $x--) {
                     if (isset($stopTokens[$finalTokens[$x]['code']]) === true) {
@@ -618,14 +618,14 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     && $finalTokens[$x]['code'] !== T_INLINE_THEN
                 ) {
                     $finalTokens[$newStackPtr] = array(
-                                                  'content' => $token[1].':',
-                                                  'code'    => T_GOTO_LABEL,
-                                                  'type'    => 'T_GOTO_LABEL',
-                                                 );
+                        'content' => $token[1] . ':',
+                        'code' => T_GOTO_LABEL,
+                        'type' => 'T_GOTO_LABEL',
+                    );
 
                     if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                        echo "\t\t* token $stackPtr changed from T_STRING to T_GOTO_LABEL".PHP_EOL;
-                        echo "\t\t* skipping T_COLON token ".($stackPtr + 1).PHP_EOL;
+                        echo "\t\t* token $stackPtr changed from T_STRING to T_GOTO_LABEL" . PHP_EOL;
+                        echo "\t\t* skipping T_COLON token " . ($stackPtr + 1) . PHP_EOL;
                     }
 
                     $newStackPtr++;
@@ -645,27 +645,27 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 && strtolower($token[1]) !== 'elseif'
             ) {
                 $finalTokens[$newStackPtr] = array(
-                                              'content' => substr($token[1], 0, 4),
-                                              'code'    => T_ELSE,
-                                              'type'    => 'T_ELSE',
-                                             );
+                    'content' => substr($token[1], 0, 4),
+                    'code' => T_ELSE,
+                    'type' => 'T_ELSE',
+                );
 
                 $newStackPtr++;
                 $finalTokens[$newStackPtr] = array(
-                                              'content' => substr($token[1], 4, -2),
-                                              'code'    => T_WHITESPACE,
-                                              'type'    => 'T_WHITESPACE',
-                                             );
+                    'content' => substr($token[1], 4, -2),
+                    'code' => T_WHITESPACE,
+                    'type' => 'T_WHITESPACE',
+                );
 
                 $newStackPtr++;
                 $finalTokens[$newStackPtr] = array(
-                                              'content' => substr($token[1], -2),
-                                              'code'    => T_IF,
-                                              'type'    => 'T_IF',
-                                             );
+                    'content' => substr($token[1], -2),
+                    'code' => T_IF,
+                    'type' => 'T_IF',
+                );
 
                 if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                    echo "\t\t* token $stackPtr changed from T_ELSEIF to T_ELSE/T_WHITESPACE/T_IF".PHP_EOL;
+                    echo "\t\t* token $stackPtr changed from T_ELSEIF to T_ELSE/T_WHITESPACE/T_IF" . PHP_EOL;
                 }
 
                 $newStackPtr++;
@@ -681,12 +681,12 @@ class PHP_CodeSniffer_Tokenizers_PHP
 
             if ($tokenIsArray === true && strpos($token[1], $eolChar) !== false) {
                 $tokenLines = explode($eolChar, $token[1]);
-                $numLines   = count($tokenLines);
-                $newToken   = array(
-                               'type'    => token_name($token[0]),
-                               'code'    => $token[0],
-                               'content' => '',
-                              );
+                $numLines = count($tokenLines);
+                $newToken = array(
+                    'type' => token_name($token[0]),
+                    'code' => $token[0],
+                    'content' => '',
+                );
 
                 for ($i = 0; $i < $numLines; $i++) {
                     $newToken['content'] = $tokenLines[$i];
@@ -706,24 +706,24 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     // Some T_STRING tokens should remain that way
                     // due to their context.
                     $context = array(
-                                T_OBJECT_OPERATOR      => true,
-                                T_FUNCTION             => true,
-                                T_CLASS                => true,
-                                T_EXTENDS              => true,
-                                T_IMPLEMENTS           => true,
-                                T_NEW                  => true,
-                                T_CONST                => true,
-                                T_NS_SEPARATOR         => true,
-                                T_USE                  => true,
-                                T_NAMESPACE            => true,
-                                T_PAAMAYIM_NEKUDOTAYIM => true,
-                               );
+                        T_OBJECT_OPERATOR => true,
+                        T_FUNCTION => true,
+                        T_CLASS => true,
+                        T_EXTENDS => true,
+                        T_IMPLEMENTS => true,
+                        T_NEW => true,
+                        T_CONST => true,
+                        T_NS_SEPARATOR => true,
+                        T_USE => true,
+                        T_NAMESPACE => true,
+                        T_PAAMAYIM_NEKUDOTAYIM => true,
+                    );
                     if (isset($context[$finalTokens[$lastNotEmptyToken]['code']]) === true) {
                         $finalTokens[$newStackPtr] = array(
-                                                      'content' => $token[1],
-                                                      'code'    => T_STRING,
-                                                      'type'    => 'T_STRING',
-                                                     );
+                            'content' => $token[1],
+                            'code' => T_STRING,
+                            'type' => 'T_STRING',
+                        );
                         $newStackPtr++;
                         continue;
                     }
@@ -743,7 +743,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     }
 
                     if ($cacheKey !== null && isset(self::$_resolveTokenCache[$cacheKey]) === true) {
-                        $newToken            = self::$_resolveTokenCache[$cacheKey];
+                        $newToken = self::$_resolveTokenCache[$cacheKey];
                         $newToken['content'] = $token[1];
                     }
                 }
@@ -792,7 +792,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 // where "function" and "const" should be T_STRING instead of T_FUNCTION
                 // and T_CONST.
                 if (($newToken['code'] === T_FUNCTION
-                    || $newToken['code'] === T_CONST)
+                        || $newToken['code'] === T_CONST)
                     && $finalTokens[$lastNotEmptyToken]['code'] === T_USE
                 ) {
                     $newToken['code'] = T_STRING;
@@ -805,7 +805,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
         }//end for
 
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            echo "\t*** END PHP TOKENIZING ***".PHP_EOL;
+            echo "\t*** END PHP TOKENIZING ***" . PHP_EOL;
         }
 
         return $finalTokens;
@@ -822,7 +822,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
      * detects short array syntax and converts those square brackets into new tokens.
      * It also corrects some usage of the static and class keywords.
      *
-     * @param array  $tokens  The array of tokens to process.
+     * @param array $tokens The array of tokens to process.
      * @param string $eolChar The EOL character to use for splitting strings.
      *
      * @return void
@@ -830,7 +830,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
     public function processAdditional(&$tokens, $eolChar)
     {
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            echo "\t*** START ADDITIONAL PHP PROCESSING ***".PHP_EOL;
+            echo "\t*** START ADDITIONAL PHP PROCESSING ***" . PHP_EOL;
         }
 
         $numTokens = count($tokens);
@@ -855,7 +855,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     $tokens[$i]['type'] = 'T_CLOSURE';
                     if (PHP_CODESNIFFER_VERBOSITY > 1) {
                         $line = $tokens[$i]['line'];
-                        echo "\t* token $i on line $line changed from T_FUNCTION to T_CLOSURE".PHP_EOL;
+                        echo "\t* token $i on line $line changed from T_FUNCTION to T_CLOSURE" . PHP_EOL;
                     }
 
                     for ($x = ($tokens[$i]['scope_opener'] + 1); $x < $tokens[$i]['scope_closer']; $x++) {
@@ -866,7 +866,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                         $tokens[$x]['conditions'][$i] = T_CLOSURE;
                         if (PHP_CODESNIFFER_VERBOSITY > 1) {
                             $type = $tokens[$x]['type'];
-                            echo "\t\t* cleaned $x ($type) *".PHP_EOL;
+                            echo "\t\t* cleaned $x ($type) *" . PHP_EOL;
                         }
                     }
                 }
@@ -882,12 +882,12 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 }
 
                 $allowed = array(
-                            T_CLOSE_CURLY_BRACKET  => T_CLOSE_CURLY_BRACKET,
-                            T_CLOSE_SQUARE_BRACKET => T_CLOSE_SQUARE_BRACKET,
-                            T_CLOSE_PARENTHESIS    => T_CLOSE_PARENTHESIS,
-                            T_VARIABLE             => T_VARIABLE,
-                            T_STRING               => T_STRING,
-                           );
+                    T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
+                    T_CLOSE_SQUARE_BRACKET => T_CLOSE_SQUARE_BRACKET,
+                    T_CLOSE_PARENTHESIS => T_CLOSE_PARENTHESIS,
+                    T_VARIABLE => T_VARIABLE,
+                    T_STRING => T_STRING,
+                );
 
                 if (isset($allowed[$tokens[$x]['code']]) === false
                     && isset($tokens[$i]['bracket_closer']) === true
@@ -900,9 +900,9 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     $tokens[$closer]['type'] = 'T_CLOSE_SHORT_ARRAY';
                     if (PHP_CODESNIFFER_VERBOSITY > 1) {
                         $line = $tokens[$i]['line'];
-                        echo "\t* token $i on line $line changed from T_OPEN_SQUARE_BRACKET to T_OPEN_SHORT_ARRAY".PHP_EOL;
+                        echo "\t* token $i on line $line changed from T_OPEN_SQUARE_BRACKET to T_OPEN_SHORT_ARRAY" . PHP_EOL;
                         $line = $tokens[$closer]['line'];
-                        echo "\t* token $closer on line $line changed from T_CLOSE_SQUARE_BRACKET to T_CLOSE_SHORT_ARRAY".PHP_EOL;
+                        echo "\t* token $closer on line $line changed from T_CLOSE_SQUARE_BRACKET to T_CLOSE_SHORT_ARRAY" . PHP_EOL;
                     }
                 }
 
@@ -920,7 +920,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
 
                     if (PHP_CODESNIFFER_VERBOSITY > 1) {
                         $line = $tokens[$i]['line'];
-                        echo "\t* token $i on line $line changed from T_STATIC to T_STRING".PHP_EOL;
+                        echo "\t* token $i on line $line changed from T_STATIC to T_STRING" . PHP_EOL;
                     }
                 }
 
@@ -932,12 +932,12 @@ class PHP_CodeSniffer_Tokenizers_PHP
 
                 if (PHP_CODESNIFFER_VERBOSITY > 1) {
                     $line = $tokens[$i]['line'];
-                    echo "\t* token $i on line $line changed from T_ECHO to T_OPEN_TAG_WITH_ECHO".PHP_EOL;
+                    echo "\t* token $i on line $line changed from T_ECHO to T_OPEN_TAG_WITH_ECHO" . PHP_EOL;
                 }
             }//end if
 
             if (($tokens[$i]['code'] !== T_CASE
-                && $tokens[$i]['code'] !== T_DEFAULT)
+                    && $tokens[$i]['code'] !== T_DEFAULT)
                 || isset($tokens[$i]['scope_opener']) === false
             ) {
                 // Only interested in CASE and DEFAULT statements from here on in.
@@ -968,8 +968,8 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 if (PHP_CODESNIFFER_VERBOSITY > 1) {
                     $oldType = $tokens[$scopeCloser]['type'];
                     $newType = $tokens[$newCloser]['type'];
-                    $line    = $tokens[$i]['line'];
-                    echo "\t* token $i (T_CASE) on line $line closer changed from $scopeCloser ($oldType) to $newCloser ($newType)".PHP_EOL;
+                    $line = $tokens[$i]['line'];
+                    echo "\t* token $i (T_CASE) on line $line closer changed from $scopeCloser ($oldType) to $newCloser ($newType)" . PHP_EOL;
                 }
 
                 continue;
@@ -986,24 +986,24 @@ class PHP_CodeSniffer_Tokenizers_PHP
             // not whatever it already is. The opener needs to be the opening curly
             // brace so everything matches up.
             $newCloser = $tokens[$x]['bracket_closer'];
-            $tokens[$i]['scope_closer']            = $newCloser;
-            $tokens[$x]['scope_closer']            = $newCloser;
-            $tokens[$i]['scope_opener']            = $x;
-            $tokens[$x]['scope_condition']         = $i;
+            $tokens[$i]['scope_closer'] = $newCloser;
+            $tokens[$x]['scope_closer'] = $newCloser;
+            $tokens[$i]['scope_opener'] = $x;
+            $tokens[$x]['scope_condition'] = $i;
             $tokens[$newCloser]['scope_condition'] = $i;
-            $tokens[$newCloser]['scope_opener']    = $x;
-            $tokens[$newCloser]['scope_closer']    = $newCloser;
+            $tokens[$newCloser]['scope_opener'] = $x;
+            $tokens[$newCloser]['scope_closer'] = $newCloser;
             if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                $line      = $tokens[$i]['line'];
+                $line = $tokens[$i]['line'];
                 $tokenType = $tokens[$i]['type'];
 
                 $oldType = $tokens[$scopeOpener]['type'];
                 $newType = $tokens[$x]['type'];
-                echo "\t* token $i ($tokenType) on line $line opener changed from $scopeOpener ($oldType) to $x ($newType)".PHP_EOL;
+                echo "\t* token $i ($tokenType) on line $line opener changed from $scopeOpener ($oldType) to $x ($newType)" . PHP_EOL;
 
                 $oldType = $tokens[$scopeCloser]['type'];
                 $newType = $tokens[$newCloser]['type'];
-                echo "\t* token $i ($tokenType) on line $line closer changed from $scopeCloser ($oldType) to $newCloser ($newType)".PHP_EOL;
+                echo "\t* token $i ($tokenType) on line $line closer changed from $scopeCloser ($oldType) to $newCloser ($newType)" . PHP_EOL;
             }
 
             // Now fix up all the tokens that think they are
@@ -1015,23 +1015,23 @@ class PHP_CodeSniffer_Tokenizers_PHP
                         unset($tokens[$x]['conditions'][$num]);
 
                         if (PHP_CODESNIFFER_VERBOSITY > 1) {
-                            $type     = $tokens[$x]['type'];
+                            $type = $tokens[$x]['type'];
                             $oldConds = '';
                             foreach ($oldConditions as $condition) {
-                                $oldConds .= token_name($condition).',';
+                                $oldConds .= token_name($condition) . ',';
                             }
 
                             $oldConds = rtrim($oldConds, ',');
 
                             $newConds = '';
                             foreach ($tokens[$x]['conditions'] as $condition) {
-                                $newConds .= token_name($condition).',';
+                                $newConds .= token_name($condition) . ',';
                             }
 
                             $newConds = rtrim($newConds, ',');
 
-                            echo "\t\t* cleaned $x ($type) *".PHP_EOL;
-                            echo "\t\t\t=> conditions changed from $oldConds to $newConds".PHP_EOL;
+                            echo "\t\t* cleaned $x ($type) *" . PHP_EOL;
+                            echo "\t\t\t=> conditions changed from $oldConds to $newConds" . PHP_EOL;
                         }
 
                         break;
@@ -1041,7 +1041,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
         }//end for
 
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            echo "\t*** END ADDITIONAL PHP PROCESSING ***".PHP_EOL;
+            echo "\t*** END ADDITIONAL PHP PROCESSING ***" . PHP_EOL;
         }
 
     }//end processAdditional()
@@ -1070,7 +1070,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
             }
 
             if ($cacheKey !== null && isset(self::$_resolveTokenCache[$cacheKey]) === true) {
-                $newToken            = self::$_resolveTokenCache[$cacheKey];
+                $newToken = self::$_resolveTokenCache[$cacheKey];
                 $newToken['content'] = $token[1];
                 return $newToken;
             }
@@ -1082,24 +1082,24 @@ class PHP_CodeSniffer_Tokenizers_PHP
 
         if ($token[0] === T_STRING) {
             switch ($cacheKey) {
-            case 'false':
-                $newToken['type'] = 'T_FALSE';
-                break;
-            case 'true':
-                $newToken['type'] = 'T_TRUE';
-                break;
-            case 'null':
-                $newToken['type'] = 'T_NULL';
-                break;
-            case 'self':
-                $newToken['type'] = 'T_SELF';
-                break;
-            case 'parent':
-                $newToken['type'] = 'T_PARENT';
-                break;
-            default:
-                $newToken['type'] = 'T_STRING';
-                break;
+                case 'false':
+                    $newToken['type'] = 'T_FALSE';
+                    break;
+                case 'true':
+                    $newToken['type'] = 'T_TRUE';
+                    break;
+                case 'null':
+                    $newToken['type'] = 'T_NULL';
+                    break;
+                case 'self':
+                    $newToken['type'] = 'T_SELF';
+                    break;
+                case 'parent':
+                    $newToken['type'] = 'T_PARENT';
+                    break;
+                default:
+                    $newToken['type'] = 'T_STRING';
+                    break;
             }
 
             $newToken['code'] = constant($newToken['type']);
@@ -1107,14 +1107,14 @@ class PHP_CodeSniffer_Tokenizers_PHP
             self::$_resolveTokenCache[$cacheKey] = $newToken;
         } else if ($token[0] === T_CURLY_OPEN) {
             $newToken = array(
-                         'code' => T_OPEN_CURLY_BRACKET,
-                         'type' => 'T_OPEN_CURLY_BRACKET',
-                        );
+                'code' => T_OPEN_CURLY_BRACKET,
+                'type' => 'T_OPEN_CURLY_BRACKET',
+            );
         } else {
             $newToken = array(
-                         'code' => $token[0],
-                         'type' => token_name($token[0]),
-                        );
+                'code' => $token[0],
+                'type' => token_name($token[0]),
+            );
 
             self::$_resolveTokenCache[$token[0]] = $newToken;
         }//end if
@@ -1141,90 +1141,90 @@ class PHP_CodeSniffer_Tokenizers_PHP
         $newToken = array();
 
         switch ($token) {
-        case '{':
-            $newToken['type'] = 'T_OPEN_CURLY_BRACKET';
-            break;
-        case '}':
-            $newToken['type'] = 'T_CLOSE_CURLY_BRACKET';
-            break;
-        case '[':
-            $newToken['type'] = 'T_OPEN_SQUARE_BRACKET';
-            break;
-        case ']':
-            $newToken['type'] = 'T_CLOSE_SQUARE_BRACKET';
-            break;
-        case '(':
-            $newToken['type'] = 'T_OPEN_PARENTHESIS';
-            break;
-        case ')':
-            $newToken['type'] = 'T_CLOSE_PARENTHESIS';
-            break;
-        case ':':
-            $newToken['type'] = 'T_COLON';
-            break;
-        case '.':
-            $newToken['type'] = 'T_STRING_CONCAT';
-            break;
-        case '?':
-            $newToken['type'] = 'T_INLINE_THEN';
-            break;
-        case ';':
-            $newToken['type'] = 'T_SEMICOLON';
-            break;
-        case '=':
-            $newToken['type'] = 'T_EQUAL';
-            break;
-        case '*':
-            $newToken['type'] = 'T_MULTIPLY';
-            break;
-        case '/':
-            $newToken['type'] = 'T_DIVIDE';
-            break;
-        case '+':
-            $newToken['type'] = 'T_PLUS';
-            break;
-        case '-':
-            $newToken['type'] = 'T_MINUS';
-            break;
-        case '%':
-            $newToken['type'] = 'T_MODULUS';
-            break;
-        case '^':
-            $newToken['type'] = 'T_POWER';
-            break;
-        case '&':
-            $newToken['type'] = 'T_BITWISE_AND';
-            break;
-        case '|':
-            $newToken['type'] = 'T_BITWISE_OR';
-            break;
-        case '<':
-            $newToken['type'] = 'T_LESS_THAN';
-            break;
-        case '>':
-            $newToken['type'] = 'T_GREATER_THAN';
-            break;
-        case '!':
-            $newToken['type'] = 'T_BOOLEAN_NOT';
-            break;
-        case ',':
-            $newToken['type'] = 'T_COMMA';
-            break;
-        case '@':
-            $newToken['type'] = 'T_ASPERAND';
-            break;
-        case '$':
-            $newToken['type'] = 'T_DOLLAR';
-            break;
-        case '`':
-            $newToken['type'] = 'T_BACKTICK';
-            break;
-        default:
-            $newToken['type'] = 'T_NONE';
-            break;
+            case '{':
+                $newToken['type'] = 'T_OPEN_CURLY_BRACKET';
+                break;
+            case '}':
+                $newToken['type'] = 'T_CLOSE_CURLY_BRACKET';
+                break;
+            case '[':
+                $newToken['type'] = 'T_OPEN_SQUARE_BRACKET';
+                break;
+            case ']':
+                $newToken['type'] = 'T_CLOSE_SQUARE_BRACKET';
+                break;
+            case '(':
+                $newToken['type'] = 'T_OPEN_PARENTHESIS';
+                break;
+            case ')':
+                $newToken['type'] = 'T_CLOSE_PARENTHESIS';
+                break;
+            case ':':
+                $newToken['type'] = 'T_COLON';
+                break;
+            case '.':
+                $newToken['type'] = 'T_STRING_CONCAT';
+                break;
+            case '?':
+                $newToken['type'] = 'T_INLINE_THEN';
+                break;
+            case ';':
+                $newToken['type'] = 'T_SEMICOLON';
+                break;
+            case '=':
+                $newToken['type'] = 'T_EQUAL';
+                break;
+            case '*':
+                $newToken['type'] = 'T_MULTIPLY';
+                break;
+            case '/':
+                $newToken['type'] = 'T_DIVIDE';
+                break;
+            case '+':
+                $newToken['type'] = 'T_PLUS';
+                break;
+            case '-':
+                $newToken['type'] = 'T_MINUS';
+                break;
+            case '%':
+                $newToken['type'] = 'T_MODULUS';
+                break;
+            case '^':
+                $newToken['type'] = 'T_POWER';
+                break;
+            case '&':
+                $newToken['type'] = 'T_BITWISE_AND';
+                break;
+            case '|':
+                $newToken['type'] = 'T_BITWISE_OR';
+                break;
+            case '<':
+                $newToken['type'] = 'T_LESS_THAN';
+                break;
+            case '>':
+                $newToken['type'] = 'T_GREATER_THAN';
+                break;
+            case '!':
+                $newToken['type'] = 'T_BOOLEAN_NOT';
+                break;
+            case ',':
+                $newToken['type'] = 'T_COMMA';
+                break;
+            case '@':
+                $newToken['type'] = 'T_ASPERAND';
+                break;
+            case '$':
+                $newToken['type'] = 'T_DOLLAR';
+                break;
+            case '`':
+                $newToken['type'] = 'T_BACKTICK';
+                break;
+            default:
+                $newToken['type'] = 'T_NONE';
+                break;
         }//end switch
 
-        $newToken['code']    = constant($newToken['type']);
+        $newToken['code'] = constant($newToken['type']);
         $newToken['content'] = $token;
 
         self::$_resolveTokenCache[$token] = $newToken;

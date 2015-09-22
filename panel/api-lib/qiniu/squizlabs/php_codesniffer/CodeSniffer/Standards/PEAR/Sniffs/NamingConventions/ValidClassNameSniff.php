@@ -40,9 +40,9 @@ class PEAR_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeSniff
     public function register()
     {
         return array(
-                T_CLASS,
-                T_INTERFACE,
-               );
+            T_CLASS,
+            T_INTERFACE,
+        );
 
     }//end register()
 
@@ -51,7 +51,7 @@ class PEAR_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeSniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The current file being processed.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -61,7 +61,7 @@ class PEAR_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeSniff
         $tokens = $phpcsFile->getTokens();
 
         $className = $phpcsFile->findNext(T_STRING, $stackPtr);
-        $name      = trim($tokens[$className]['content']);
+        $name = trim($tokens[$className]['content']);
         $errorData = array(ucfirst($tokens[$stackPtr]['content']));
 
         // Make sure the first letter is a capital.
@@ -73,8 +73,8 @@ class PEAR_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeSniff
         // Check that each new word starts with a capital as well, but don't
         // check the first word, as it is checked above.
         $validName = true;
-        $nameBits  = explode('_', $name);
-        $firstBit  = array_shift($nameBits);
+        $nameBits = explode('_', $name);
+        $firstBit = array_shift($nameBits);
         foreach ($nameBits as $bit) {
             if ($bit === '' || $bit{0} !== strtoupper($bit{0})) {
                 $validName = false;
@@ -91,17 +91,17 @@ class PEAR_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeSniff
                 $error = '%s name is not valid';
                 $phpcsFile->addError($error, $stackPtr, 'Invalid', $errorData);
             } else {
-                $newName = strtoupper($firstBit{0}).substr($firstBit, 1).'_';
+                $newName = strtoupper($firstBit{0}) . substr($firstBit, 1) . '_';
                 foreach ($nameBits as $bit) {
                     if ($bit !== '') {
-                        $newName .= strtoupper($bit{0}).substr($bit, 1).'_';
+                        $newName .= strtoupper($bit{0}) . substr($bit, 1) . '_';
                     }
                 }
 
                 $newName = rtrim($newName, '_');
-                $error   = '%s name is not valid; consider %s instead';
-                $data    = $errorData;
-                $data[]  = $newName;
+                $error = '%s name is not valid; consider %s instead';
+                $data = $errorData;
+                $data[] = $newName;
                 $phpcsFile->addError($error, $stackPtr, 'Invalid', $data);
             }
         }//end if

@@ -63,7 +63,7 @@ class Generic_Sniffs_Metrics_CyclomaticComplexitySniff implements PHP_CodeSniffe
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -81,20 +81,20 @@ class Generic_Sniffs_Metrics_CyclomaticComplexitySniff implements PHP_CodeSniffe
 
         // Detect start and end of this function definition.
         $start = $tokens[$stackPtr]['scope_opener'];
-        $end   = $tokens[$stackPtr]['scope_closer'];
+        $end = $tokens[$stackPtr]['scope_closer'];
 
         // Predicate nodes for PHP.
         $find = array(
-                 T_CASE    => true,
-                 T_DEFAULT => true,
-                 T_CATCH   => true,
-                 T_IF      => true,
-                 T_FOR     => true,
-                 T_FOREACH => true,
-                 T_WHILE   => true,
-                 T_DO      => true,
-                 T_ELSEIF  => true,
-                );
+            T_CASE => true,
+            T_DEFAULT => true,
+            T_CATCH => true,
+            T_IF => true,
+            T_FOR => true,
+            T_FOREACH => true,
+            T_WHILE => true,
+            T_DO => true,
+            T_ELSEIF => true,
+        );
 
         $complexity = 1;
 
@@ -107,17 +107,17 @@ class Generic_Sniffs_Metrics_CyclomaticComplexitySniff implements PHP_CodeSniffe
 
         if ($complexity > $this->absoluteComplexity) {
             $error = 'Function\'s cyclomatic complexity (%s) exceeds allowed maximum of %s';
-            $data  = array(
-                      $complexity,
-                      $this->absoluteComplexity,
-                     );
+            $data = array(
+                $complexity,
+                $this->absoluteComplexity,
+            );
             $phpcsFile->addError($error, $stackPtr, 'MaxExceeded', $data);
         } else if ($complexity > $this->complexity) {
             $warning = 'Function\'s cyclomatic complexity (%s) exceeds %s; consider refactoring the function';
-            $data    = array(
-                        $complexity,
-                        $this->complexity,
-                       );
+            $data = array(
+                $complexity,
+                $this->complexity,
+            );
             $phpcsFile->addWarning($warning, $stackPtr, 'TooHigh', $data);
         }
 

@@ -44,7 +44,8 @@ final class ResumeUploader
         $size,
         $params,
         $mime
-    ) {
+    )
+    {
         $this->upToken = $upToken;
         $this->key = $key;
         $this->inputStream = $inputStream;
@@ -83,7 +84,7 @@ final class ResumeUploader
                 $ret = $response->json();
             }
 
-            if (! $response->ok() || !isset($ret['crc32'])|| $crc != $ret['crc32']) {
+            if (!$response->ok() || !isset($ret['crc32']) || $crc != $ret['crc32']) {
                 fclose($this->inputStream);
                 return array(null, new Error($this->currentUrl, $response));
             }
@@ -112,7 +113,7 @@ final class ResumeUploader
         }
         if (!empty($this->params)) {
             foreach ($this->params as $key => $value) {
-                $val =  \Qiniu\base64_urlSafeEncode($value);
+                $val = \Qiniu\base64_urlSafeEncode($value);
                 $url .= "/$key/$val";
             }
         }
@@ -130,7 +131,7 @@ final class ResumeUploader
         if ($response->needRetry()) {
             $response = $this->post($url, $body);
         }
-        if (! $response->ok()) {
+        if (!$response->ok()) {
             return array(null, new Error($this->currentUrl, $response));
         }
         return array($response->json(), null);
@@ -148,6 +149,6 @@ final class ResumeUploader
         if ($this->size < $uploaded + Config::BLOCK_SIZE) {
             return $this->size - $uploaded;
         }
-        return  Config::BLOCK_SIZE;
+        return Config::BLOCK_SIZE;
     }
 }

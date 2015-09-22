@@ -52,7 +52,7 @@ class Squiz_Sniffs_CSS_DisallowMultipleStyleDefinitionsSniff implements PHP_Code
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -60,7 +60,7 @@ class Squiz_Sniffs_CSS_DisallowMultipleStyleDefinitionsSniff implements PHP_Code
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $next   = $phpcsFile->findNext(T_STYLE, ($stackPtr + 1));
+        $next = $phpcsFile->findNext(T_STYLE, ($stackPtr + 1));
         if ($next === false) {
             return;
         }
@@ -72,7 +72,7 @@ class Squiz_Sniffs_CSS_DisallowMultipleStyleDefinitionsSniff implements PHP_Code
 
         if ($tokens[$next]['line'] === $tokens[$stackPtr]['line']) {
             $error = 'Each style definition must be on a line by itself';
-            $fix   = $phpcsFile->addFixableError($error, $next, 'Found');
+            $fix = $phpcsFile->addFixableError($error, $next, 'Found');
             if ($fix === true) {
                 $phpcsFile->fixer->addNewlineBefore($next);
             }

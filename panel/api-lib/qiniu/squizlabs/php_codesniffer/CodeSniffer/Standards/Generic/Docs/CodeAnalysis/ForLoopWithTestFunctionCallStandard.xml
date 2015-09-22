@@ -1,12 +1,12 @@
 <documentation title="For Loops With Function Calls in the Test">
     <standard>
-    <![CDATA[
+        <![CDATA[
     For loops should not call functions inside the test for the loop when they can be computed beforehand.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: A for loop that determines its end condition before the loop starts.">
-        <![CDATA[
+            <![CDATA[
 <em>$end = count($foo);</em>
 for ($i = 0; $i < $end; $i++) {
     echo $foo[$i]."\n";
@@ -14,7 +14,7 @@ for ($i = 0; $i < $end; $i++) {
         ]]>
         </code>
         <code title="Invalid: A for loop that unnecessarily computes the same value on every iteration.">
-        <![CDATA[
+            <![CDATA[
 for ($i = 0; $i < <em>count($foo)</em>; $i++) {
     echo $foo[$i]."\n";
 }

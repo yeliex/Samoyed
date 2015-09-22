@@ -25,7 +25,6 @@ function clearConditions() {
     $("#user_manager #select-star").checkbox('set unchecked');
     getList();
 }
-
 function getList() {
     var data;
 
@@ -35,7 +34,7 @@ function getList() {
     userConditions.primer = $("#user_manager #primer-select").dropdown('get value')[0];
     userConditions.team = $("#user_manager #select-star").checkbox('is checked');
 
-    var req = $.ajax("http://api.panel.dev.mzapp.info/usermanager/userlist/", {
+    var req = $.ajax("http://api.panel.mzapp.info/usermanager/userlist/", {
         method: "GET",
         async: false,
         data: {
@@ -87,7 +86,7 @@ function userListStr(data) {
 }
 
 function userNum() {
-    $.ajax("http://api.panel.dev.mzapp.info/usermanager/userNum/", {
+    $.ajax("http://api.panel.mzapp.info/usermanager/userNum/", {
         method: "GET",
         data: {
             protocol: "json"
@@ -143,7 +142,7 @@ function activeDrop(id) {
 
 function removeUser(id) {
     if (confirm("是否要删除用户: " + id + "\n\n此用户名下所有预约将被一并删除并不可恢复")) {
-        $.ajax("http://api.panel.dev.mzapp.info/usermanager/removeUser?protocol=json", {
+        $.ajax("http://api.panel.mzapp.info/usermanager/removeUser?protocol=json", {
             method: "POST",
             data: {
                 id: id

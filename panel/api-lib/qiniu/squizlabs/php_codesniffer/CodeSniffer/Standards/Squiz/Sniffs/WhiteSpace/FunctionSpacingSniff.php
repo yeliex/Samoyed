@@ -54,15 +54,15 @@ class Squiz_Sniffs_WhiteSpace_FunctionSpacingSniff implements PHP_CodeSniffer_Sn
      * Processes this sniff when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens        = $phpcsFile->getTokens();
-        $this->spacing = (int) $this->spacing;
+        $tokens = $phpcsFile->getTokens();
+        $this->spacing = (int)$this->spacing;
 
         /*
             Check the number of blank lines
@@ -108,10 +108,10 @@ class Squiz_Sniffs_WhiteSpace_FunctionSpacingSniff implements PHP_CodeSniffer_Sn
             }
 
             $error .= ' after function; %s found';
-            $data   = array(
-                       $this->spacing,
-                       $foundLines,
-                      );
+            $data = array(
+                $this->spacing,
+                $foundLines,
+            );
 
             $fix = $phpcsFile->addFixableError($error, $closer, 'After', $data);
             if ($fix === true) {
@@ -147,7 +147,7 @@ class Squiz_Sniffs_WhiteSpace_FunctionSpacingSniff implements PHP_CodeSniffer_Sn
         if (is_null($prevLineToken) === true) {
             // Never found the previous line, which means
             // there are 0 blank lines before the function.
-            $foundLines  = 0;
+            $foundLines = 0;
             $prevContent = 0;
         } else {
             $currentLine = $tokens[$stackPtr]['line'];
@@ -163,8 +163,8 @@ class Squiz_Sniffs_WhiteSpace_FunctionSpacingSniff implements PHP_CodeSniffer_Sn
             // Before we throw an error, check that we are not throwing an error
             // for another function. We don't want to error for no blank lines after
             // the previous function and no blank lines before this one as well.
-            $prevLine   = ($tokens[$prevContent]['line'] - 1);
-            $i          = ($stackPtr - 1);
+            $prevLine = ($tokens[$prevContent]['line'] - 1);
+            $i = ($stackPtr - 1);
             $foundLines = 0;
             while ($currentLine !== $prevLine && $currentLine > 1 && $i > 0) {
                 if (isset($tokens[$i]['scope_condition']) === true) {
@@ -201,10 +201,10 @@ class Squiz_Sniffs_WhiteSpace_FunctionSpacingSniff implements PHP_CodeSniffer_Sn
             }
 
             $error .= ' before function; %s found';
-            $data   = array(
-                       $this->spacing,
-                       $foundLines,
-                      );
+            $data = array(
+                $this->spacing,
+                $foundLines,
+            );
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Before', $data);
             if ($fix === true) {

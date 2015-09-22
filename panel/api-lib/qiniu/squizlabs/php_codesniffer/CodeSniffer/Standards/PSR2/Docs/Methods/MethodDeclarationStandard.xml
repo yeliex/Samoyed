@@ -1,12 +1,12 @@
 <documentation title="Method Declarations">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Method names should not be prefixed with an underscore to indicate visibility.  The static keyword, when present, should come after the visibility declaration, and the final and abstract keywords should come before.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Correct method naming.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     private function <em>bar</em>()
@@ -16,7 +16,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: An underscore prefix used to indicate visibility.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     private function <em>_bar</em>()
@@ -28,7 +28,7 @@ class Foo
     </code_comparison>
     <code_comparison>
         <code title="Valid: Correct ordering of method prefixes.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     <em>final public static</em> function <em>bar</em>()
@@ -38,7 +38,7 @@ class Foo
         ]]>
         </code>
         <code title="Invalid: static keyword used before visibility and final used after.">
-        <![CDATA[
+            <![CDATA[
 class Foo
 {
     <em>static public final</em> function <em>bar</em>()

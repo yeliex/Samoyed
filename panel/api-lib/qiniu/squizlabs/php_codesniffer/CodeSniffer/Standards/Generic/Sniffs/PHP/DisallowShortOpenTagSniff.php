@@ -39,9 +39,9 @@ class Generic_Sniffs_PHP_DisallowShortOpenTagSniff implements PHP_CodeSniffer_Sn
     public function register()
     {
         return array(
-                T_OPEN_TAG,
-                T_OPEN_TAG_WITH_ECHO,
-               );
+            T_OPEN_TAG,
+            T_OPEN_TAG_WITH_ECHO,
+        );
 
     }//end register()
 
@@ -50,19 +50,19 @@ class Generic_Sniffs_PHP_DisallowShortOpenTagSniff implements PHP_CodeSniffer_Sn
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens  = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $openTag = $tokens[$stackPtr];
 
         if ($openTag['content'] === '<?') {
             $error = 'Short PHP opening tag used; expected "<?php" but found "%s"';
-            $data  = array($openTag['content']);
+            $data = array($openTag['content']);
             $phpcsFile->addError($error, $stackPtr, 'Found', $data);
             $phpcsFile->recordMetric($stackPtr, 'PHP short open tag used', 'yes');
         } else {
@@ -71,12 +71,12 @@ class Generic_Sniffs_PHP_DisallowShortOpenTagSniff implements PHP_CodeSniffer_Sn
 
         if ($openTag['code'] === T_OPEN_TAG_WITH_ECHO) {
             $nextVar = $tokens[$phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true)];
-            $error   = 'Short PHP opening tag used with echo; expected "<?php echo %s ..." but found "%s %s ..."';
-            $data    = array(
-                        $nextVar['content'],
-                        $openTag['content'],
-                        $nextVar['content'],
-                       );
+            $error = 'Short PHP opening tag used with echo; expected "<?php echo %s ..." but found "%s %s ..."';
+            $data = array(
+                $nextVar['content'],
+                $openTag['content'],
+                $nextVar['content'],
+            );
             $phpcsFile->addError($error, $stackPtr, 'EchoFound', $data);
         }
 

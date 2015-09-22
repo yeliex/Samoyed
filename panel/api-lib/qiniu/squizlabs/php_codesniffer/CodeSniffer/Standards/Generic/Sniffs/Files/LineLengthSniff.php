@@ -65,7 +65,7 @@ class Generic_Sniffs_Files_LineLengthSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return int
@@ -91,8 +91,8 @@ class Generic_Sniffs_Files_LineLengthSniff implements PHP_CodeSniffer_Sniff
      * Checks if a line is too long.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param array                $tokens    The token stack.
-     * @param int                  $stackPtr  The first token on the next line.
+     * @param array $tokens The token stack.
+     * @param int $stackPtr The first token on the next line.
      *
      * @return null|false
      */
@@ -131,17 +131,17 @@ class Generic_Sniffs_Files_LineLengthSniff implements PHP_CodeSniffer_Sniff
             && $lineLength > $this->absoluteLineLimit
         ) {
             $data = array(
-                     $this->absoluteLineLimit,
-                     $lineLength,
-                    );
+                $this->absoluteLineLimit,
+                $lineLength,
+            );
 
             $error = 'Line exceeds maximum limit of %s characters; contains %s characters';
             $phpcsFile->addError($error, $stackPtr, 'MaxExceeded', $data);
         } else if ($lineLength > $this->lineLimit) {
             $data = array(
-                     $this->lineLimit,
-                     $lineLength,
-                    );
+                $this->lineLimit,
+                $lineLength,
+            );
 
             $warning = 'Line exceeds %s characters; contains %s characters';
             $phpcsFile->addWarning($warning, $stackPtr, 'TooLong', $data);

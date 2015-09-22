@@ -15,7 +15,6 @@ $(function () {
     });
     getList();
 });
-
 function getList() {
     var data;
 
@@ -23,7 +22,7 @@ function getList() {
     appointConditions.status = $("#appoint_manager #select-status .ui.dropdown").dropdown('get value')[0];
     appointConditions.star = $("#appoint_manager #select-star").checkbox('is checked');
 
-    var req = $.ajax("http://api.panel.dev.mzapp.info/appointmanager/appointlist/", {
+    var req = $.ajax("http://api.panel.mzapp.info/appointmanager/appointlist/", {
         method: "GET",
         async: false,
         data: {
@@ -48,19 +47,19 @@ function getList() {
 }
 
 function appointmentNum() {
-    $.ajax("http://api.panel.dev.mzapp.info/appointmanager/appointNum/", {
+    $.ajax("http://api.panel.mzapp.info/appointmanager/appointNum/", {
         method: "GET",
         data: {
             protocol: "json"
         }
     }).complete(function (returnDate) {
-        var data = $.parseJSON(returnDate.responseText);
-        if (data.status != "success") {
-            alert("获取失败,请重试\n\n" + data.error_info);
+        var rData = $.parseJSON(returnDate.responseText);
+        if (rData.status != "success") {
+            alert("获取失败,请重试\n\n" + rData.error_info);
         }
         else {
-            $($("#appoint_manager #list_num span")[1]).text(data.data.total);
-            $($("#appoint_manager #list_num span")[2]).text(data.data.new);
+            $($("#appoint_manager #list_num span")[1]).text(rData.data.total);
+            $($("#appoint_manager #list_num span")[2]).text(rData.data.new);
         }
     });
 }
@@ -148,7 +147,7 @@ function activeDrop(id) {
                 break;
             }
         }
-        $.ajax("http://api.panel.dev.mzapp.info/appointmanager/setAppointmentStatus/?protocol=json", {
+        $.ajax("http://api.panel.mzapp.info/appointmanager/setAppointmentStatus/?protocol=json", {
             method: "POST",
             data: {
                 id: id,
@@ -195,7 +194,7 @@ function activeDrop(id) {
     });
     $("#appoint_manager #appoint_list #" + id + " .ui.checkbox").checkbox({
         onChecked: function () {
-            $.ajax("http://api.panel.dev.mzapp.info/appointmanager/starAppointment/?protocol=json", {
+            $.ajax("http://api.panel.mzapp.info/appointmanager/starAppointment/?protocol=json", {
                 method: "POST",
                 data: {
                     id: id
@@ -209,7 +208,7 @@ function activeDrop(id) {
             });
         },
         onUnchecked: function () {
-            $.ajax("http://api.panel.dev.mzapp.info/appointmanager/unStarAppointment/?protocol=json", {
+            $.ajax("http://api.panel.mzapp.info/appointmanager/unStarAppointment/?protocol=json", {
                 method: "POST",
                 data: {
                     id: id
@@ -231,7 +230,7 @@ function previewBuilding(id) {
 }
 function previewUser(id) {
     var uid = $($("#appoint_manager #appoint_list #" + id + " td")[2]).html().split("<br>")[1];
-    $.ajax("http://api.panel.dev.mzapp.info/usermanager/userInfo", {
+    $.ajax("http://api.panel.mzapp.info/usermanager/userInfo", {
         method: "GET",
         data: {
             protocol: "json",
@@ -269,7 +268,7 @@ function editAppointment(id) {
             time: $($("#edit_appointment .content input")[3]).val()
         };
 
-        $.ajax("http://api.panel.dev.mzapp.info/appointmanager/editAppointment/?protocol=json", {
+        $.ajax("http://api.panel.mzapp.info/appointmanager/editAppointment/?protocol=json", {
             method: "POST",
             data: data
         }).complete(function (returnDate) {
@@ -289,7 +288,7 @@ function editAppointment(id) {
 
 function removeAppointment() {
     if (confirm("是否要删除预约: " + id + "\n\n此操作将不可恢复")) {
-        $.ajax("http://api.panel.dev.mzapp.info/appointmanager/removeAppointment/?protocol=json", {
+        $.ajax("http://api.panel.mzapp.info/appointmanager/removeAppointment/?protocol=json", {
             method: "POST",
             data: {
                 id: id

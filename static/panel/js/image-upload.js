@@ -6,7 +6,6 @@ var upTarget = {
     "target": null,
     "serial": null
 };
-
 $(function () {
     var upload = Qiniu.uploader({
         runtimes: 'html5,flash,html4',
@@ -131,7 +130,7 @@ function uploadSuccess(info, target, serial) {
         case 6:
         {
             // 编辑:上传其他图片
-            onEditNewImageSave(url,serial);
+            onEditNewImageSave(url, serial);
             break;
         }
     }

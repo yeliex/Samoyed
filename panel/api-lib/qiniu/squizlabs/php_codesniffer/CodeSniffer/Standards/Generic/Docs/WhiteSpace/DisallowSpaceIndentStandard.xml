@@ -1,6 +1,6 @@
 <documentation title="No Space Indentation">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Tabs should be used for indentation instead of spaces.
     ]]>
     </standard>

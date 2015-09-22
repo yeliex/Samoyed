@@ -36,9 +36,9 @@ class Generic_Sniffs_ControlStructures_InlineControlStructureSniff implements PH
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
     /**
      * If true, an error will be thrown; otherwise a warning.
@@ -56,14 +56,14 @@ class Generic_Sniffs_ControlStructures_InlineControlStructureSniff implements PH
     public function register()
     {
         return array(
-                T_IF,
-                T_ELSE,
-                T_FOREACH,
-                T_WHILE,
-                T_DO,
-                T_SWITCH,
-                T_FOR,
-               );
+            T_IF,
+            T_ELSE,
+            T_FOREACH,
+            T_WHILE,
+            T_DO,
+            T_SWITCH,
+            T_FOR,
+        );
 
     }//end register()
 
@@ -72,7 +72,7 @@ class Generic_Sniffs_ControlStructures_InlineControlStructureSniff implements PH
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void

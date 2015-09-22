@@ -1,12 +1,12 @@
 <documentation title="Elseif Declarations">
     <standard>
-    <![CDATA[
+        <![CDATA[
     PHP's elseif keyword should be used instead of else if.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Single word elseif keyword used.">
-        <![CDATA[
+            <![CDATA[
 if ($foo) {
     $var = 1;
 } <em>elseif</em> ($bar) {
@@ -15,7 +15,7 @@ if ($foo) {
         ]]>
         </code>
         <code title="Invalid: Separate else and if keywords used.">
-        <![CDATA[
+            <![CDATA[
 if ($foo) {
     $var = 1;
 } <em>else if</em> ($bar) {

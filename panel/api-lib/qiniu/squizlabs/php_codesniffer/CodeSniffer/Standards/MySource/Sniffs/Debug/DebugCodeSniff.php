@@ -43,7 +43,7 @@ class MySource_Sniffs_Debug_DebugCodeSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -55,8 +55,8 @@ class MySource_Sniffs_Debug_DebugCodeSniff implements PHP_CodeSniffer_Sniff
         $className = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
         if (strtolower($tokens[$className]['content']) === 'debug') {
             $method = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-            $error  = 'Call to debug function Debug::%s() must be removed';
-            $data   = array($tokens[$method]['content']);
+            $error = 'Call to debug function Debug::%s() must be removed';
+            $data = array($tokens[$method]['content']);
             $phpcsFile->addError($error, $stackPtr, 'Found', $data);
         }
 

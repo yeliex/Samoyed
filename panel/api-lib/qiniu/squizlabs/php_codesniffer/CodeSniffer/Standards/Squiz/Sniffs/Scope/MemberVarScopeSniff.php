@@ -37,7 +37,7 @@ class Squiz_Sniffs_Scope_MemberVarScopeSniff extends PHP_CodeSniffer_Standards_A
      * Processes the function tokens within the class.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */
@@ -57,7 +57,7 @@ class Squiz_Sniffs_Scope_MemberVarScopeSniff extends PHP_CodeSniffer_Standards_A
 
         if ($modifier === null) {
             $error = 'Scope modifier not specified for member variable "%s"';
-            $data  = array($tokens[$stackPtr]['content']);
+            $data = array($tokens[$stackPtr]['content']);
             $phpcsFile->addError($error, $stackPtr, 'Missing', $data);
         }
 
@@ -68,7 +68,7 @@ class Squiz_Sniffs_Scope_MemberVarScopeSniff extends PHP_CodeSniffer_Standards_A
      * Processes normal variables.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */
@@ -85,7 +85,7 @@ class Squiz_Sniffs_Scope_MemberVarScopeSniff extends PHP_CodeSniffer_Standards_A
      * Processes variables in double quoted strings.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where this token was found.
-     * @param int                  $stackPtr  The position where the token was found.
+     * @param int $stackPtr The position where the token was found.
      *
      * @return void
      */

@@ -45,7 +45,7 @@ class PSR2_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
      * Processes this sniff, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -57,14 +57,14 @@ class PSR2_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
         }
 
         // Skip to the end of the file.
-        $tokens    = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $lastToken = ($phpcsFile->numTokens - 1);
 
         // Hard-coding the expected \n in this sniff as it is PSR-2 specific and
         // PSR-2 enforces the use of unix style newlines.
         if (substr($tokens[$lastToken]['content'], -1) !== "\n") {
             $error = 'Expected 1 newline at end of file; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $lastToken, 'NoneFound');
+            $fix = $phpcsFile->addFixableError($error, $lastToken, 'NoneFound');
             if ($fix === true) {
                 $phpcsFile->fixer->addNewline($lastToken);
             }
@@ -82,13 +82,13 @@ class PSR2_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
         }
 
         $lastCodeLine = $tokens[$lastCode]['line'];
-        $blankLines   = ($lastLine - $lastCodeLine + 1);
+        $blankLines = ($lastLine - $lastCodeLine + 1);
         $phpcsFile->recordMetric($stackPtr, 'Number of newlines at EOF', $blankLines);
 
         if ($blankLines > 1) {
             $error = 'Expected 1 blank line at end of file; %s found';
-            $data  = array($blankLines);
-            $fix   = $phpcsFile->addFixableError($error, $lastCode, 'TooMany', $data);
+            $data = array($blankLines);
+            $fix = $phpcsFile->addFixableError($error, $lastCode, 'TooMany', $data);
 
             if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();

@@ -45,7 +45,7 @@ class Squiz_Sniffs_PHP_DisallowComparisonAssignmentSniff implements PHP_CodeSnif
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -80,10 +80,10 @@ class Squiz_Sniffs_PHP_DisallowComparisonAssignmentSniff implements PHP_CodeSnif
 
         // Ignore function calls.
         $ignore = array(
-                   T_STRING,
-                   T_WHITESPACE,
-                   T_OBJECT_OPERATOR,
-                  );
+            T_STRING,
+            T_WHITESPACE,
+            T_OBJECT_OPERATOR,
+        );
 
         $next = $phpcsFile->findNext($ignore, ($stackPtr + 1), null, true);
         if ($tokens[$next]['code'] === T_OPEN_PARENTHESIS

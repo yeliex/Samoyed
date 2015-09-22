@@ -55,9 +55,9 @@ class Squiz_Sniffs_Operators_ComparisonOperatorUsageSniff implements PHP_CodeSni
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
     /**
      * A list of valid comparison operators.
@@ -65,14 +65,14 @@ class Squiz_Sniffs_Operators_ComparisonOperatorUsageSniff implements PHP_CodeSni
      * @var array
      */
     private static $_validOps = array(
-                                 T_IS_IDENTICAL,
-                                 T_IS_NOT_IDENTICAL,
-                                 T_LESS_THAN,
-                                 T_GREATER_THAN,
-                                 T_IS_GREATER_OR_EQUAL,
-                                 T_IS_SMALLER_OR_EQUAL,
-                                 T_INSTANCEOF,
-                                );
+        T_IS_IDENTICAL,
+        T_IS_NOT_IDENTICAL,
+        T_LESS_THAN,
+        T_GREATER_THAN,
+        T_IS_GREATER_OR_EQUAL,
+        T_IS_SMALLER_OR_EQUAL,
+        T_INSTANCEOF,
+    );
 
     /**
      * A list of invalid operators with their alternatives.
@@ -80,16 +80,16 @@ class Squiz_Sniffs_Operators_ComparisonOperatorUsageSniff implements PHP_CodeSni
      * @var array(int => string)
      */
     private static $_invalidOps = array(
-                                   'PHP' => array(
-                                             T_IS_EQUAL     => '===',
-                                             T_IS_NOT_EQUAL => '!==',
-                                             T_BOOLEAN_NOT  => '=== FALSE',
-                                            ),
-                                   'JS'  => array(
-                                             T_IS_EQUAL     => '===',
-                                             T_IS_NOT_EQUAL => '!==',
-                                            ),
-                                  );
+        'PHP' => array(
+            T_IS_EQUAL => '===',
+            T_IS_NOT_EQUAL => '!==',
+            T_BOOLEAN_NOT => '=== FALSE',
+        ),
+        'JS' => array(
+            T_IS_EQUAL => '===',
+            T_IS_NOT_EQUAL => '!==',
+        ),
+    );
 
 
     /**
@@ -100,10 +100,10 @@ class Squiz_Sniffs_Operators_ComparisonOperatorUsageSniff implements PHP_CodeSni
     public function register()
     {
         return array(
-                T_IF,
-                T_ELSEIF,
-                T_INLINE_THEN,
-               );
+            T_IF,
+            T_ELSEIF,
+            T_INLINE_THEN,
+        );
 
     }//end register()
 
@@ -112,14 +112,14 @@ class Squiz_Sniffs_Operators_ComparisonOperatorUsageSniff implements PHP_CodeSni
      * Process the tokens that this sniff is listening for.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where the token
+     * @param int $stackPtr The position in the stack where the token
      *                                        was found.
      *
      * @return void
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens    = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $tokenizer = $phpcsFile->tokenizerType;
 
         if ($tokens[$stackPtr]['code'] === T_INLINE_THEN) {
@@ -156,20 +156,20 @@ class Squiz_Sniffs_Operators_ComparisonOperatorUsageSniff implements PHP_CodeSni
             }//end if
         } else {
             $start = $tokens[$stackPtr]['parenthesis_opener'];
-            $end   = $tokens[$stackPtr]['parenthesis_closer'];
+            $end = $tokens[$stackPtr]['parenthesis_closer'];
         }//end if
 
         $requiredOps = 0;
-        $foundOps    = 0;
+        $foundOps = 0;
 
         for ($i = $start; $i <= $end; $i++) {
             $type = $tokens[$i]['code'];
             if (in_array($type, array_keys(self::$_invalidOps[$tokenizer])) === true) {
                 $error = 'Operator %s prohibited; use %s instead';
-                $data  = array(
-                          $tokens[$i]['content'],
-                          self::$_invalidOps[$tokenizer][$type],
-                         );
+                $data = array(
+                    $tokens[$i]['content'],
+                    self::$_invalidOps[$tokenizer][$type],
+                );
                 $phpcsFile->addError($error, $i, 'NotAllowed', $data);
                 $foundOps++;
             } else if (in_array($type, self::$_validOps) === true) {

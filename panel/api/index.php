@@ -1,7 +1,6 @@
 <?php
 // 设置允许跨域请求
 header('Access-Control-Allow-Origin: *');
-
 // 在这里关闭错误
 ini_set('display_errors', 'on'); // 设置display_errors 为OFF
 error_reporting(E_ALL & ~E_NOTICE); // 关闭错误提示

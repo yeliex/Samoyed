@@ -1,17 +1,17 @@
 <documentation title="Echoed Strings">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Simple strings should not be enclosed in parentheses when being echoed.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Using echo without parentheses.">
-        <![CDATA[
+            <![CDATA[
 echo<em> </em>"Hello";
 ]]>
         </code>
         <code title="Invalid: Using echo with parentheses.">
-        <![CDATA[
+            <![CDATA[
 echo<em>(</em>"Hello"<em>)</em>;
 ]]>
         </code>

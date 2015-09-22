@@ -52,7 +52,7 @@ class Generic_Sniffs_Debug_CSSLintSniff implements PHP_CodeSniffer_Sniff
      * Processes the tokens that this sniff is interested in.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file where the token was found.
-     * @param int                  $stackPtr  The position in the stack where
+     * @param int $stackPtr The position in the stack where
      *                                        the token was found.
      *
      * @return void
@@ -66,7 +66,7 @@ class Generic_Sniffs_Debug_CSSLintSniff implements PHP_CodeSniffer_Sniff
             return;
         }
 
-        $cmd = $csslintPath.' '.escapeshellarg($fileName);
+        $cmd = $csslintPath . ' ' . escapeshellarg($fileName);
         exec($cmd, $output, $retval);
 
         if (is_array($output) === false) {
@@ -76,7 +76,7 @@ class Generic_Sniffs_Debug_CSSLintSniff implements PHP_CodeSniffer_Sniff
         $count = count($output);
 
         for ($i = 0; $i < $count; $i++) {
-            $matches    = array();
+            $matches = array();
             $numMatches = preg_match(
                 '/(error|warning) at line (\d+)/',
                 $output[$i],
@@ -87,8 +87,8 @@ class Generic_Sniffs_Debug_CSSLintSniff implements PHP_CodeSniffer_Sniff
                 continue;
             }
 
-            $line    = (int) $matches[2];
-            $message = 'csslint says: '.$output[($i + 1)];
+            $line = (int)$matches[2];
+            $message = 'csslint says: ' . $output[($i + 1)];
             // First line is message with error line and error code.
             // Second is error message.
             // Third is wrong line in file.

@@ -56,7 +56,7 @@ class Generic_Sniffs_CodeAnalysis_UselessOverridingMethodSniff implements PHP_Co
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -64,7 +64,7 @@ class Generic_Sniffs_CodeAnalysis_UselessOverridingMethodSniff implements PHP_Co
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip function without body.
         if (isset($token['scope_opener']) === false) {
@@ -81,7 +81,7 @@ class Generic_Sniffs_CodeAnalysis_UselessOverridingMethodSniff implements PHP_Co
         }
 
         $next = ++$token['scope_opener'];
-        $end  = --$token['scope_closer'];
+        $end = --$token['scope_closer'];
 
         for (; $next <= $end; ++$next) {
             $code = $tokens[$next]['code'];
@@ -125,14 +125,14 @@ class Generic_Sniffs_CodeAnalysis_UselessOverridingMethodSniff implements PHP_Co
         }
 
         $validParameterTypes = array(
-                                T_VARIABLE,
-                                T_LNUMBER,
-                                T_CONSTANT_ENCAPSED_STRING,
-                               );
+            T_VARIABLE,
+            T_LNUMBER,
+            T_CONSTANT_ENCAPSED_STRING,
+        );
 
-        $parameters       = array('');
+        $parameters = array('');
         $parenthesisCount = 1;
-        $count            = count($tokens);
+        $count = count($tokens);
         for (++$next; $next < $count; ++$next) {
             $code = $tokens[$next]['code'];
 

@@ -47,7 +47,7 @@ class Squiz_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSniffer_
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile All the tokens found in the document.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -78,14 +78,14 @@ class Squiz_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSniffer_
         $lineStart = $phpcsFile->findNext(array(T_WHITESPACE), ($lineStart + 1), null, true);
 
         $startColumn = $tokens[$lineStart]['column'];
-        $scopeStart  = $tokens[$stackPtr]['scope_opener'];
-        $scopeEnd    = $tokens[$stackPtr]['scope_closer'];
+        $scopeStart = $tokens[$stackPtr]['scope_opener'];
+        $scopeEnd = $tokens[$stackPtr]['scope_closer'];
 
         // Check that the closing brace is on it's own line.
         $lastContent = $phpcsFile->findPrevious(array(T_WHITESPACE), ($scopeEnd - 1), $scopeStart, true);
         if ($tokens[$lastContent]['line'] === $tokens[$scopeEnd]['line']) {
             $error = 'Closing brace must be on a line by itself';
-            $fix   = $phpcsFile->addFixableError($error, $scopeEnd, 'ContentBefore');
+            $fix = $phpcsFile->addFixableError($error, $scopeEnd, 'ContentBefore');
             if ($fix === true) {
                 $phpcsFile->fixer->addNewlineBefore($scopeEnd);
             }
@@ -100,10 +100,10 @@ class Squiz_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSniffer_
             && $braceIndent !== $startColumn
         ) {
             $error = 'Closing brace indented incorrectly; expected %s spaces, found %s';
-            $data  = array(
-                      ($startColumn - 1),
-                      ($braceIndent - 1),
-                     );
+            $data = array(
+                ($startColumn - 1),
+                ($braceIndent - 1),
+            );
 
             $fix = $phpcsFile->addFixableError($error, $scopeEnd, 'Indent', $data);
             if ($fix === true) {

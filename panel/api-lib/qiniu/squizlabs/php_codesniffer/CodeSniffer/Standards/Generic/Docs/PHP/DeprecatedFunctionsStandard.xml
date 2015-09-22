@@ -1,17 +1,17 @@
 <documentation title="Deprecated Functions">
     <standard>
-    <![CDATA[
+        <![CDATA[
     Deprecated functions should not be used.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: A non-deprecated function is used.">
-        <![CDATA[
+            <![CDATA[
 $foo = <em>explode</em>('a', $bar);
         ]]>
         </code>
         <code title="Invalid: A deprecated function is used.">
-        <![CDATA[
+            <![CDATA[
 $foo = <em>split</em>('a', $bar);
         ]]>
         </code>

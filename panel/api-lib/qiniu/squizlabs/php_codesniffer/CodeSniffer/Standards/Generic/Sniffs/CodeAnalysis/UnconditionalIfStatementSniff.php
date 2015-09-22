@@ -53,9 +53,9 @@ class Generic_Sniffs_CodeAnalysis_UnconditionalIfStatementSniff implements PHP_C
     public function register()
     {
         return array(
-                T_IF,
-                T_ELSEIF,
-               );
+            T_IF,
+            T_ELSEIF,
+        );
 
     }//end register()
 
@@ -64,7 +64,7 @@ class Generic_Sniffs_CodeAnalysis_UnconditionalIfStatementSniff implements PHP_C
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -72,7 +72,7 @@ class Generic_Sniffs_CodeAnalysis_UnconditionalIfStatementSniff implements PHP_C
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
+        $token = $tokens[$stackPtr];
 
         // Skip for-loop without body.
         if (isset($token['parenthesis_opener']) === false) {
@@ -80,7 +80,7 @@ class Generic_Sniffs_CodeAnalysis_UnconditionalIfStatementSniff implements PHP_C
         }
 
         $next = ++$token['parenthesis_opener'];
-        $end  = --$token['parenthesis_closer'];
+        $end = --$token['parenthesis_closer'];
 
         $goodCondition = false;
         for (; $next <= $end; ++$next) {

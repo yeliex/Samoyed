@@ -40,9 +40,9 @@ class Squiz_Sniffs_Classes_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
     public function register()
     {
         return array(
-                T_CLASS,
-                T_INTERFACE,
-               );
+            T_CLASS,
+            T_INTERFACE,
+        );
 
     }//end register()
 
@@ -51,7 +51,7 @@ class Squiz_Sniffs_Classes_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in
+     * @param int $stackPtr The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
@@ -65,16 +65,16 @@ class Squiz_Sniffs_Classes_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
             return;
         }
 
-        $tokens  = $phpcsFile->getTokens();
+        $tokens = $phpcsFile->getTokens();
         $decName = $phpcsFile->findNext(T_STRING, $stackPtr);
 
         if ($tokens[$decName]['content'] !== $fileName) {
             $error = '%s name doesn\'t match filename; expected "%s %s"';
-            $data  = array(
-                      ucfirst($tokens[$stackPtr]['content']),
-                      $tokens[$stackPtr]['content'],
-                      $fileName,
-                     );
+            $data = array(
+                ucfirst($tokens[$stackPtr]['content']),
+                $tokens[$stackPtr]['content'],
+                $fileName,
+            );
             $phpcsFile->addError($error, $stackPtr, 'NoMatch', $data);
         }
 

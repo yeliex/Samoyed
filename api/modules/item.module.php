@@ -1,13 +1,15 @@
 <?php
 
-class Item extends Samoyed{
+class Item extends Samoyed
+{
     private $id;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
 
         // 获取 ID 值
-        if((!isset($_GET['id'])) || (!$this->checkId($_GET['id']))){
+        if ((!isset($_GET['id'])) || (!$this->checkId($_GET['id']))) {
             send_json(1070);
             exit;
         }
@@ -15,20 +17,22 @@ class Item extends Samoyed{
 
     }
 
-    private function checkId($id){
+    private function checkId($id)
+    {
         $statement = $this->db->prepare("SELECT building_id FROM building_product
                             WHERE building_id = :id");
-        $statement->bindParam(":id",$id);
+        $statement->bindParam(":id", $id);
         $statement->execute();
 
-        if($statement->fetch()){
+        if ($statement->fetch()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public function defaultAction(){
+    public function defaultAction()
+    {
         // 前往数据库查询
 
         // 接口需要返回的数据是：
@@ -59,14 +63,15 @@ class Item extends Samoyed{
                                             FROM building_product WHERE
                                             building_product.building_id = :id
                                             ");
-        $statement->bindParam(':id',$this->id);
+        $statement->bindParam(':id', $this->id);
         $statement->execute();
 
         $result = $statement->fetch(PDO::FETCH_ASSOC);
-        send_json(0,json_encode($result),1);
+        send_json(0, json_encode($result), 1);
     }
 
-    public function units(){
+    public function units()
+    {
         // 前往数据库查询
 
         // 接口需要返回的数据是：
@@ -87,14 +92,15 @@ class Item extends Samoyed{
                                             FROM unit_items WHERE
                                             unit_items.building_id = :id
                                             ");
-        $statement->bindParam(':id',$this->id);
+        $statement->bindParam(':id', $this->id);
         $statement->execute();
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        send_json(0,json_encode($result),1);
+        send_json(0, json_encode($result), 1);
     }
 
-    public  function images(){
+    public function images()
+    {
         // 前往数据库查询
 
         // 接口需要返回的数据是：
@@ -110,14 +116,15 @@ class Item extends Samoyed{
                                             building_img.building_id = :id AND
                                             building_img.image_avaliable = 1
                                             ");
-        $statement->bindParam(':id',$this->id);
+        $statement->bindParam(':id', $this->id);
         $statement->execute();
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        send_json(0,json_encode($result),1);
+        send_json(0, json_encode($result), 1);
     }
 
-    public  function all_images(){
+    public function all_images()
+    {
         // 前往数据库查询
 
         // 接口需要返回的数据是：
@@ -133,10 +140,10 @@ class Item extends Samoyed{
                                             FROM building_img WHERE
                                             building_img.building_id = :id
                                             ");
-        $statement->bindParam(':id',$this->id);
+        $statement->bindParam(':id', $this->id);
         $statement->execute();
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        send_json(0,json_encode($result),1);
+        send_json(0, json_encode($result), 1);
     }
 }

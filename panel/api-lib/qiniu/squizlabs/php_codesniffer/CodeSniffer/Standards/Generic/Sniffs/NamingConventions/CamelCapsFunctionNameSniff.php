@@ -41,21 +41,21 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
      * @var array
      */
     protected $magicMethods = array(
-                               'construct'  => true,
-                               'destruct'   => true,
-                               'call'       => true,
-                               'callstatic' => true,
-                               'get'        => true,
-                               'set'        => true,
-                               'isset'      => true,
-                               'unset'      => true,
-                               'sleep'      => true,
-                               'wakeup'     => true,
-                               'tostring'   => true,
-                               'set_state'  => true,
-                               'clone'      => true,
-                               'invoke'     => true,
-                              );
+        'construct' => true,
+        'destruct' => true,
+        'call' => true,
+        'callstatic' => true,
+        'get' => true,
+        'set' => true,
+        'isset' => true,
+        'unset' => true,
+        'sleep' => true,
+        'wakeup' => true,
+        'tostring' => true,
+        'set_state' => true,
+        'clone' => true,
+        'invoke' => true,
+    );
 
     /**
      * A list of all PHP non-magic methods starting with a double underscore.
@@ -65,18 +65,18 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
      * @var array
      */
     protected $methodsDoubleUnderscore = array(
-                                          'soapcall'               => true,
-                                          'getlastrequest'         => true,
-                                          'getlastresponse'        => true,
-                                          'getlastrequestheaders'  => true,
-                                          'getlastresponseheaders' => true,
-                                          'getfunctions'           => true,
-                                          'gettypes'               => true,
-                                          'dorequest'              => true,
-                                          'setcookie'              => true,
-                                          'setlocation'            => true,
-                                          'setsoapheaders'         => true,
-                                         );
+        'soapcall' => true,
+        'getlastrequest' => true,
+        'getlastresponse' => true,
+        'getlastrequestheaders' => true,
+        'getlastresponseheaders' => true,
+        'getfunctions' => true,
+        'gettypes' => true,
+        'dorequest' => true,
+        'setcookie' => true,
+        'setlocation' => true,
+        'setsoapheaders' => true,
+    );
 
     /**
      * A list of all PHP magic functions.
@@ -107,9 +107,9 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
      * Processes the tokens within the scope.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being processed.
-     * @param int                  $stackPtr  The position where this token was
+     * @param int $stackPtr The position where this token was
      *                                        found.
-     * @param int                  $currScope The position of the current scope.
+     * @param int $currScope The position of the current scope.
      *
      * @return void
      */
@@ -122,7 +122,7 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
         }
 
         $className = $phpcsFile->getDeclarationName($currScope);
-        $errorData = array($className.'::'.$methodName);
+        $errorData = array($className . '::' . $methodName);
 
         // Is this a magic method. i.e., is prefixed with "__" ?
         if (preg_match('|^__|', $methodName) !== 0) {
@@ -143,7 +143,7 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
         }
 
         // PHP4 destructors are allowed to break our rules.
-        if ($methodName === '_'.$className) {
+        if ($methodName === '_' . $className) {
             return;
         }
 
@@ -154,10 +154,10 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
         if (PHP_CodeSniffer::isCamelCaps($methodName, false, true, $this->strict) === false) {
             if ($methodProps['scope_specified'] === true) {
                 $error = '%s method name "%s" is not in camel caps format';
-                $data  = array(
-                          ucfirst($methodProps['scope']),
-                          $errorData[0],
-                         );
+                $data = array(
+                    ucfirst($methodProps['scope']),
+                    $errorData[0],
+                );
                 $phpcsFile->addError($error, $stackPtr, 'ScopeNotCamelCaps', $data);
             } else {
                 $error = 'Method name "%s" is not in camel caps format';
@@ -177,7 +177,7 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
      * Processes the tokens outside the scope.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being processed.
-     * @param int                  $stackPtr  The position where this token was
+     * @param int $stackPtr The position where this token was
      *                                        found.
      *
      * @return void
@@ -196,8 +196,8 @@ class Generic_Sniffs_NamingConventions_CamelCapsFunctionNameSniff extends PHP_Co
         if (preg_match('|^__|', $functionName) !== 0) {
             $magicPart = strtolower(substr($functionName, 2));
             if (isset($this->magicFunctions[$magicPart]) === false) {
-                 $error = 'Function name "%s" is invalid; only PHP magic methods should be prefixed with a double underscore';
-                 $phpcsFile->addError($error, $stackPtr, 'FunctionDoubleUnderscore', $errorData);
+                $error = 'Function name "%s" is invalid; only PHP magic methods should be prefixed with a double underscore';
+                $phpcsFile->addError($error, $stackPtr, 'FunctionDoubleUnderscore', $errorData);
             }
 
             return;

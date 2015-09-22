@@ -1,19 +1,19 @@
 <documentation title="Function Opening Brace Whitespace">
     <standard>
-    <![CDATA[
+        <![CDATA[
     The opening brace for functions should be on a new line with no blank lines surrounding it.
     ]]>
     </standard>
     <code_comparison>
         <code title="Valid: Opening brace is on a new line.">
-        <![CDATA[
+            <![CDATA[
 function foo()
 <em>{</em>
 }
 ]]>
         </code>
         <code title="Invalid: Opening brace is on the same line as the function declaration.">
-        <![CDATA[
+            <![CDATA[
 function foo() <em>{</em>
 }
 ]]>
@@ -21,7 +21,7 @@ function foo() <em>{</em>
     </code_comparison>
     <code_comparison>
         <code title="Valid: No blank lines after the opening brace.">
-        <![CDATA[
+            <![CDATA[
 function foo()
 {
 <em>    return 42;</em>
@@ -29,7 +29,7 @@ function foo()
 ]]>
         </code>
         <code title="Invalid: A blank line after the opening brace.">
-        <![CDATA[
+            <![CDATA[
 function foo()
 {
 <em></em>

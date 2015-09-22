@@ -1,1 +1,12 @@
-(function(m,l,g,i,k,n,a){m.GoogleAnalyticsObject=k;m[k]=m[k]||function(){(m[k].q=m[k].q||[]).push(arguments)},m[k].l=1*new Date();n=l.createElement(g),a=l.getElementsByTagName(g)[0];n.async=1;n.src=i;a.parentNode.insertBefore(n,a)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-67602772-1","auto",{allowLinker:true});ga("require","linker");ga("require","linkid","linkid.js");ga("linker:autoLink",["mizhiroom.com"],["mzapp.info"]);ga("send","pageview");
+(function (d, e, j, h, f, c, b) {
+    d.GoogleAnalyticsObject = f;
+    d[f] = d[f] || function () {
+            (d[f].q = d[f].q || []).push(arguments)
+        }, d[f].l = 1 * new Date();
+    c = e.createElement(j), b = e.getElementsByTagName(j)[0];
+    c.async = 1;
+    c.src = h;
+    b.parentNode.insertBefore(c, b)
+})(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+ga("create", "UA-67602772-1", "auto");
+ga("send", "pageview");

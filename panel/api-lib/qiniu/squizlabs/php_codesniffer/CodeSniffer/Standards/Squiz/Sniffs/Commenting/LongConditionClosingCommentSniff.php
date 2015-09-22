@@ -34,9 +34,9 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+        'PHP',
+        'JS',
+    );
 
     /**
      * The openers that we are interested in.
@@ -44,14 +44,14 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
      * @var array(int)
      */
     private static $_openers = array(
-                                T_SWITCH,
-                                T_IF,
-                                T_FOR,
-                                T_FOREACH,
-                                T_WHILE,
-                                T_TRY,
-                                T_CASE,
-                               );
+        T_SWITCH,
+        T_IF,
+        T_FOR,
+        T_FOREACH,
+        T_WHILE,
+        T_TRY,
+        T_CASE,
+    );
 
     /**
      * The length that a code block must be before
@@ -78,7 +78,7 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -93,8 +93,8 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
         }
 
         $startCondition = $tokens[$tokens[$stackPtr]['scope_condition']];
-        $startBrace     = $tokens[$tokens[$stackPtr]['scope_opener']];
-        $endBrace       = $tokens[$stackPtr];
+        $startBrace = $tokens[$tokens[$stackPtr]['scope_opener']];
+        $endBrace = $tokens[$stackPtr];
 
         // We are only interested in some code blocks.
         if (in_array($startCondition['code'], self::$_openers) === false) {
@@ -158,14 +158,14 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
 
         $lineDifference = ($endBrace['line'] - $startBrace['line']);
 
-        $expected = '//end '.$startCondition['content'];
-        $comment  = $phpcsFile->findNext(array(T_COMMENT), $stackPtr, null, false);
+        $expected = '//end ' . $startCondition['content'];
+        $comment = $phpcsFile->findNext(array(T_COMMENT), $stackPtr, null, false);
 
         if (($comment === false) || ($tokens[$comment]['line'] !== $endBrace['line'])) {
             if ($lineDifference >= $this->lineLimit) {
                 $error = 'End comment for long condition not found; expected "%s"';
-                $data  = array($expected);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Missing', $data);
+                $data = array($expected);
+                $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Missing', $data);
 
                 if ($fix === true) {
                     $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
@@ -182,21 +182,21 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
 
         if (($comment - $stackPtr) !== 1) {
             $error = 'Space found before closing comment; expected "%s"';
-            $data  = array($expected);
+            $data = array($expected);
             $phpcsFile->addError($error, $stackPtr, 'SpacingBefore', $data);
         }
 
         if (trim($tokens[$comment]['content']) !== $expected) {
             $found = trim($tokens[$comment]['content']);
             $error = 'Incorrect closing comment; expected "%s" but found "%s"';
-            $data  = array(
-                      $expected,
-                      $found,
-                     );
+            $data = array(
+                $expected,
+                $found,
+            );
 
             $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Invalid', $data);
             if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($comment, $expected.$phpcsFile->eolChar);
+                $phpcsFile->fixer->replaceToken($comment, $expected . $phpcsFile->eolChar);
             }
 
             return;

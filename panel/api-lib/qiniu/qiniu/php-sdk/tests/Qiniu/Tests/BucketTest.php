@@ -9,6 +9,7 @@ class BucketTest extends \PHPUnit_Framework_TestCase
     protected $dummyBucketManager;
     protected $bucketName;
     protected $key;
+
     protected function setUp()
     {
         global $bucketName;
@@ -150,7 +151,7 @@ class BucketTest extends \PHPUnit_Framework_TestCase
 
     public function testBatchMove()
     {
-        $key = 'movefrom'. rand();
+        $key = 'movefrom' . rand();
         $this->bucketManager->copy($this->bucketName, $this->key, $this->bucketName, $key);
         $key2 = $key . 'to';
         $ops = BucketManager::buildBatchMove(

@@ -52,7 +52,7 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token in the
+     * @param int $stackPtr The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
@@ -68,15 +68,15 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
             return;
         }
 
-        $switch        = $tokens[$stackPtr];
-        $nextCase      = $stackPtr;
+        $switch = $tokens[$stackPtr];
+        $nextCase = $stackPtr;
         $caseAlignment = ($switch['column'] + $this->indent);
-        $caseCount     = 0;
-        $foundDefault  = false;
+        $caseCount = 0;
+        $foundDefault = false;
 
         while (($nextCase = $this->_findNextCase($phpcsFile, ($nextCase + 1), $switch['scope_closer'])) !== false) {
             if ($tokens[$nextCase]['code'] === T_DEFAULT) {
-                $type         = 'default';
+                $type = 'default';
                 $foundDefault = true;
             } else {
                 $type = 'case';
@@ -85,13 +85,13 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
 
             if ($tokens[$nextCase]['content'] !== strtolower($tokens[$nextCase]['content'])) {
                 $expected = strtolower($tokens[$nextCase]['content']);
-                $error    = strtoupper($type).' keyword must be lowercase; expected "%s" but found "%s"';
-                $data     = array(
-                             $expected,
-                             $tokens[$nextCase]['content'],
-                            );
+                $error = strtoupper($type) . ' keyword must be lowercase; expected "%s" but found "%s"';
+                $data = array(
+                    $expected,
+                    $tokens[$nextCase]['content'],
+                );
 
-                $fix = $phpcsFile->addFixableError($error, $nextCase, $type.'NotLower', $data);
+                $fix = $phpcsFile->addFixableError($error, $nextCase, $type . 'NotLower', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->replaceToken($nextCase, $expected);
                 }
@@ -99,10 +99,10 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
 
             if ($type === 'case'
                 && ($tokens[($nextCase + 1)]['code'] !== T_WHITESPACE
-                || $tokens[($nextCase + 1)]['content'] !== ' ')
+                    || $tokens[($nextCase + 1)]['content'] !== ' ')
             ) {
                 $error = 'CASE keyword must be followed by a single space';
-                $fix   = $phpcsFile->addFixableError($error, $nextCase, 'SpacingAfterCase');
+                $fix = $phpcsFile->addFixableError($error, $nextCase, 'SpacingAfterCase');
                 if ($fix === true) {
                     if ($tokens[($nextCase + 1)]['code'] !== T_WHITESPACE) {
                         $phpcsFile->fixer->addContent($nextCase, ' ');
@@ -115,15 +115,15 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
             $opener = $tokens[$nextCase]['scope_opener'];
             if ($tokens[$opener]['code'] === T_COLON) {
                 if ($tokens[($opener - 1)]['code'] === T_WHITESPACE) {
-                    $error = 'There must be no space before the colon in a '.strtoupper($type).' statement';
-                    $fix   = $phpcsFile->addFixableError($error, $nextCase, 'SpaceBeforeColon'.strtoupper($type));
+                    $error = 'There must be no space before the colon in a ' . strtoupper($type) . ' statement';
+                    $fix = $phpcsFile->addFixableError($error, $nextCase, 'SpaceBeforeColon' . strtoupper($type));
                     if ($fix === true) {
                         $phpcsFile->fixer->replaceToken(($opener - 1), '');
                     }
                 }
             } else {
-                $error = strtoupper($type).' statements must not be defined using curly braces';
-                $phpcsFile->addError($error, $nextCase, 'WrongOpener'.$type);
+                $error = strtoupper($type) . ' statements must not be defined using curly braces';
+                $phpcsFile->addError($error, $nextCase, 'WrongOpener' . $type);
             }
 
             $nextCloser = $tokens[$nextCase]['scope_closer'];
@@ -134,7 +134,7 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
                 $diff = ($caseAlignment + $this->indent - $tokens[$nextCloser]['column']);
                 if ($diff !== 0) {
                     $error = 'Terminating statement must be indented to the same level as the CASE body';
-                    $fix   = $phpcsFile->addFixableError($error, $nextCloser, 'BreakIndent');
+                    $fix = $phpcsFile->addFixableError($error, $nextCloser, 'BreakIndent');
                     if ($fix === true) {
                         if ($diff > 0) {
                             $phpcsFile->fixer->addContentBefore($nextCloser, str_repeat(' ', $diff));
@@ -181,8 +181,8 @@ class PSR2_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSn
      * Note that nested switches are ignored.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position to start looking at.
-     * @param int                  $end       The position to stop looking at.
+     * @param int $stackPtr The position to start looking at.
+     * @param int $end The position to stop looking at.
      *
      * @return int | bool
      */

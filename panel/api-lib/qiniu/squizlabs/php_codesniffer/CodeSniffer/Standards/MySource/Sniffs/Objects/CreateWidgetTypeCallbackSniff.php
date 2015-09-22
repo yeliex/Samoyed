@@ -50,7 +50,7 @@ class MySource_Sniffs_Objects_CreateWidgetTypeCallbackSniff implements PHP_CodeS
      * Processes this test, when one of its tokens is encountered.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
-     * @param int                  $stackPtr  The position of the current token
+     * @param int $stackPtr The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
@@ -78,7 +78,7 @@ class MySource_Sniffs_Objects_CreateWidgetTypeCallbackSniff implements PHP_CodeS
         }
 
         $start = ($tokens[$function]['scope_opener'] + 1);
-        $end   = ($tokens[$function]['scope_closer'] - 1);
+        $end = ($tokens[$function]['scope_closer'] - 1);
 
         // Check that the first argument is called "callback".
         $arg = $phpcsFile->findNext(T_WHITESPACE, ($tokens[$function]['parenthesis_opener'] + 1), null, true);
@@ -96,7 +96,7 @@ class MySource_Sniffs_Objects_CreateWidgetTypeCallbackSniff implements PHP_CodeS
             followed by a return statement or the end of the method.
         */
 
-        $foundCallback  = false;
+        $foundCallback = false;
         $passedCallback = false;
         $nestedFunction = null;
         for ($i = $start; $i <= $end; $i++) {
@@ -107,7 +107,7 @@ class MySource_Sniffs_Objects_CreateWidgetTypeCallbackSniff implements PHP_CodeS
                     continue;
                 }
             } else if (($tokens[$i]['code'] === T_FUNCTION
-                || $tokens[$i]['code'] === T_CLOSURE)
+                    || $tokens[$i]['code'] === T_CLOSURE)
                 && isset($tokens[$i]['scope_closer']) === true
             ) {
                 $nestedFunction = $tokens[$i]['scope_closer'];
@@ -152,7 +152,7 @@ class MySource_Sniffs_Objects_CreateWidgetTypeCallbackSniff implements PHP_CodeS
                 // Note that we use this endBracket down further when checking
                 // for a RETURN statement.
                 $endBracket = end($tokens[$i]['nested_parenthesis']);
-                $bracket    = key($tokens[$i]['nested_parenthesis']);
+                $bracket = key($tokens[$i]['nested_parenthesis']);
 
                 $prev = $phpcsFile->findPrevious(
                     PHP_CodeSniffer_Tokens::$emptyTokens,
