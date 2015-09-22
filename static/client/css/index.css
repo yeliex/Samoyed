@@ -1,9 +1,11 @@
 body {
     cursor: default;
 }
+
 dl, dt, dd, ul, li {
     list-style: none;
 }
+
 @font-face {
     font-family: 'FontAwesome';
     src: url('../../public/fonts/fontawesome-webfont.eot?v=4.3.0');
@@ -11,6 +13,7 @@ dl, dt, dd, ul, li {
     font-weight: normal;
     font-style: normal;
 }
+
 /*----------------------------------------------
 
     Nav Wrapper Style
@@ -231,10 +234,12 @@ main {
 }
 
 main .wrapper {
-    padding: 0;
+    padding: 0 0 4rem;
     width: 100%;
 }
-
+main .wrapper.secondary {
+    background: #F6F6F6;
+}
 main .header {
     width: 100%;
     padding: 2rem 0;
@@ -264,7 +269,8 @@ main .content .description {
     width: 100%;
     height: auto;
     padding: 1rem 1rem .5rem;
-    background: rgba(0, 0, 0, .1);
+    background: rgba(0, 0, 0, .6);
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 main .content .description .title {
@@ -275,6 +281,7 @@ main .content .description .title {
 }
 
 main .content .description .intro {
+    color: #FFFFFF;
     font-size: 1.2rem;
     line-height: 1.5rem;
     padding-left: 1rem;
@@ -317,13 +324,14 @@ nav .ye-top {
 nav.fixed .ye-top {
     display: block;
 }
+
 /*----------------------------------------------
 
     Footer Wrapper Style
 
 ------------------------------------------------*/
 .ye-footer {
-    top: 6rem !important;
+    top: 2rem !important;
 }
 
 .ye-footer .footer-wrapper .footer-detail {
@@ -371,9 +379,11 @@ nav.fixed .ye-top {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 .ye-footer .footer-wrapper .footer-link ul {
     width: 540px !important;
 }
+
 /*----------------------------------------------
 
     Self-Adaption Style
