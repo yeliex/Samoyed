@@ -1,0 +1,170 @@
+.ye-delegate {
+    width: 100%;
+    overflow: hidden;
+}
+.ye-delegate .nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 1em 0;
+    width: 100%;
+    box-shadow: 0 0 0 0 transparent;
+    border-bottom: 1px solid transparent;
+    transition: padding .5s ease, background .5s ease, box-shadow .5s ease, border .5s ease
+}
+
+.nav .logo a {
+    font-size: 1.6em;
+    color: #000 !important
+}
+
+.ye-delegate .ye-main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto
+}
+
+.ye-delegate .delegate {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0
+}
+
+.ye-delegate .delegate .header {
+    height: auto;
+    min-height: 478px;
+    width: 100%
+}
+
+.ye-delegate .delegate .form .header {
+    height: auto;
+    min-height: 0;
+    background: none !important;
+}
+
+.ye-delegate .delegate.delegate_0 .header {
+    height: auto;
+    background: url("//static.mzapp.info/public/images/sources/about.jpg") center top no-repeat;
+    background-size: cover
+}
+.ye-delegate .delegate.delegate_1 .header {
+    height: auto;
+    background: url("//static.mzapp.info/public/images/sources/about_2.jpg") center top no-repeat;
+    background-size: cover
+}
+.ye-delegate .delegate .content {
+    padding: 3rem 0;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.ye-delegate .delegate.delegate_1 .content {
+    width: 600px;
+}
+
+.ye-delegate .delegate .content textarea {
+    height: auto;
+}
+
+.ye-delegate .delegate .content .action .right {
+    right: 0;
+    top: 0;
+    left: auto;
+    position: relative;
+}
+
+/*----------------------------------------------
+
+    Footer-Link Style
+
+------------------------------------------------*/
+footer .footer-link {
+    float: none;
+    display: block;
+    padding: 1rem 0 1rem;
+    margin: 0 5% 1rem;
+    text-align: center;
+}
+
+footer .footer-link ul {
+    width: 550px;
+    text-align: center;
+    margin: 0 auto;
+    list-style: none;
+}
+
+footer .footer-link ul li {
+    float: left;
+    color: #1e70bf;
+    width: 100px;
+    transition: all 0.2s;
+    transform: scaleX(1);
+}
+
+footer .footer-link ul li:after {
+    content: "•";
+    padding: 0 1rem;
+}
+
+footer .footer-link ul li:last-of-type:after {
+    content: '';
+}
+
+footer .footer-link ul li a {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: top;
+    z-index: 0;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    outline: none;
+}
+
+footer .footer-link ul li a:hover {
+    color: #1e70bf;
+}
+footer .footer-copy {
+    width: 100%;
+    text-align: center;
+}
+@media (max-width: 1200px) {
+    .ye-delegate .delegate.delegate_1 .content {
+        width: 100%;
+        padding: 3rem 2rem;
+    }
+    footer ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    footer .footer-link {
+        width: 100%;
+        height: 30px;
+    }
+
+    footer .footer-link ul {
+        max-width: 400px;
+    }
+
+    footer .footer-link ul li {
+        width: auto;
+    }
+
+    footer .footer-link ul li:after {
+        padding: 0;
+        content: " | ";
+    }
+
+    footer .divider {
+        margin: 1rem auto;
+        display: none;
+    }
+
+    footer .footer-copy {
+        font-size: 12px;
+    }
+}
