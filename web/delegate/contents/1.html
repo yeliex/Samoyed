@@ -1,0 +1,129 @@
+<div class="delegate delegate_1">
+    <div class="header">
+        <div class="header-wrapper">
+            <div class="content">
+                <div class="ui container">
+                    <div class="ui large form">
+                        <input hidden type="text" disabled value="发布房源">
+
+                        <div class="field">
+                            <label>您的称呼: </label>
+                        </div>
+                        <div class="inline fields">
+                            <div class="eight wide field">
+                                <input type="text">
+                            </div>
+                            <div class="field">
+                                <select class="ui fluid dropdown">
+                                    <option value="">您的身份</option>
+                                    <option>个人业主</option>
+                                    <option>招商代表</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="eight wide field">
+                                <label>联系电话: </label>
+                                <input type="text" maxlength="11" placeholder="请输入有效手机号码">
+                            </div>
+                            <div class="eight wide field">
+                                <label>联系邮箱: </label>
+                                <input type="email">
+                            </div>
+                        </div>
+                        <h4 class="ui dividing header">房源信息</h4>
+
+                        <div class="field">
+                            <label>房源名称: </label>
+                        </div>
+                        <div class="inline fields">
+                            <div class="eight wide field">
+                                <input type="text" placeholder="输入房源名称有助于我们提前了解">
+                            </div>
+                            <div class="field">
+                                <select class="ui fluid dropdown">
+                                    <option value="">房源类型</option>
+                                    <option>创业园</option>
+                                    <option>写字楼</option>
+                                    <option>孵化园</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <select class="ui fluid dropdown">
+                                    <option value="">装修类型</option>
+                                    <option>精装修</option>
+                                    <option>简装</option>
+                                    <option>工装</option>
+                                    <option>未装修</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>房源地址: </label>
+                            <input type="text" placeholder="只需简单填写地址,如: 江干钱江新城">
+                        </div>
+                        <div class="field">
+                            <label>附加信息: </label>
+                            <textarea placeholder="请简单输入您的房源信息以帮助我们初步了解,提高沟通效率"></textarea>
+                        </div>
+                        <div class="field action">
+                            <div class="ui large fluid blue button right">提交</div>
+                        </div>
+                        <div class="field">
+                            <label style="color: #ffffff;">收到您的需求后我们会给您发送一封确认邮件,并在工作时间一小时内由专人与您联系.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".ui.dropdown").dropdown();
+    });
+    $(function () {
+        $(".delegate.delegate_1 .button").click(function () {
+            // 看房
+            $(".delegate .button").addClass('disabled');
+            var d = data_1();
+            dataSend(d)
+        });
+    });
+    function data_1() {
+        var target = $(".delegate.delegate_1 input");
+        if ($(target[1]).val() == "") {
+            alert("我们不知道如何称呼您");
+            $(".delegate .button").removeClass('loading disabled');
+            return;
+        }
+        if ($($(".ui.dropdown")[0]).dropdown('get value') == "") {
+            alert("请选择您的身份(业主类型");
+            $(".delegate .button").removeClass('loading disabled');
+            return;
+        }
+        if ($(target[2]).val() == "") {
+            alert("请输入你的手机号,不然我们无法与您联系");
+            $(".delegate .button").removeClass('loading disabled');
+            return;
+        }
+        if ($(target[3]).val() == "") {
+            alert("请输入你的邮箱地址,不然我们无法与您联系");
+            $(".delegate .button").removeClass('loading disabled');
+            return;
+        }
+        if ($(target[4]).val() == "") {
+            $(".delegate .button").removeClass('loading disabled');
+            alert("请输入房源名称");
+            return;
+        }
+        return {
+            type: $(target[0]).val(),
+            user: $(target[1]).val() + " / " + $($(".ui.dropdown")[0]).dropdown('get text'),
+            phone: $(target[2]).val(),
+            mail: $(target[3]).val(),
+            info: Array($(target[4]).val(), $($(".ui.dropdown")[1]).dropdown('get text'), $($(".ui.dropdown")[2]).dropdown('get text'), $(target[5]).val(), $(".delegate.delegate_1 textarea").val()).join(" / ")
+        };
+    }
+</script>

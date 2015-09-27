@@ -119,6 +119,36 @@ class Appointment extends Appoint
         }
         send_json(0, json_encode($result));
     }
+
+    public function simpleAppointment(){
+        $post = $_POST;
+        // 生成参数
+        $subvars = array();
+        $subvars['to'] = array($post['mail']);
+        $subvars['sub'] = array();
+        $subvars['sub']['type'] = array($post['type']);
+        $subvars['sub']['user'] = array($post['user']);
+        $subvars['sub']['phone'] = array($post['phone']);
+        $subvars['sub']['mail'] = array($post['mail']);
+        $subvars['sub']['info'] = array($post['info']);
+
+        $data = array();
+        $data['api_user'] = SES_API_USER;
+        $data['api_key'] = SES_API_KEY;
+        $data['from'] = SES_FROM;
+        $data['template_invoke_name'] = $post['template'];
+        $data['fromname'] = SES_FROM_NAME;
+        $data['substitution_vars'] = json_encode($subvars);
+
+        $http = new HTTPRequest(SES_URL_DOMAIN, SES_URL);
+        $http->setType("POST");
+        $http->setData($data);
+        $http->execute();
+        $result = $http->getResponseText();
+        $error = $http->getError();
+        $http->close();
+        echo $result;
+    }
 }
 
 class Appoint extends Samoyed
