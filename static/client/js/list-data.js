@@ -1,10 +1,6 @@
 $(function () {
     currentArgs.district = currentArgs.area;
-    if (currentArgs.target === "search") {
-        displayList(doSearch(currentArgs))
-    } else {
-        displayList(doList(currentArgs))
-    }
+    displayList(doList(currentArgs))
 });
 function doList(a) {
     var c = {};
@@ -16,7 +12,9 @@ function doList(a) {
             city: "0571",
             district: getDistrict(a.district, 1),
             size: getSize(a.size, 1),
-            price: getPrice(a.price, 1)
+            price: getPrice(a.price, 1),
+            target: a.target,
+            keyword: a.keyword
         }
     });
     b.complete(function (d) {
@@ -24,10 +22,9 @@ function doList(a) {
     });
     return c.overview
 }
-function doSearch(a) {
-}
+
 function displayList(d) {
-    var a = d.length;
+    var a = (d.length) ? d.length : 0;
     for (var b = 0; b < a; b++) {
         var c = d[b];
         displayItem(c)
