@@ -17,7 +17,7 @@ define('SMS_TEMPLATE_APPOINTMENT_RECEIVED', "12818");
 
 <?
 /**
- * 12283 预约登录 SMS_TEMPLATE_APPOINTMENT_VARIFY : 您正在申请登录以进行预约，验证码为：{1}，30分钟内有效。非本人操作请忽略。
+ * 12283 预约登录 SMS_TEMPLATE_APPOINTMENT_VARIFY : 验证码为：{1}。您正在申请登录以进行预约，30分钟内有效。非本人操作请忽略。
  * 12734 注册成功通知 SMS_TEMPLATE_REGISTER_SUCCESS : 尊敬的 {1}，您已成功注册，以后可以使用本手机号（{2}）直接登录。顺颂商祺。
  * 12763 注册成功通知Mr SMS_TEMPLATE_REGISTER_SUCCESS_Mr : 尊敬的 {1} 先生，您已成功注册，以后可以使用本手机号（{2}）直接登录。顺颂商祺。
  * 12764 注册成功通知Mr SMS_TEMPLATE_REGISTER_SUCCESS_Ms : 尊敬的 {1} 女士，您已成功注册，以后可以使用本手机号（{2}）直接登录。顺颂商祺。
