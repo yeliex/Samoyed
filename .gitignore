@@ -11,3 +11,4 @@ ErrorPages/
 .idea/mizhi-dev.iml
 .idea/modules.xml
 .idea/vcs.xml
+.idea/deployment.xml
