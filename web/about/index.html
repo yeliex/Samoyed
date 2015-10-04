@@ -24,13 +24,13 @@
                     </div>
                 </div>
                 <div class="ui right secondary pointing menu" id="tab_menu">
-                    <a class="active item" data-tab="about">关于我们 </a>
-                    <a class="item" data-tab="help">使用帮助 </a>
-                    <a class="item" data-tab="join">加入我们 </a>
-                    <a class="item" data-tab="privacy">隐私条款 </a>
-                    <a class="item" data-tab="license">用户协议 </a>
-                    <a class="item" data-tab="license">委托 </a>
-                    <a class="item" data-tab="license">用户协议 </a>
+                    <a class="active item" data-tab="about">关于我们</a>
+                    <a class="item" data-tab="help">使用帮助</a>
+                    <a class="item" data-tab="join">加入我们</a>
+                    <a class="item" data-tab="privacy">隐私条款</a>
+                    <a class="item" data-tab="license">用户协议</a>
+                    <a href="../delegate/0" class="item">我要租房</a>
+                    <a href="../delegate/1" class="item">发布房源</a>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
     $(function () {
         $("#tab_menu .item").tab({
             auto: true,
-            cache: true, // 缓存
+            cache: false, // 缓存
             context: '.ye-about',
             evaluateScripts: true,
             apiSettings: {
@@ -66,7 +66,9 @@
     $(function () {
         var args = decodeURI(location.href).split("/");
         var target = "about";
+        console.log(args);
         if (args[4]) target = args[4];
+        if(args[4] == "web") target = args[5];
         window.pageTarget = target;
         // target 即为目标页面
         $("#tab_menu .item").tab('change tab', target);
@@ -78,6 +80,6 @@
         }
     }
 </script>
-<script src="http://static.mzapp.info/public/js/google_analytics.js" type="text/javascript"></script>
+<script src="http://static.mzapp.info/public/js/google_analytics.min.js" type="text/javascript"></script>
 </body>
 </html>

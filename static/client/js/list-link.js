@@ -57,11 +57,15 @@ function getCurrnentConditions() {
             c[1] = "all"
         }
     }
+    console.log(c);
+    // 需要使用decodeURI进行逆转义
     a.area = (a.area) ? decodeURI(a.area) : "all";
     a.size = (a.size) ? decodeURI(a.size) : "all";
     a.price = (a.price) ? decodeURI(a.price) : "all";
     a.page = c[0];
-    a.target = c[1];
+    a.target = (a.target)? a.target:"list";
+    a.keyword = (a.keyword) ? decodeURI(a.keyword) : "";
+    //console.log(a);
     return a
 }
 function setNewConditions(a) {
