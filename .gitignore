@@ -7,5 +7,9 @@ ErrorPages/
 .idea/mizhi-dev.iml
 .idea/workspace.xml
 .idea/.name
+.idea/misc.xml
+.idea/mizhi-dev.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/deployment.xml
 
-.idea/workspace.xml
