@@ -237,9 +237,11 @@ main .wrapper {
     padding: 0 0 4rem;
     width: 100%;
 }
+
 main .wrapper.secondary {
     background: #F6F6F6;
 }
+
 main .header {
     width: 100%;
     padding: 2rem 0;
@@ -259,6 +261,10 @@ main .header .description {
     font-weight: normal;
     color: #5d5d5d;
     line-height: 2.5rem;
+}
+
+main .content .card img {
+    border-radius: .28571429rem !important;
 }
 
 main .content .description {
@@ -386,10 +392,62 @@ nav.fixed .ye-top {
 
 /*----------------------------------------------
 
+    Partners-Content Style
+
+------------------------------------------------*/
+main .partners.wrapper {
+    padding-top: 2em;
+    width: 100%;
+}
+
+main .partners.wrapper .header .title {
+    font-size: 2rem;
+}
+
+main .partners.wrapper .header .description {
+    font-size: 1.2rem;
+}
+
+main .partners.wrapper .content .card .image,
+main .partners.wrapper .content .card .image > img,
+main .partners.wrapper .content .card .image img,
+main .partners.wrapper .content .card .image .content {
+    max-height: 112px;
+    width: 100%;
+    height: 100%;
+}
+
+main .partners.wrapper .content .card .content img {
+    border-radius: .28571429rem;
+}
+
+main .partners.wrapper .content .card .hidden.content {
+    width: 100%;
+    height: 112px;
+    padding: 0 1rem;
+    text-align: center;
+    vertical-align: middle;
+    color: rgba(0, 0, 0, .87);
+    font-size: 1rem !important;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+main .partners.wrapper .content .card .hidden.content .info-main {
+    font-size: 1.2rem;
+    padding-top: calc(56px - 1.2rem);
+}
+
+main .partners.wrapper .content .card .hidden.content .info-detail {
+    font-size: 1rem;
+}
+
+/*----------------------------------------------
+
     Self-Adaption Style
 
 ------------------------------------------------*/
 
+/*Mobile Phone*/
 @media (max-width: 767px) {
     body {
         width: 100% !important;
@@ -429,6 +487,22 @@ nav.fixed .ye-top {
     nav.fixed.search .ye-logo {
         display: none;
     }
+
+    main .partners.wrapper .content .card .image,
+    main .partners.wrapper .content .card .image > img,
+    main .partners.wrapper .content .card .image img,
+    main .partners.wrapper .content .card .image .content {
+        max-height: 180px;
+        height: 100%;
+    }
+
+    main .partners.wrapper .content .card .hidden.content {
+        height: 180px;
+    }
+
+    main .partners.wrapper .content .card .hidden.content .info-main {
+        padding-top: calc(90px - 1.2rem);
+    }
 }
 
 @media (max-width: 580px) {
@@ -447,6 +521,7 @@ nav.fixed .ye-top {
     }
 }
 
+/*Tablet*/
 @media (min-width: 767px) and (max-width: 1000px) {
     nav.fixed.search .ye-logo {
         display: none;
@@ -457,6 +532,7 @@ nav.fixed .ye-top {
     }
 }
 
+/*Old Computer*/
 @media (min-width: 1000px) and (max-width: 1200px) {
     nav.fixed.search .ye-logo {
         display: none;
