@@ -3,7 +3,7 @@ var args = decodeURI(location.href).split("/");
 var argLength = args.length;
 if (args[3] == "panel") {
     // 不允许/panel文件夹访问
-    location.href = "http://panel.dev.mzapp.info";
+    location.href = "http://panel.mzapp.info";
 }
 else if (argLength > 4) {
     // 存在多个参数
