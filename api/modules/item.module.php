@@ -123,7 +123,7 @@ class Item extends Samoyed
         send_json(0, json_encode($result), 1);
     }
 
-    public function all_images()
+    public function allImages()
     {
         // 前往数据库查询
 

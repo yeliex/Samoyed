@@ -91,6 +91,7 @@ class Appointment extends Appoint
         }
     }
 
+    // 预约保存失败回滚
     public function appointmentFailed()
     {
         $id = $_GET['id'];
@@ -101,6 +102,7 @@ class Appointment extends Appoint
         send_json(0);
     }
 
+    // 判断预约是否已存在
     public function alreadyAppointed()
     {
         $bid = $_GET['bid'];
@@ -120,6 +122,7 @@ class Appointment extends Appoint
         send_json(0, json_encode($result));
     }
 
+    // 发送预约邮件
     public function simpleAppointment(){
         $post = $_POST;
         // 生成参数
