@@ -1,0 +1,126 @@
+<div class="ui bottom attached segment visible">
+    <div class="ui ye-side visible left vertical sidebar menu">
+        <div class="item"><h3 class="title">添加筛选条件</h3></div>
+        <div class="item">
+            <div class="ui icon fluid input"><input type="text" placeholder="搜索"><i
+                    class="circular search link icon"></i></div>
+        </div>
+        <div class="item selected">
+            <a class="ui label">未选择</a>
+        </div>
+        <div class="ui item accordion type">
+            <div class="title"><i class="marker icon"></i> 类型</div>
+            <div class="content three columns">
+                <div class="list selectable items">
+                    <div class="ui mini basic buttons">
+                        <div class="ui button active">全部</div>
+                        <div class="ui button">孵化器</div>
+                        <div class="ui button">创业园</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">写字楼</div>
+                        <div class="ui button">工位</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui item accordion area " id="area">
+            <div class="title"><i class="marker icon"></i> 区域</div>
+            <div class="content three columns">
+                <div class="list selectable items">
+                    <div class="ui mini basic buttons">
+                        <div class="ui button active">全部</div>
+                        <div class="ui button">上城区</div>
+                        <div class="ui button">下城区</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">江干区</div>
+                        <div class="ui button">拱墅区</div>
+                        <div class="ui button">西湖区</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">滨江区</div>
+                        <div class="ui button">萧山区</div>
+                        <div class="ui button">余杭区</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui item accordion size" id="size">
+            <div class="title"><i class="block layout icon"></i> 面积</div>
+            <div class="content two columns">
+                <div class="list selectable items">
+                    <div class="ui mini basic buttons">
+                        <div class="ui button active">全部</div>
+                        <div class="ui button">0-100m²</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">100-200m²</div>
+                        <div class="ui button">200-300m²</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">300-500m²</div>
+                        <div class="ui button">500-1000m²</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">1000+m²</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui item accordion price" id="price">
+            <div class="title"><i class="yen icon"></i> 价位</div>
+            <div class="content three columns">
+                <div class="list selectable items">
+                    <div class="ui mini basic buttons">
+                        <div class="ui button active">全部</div>
+                        <div class="ui button">1-2</div>
+                        <div class="ui button">2-3</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">3-4</div>
+                        <div class="ui button">4-5</div>
+                        <div class="ui button">5-6</div>
+                    </div>
+                    <div class="ui mini basic buttons">
+                        <div class="ui button">6-7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui item accordion conditions" id="conditions">
+            <div class="title"><i class="yen icon"></i> 附加条件</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".ye-side .accordion").accordion({'exclusive': false}).accordion('open', 0);
+</script>
+<script type="text/javascript">
+    var selectableList = {};
+    $(function () {
+        // 获取列表节点
+        var tmpAccording = $(".list.selectable");
+        for (var i = 0; i < tmpAccording.length; i++) {
+            var tmp = $(tmpAccording[i]);
+            var tmpChildren = tmp.find("div");
+            var childObject = {};
+            for (var ii = 0; ii < tmpChildren.length; ii++) {
+                var tmpChild = $(tmpChildren[ii]);
+                childObject[ii] = tmpChild.text();
+            }
+            childObject.active = ($(tmp.find(".active")).text()) ? ($(tmp.find(".active")).text()) : childObject[0];
+            selectableList[i] = childObject;
+        }
+        selectableList.target = selectableList[0];
+        selectableList.district = selectableList[1];
+        selectableList.size = selectableList[2];
+        selectableList.prize = selectableList[3];
+        // 设置列表显示
+        for (i = 0; i < 4; i++) {
+            var tmpObject = selectableList[i];
+        )
+    }
+
+    })
+</script>

@@ -24,6 +24,7 @@ function onDistrictSelected(value) {
         }
         case "310013": // 西湖区
         {
+            str += "<option value='黄龙商圈'>黄龙商圈</option>";
             break;
         }
         case "310051": // 滨江区

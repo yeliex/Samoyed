@@ -1,0 +1,73 @@
+body {
+    cursor: default;
+}
+
+.ye-nav.secondary.menu {
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15) !important;
+    border: 1px solid rgba(34, 36, 38, .15);
+}
+
+.ye-nav .item {
+    border-left: none;
+    border-right: none;
+}
+
+.ye-nav .item.link:hover {
+    background: none !important;
+}
+
+.ye-nav .item .large.button {
+    margin: 0 .5rem !important;
+}
+
+.ye-nav .logo .ye-logo-title {
+    font-weight: bolder;
+    color: #54c8ff !important;
+    font-size: 2.2rem;
+}
+
+.ye-nav .mobile {
+    display: none !important;
+}
+
+.ye-tools.mobile {
+    display: none;
+}
+
+.ye-side .item.selected .label {
+    float: none !important;
+    margin: .15em 0 !important;
+}
+
+.ye-side .items.selectable.list .buttons {
+    border-top: 0;
+    border-radius: 0;
+}
+
+.ye-side .items.selectable.list .buttons .button:hover {
+    border-top: 1px solid rgba(34, 36, 38, .15);
+}
+
+.ye-side .items.selectable.list .buttons:first-of-type {
+    border-top-left-radius: .28571429rem;
+    border-top-right-radius: .28571429rem;
+    border-top: 1px solid rgba(34, 36, 38, .15);
+}
+
+.ye-side .items.selectable.list .buttons:first-of-type .button:hover {
+    border-top: 0;
+}
+
+.ye-side .items.selectable.list .buttons:last-of-type {
+    border-bottom-left-radius: .28571429rem;
+    border-bottom-right-radius: .28571429rem;
+    border-bottom: 1px solid rgba(34, 36, 38, .15);
+}
+
+.ye-side .three.columns .items .ui.button {
+    width: calc(220px / 3);
+}
+
+.ye-side .two.columns .items .ui.button {
+    width: calc(220px / 2);
+}

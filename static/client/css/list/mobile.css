@@ -1,0 +1,74 @@
+@media (max-width: 1024px) {
+    .ye-nav .desktop {
+        display: none !important;
+    }
+
+    .ye-nav .mobile, .ye-nav .tablet {
+        display: block !important;
+    }
+
+    .ye-nav .search.item.tablet {
+        min-width: 700px;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .ye-nav .desktop, .ye-nav .tablet {
+        display: none !important;
+    }
+
+    .ye-nav .mobile {
+        display: block !important;
+    }
+
+    .ye-nav .search.item.mobile {
+        width: 100%;
+        margin: 0;
+        padding: 1rem 1rem;
+        min-width: 0;
+    }
+
+    .ye-nav .search.mobile .dropdown {
+        display: none;
+    }
+
+    .ye-nav .search .all.button {
+        display: none;
+    }
+
+    .ye-nav .search .search.button {
+        border-radius: 0 .28571429rem .28571429rem 0 !important;
+    }
+
+    .ye-tools.mobile {
+        display: block;
+        right: 5%;
+        bottom: 5%;
+        position: fixed;
+    }
+
+    .ye-tools .button {
+        font-size: 1.5rem;
+        -webkit-transition: transform .5s;
+        -moz-transition: transform .5s;
+        -ms-transition: transform .5s;
+        -o-transition: transform .5s;
+        transition: transform .5s;
+    }
+
+    .ye-tools .button:hover,
+    .ye-tools .button:active,
+    .ye-tools .button.active {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: transform .5s;
+        -moz-transition: transform .5s;
+        -ms-transition: transform .5s;
+        -o-transition: transform .5s;
+        transition: transform .5s;
+    }
+}
